@@ -138,7 +138,7 @@ export const parseCSV = (
             resolvedDate,
             street,
             delegation,
-            m2: m2Str ? parseFloat(m2Str) : 0,
+            m2: parseNumber(m2Str),
             status,
             stage,
             originalId: getVal(row, ['ID', 'Ticket', 'folioRef', 'folio'])
