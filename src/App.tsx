@@ -207,9 +207,8 @@ export default function App() {
 
       <div className="flex-1 flex overflow-hidden relative">
         {/* Sidebar Táctico */}
-        <aside className="w-80 bg-slate-50 border-r border-slate-200 flex flex-col z-40 shadow-inner">
-          <div className="p-6 space-y-6">
-            <div className="flex-1 overflow-y-auto pr-2 space-y-6 custom-scrollbar">
+        <aside className="w-80 bg-slate-50 border-r border-slate-200 flex flex-col z-40 shadow-inner overflow-hidden">
+          <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
               {/* --- ETAPA 3 (ACTUAL) --- */}
               <div>
                 <h3 className="text-xs font-black text-toluca-burgundy tracking-widest uppercase mb-4 flex items-center justify-between">
@@ -392,7 +391,6 @@ export default function App() {
                 </label>
               </div>
             </div>
-          </div>
 
           <div className="mt-auto p-6 bg-slate-100/50">
              <div className="bg-white p-4 rounded-xl border border-slate-200 text-center">

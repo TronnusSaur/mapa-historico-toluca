@@ -21,11 +21,11 @@ export interface Tramo {
 }
 
 /**
- * Utility to find a value in an object regardless of key case
+ * Utility to find a value in an object regardless of key case or whitespace
  */
 const getVal = (obj: Record<string, any>, keys: string[]) => {
   const foundKey = Object.keys(obj).find(k => 
-    keys.some(key => k.toLowerCase() === key.toLowerCase())
+    keys.some(key => k.trim().toLowerCase() === key.trim().toLowerCase())
   );
   return foundKey ? obj[foundKey] : undefined;
 };
