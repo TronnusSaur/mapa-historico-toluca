@@ -11,7 +11,7 @@ import {
   Play, 
   Pause, 
   Filter, 
-  Target, 
+  Landmark, 
   Calendar,
   ChevronRight,
   Info
@@ -176,13 +176,22 @@ export default function App() {
       {/* Header Premium - Toluca Capital Style */}
       <header className="bg-toluca-burgundy text-white shadow-xl z-50">
         <div className="max-w-9xl mx-auto px-6 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="bg-white p-1.5 rounded-xl backdrop-blur-md border border-white/20">
-              <img src="/mapa-historico-toluca/logo_ayuntamiento.png" alt="Logo Ayuntamiento" className="w-10 h-10 object-contain rounded-lg" />
+          <div className="flex items-center gap-6">
+            <div className="flex items-center gap-4">
+              <div className="bg-toluca-burgundy p-2.5 rounded-full border-2 border-white/30 shadow-lg flex items-center justify-center">
+                <Landmark className="text-white w-7 h-7" />
+              </div>
+              <div className="flex flex-col">
+                <h1 className="text-2xl font-black tracking-tighter leading-none">TOLUCA CAPITAL</h1>
+                <p className="text-[9px] font-bold tracking-[0.3em] opacity-60 uppercase mt-1">AYUNTAMIENTO 2025-2027</p>
+              </div>
             </div>
-            <div>
-              <h1 className="text-2xl font-black tracking-tight leading-none">TOLUCA CAPITAL</h1>
-              <p className="text-[10px] font-bold tracking-[0.3em] opacity-60 uppercase mt-1">Torre de Control de Bacheo 2025-2027</p>
+
+            <div className="w-[1px] h-10 bg-white/10 hidden md:block" />
+
+            <div className="hidden lg:block">
+              <h2 className="text-xl font-black tracking-tight leading-none">Torre de Control de Bacheo</h2>
+              <p className="text-[9px] font-bold tracking-[0.2em] opacity-40 uppercase mt-1">ESTRATEGIA INTEGRAL DE REHABILITACIÓN</p>
             </div>
           </div>
 
