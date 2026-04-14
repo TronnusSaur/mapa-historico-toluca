@@ -207,10 +207,10 @@ export default function App() {
 
       <div className="flex-1 flex overflow-hidden relative">
         {/* Sidebar Táctico */}
-        <aside className="w-80 bg-slate-50 border-r border-slate-200 flex flex-col z-40 shadow-inner overflow-hidden">
-          <div className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
-              {/* --- ETAPA 3 (ACTUAL) --- */}
-              <div>
+        <aside className="w-80 bg-slate-50 border-r border-slate-200 flex flex-col z-40 shadow-inner overflow-y-auto custom-scrollbar">
+          <div className="p-6 space-y-6 flex-1">
+            {/* --- ETAPA 3 (ACTUAL) --- */}
+            <div>
                 <h3 className="text-xs font-black text-toluca-burgundy tracking-widest uppercase mb-4 flex items-center justify-between">
                   <span className="flex items-center gap-2"><BarChart3 size={14} /> Etapa 3 (Actual)</span>
                   <span className="bg-toluca-burgundy/10 text-[10px] px-2 py-0.5 rounded text-toluca-burgundy">EN PROCESO</span>
@@ -255,12 +255,12 @@ export default function App() {
                    <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
                      <div className="flex justify-between items-end mb-1">
                         <span className="text-[9px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
-                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2M2 / 345427.76) * 100))}%</span>
+                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2M2 / 125095.34) * 100))}%</span>
                      </div>
                      <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
                         <div 
                          className="bg-slate-400 h-full" 
-                         style={{ width: `${Math.min(100, (stats.e2M2 / 345427.76) * 100)}%` }} 
+                         style={{ width: `${Math.min(100, (stats.e2M2 / 125095.34) * 100)}%` }} 
                         />
                      </div>
                    </div>

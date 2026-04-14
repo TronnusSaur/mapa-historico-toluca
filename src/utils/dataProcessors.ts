@@ -21,6 +21,19 @@ export interface Tramo {
 }
 
 /**
+ * Utility to parse numbers that might use commas as decimals or thousands separators
+ */
+const parseNumber = (val: any): number => {
+  if (val === undefined || val === null || val === '') return 0;
+  if (typeof val === 'number') return val;
+  // Replace comma with dot ONLY if there is no dot already, or if it looks like a European decimal
+  // For these files, they seem to use comma as decimal in Stage 2
+  const cleaned = val.toString().replace(',', '.');
+  const parsed = parseFloat(cleaned);
+  return isNaN(parsed) ? 0 : parsed;
+};
+
+/**
  * Utility to find a value in an object regardless of key case or whitespace
  */
 const getVal = (obj: Record<string, any>, keys: string[]) => {
