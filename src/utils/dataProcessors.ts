@@ -15,6 +15,21 @@ export interface PotholeData {
   stage?: number;
 }
 
+export interface GeoJSONFeature {
+  type: string;
+  geometry: {
+    type: 'Polygon' | 'MultiPolygon';
+    coordinates: any;
+  };
+  properties: any;
+  bbox?: [number, number, number, number];
+}
+
+export interface GeoJSONData {
+  type: string;
+  features: GeoJSONFeature[];
+}
+
 export interface Tramo {
   coords: [number, number][];
   date: Date; // earliest point date in this chain
@@ -270,3 +285,57 @@ export const groupIntoTramos = (
   console.timeEnd('groupIntoTramos');
   return chains;
 };
+
+/**
+ * Ray-casting algorithm for point-in-polygon test.
+ * @param lat  Point latitude
+ * @param lng  Point longitude
+ * @param polygon  Array of [lng, lat] coordinate pairs (GeoJSON order)
+ */
+export function isPointInPolygon(
+  lat: number,
+  lng: number,
+  polygon: [number, number][]
+): boolean {
+  let inside = false;
+  for (let i = 0, j = polygon.length - 1; i < polygon.length; j = i++) {
+    const xi = polygon[i][0], yi = polygon[i][1];
+    const xj = polygon[j][0], yj = polygon[j][1];
+    const intersect =
+      yi > lat !== yj > lat &&
+      lng < ((xj - xi) * (lat - yi)) / (yj - yi) + xi;
+    if (intersect) inside = !inside;
+  }
+  return inside;
+}
+
+/**
+ * Checks whether a [lat, lng] point falls inside ANY feature of a GeoJSON FeatureCollection.
+ * Returns true (keep the point) when no boundaries are loaded.
+ */
+export function isPointInGeoJSON(
+  lat: number,
+  lng: number,
+  geojson: GeoJSONData
+): boolean {
+  if (!geojson || !geojson.features) return true;
+
+  for (const feature of geojson.features) {
+    const { type, coordinates } = feature.geometry;
+
+    // Optional bounding-box fast reject
+    if (feature.bbox) {
+      const [minLng, minLat, maxLng, maxLat] = feature.bbox;
+      if (lng < minLng || lng > maxLng || lat < minLat || lat > maxLat) continue;
+    }
+
+    if (type === 'Polygon') {
+      if (isPointInPolygon(lat, lng, coordinates[0])) return true;
+    } else if (type === 'MultiPolygon') {
+      for (const poly of coordinates) {
+        if (isPointInPolygon(lat, lng, poly[0])) return true;
+      }
+    }
+  }
+  return false;
+}
