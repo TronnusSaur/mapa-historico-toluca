@@ -3,7 +3,7 @@ import { MapContainer, TileLayer, Polyline, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
-import { parseCSV, groupIntoTramos } from './utils/dataProcessors.ts';
+import { parseCSV, groupIntoTramos, isPointInGeoJSON } from './utils/dataProcessors.ts';
 import type { PotholeData, Tramo } from './utils/dataProcessors.ts';
 import { 
   BarChart3, 
@@ -40,6 +40,18 @@ export default function App() {
     const loadAll = async () => {
       try {
         const baseUrl = import.meta.env.BASE_URL;
+        
+        // 1. Load territorial boundaries FIRST
+        let boundaries = null;
+        try {
+          const geoResp = await fetch(`${baseUrl}data/UTB_REAL.geojson`);
+          boundaries = await geoResp.json();
+          setGeoData(boundaries);
+        } catch (geoErr) {
+          console.error("Error loading GeoJSON boundaries:", geoErr);
+        }
+
+        // 2. Parse all CSV data
         const [e1, e2, e3, totalTickets] = await Promise.all([
           parseCSV(`${baseUrl}data/1 - ETAPA 1 MASTER.csv`, 'EJECUTADO', 1),
           parseCSV(`${baseUrl}data/2 - ETAPA 2 MASTER.csv`, 'EJECUTADO', 2),
@@ -47,28 +59,31 @@ export default function App() {
           parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL'),
         ]);
 
-        // Load territorial boundaries
-        try {
-          const geoResp = await fetch(`${baseUrl}data/UTB_REAL.geojson`);
-          const geoJson = await geoResp.json();
-          setGeoData(geoJson);
-        } catch (geoErr) {
-          console.error("Error loading GeoJSON boundaries:", geoErr);
-        }
+        const combinedRaw = [...e1, ...e2, ...e3, ...totalTickets];
+        
+        // 3. SPATIAL FILTER ONLY — keep all dates so stats reach 100%
+        // (2024 records are excluded from rendering later, in visibleData/allTramos)
+        const filtered = combinedRaw.filter(p => {
+            if (boundaries) {
+                return isPointInGeoJSON(p.lat, p.lng, boundaries);
+            }
+            return true;
+        });
 
-        const combined = [...e1, ...e2, ...e3, ...totalTickets];
-        setData(combined);
+        setData(filtered);
 
-        // Compute tramos once — heavy spatial algorithm, not re-run on timeline changes
-        // Run after a short yield so the loading spinner renders first
+        // Compute tramos using executed points from 2025 onwards ONLY
+        // (2024 records are kept in `data` for stats but not rendered)
+        const minRenderDate = new Date('2025-01-01');
         setTimeout(() => {
-          const ejecutados = [...e1, ...e2, ...e3];
-          const computed = groupIntoTramos(ejecutados, 80, 2);
+          const filteredEjecutados = filtered.filter(
+            p => p.status === 'EJECUTADO' && p.date >= minRenderDate
+          );
+          const computed = groupIntoTramos(filteredEjecutados, 80, 2);
           setAllTramos(computed);
           setLoading(false);
         }, 50);
         
-        // Metrics are now handled by useMemo below
       } catch (err) {
         console.error("Error loading CSV data:", err);
         setLoading(false);
@@ -126,11 +141,15 @@ export default function App() {
   }, [data, currentDate]);
 
   // Filter data by timeline - Modern Lifecycle Logic
+  // NOTE: 2024 records are excluded from rendering (minRenderDate) but kept in `data` for stats
+  const minRenderDate = new Date('2025-01-01');
   const visibleData = useMemo(() => {
     return data.filter(p => {
        // Executed points (master) are handled by tramos mostly, 
        // but here we filter what goes into the cluster if needed.
-       if (p.status === 'EJECUTADO') return p.date <= currentDate;
+       if (p.status === 'EJECUTADO') {
+         return p.date >= minRenderDate && p.date <= currentDate;
+       }
        
        // Dynamic Tickets Lifecycle:
        // Visible if reported <= current AND (not resolved yet OR resolved > current)
@@ -140,7 +159,7 @@ export default function App() {
          return wasReported && isNotYetResolved;
        }
 
-       return p.date <= currentDate;
+       return p.date >= minRenderDate && p.date <= currentDate;
     });
   }, [data, currentDate]);
 
