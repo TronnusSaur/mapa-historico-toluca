@@ -326,7 +326,7 @@ export default function App() {
 
               <div className="pt-2 border-t border-slate-200">
                  <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 mt-4 flex items-center gap-2">
-                    <Target size={14} /> Resumen de Operación
+                    <BarChart3 size={14} /> Resumen de Operación
                  </h3>
                  <div className="space-y-3">
                     {/* KPI: Baches Realizados */}
