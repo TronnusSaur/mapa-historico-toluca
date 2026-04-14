@@ -310,32 +310,79 @@ export function isPointInPolygon(
 }
 
 /**
- * Checks whether a [lat, lng] point falls inside ANY feature of a GeoJSON FeatureCollection.
+ * Minimum distance in meters from point [lat,lng] to a polygon ring edge.
+ * Uses point-to-segment projection in degree space scaled to meters.
+ */
+function minDistToRingMeters(
+  lat: number,
+  lng: number,
+  ring: [number, number][]
+): number {
+  const R = 111320; // meters per degree latitude (approx)
+  const cosLat = Math.cos((lat * Math.PI) / 180);
+  let minDist = Infinity;
+
+  for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+    // Convert ring vertices to meters relative to the point
+    const ax = (ring[j][0] - lng) * R * cosLat;
+    const ay = (ring[j][1] - lat) * R;
+    const bx = (ring[i][0] - lng) * R * cosLat;
+    const by = (ring[i][1] - lat) * R;
+
+    // Project point (0,0) onto segment [a, b]
+    const dx = bx - ax, dy = by - ay;
+    const lenSq = dx * dx + dy * dy;
+    let t = lenSq > 0 ? -(ax * dx + ay * dy) / lenSq : 0;
+    t = Math.max(0, Math.min(1, t));
+
+    const px = ax + t * dx;
+    const py = ay + t * dy;
+    const dist = Math.sqrt(px * px + py * py);
+    if (dist < minDist) minDist = dist;
+  }
+  return minDist;
+}
+
+/**
+ * Checks whether a [lat, lng] point falls inside ANY feature of a GeoJSON FeatureCollection,
+ * with an optional buffer in meters for points near the boundary.
  * Returns true (keep the point) when no boundaries are loaded.
  */
 export function isPointInGeoJSON(
   lat: number,
   lng: number,
-  geojson: GeoJSONData
+  geojson: GeoJSONData,
+  bufferMeters = 500
 ): boolean {
   if (!geojson || !geojson.features) return true;
+
+  // Convert buffer to a degree-based bbox expansion for fast-reject
+  const bufDeg = bufferMeters / 111320;
 
   for (const feature of geojson.features) {
     const { type, coordinates } = feature.geometry;
 
-    // Optional bounding-box fast reject
+    // Bounding-box fast reject (expanded by buffer)
     if (feature.bbox) {
       const [minLng, minLat, maxLng, maxLat] = feature.bbox;
-      if (lng < minLng || lng > maxLng || lat < minLat || lat > maxLat) continue;
+      if (
+        lng < minLng - bufDeg || lng > maxLng + bufDeg ||
+        lat < minLat - bufDeg || lat > maxLat + bufDeg
+      ) continue;
     }
 
     if (type === 'Polygon') {
-      if (isPointInPolygon(lat, lng, coordinates[0])) return true;
+      const ring = coordinates[0] as [number, number][];
+      if (isPointInPolygon(lat, lng, ring)) return true;
+      if (minDistToRingMeters(lat, lng, ring) <= bufferMeters) return true;
     } else if (type === 'MultiPolygon') {
       for (const poly of coordinates) {
-        if (isPointInPolygon(lat, lng, poly[0])) return true;
+        const ring = poly[0] as [number, number][];
+        if (isPointInPolygon(lat, lng, ring)) return true;
+        if (minDistToRingMeters(lat, lng, ring) <= bufferMeters) return true;
       }
     }
   }
   return false;
 }
+
