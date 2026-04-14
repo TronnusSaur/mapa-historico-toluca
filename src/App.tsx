@@ -156,11 +156,13 @@ export default function App() {
     if (isPlaying) {
       interval = setInterval(() => {
         setCurrentDate(prev => {
+          const now = new Date();
           const next = new Date(prev);
-          next.setDate(next.getDate() + 7); // Move 1 week at a time for 50k points
-          if (next > new Date()) {
+          next.setDate(next.getDate() + 7); // Move 1 week at a time
+
+          if (next >= now) {
             setIsPlaying(false);
-            return prev;
+            return now; // Lock to exactly now
           }
           return next;
         });
@@ -175,8 +177,8 @@ export default function App() {
       <header className="bg-toluca-burgundy text-white shadow-xl z-50">
         <div className="max-w-9xl mx-auto px-6 py-4 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <div className="bg-white/10 p-2 rounded-xl backdrop-blur-md border border-white/20">
-              <Target className="text-toluca-gold w-8 h-8" />
+            <div className="bg-white p-1.5 rounded-xl backdrop-blur-md border border-white/20">
+              <img src="/mapa-historico-toluca/logo_ayuntamiento.png" alt="Logo Ayuntamiento" className="w-10 h-10 object-contain rounded-lg" />
             </div>
             <div>
               <h1 className="text-2xl font-black tracking-tight leading-none">TOLUCA CAPITAL</h1>
@@ -353,15 +355,6 @@ export default function App() {
                 <Filter size={14} /> Filtros de Capa
               </h3>
               <div className="space-y-2">
-                <label className="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
-                  <input 
-                    type="checkbox" 
-                    checked={filters.showHistorico} 
-                    onChange={(e) => setFilters(f => ({ ...f, showHistorico: e.target.checked }))}
-                    className="w-4 h-4 accent-toluca-burgundy" 
-                  />
-                  <span className="text-sm font-bold text-slate-700">Puntos Históricos</span>
-                </label>
                 <label className="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
                   <input 
                     type="checkbox" 
