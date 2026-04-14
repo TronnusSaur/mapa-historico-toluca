@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-toluca-burgundy: #7a1531;
+  --color-toluca-gold: #d4af37;
+  --color-toluca-dark: #2d0a14;
+}
+
+:root {
+  --toluca-burgundy: #7a1531;
+  --toluca-gold: #d4af37;
+  --toluca-dark: #2d0a14;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  background-color: #f8fafc;
+}
+
+#root {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.map-container {
+  flex: 1;
+  width: 100%;
+}
+
+/* Leaflet Custom Styles */
+.leaflet-container {
+  background: #f1f5f9;
+}
+
+.custom-marker-cluster {
+  background: rgba(122, 21, 49, 0.85);
+  border-radius: 50%;
+  border: 2px solid white;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.premium-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}

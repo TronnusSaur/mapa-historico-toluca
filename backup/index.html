@@ -1,0 +1,169 @@
+!DOCTYPE html
+html
+  head
+    base target=_top
+    link rel=stylesheet href=httpsunpkg.comleaflet@1.9.4distleaflet.css 
+    link rel=stylesheet href=httpsfonts.googleapis.comcss2family=Material+Symbols+Outlinedopsz,wght,FILL,GRAD@24,400,0,0 
+    script src=httpscdn.tailwindcss.comscript
+    style
+       Header de Toluca Capital - Estética Antigravity & Queeny 
+      .header-gradient { background linear-gradient(135deg, #7a1531 0%, #5a0f24 100%); position relative; overflow hidden; }
+      .semi-circle-1 { position absolute; width 300px; height 300px; border-radius 50%; background radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0) 70%); top -150px; right -50px; }
+      .semi-circle-2 { position absolute; width 200px; height 200px; border-radius 50%; background radial-gradient(circle, rgba(255, 255, 255, 0.05) 0%, rgba(255, 255, 255, 0) 70%); bottom -100px; left 10%; }
+      
+      #map { height calc(100vh - 84px); width 100%; }
+      body { margin 0; font-family 'Segoe UI', sans-serif; }
+      
+       Popups y Etiquetas Operativas 
+      .popup-box { min-width 220px; }
+      .header-del { border-bottom 2px solid #5a189a; color #5a189a; font-weight bold; margin-bottom 5px; }
+      .badge { color white; padding 2px 8px; border-radius 12px; font-size 0.75em; text-transform uppercase; font-weight bold;}
+      .b-amarillo { background #ff9f1c; }
+      .b-verde { background #2a9d8f; }
+      .b-rojo { background #e63946; }
+      .leaflet-control-layers { border-radius 8px; box-shadow 0 4px 10px rgba(0,0,0,0.2); font-weight bold; }
+    style
+  head
+  body
+
+    header class=header-gradient text-white shadow-lg
+      div class=semi-circle-1divdiv class=semi-circle-2div
+      div class=w-full max-w-[1536px] mx-auto px-4 lgpx-8 py-4 relative z-10
+        div class=flex flex-col mdflex-row items-center justify-between gap-4
+          div class=flex items-center gap-6
+            div class=flex items-center gap-3
+              div class=bg-white10 p-2 rounded-lg backdrop-blur-sm
+                span class=material-symbols-outlined text-3xlaccount_balancespan
+              div
+              div
+                h1 class=text-xl font-black tracking-tight leading-none uppercaseToluca Capitalh1
+                p class=text-[10px] font-medium tracking-[0.2em] opacity-80 uppercaseAyuntamiento 2025-2027p
+              div
+            div
+            div class=h-10 w-[1px] bg-white20 hidden mdblockdiv
+            div class=hidden mdblock
+              h2 class=text-lg font-bold leading-tightSupervisión Inteligenteh2
+              p class=text-sm font-light opacity-90 uppercase tracking-wideDirección de Obras Públicasp
+            div
+          div
+
+          div class=flex items-center gap-10 px-8 border-l border-r border-white20
+            div class=text-center
+              p class=text-[10px] font-bold tracking-widest opacity-70 uppercase mb-1Baches Estimadosp
+              p class=text-2xl font-black leading-none20,866p
+            div
+            div class=text-center
+              p class=text-[10px] font-bold tracking-widest opacity-70 uppercase mb-1Total de M2p
+              p class=text-2xl font-black leading-none104,610.31 span class=text-sm font-normal opacity-80m²spanp
+            div
+          div
+          
+          div class=flex items-center gap-4 w-full mdw-auto mdjustify-end
+            div class=w-10 h-10 rounded-full border-2 border-white20 bg-white10 flex items-center justify-center
+              span class=material-symbols-outlined text-xl opacity-80maps_ugcspan
+            div
+          div
+        div
+      div
+    header
+
+    div id=mapdiv
+
+    script src=httpsunpkg.comleaflet@1.9.4distleaflet.jsscript
+    script
+      let dictContratos = {};
+
+      document.addEventListener('DOMContentLoaded', function() {
+         ACTIVACIÓN DE MOTOR CANVAS Rendimiento fluido para +2500 puntos
+        const map = L.map('map', { preferCanvas true }).setView([19.2827, -99.6557], 13);
+        L.tileLayer('https{s}.tile.openstreetmap.org{z}{x}{y}.png', { 
+          attribution '© OpenStreetMap contributors' 
+        }).addTo(map);
+
+        map.createPane('otPane').style.zIndex = 450;
+        map.createPane('ticketPane').style.zIndex = 650;
+
+         GRUPOS DE CONTROL TÁCTICO
+        const layers = {
+          delegaciones L.featureGroup().addTo(map),
+          ots L.featureGroup().addTo(map),
+          amarillos L.featureGroup().addTo(map),
+          verdes L.featureGroup().addTo(map),
+          rojos L.featureGroup().addTo(map)
+        };
+
+        L.control.layers(null, {
+          🟣 Delegaciones  Contratos layers.delegaciones,
+          🔴 Tramos en Intervención (OTs) layers.ots,
+          🟡 Histórico (Pasado) layers.amarillos,
+          🟢 Ejecutado (Presente) layers.verdes,
+          🔴 Planeado (Futuro) layers.rojos
+        }, { collapsed false }).addTo(map);
+
+         1. Cargar Contratos y Delegaciones
+        google.script.run.withSuccessHandler(function(json) {
+          dictContratos = JSON.parse(json);
+          google.script.run.withSuccessHandler(function(raw) {
+            L.geoJSON(JSON.parse(raw), {
+              style { color #5a189a, weight 1.5, fillOpacity 0.05, dashArray '3' },
+              onEachFeature function(f, l) {
+                const nombre = (f.properties.NOMDEL  ).toUpperCase().trim();
+                const lista = dictContratos[nombre]  [];
+                let html = `div class=popup-boxdiv class=header-del${nombre}div`;
+                lista.forEach(c = { 
+                  html += `div style=font-size0.85em; border-bottom1px solid #eee; padding3px 0b${c.numero}bbrsmall${c.folio}smalldiv`; 
+                });
+                html += `div`;
+                l.bindPopup(html);
+                l.bindTooltip(nombre, {sticky true});
+              }
+            }).addTo(layers.delegaciones);
+          }).obtenerGeoJSON_Delegaciones();
+        }).obtenerDatosContratos();
+
+         2. Cargar Tramos de OTs (Rojo)
+        google.script.run.withSuccessHandler(function(raw) {
+          L.geoJSON(JSON.parse(raw), {
+            pane 'otPane', style { color #e63946, weight 6, opacity 0.7, lineCap 'round' },
+            onEachFeature function(f, l) {
+              let info = bInformación de Obra (OT)bbr;
+              for(let k in f.properties) info += `smallb${k}b ${f.properties[k]}smallbr`;
+              l.bindPopup(info);
+            }
+          }).addTo(layers.ots);
+        }).obtenerGeoJSON_OTs();
+
+         3. Cargar Puntos Histórico, Ejecutado y Planeado
+        google.script.run.withSuccessHandler(function(raw) {
+          const fases = JSON.parse(raw);
+          const config = [
+            { data fases.amarillos, group layers.amarillos, col #ff9f1c, badge b-amarillo, label Histórico },
+            { data fases.verdes, group layers.verdes, col #2a9d8f, badge b-verde, label Ejecutado },
+            { data fases.rojos, group layers.rojos, col #e63946, badge b-rojo, label Planeado }
+          ];
+
+          config.forEach(c = {
+            c.data.forEach(t = {
+               ✅ MEJORA Borde blanco (#ffffff) y Grosor 2 para máxima visibilidad
+              L.circleMarker([t.lat, t.lng], {
+                pane 'ticketPane', 
+                radius 8, 
+                fillColor c.col, 
+                color #ffffff, 
+                weight 2, 
+                fillOpacity 0.9
+              }).addTo(c.group).bindPopup(`
+                div class=popup-box
+                  span class=badge ${c.badge}${c.label}spanbr
+                  h3 style=margin5px 0Folio ${t.id}h3
+                  smallb📍b ${t.calle}smallbr
+                  small style=color#666;i${t.obs}ismall
+                div
+              `);
+            });
+          });
+        }).obtenerDatosPuntos();
+      });
+    script
+  body
+html
