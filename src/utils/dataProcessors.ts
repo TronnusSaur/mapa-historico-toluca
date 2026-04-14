@@ -23,7 +23,7 @@ export interface Tramo {
 /**
  * Utility to find a value in an object regardless of key case
  */
-const getVal = (obj: any, keys: string[]) => {
+const getVal = (obj: Record<string, any>, keys: string[]) => {
   const foundKey = Object.keys(obj).find(k => 
     keys.some(key => k.toLowerCase() === key.toLowerCase())
   );
@@ -56,7 +56,7 @@ export const parseCSV = (
       header: true,
       skipEmptyLines: true,
       complete: (results) => {
-        const data = results.data as any[];
+        const data = results.data as Record<string, any>[];
         const parsed = data.map((row, index) => {
           let lat = 0, lng = 0, date = new Date(), street = '', delegation = '';
           let reportDate: Date | undefined;
@@ -134,7 +134,7 @@ export const parseCSV = (
         
         resolve(parsed);
       },
-      error: (err) => reject(err)
+      error: (err: Error) => reject(err)
     });
   });
 };

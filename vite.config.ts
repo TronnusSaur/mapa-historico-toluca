@@ -4,5 +4,5 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: './', // Makes the build portable for GH Pages or Vercel
+  base: '/mapa-historico-toluca/', // Explicit base path for GitHub Pages
 })
