@@ -61,8 +61,7 @@ export default function App() {
 
         const combinedRaw = [...e1, ...e2, ...e3, ...totalTickets];
         
-        // 3. SPATIAL FILTER ONLY — keep all dates so stats reach 100%
-        // (2024 records are excluded from rendering later, in visibleData/allTramos)
+        // Spatial filter — keep only points inside Toluca boundaries
         const filtered = combinedRaw.filter(p => {
             if (boundaries) {
                 return isPointInGeoJSON(p.lat, p.lng, boundaries);
@@ -72,14 +71,10 @@ export default function App() {
 
         setData(filtered);
 
-        // Compute tramos using executed points from 2025 onwards ONLY
-        // (2024 records are kept in `data` for stats but not rendered)
-        const minRenderDate = new Date('2025-01-01');
+        // Compute tramos from all executed points (dates are now clean in the CSV)
         setTimeout(() => {
-          const filteredEjecutados = filtered.filter(
-            p => p.status === 'EJECUTADO' && p.date >= minRenderDate
-          );
-          const computed = groupIntoTramos(filteredEjecutados, 80, 2);
+          const ejecutados = filtered.filter(p => p.status === 'EJECUTADO');
+          const computed = groupIntoTramos(ejecutados, 80, 2);
           setAllTramos(computed);
           setLoading(false);
         }, 50);
@@ -140,16 +135,10 @@ export default function App() {
     };
   }, [data, currentDate]);
 
-  // Filter data by timeline - Modern Lifecycle Logic
-  // NOTE: 2024 records are excluded from rendering (minRenderDate) but kept in `data` for stats
-  const minRenderDate = new Date('2025-01-01');
+  // Filter data by timeline
   const visibleData = useMemo(() => {
     return data.filter(p => {
-       // Executed points (master) are handled by tramos mostly, 
-       // but here we filter what goes into the cluster if needed.
-       if (p.status === 'EJECUTADO') {
-         return p.date >= minRenderDate && p.date <= currentDate;
-       }
+       if (p.status === 'EJECUTADO') return p.date <= currentDate;
        
        // Dynamic Tickets Lifecycle:
        // Visible if reported <= current AND (not resolved yet OR resolved > current)
@@ -159,7 +148,7 @@ export default function App() {
          return wasReported && isNotYetResolved;
        }
 
-       return p.date >= minRenderDate && p.date <= currentDate;
+       return p.date <= currentDate;
     });
   }, [data, currentDate]);
 
