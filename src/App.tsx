@@ -82,23 +82,44 @@ export default function App() {
     // 1. Current Work Progress (E1+E2+E3) up to today
     const doneUpToDate = data.filter(p => p.status === 'EJECUTADO' && p.date <= currentDate);
     
-    // 2. Etapa 3 specifics (EXCLUSIVELY for Stage 3 data)
+    // 2. Stage-Specific metrics
+    const e1Done = doneUpToDate.filter(p => p.stage === 1);
+    const e2Done = doneUpToDate.filter(p => p.stage === 2);
     const e3Done = doneUpToDate.filter(p => p.stage === 3);
 
-    // 3. Dynamic Demand (reported <= current AND (not resolved OR resolved > current))
+    // 3. Tickets Logic
     const ticketsTotal = data.filter(p => p.status === 'TICKET_TOTAL');
+    
+    // Active (Pending) tickets at current date
     const activeTicketsAtDate = ticketsTotal.filter(p => {
       const wasReported = (p.reportDate || p.date) <= currentDate;
       const isStillPending = !p.resolvedDate || p.resolvedDate > currentDate;
       return wasReported && isStillPending;
     });
 
+    // Attended tickets at current date (Reported <= currentDate AND Status != Pendiente)
+    // Note: If resolved, we count it as attended if resolvedDate <= currentDate
+    const attendedTicketsAtDate = ticketsTotal.filter(p => {
+       const wasReported = (p.reportDate || p.date) <= currentDate;
+       const wasAttended = p.resolvedDate && p.resolvedDate <= currentDate;
+       // The user defined "Atendido" as "No diga Pendiente"
+       // In our logic, a ticket is attended when its resolvedDate has passed.
+       return wasReported && wasAttended;
+    });
+
     return {
       total: data.length,
       m2: doneUpToDate.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
       baches: doneUpToDate.length,
-      bachesRealizados: doneUpToDate.length,
       demandaActiva: activeTicketsAtDate.length,
+      ticketsAtendidos: attendedTicketsAtDate.length,
+      // Stage 1
+      e1Baches: e1Done.length,
+      e1M2: e1Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
+      // Stage 2
+      e2Baches: e2Done.length,
+      e2M2: e2Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
+      // Stage 3
       e3Baches: e3Done.length,
       e3M2: e3Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0)
     };
@@ -188,66 +209,144 @@ export default function App() {
         {/* Sidebar Táctico */}
         <aside className="w-80 bg-slate-50 border-r border-slate-200 flex flex-col z-40 shadow-inner">
           <div className="p-6 space-y-6">
-            <div>
-              <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center gap-2">
-                <BarChart3 size={14} /> Avance de Metas (Etapa 3)
-              </h3>
-              <div className="space-y-3">
-                 {/* Goal: Superficie */}
-                 <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100 mb-3">
-                   <div className="flex justify-between items-end mb-2">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase">Superficie E3 (m²)</span>
-                      <span className="text-xs font-black text-slate-800">{Math.min(100, Math.round((stats.e3M2 / 104610.31) * 100))}%</span>
+            <div className="flex-1 overflow-y-auto pr-2 space-y-6 custom-scrollbar">
+              {/* --- ETAPA 3 (ACTUAL) --- */}
+              <div>
+                <h3 className="text-xs font-black text-toluca-burgundy tracking-widest uppercase mb-4 flex items-center justify-between">
+                  <span className="flex items-center gap-2"><BarChart3 size={14} /> Etapa 3 (Actual)</span>
+                  <span className="bg-toluca-burgundy/10 text-[10px] px-2 py-0.5 rounded text-toluca-burgundy">EN PROCESO</span>
+                </h3>
+                <div className="space-y-3">
+                   <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+                     <div className="flex justify-between items-end mb-2">
+                        <span className="text-[10px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
+                        <span className="text-xs font-black text-slate-800">{Math.min(100, Math.round((stats.e3M2 / 104610.31) * 100))}%</span>
+                     </div>
+                     <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                        <div 
+                         className="bg-toluca-gold h-full transition-all duration-500" 
+                         style={{ width: `${Math.min(100, (stats.e3M2 / 104610.31) * 100)}%` }} 
+                        />
+                     </div>
+                     <p className="text-[9px] text-slate-400 mt-2 font-bold uppercase text-right">Meta: 104,610.31 m²</p>
                    </div>
-                   <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                      <div 
-                       className="bg-toluca-gold h-full transition-all duration-500" 
-                       style={{ width: `${Math.min(100, (stats.e3M2 / 104610.31) * 100)}%` }} 
-                      />
+                   <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+                     <div className="flex justify-between items-end mb-2">
+                        <span className="text-[10px] font-bold text-slate-500 uppercase">Baches Realizados</span>
+                        <span className="text-xs font-black text-slate-800">{Math.min(100, Math.round((stats.e3Baches / 20866) * 100))}%</span>
+                     </div>
+                     <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                        <div 
+                         className="bg-toluca-burgundy h-full transition-all duration-500" 
+                         style={{ width: `${Math.min(100, (stats.e3Baches / 20866) * 100)}%` }} 
+                        />
+                     </div>
+                     <p className="text-[9px] text-slate-400 mt-2 font-bold uppercase text-right">Meta: 20,866 Baches</p>
                    </div>
-                   <p className="text-[9px] text-slate-400 mt-2 font-bold uppercase text-right">Meta: 104,610.31 m²</p>
-                 </div>
+                </div>
+              </div>
 
-                 {/* Goal: Baches */}
-                 <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
-                   <div className="flex justify-between items-end mb-2">
-                      <span className="text-[10px] font-bold text-slate-500 uppercase">Baches E3</span>
-                      <span className="text-xs font-black text-slate-800">{Math.min(100, Math.round((stats.e3Baches / 20866) * 100))}%</span>
+              {/* --- ETAPA 2 (HISTÓRICA) --- */}
+              <div>
+                <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center justify-between">
+                  <span className="flex items-center gap-2"><History size={14} /> Etapa 2</span>
+                  <span className="text-[10px] opacity-70">FINALIZADA</span>
+                </h3>
+                <div className="space-y-2 opacity-80">
+                   <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
+                     <div className="flex justify-between items-end mb-1">
+                        <span className="text-[9px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
+                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2M2 / 345427.76) * 100))}%</span>
+                     </div>
+                     <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
+                        <div 
+                         className="bg-slate-400 h-full" 
+                         style={{ width: `${Math.min(100, (stats.e2M2 / 345427.76) * 100)}%` }} 
+                        />
+                     </div>
                    </div>
-                   <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                      <div 
-                       className="bg-toluca-burgundy h-full transition-all duration-500" 
-                       style={{ width: `${Math.min(100, (stats.e3Baches / 20866) * 100)}%` }} 
-                      />
+                   <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
+                     <div className="flex justify-between items-end mb-1">
+                        <span className="text-[9px] font-bold text-slate-500 uppercase">Baches</span>
+                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2Baches / 24906) * 100))}%</span>
+                     </div>
+                     <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
+                        <div 
+                         className="bg-slate-400 h-full" 
+                         style={{ width: `${Math.min(100, (stats.e2Baches / 24906) * 100)}%` }} 
+                        />
+                     </div>
                    </div>
-                   <p className="text-[9px] text-slate-400 mt-2 font-bold uppercase text-right">Meta: 20,866 Baches</p>
+                </div>
+              </div>
+
+              {/* --- ETAPA 1 (HISTÓRICA) --- */}
+              <div>
+                <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center justify-between">
+                  <span className="flex items-center gap-2"><History size={14} /> Etapa 1</span>
+                  <span className="text-[10px] opacity-70">FINALIZADA</span>
+                </h3>
+                <div className="space-y-2 opacity-80">
+                   <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
+                     <div className="flex justify-between items-end mb-1">
+                        <span className="text-[9px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
+                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e1M2 / 126698.07) * 100))}%</span>
+                     </div>
+                     <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
+                        <div 
+                         className="bg-slate-400 h-full" 
+                         style={{ width: `${Math.min(100, (stats.e1M2 / 126698.07) * 100)}%` }} 
+                        />
+                     </div>
+                   </div>
+                   <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
+                     <div className="flex justify-between items-end mb-1">
+                        <span className="text-[9px] font-bold text-slate-500 uppercase">Baches</span>
+                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e1Baches / 12773) * 100))}%</span>
+                     </div>
+                     <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
+                        <div 
+                         className="bg-slate-400 h-full" 
+                         style={{ width: `${Math.min(100, (stats.e1Baches / 12773) * 100)}%` }} 
+                        />
+                     </div>
+                   </div>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-slate-200">
+                 <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 mt-4 flex items-center gap-2">
+                    <Target size={14} /> Resumen de Operación
+                 </h3>
+                 <div className="space-y-3">
+                    {/* KPI: Baches Realizados */}
+                    <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                       <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Baches Totales</p>
+                       <p className="text-2xl font-black text-toluca-burgundy">{stats.baches.toLocaleString()}</p>
+                       <p className="text-[9px] text-slate-400 font-bold uppercase mt-1 flex items-center gap-1">
+                          <ChevronRight size={10} /> Consolidado Histórico
+                       </p>
+                    </div>
+
+                    {/* KPI: Tickets Atendidos (NUEVO) */}
+                    <div className="bg-green-50 p-4 rounded-xl border border-green-100">
+                       <p className="text-[10px] font-bold text-green-600 uppercase mb-1">Tickets Atendidos</p>
+                       <p className="text-2xl font-black text-green-800">{stats.ticketsAtendidos.toLocaleString()}</p>
+                       <p className="text-[9px] text-green-400 font-bold uppercase mt-1 flex items-center gap-1">
+                          <ChevronRight size={10} /> Eficiencia Operativa
+                       </p>
+                    </div>
+
+                    {/* KPI: Demanda Activa */}
+                    <div className="bg-red-50 p-4 rounded-xl border border-red-100">
+                       <p className="text-[10px] font-bold text-red-600 uppercase mb-1">Demanda Activa</p>
+                       <p className="text-2xl font-black text-red-800">{stats.demandaActiva.toLocaleString()}</p>
+                       <p className="text-[9px] text-red-400 font-bold uppercase mt-1 flex items-center gap-1">
+                          <Info size={10} /> Tickets sin atención
+                       </p>
+                    </div>
                  </div>
               </div>
-            </div>
-
-            <div className="pt-2 border-t border-slate-200">
-               <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 mt-4 flex items-center gap-2">
-                  <Target size={14} /> Resumen de Operación
-               </h3>
-               <div className="space-y-3">
-                  {/* KPI: Baches Realizados */}
-                  <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
-                     <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Baches Realizados</p>
-                     <p className="text-2xl font-black text-toluca-burgundy">{stats.bachesRealizados.toLocaleString()}</p>
-                     <p className="text-[9px] text-slate-400 font-bold uppercase mt-1 flex items-center gap-1">
-                        <ChevronRight size={10} /> Consolidado Etapas 1-3
-                     </p>
-                  </div>
-
-                  {/* KPI: Demanda Activa */}
-                  <div className="bg-red-50 p-4 rounded-xl border border-red-100">
-                     <p className="text-[10px] font-bold text-red-600 uppercase mb-1">Demanda Activa</p>
-                     <p className="text-2xl font-black text-red-800">{stats.demandaActiva.toLocaleString()}</p>
-                     <p className="text-[9px] text-red-400 font-bold uppercase mt-1 flex items-center gap-1">
-                        <Info size={10} /> Tickets sin atención
-                     </p>
-                  </div>
-               </div>
             </div>
 
             <div className="pt-6 border-t border-slate-200">
