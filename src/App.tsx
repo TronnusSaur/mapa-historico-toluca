@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import { MapContainer, TileLayer, Polyline, useMap, GeoJSON, Tooltip } from 'react-leaflet';
-import L from 'leaflet';
+import { useState, useEffect, useMemo } from 'react';
+import { MapContainer, TileLayer, Polyline, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
@@ -8,7 +7,6 @@ import { parseCSV, groupIntoTramos } from './utils/dataProcessors.ts';
 import type { PotholeData, Tramo } from './utils/dataProcessors.ts';
 import { 
   BarChart3, 
-  Map as MapIcon, 
   History, 
   Play, 
   Pause, 
@@ -21,14 +19,6 @@ import {
 
 // Marker Cluster component (manual instantiation for better control with 50k points)
 import MarkerClusterGroup from './components/MarkerClusterGroup.tsx';
-
-function FlyTo({ center }: { center: [number, number] }) {
-  const map = useMap();
-  useEffect(() => {
-    if (center) map.flyTo(center, 13);
-  }, [center]);
-  return null;
-}
 
 export default function App() {
   const [data, setData] = useState<PotholeData[]>([]);
