@@ -30,7 +30,10 @@ export default function App() {
     showHistorico: true,
     showTramos: true,
     showGeoJSON: true,
-    showPlaneado: true
+    showPlaneado: true,
+    showE1: true,
+    showE2: true,
+    showE3: true
   });
   // Statistics are now calculated dynamically in a useMemo below based on currentDate
   // Tramos are computed once on load — NOT on every timeline change
@@ -135,9 +138,14 @@ export default function App() {
     };
   }, [data, currentDate]);
 
-  // Filter data by timeline
+  // Filter data by timeline and stage
   const visibleData = useMemo(() => {
     return data.filter(p => {
+       // Filter by stage if applicable (Master records)
+       if (p.stage === 1 && !filters.showE1) return false;
+       if (p.stage === 2 && !filters.showE2) return false;
+       if (p.stage === 3 && !filters.showE3) return false;
+
        if (p.status === 'EJECUTADO') return p.date <= currentDate;
        
        // Dynamic Tickets Lifecycle:
@@ -150,13 +158,17 @@ export default function App() {
 
        return p.date <= currentDate;
     });
-  }, [data, currentDate]);
+  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3]);
 
-  // Tramos: filter the pre-computed chains by currentDate (cheap O(n) filter,
-  // no spatial recomputation on every slider move)
+  // Tramos: filter the pre-computed chains by currentDate and stage
   const tramos = useMemo(() => {
-    return allTramos.filter(t => t.date <= currentDate);
-  }, [allTramos, currentDate]);
+    return allTramos.filter(t => {
+      if (t.stage === 1 && !filters.showE1) return false;
+      if (t.stage === 2 && !filters.showE2) return false;
+      if (t.stage === 3 && !filters.showE3) return false;
+      return t.date <= currentDate;
+    });
+  }, [allTramos, currentDate, filters.showE1, filters.showE2, filters.showE3]);
 
   // Animation Loop
   useEffect(() => {
@@ -333,6 +345,30 @@ export default function App() {
               </div>
 
               <div className="pt-2 border-t border-slate-200">
+                 <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 mt-4 flex items-center gap-2">
+                    <Filter size={14} /> Filtros de Etapa (Mapa)
+                 </h3>
+                 <div className="grid grid-cols-3 gap-2 mb-4">
+                    <button 
+                      onClick={() => setFilters(f => ({ ...f, showE1: !f.showE1 }))}
+                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE1 ? 'bg-toluca-gold border-toluca-gold text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                    >
+                      ETAPA 1
+                    </button>
+                    <button 
+                      onClick={() => setFilters(f => ({ ...f, showE2: !f.showE2 }))}
+                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE2 ? 'bg-toluca-burgundy border-toluca-burgundy text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                    >
+                      ETAPA 2
+                    </button>
+                    <button 
+                      onClick={() => setFilters(f => ({ ...f, showE3: !f.showE3 }))}
+                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE3 ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                    >
+                      ETAPA 3
+                    </button>
+                 </div>
+
                  <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 mt-4 flex items-center gap-2">
                     <BarChart3 size={14} /> Resumen de Operación
                  </h3>

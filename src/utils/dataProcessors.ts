@@ -33,6 +33,7 @@ export interface GeoJSONData {
 export interface Tramo {
   coords: [number, number][];
   date: Date; // earliest point date in this chain
+  stage?: number;
 }
 
 /**
@@ -278,7 +279,11 @@ export const groupIntoTramos = (
         const d = data[idx].date;
         return d < earliest ? d : earliest;
       }, data[chainIndices[0]].date);
-      chains.push({ coords: chain, date: minDate });
+      
+      // Assign the stage of the first point to the tramo
+      const stage = data[chainIndices[0]].stage;
+      
+      chains.push({ coords: chain, date: minDate, stage });
     }
   }
 
