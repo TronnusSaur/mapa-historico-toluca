@@ -551,7 +551,7 @@ export default function App() {
                 <input 
                   type="range" 
                   min={new Date('2024-01-01').getTime()} 
-                  max={new Date('2026-12-31').getTime()}
+                  max={new Date().getTime()}
                   value={currentDate.getTime()}
                   onChange={(e) => setCurrentDate(new Date(parseInt(e.target.value)))}
                   className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-toluca-burgundy"
