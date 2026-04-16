@@ -13,6 +13,7 @@ export interface PotholeData {
   status: 'HISTORICO' | 'EJECUTADO' | 'PLANEADO' | 'TICKET_TOTAL';
   originalId?: string;
   stage?: number;
+  inZona?: boolean;
 }
 
 export interface GeoJSONFeature {
@@ -159,7 +160,7 @@ export const parseCSV = (
             stage,
             originalId: getVal(row, ['ID', 'Ticket', 'folioRef', 'folio'])
           };
-        }).filter(item => item !== null && !isNaN(item.lat) && !isNaN(item.lng)) as PotholeData[];
+        }) as PotholeData[];
         
         resolve(parsed);
       },

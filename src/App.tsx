@@ -64,16 +64,23 @@ export default function App() {
 
         const combinedRaw = [...e1, ...e2, ...e3, ...totalTickets];
         
-        // Note: No we keep ALL records in state so stats match CSV exactly
-        setData(combinedRaw);
+        // --- PERFORMANCE OPTIMIZATION: One-time pre-calculation of inZona ---
+        // Also ensure we count every record as mappable if no boundaries, 
+        // but mark specifically those within Toluca + 800m
+        const enriched = combinedRaw.map(p => ({
+            ...p,
+            inZona: boundaries ? isPointInGeoJSON(p.lat, p.lng, boundaries) : true
+        }));
+
+        setData(enriched);
 
         // Compute tramos from executed points inside boundaries (lines MUST have valid coords)
         setTimeout(() => {
-          const ejecutadosEnZona = combinedRaw.filter(p => {
-             if (p.status !== 'EJECUTADO') return false;
-             if (boundaries) return isPointInGeoJSON(p.lat, p.lng, boundaries);
-             return true;
-          });
+          const ejecutadosEnZona = enriched.filter(p => 
+             p.status === 'EJECUTADO' && 
+             p.inZona && 
+             !isNaN(p.lat) && p.lat !== 0
+          );
           const computed = groupIntoTramos(ejecutadosEnZona, 80, 2);
           setAllTramos(computed);
           setLoading(false);
@@ -89,7 +96,8 @@ export default function App() {
 
   // Statistics: dynamic calculation based on timeline
   const stats = useMemo(() => {
-    // 1. All Work Progress up to today (regardless of map filters or spatial limits, for integrity)
+    // 1. All Work Progress up to today (regardless of visibility, for integrity)
+    // We count EVERY record from the CSV here.
     const allDoneUpToDate = data.filter(p => p.status === 'EJECUTADO' && p.date <= currentDate);
     
     // 2. Filtered Work Progress (respecting stage toggles only, for global header/summary)
@@ -124,7 +132,7 @@ export default function App() {
 
     return {
       total: data.length,
-      // Global metrics recalculate with filters (SPATIAL IGNORED HERE FOR RECONTEO INTEGRITY)
+      // Global metrics recalculate with filters (SPATIAL IGNORED FOR RECONTEO INTEGRITY)
       m2: filteredDoneUpToDate.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
       baches: filteredDoneUpToDate.length,
       demandaActiva: activeTicketsAtDate.length,
@@ -139,18 +147,21 @@ export default function App() {
     };
   }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3]);
 
-  // Map Visualization Data (Heavily filtered by Stage, Timeline AND Spatial boundaries)
+  // Map Visualization Data (Optimized: uses pre-calculated p.inZona)
   const visibleData = useMemo(() => {
     return data.filter(p => {
        // 1. Geography filter (must be inside Toluca + 800m buffer)
-       if (geoData && !isPointInGeoJSON(p.lat, p.lng, geoData)) return false;
+       if (!p.inZona) return false;
+       
+       // 2. Valid Coords Check (Don't try to render 0,0 points or NaN)
+       if (!p.lat || !p.lng || isNaN(p.lat)) return false;
 
-       // 2. Stage filter
+       // 3. Stage filter
        if (p.stage === 1 && !filters.showE1) return false;
        if (p.stage === 2 && !filters.showE2) return false;
        if (p.stage === 3 && !filters.showE3) return false;
 
-       // 3. Status/Timeline filter
+       // 4. Status/Timeline filter
        if (p.status === 'EJECUTADO') return p.date <= currentDate;
        
        if (p.status === 'TICKET_TOTAL') {
@@ -161,7 +172,7 @@ export default function App() {
 
        return p.date <= currentDate;
     });
-  }, [data, geoData, currentDate, filters.showE1, filters.showE2, filters.showE3]);
+  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3]);
 
   // Tramos: filter the pre-computed chains by currentDate and stage
   const tramos = useMemo(() => {
