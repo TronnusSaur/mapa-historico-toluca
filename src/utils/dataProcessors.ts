@@ -116,10 +116,20 @@ export const parseCSV = (
             lng = parseFloat(getVal(row, ['longitude', 'longitud', 'lng']));
             
             const rawDate = getVal(row, ['fecha', 'date']);
-            const parts = rawDate?.split('/');
-            if (parts && parts.length === 3) {
-              const year = parts[2].length === 2 ? `20${parts[2]}` : parts[2];
-              date = new Date(`${year}-${parts[1]}-${parts[0]}`);
+            if (rawDate) {
+              const parts = rawDate.split(/[\/\-]/);
+              if (parts && parts.length === 3) {
+                const year = parts[2].length === 2 ? `20${parts[2]}` : parts[2];
+                // Force 00:00:00 to avoid time-of-day comparison issues
+                date = new Date(parseInt(year), parseInt(parts[1]) - 1, parseInt(parts[0]));
+              } else {
+                // Try direct parsing if split fails
+                const attempt = new Date(rawDate);
+                if (!isNaN(attempt.getTime())) date = attempt;
+                else date = new Date('2026-01-01'); // Default for missing/invalid in E3
+              }
+            } else {
+              date = new Date('2026-01-01');
             }
             
             street = getVal(row, ['calle', 'street']) || '';
