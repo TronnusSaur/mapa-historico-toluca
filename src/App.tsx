@@ -92,15 +92,23 @@ export default function App() {
 
   // Statistics: dynamic calculation based on timeline
   const stats = useMemo(() => {
-    // 1. Current Work Progress (E1+E2+E3) up to today
-    const doneUpToDate = data.filter(p => p.status === 'EJECUTADO' && p.date <= currentDate);
+    // 1. All Work Progress up to today (regardless of map filters, for stage bars)
+    const allDoneUpToDate = data.filter(p => p.status === 'EJECUTADO' && p.date <= currentDate);
     
-    // 2. Stage-Specific metrics
-    const e1Done = doneUpToDate.filter(p => p.stage === 1);
-    const e2Done = doneUpToDate.filter(p => p.stage === 2);
-    const e3Done = doneUpToDate.filter(p => p.stage === 3);
+    // 2. Filtered Work Progress (respecting map filters, for global header/summary)
+    const filteredDoneUpToDate = allDoneUpToDate.filter(p => {
+       if (p.stage === 1 && !filters.showE1) return false;
+       if (p.stage === 2 && !filters.showE2) return false;
+       if (p.stage === 3 && !filters.showE3) return false;
+       return true;
+    });
 
-    // 3. Tickets Logic
+    // 3. Stage-Specific metrics (Stable - always use allDoneUpToDate)
+    const e1Done = allDoneUpToDate.filter(p => p.stage === 1);
+    const e2Done = allDoneUpToDate.filter(p => p.stage === 2);
+    const e3Done = allDoneUpToDate.filter(p => p.stage === 3);
+
+    // 4. Tickets Logic (Independent of project stages)
     const ticketsTotal = data.filter(p => p.status === 'TICKET_TOTAL');
     
     // Active (Pending) tickets at current date
@@ -110,33 +118,29 @@ export default function App() {
       return wasReported && isStillPending;
     });
 
-    // Attended tickets at current date (Reported <= currentDate AND Status != Pendiente)
-    // Note: If resolved, we count it as attended if resolvedDate <= currentDate
+    // Attended tickets at current date
     const attendedTicketsAtDate = ticketsTotal.filter(p => {
        const wasReported = (p.reportDate || p.date) <= currentDate;
        const wasAttended = p.resolvedDate && p.resolvedDate <= currentDate;
-       // The user defined "Atendido" as "No diga Pendiente"
-       // In our logic, a ticket is attended when its resolvedDate has passed.
        return wasReported && wasAttended;
     });
 
     return {
       total: data.length,
-      m2: doneUpToDate.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
-      baches: doneUpToDate.length,
+      // Global metrics recalculate with filters
+      m2: filteredDoneUpToDate.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
+      baches: filteredDoneUpToDate.length,
       demandaActiva: activeTicketsAtDate.length,
       ticketsAtendidos: attendedTicketsAtDate.length,
-      // Stage 1
+      // Stage-specific stats remain stable (based on reality, not visibility)
       e1Baches: e1Done.length,
       e1M2: e1Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
-      // Stage 2
       e2Baches: e2Done.length,
       e2M2: e2Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
-      // Stage 3
       e3Baches: e3Done.length,
       e3M2: e3Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0)
     };
-  }, [data, currentDate]);
+  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3]);
 
   // Filter data by timeline and stage
   const visibleData = useMemo(() => {
