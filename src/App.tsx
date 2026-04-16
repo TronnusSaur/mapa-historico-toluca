@@ -65,13 +65,14 @@ export default function App() {
         const combinedRaw = [...e1, ...e2, ...e3, ...totalTickets];
         
         // --- PERFORMANCE OPTIMIZATION: One-time pre-calculation of inZona ---
-        // Also ensure we count every record as mappable if no boundaries, 
-        // but mark specifically those within Toluca + 800m
-        const enriched = combinedRaw.map(p => ({
+        const enriched = combinedRaw
+          .filter(p => p !== null && p !== undefined)
+          .map(p => ({
             ...p,
             inZona: boundaries ? isPointInGeoJSON(p.lat, p.lng, boundaries) : true
-        }));
+          }));
 
+        console.log(`Carga completa: ${enriched.length} registros totales.`);
         setData(enriched);
 
         // Compute tramos from executed points inside boundaries (lines MUST have valid coords)

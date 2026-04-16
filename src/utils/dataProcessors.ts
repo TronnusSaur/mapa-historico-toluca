@@ -95,9 +95,8 @@ export const parseCSV = (
           if (status === 'TICKET_TOTAL') {
             const coordsStr = getVal(row, ['Coordenadas', 'coordinates']);
             const coords = extractCoords(coordsStr);
-            if (!coords) return null;
-            lat = coords.lat;
-            lng = coords.lng;
+            lat = coords?.lat || 0;
+            lng = coords?.lng || 0;
 
             const recibido = getVal(row, ['Recibido', 'fecha_reporte']);
             reportDate = recibido ? new Date(recibido) : new Date();
@@ -160,7 +159,7 @@ export const parseCSV = (
             stage,
             originalId: getVal(row, ['ID', 'Ticket', 'folioRef', 'folio'])
           };
-        }) as PotholeData[];
+        }).filter(p => p !== null) as PotholeData[];
         
         resolve(parsed);
       },
