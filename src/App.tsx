@@ -64,20 +64,17 @@ export default function App() {
 
         const combinedRaw = [...e1, ...e2, ...e3, ...totalTickets];
         
-        // Spatial filter — keep only points inside Toluca boundaries
-        const filtered = combinedRaw.filter(p => {
-            if (boundaries) {
-                return isPointInGeoJSON(p.lat, p.lng, boundaries);
-            }
-            return true;
-        });
+        // Note: No we keep ALL records in state so stats match CSV exactly
+        setData(combinedRaw);
 
-        setData(filtered);
-
-        // Compute tramos from all executed points (dates are now clean in the CSV)
+        // Compute tramos from executed points inside boundaries (lines MUST have valid coords)
         setTimeout(() => {
-          const ejecutados = filtered.filter(p => p.status === 'EJECUTADO');
-          const computed = groupIntoTramos(ejecutados, 80, 2);
+          const ejecutadosEnZona = combinedRaw.filter(p => {
+             if (p.status !== 'EJECUTADO') return false;
+             if (boundaries) return isPointInGeoJSON(p.lat, p.lng, boundaries);
+             return true;
+          });
+          const computed = groupIntoTramos(ejecutadosEnZona, 80, 2);
           setAllTramos(computed);
           setLoading(false);
         }, 50);
@@ -92,10 +89,10 @@ export default function App() {
 
   // Statistics: dynamic calculation based on timeline
   const stats = useMemo(() => {
-    // 1. All Work Progress up to today (regardless of map filters, for stage bars)
+    // 1. All Work Progress up to today (regardless of map filters or spatial limits, for integrity)
     const allDoneUpToDate = data.filter(p => p.status === 'EJECUTADO' && p.date <= currentDate);
     
-    // 2. Filtered Work Progress (respecting map filters, for global header/summary)
+    // 2. Filtered Work Progress (respecting stage toggles only, for global header/summary)
     const filteredDoneUpToDate = allDoneUpToDate.filter(p => {
        if (p.stage === 1 && !filters.showE1) return false;
        if (p.stage === 2 && !filters.showE2) return false;
@@ -127,12 +124,12 @@ export default function App() {
 
     return {
       total: data.length,
-      // Global metrics recalculate with filters
+      // Global metrics recalculate with filters (SPATIAL IGNORED HERE FOR RECONTEO INTEGRITY)
       m2: filteredDoneUpToDate.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
       baches: filteredDoneUpToDate.length,
       demandaActiva: activeTicketsAtDate.length,
       ticketsAtendidos: attendedTicketsAtDate.length,
-      // Stage-specific stats remain stable (based on reality, not visibility)
+      // Stage-specific stats
       e1Baches: e1Done.length,
       e1M2: e1Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
       e2Baches: e2Done.length,
@@ -142,18 +139,20 @@ export default function App() {
     };
   }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3]);
 
-  // Filter data by timeline and stage
+  // Map Visualization Data (Heavily filtered by Stage, Timeline AND Spatial boundaries)
   const visibleData = useMemo(() => {
     return data.filter(p => {
-       // Filter by stage if applicable (Master records)
+       // 1. Geography filter (must be inside Toluca + 800m buffer)
+       if (geoData && !isPointInGeoJSON(p.lat, p.lng, geoData)) return false;
+
+       // 2. Stage filter
        if (p.stage === 1 && !filters.showE1) return false;
        if (p.stage === 2 && !filters.showE2) return false;
        if (p.stage === 3 && !filters.showE3) return false;
 
+       // 3. Status/Timeline filter
        if (p.status === 'EJECUTADO') return p.date <= currentDate;
        
-       // Dynamic Tickets Lifecycle:
-       // Visible if reported <= current AND (not resolved yet OR resolved > current)
        if (p.status === 'TICKET_TOTAL') {
          const wasReported = (p.reportDate || p.date) <= currentDate;
          const isNotYetResolved = !p.resolvedDate || p.resolvedDate > currentDate;
@@ -162,7 +161,7 @@ export default function App() {
 
        return p.date <= currentDate;
     });
-  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3]);
+  }, [data, geoData, currentDate, filters.showE1, filters.showE2, filters.showE3]);
 
   // Tramos: filter the pre-computed chains by currentDate and stage
   const tramos = useMemo(() => {
@@ -533,8 +532,8 @@ export default function App() {
                      </h2>
                    </div>
                    <div className="text-right">
-                      <p className="text-[10px] font-bold text-slate-400 uppercase mb-1">Progreso</p>
-                      <p className="text-sm font-black text-slate-600">{visibleData.length.toLocaleString()} Puntos</p>
+                      <p className="text-[10px] font-bold text-slate-400 uppercase mb-1">Total Auditado</p>
+                      <p className="text-sm font-black text-slate-600">{stats.baches.toLocaleString()} Baches</p>
                    </div>
                 </div>
                 <input 

@@ -357,7 +357,7 @@ export function isPointInGeoJSON(
   lat: number,
   lng: number,
   geojson: GeoJSONData,
-  bufferMeters = 500
+  bufferMeters = 800
 ): boolean {
   if (!geojson || !geojson.features) return true;
 
