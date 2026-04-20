@@ -24,7 +24,7 @@ export default function App() {
   const [data, setData] = useState<PotholeData[]>([]);
   const [geoData, setGeoData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [currentDate, setCurrentDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new Date(2024, 11, 31));
   const [isPlaying, setIsPlaying] = useState(false);
   const [filters, setFilters] = useState({
     showHistorico: true,
@@ -550,7 +550,7 @@ export default function App() {
                 </div>
                 <input 
                   type="range" 
-                  min={new Date('2024-01-01').getTime()} 
+                  min={new Date(2024, 11, 31).getTime()} 
                   max={new Date().getTime()}
                   value={currentDate.getTime()}
                   onChange={(e) => setCurrentDate(new Date(parseInt(e.target.value)))}
