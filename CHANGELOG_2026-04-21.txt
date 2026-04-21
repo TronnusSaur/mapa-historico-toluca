@@ -1,0 +1,79 @@
+===============================================================
+  CHANGELOG — Mapa Histórico Toluca
+  Fecha: 21 de Abril de 2026
+  Commit: 7d8a465
+===============================================================
+
+FEATURE: Modo Híbrido de Renderizado (Tramos + Clusters)
+---------------------------------------------------------
+
+Se implementó un sistema dual de visualización para los puntos
+de bacheo ejecutados en el mapa. El usuario puede alternar en
+tiempo real entre dos modos sin pérdida de rendimiento.
+
+ARCHIVOS MODIFICADOS:
+  - src/App.tsx
+  - src/components/MarkerClusterGroup.tsx
+
+---------------------------------------------------------------
+CAMBIOS EN src/App.tsx:
+---------------------------------------------------------------
+
+1. NUEVO ESTADO: renderMode ('tramos' | 'clusters')
+   - Se añadió al objeto de filtros existente.
+   - Valor por defecto: 'tramos' (mantiene comportamiento actual).
+
+2. NUEVA UI: Selector "Modo de Visualización"
+   - Dos botones toggle en el sidebar: "TRAMOS" y "PUNTOS".
+   - Estilo premium con indicador visual del modo activo (verde).
+   - Ubicado ANTES de los Filtros de Capa.
+
+3. RENDERIZADO CONDICIONAL EN EL MAPA:
+   - Modo TRAMOS: Muestra Polylines verdes (sin cambios).
+   - Modo CLUSTERS: Muestra MarkerClusterGroup verde con los
+     46,121 puntos ejecutados agrupados por proximidad.
+
+4. TICKETS ROJOS INDEPENDIENTES:
+   - Los tickets de demanda (rojos) siempre se renderizan
+     con su propia capa de clusters, independiente del modo.
+
+5. SE ELIMINÓ: Checkbox "Tramos Ejecutados" del panel de filtros.
+   - Reemplazado por el selector de modo de visualización.
+
+---------------------------------------------------------------
+CAMBIOS EN src/components/MarkerClusterGroup.tsx:
+---------------------------------------------------------------
+
+1. NUEVA PROP: clusterColor (string, opcional)
+   - Permite tintar las burbujas de cluster según el contexto.
+   - Verde (#16a34a) para ejecutados, rojo por defecto para tickets.
+
+2. ELIMINADA EXCLUSIÓN DE EJECUTADOS:
+   - El componente ya no filtra los puntos con status 'EJECUTADO'.
+   - Ahora acepta cualquier tipo de dato y aplica estilos dinámicos.
+
+3. COLOR DINÁMICO POR STATUS:
+   - EJECUTADO  → Verde (#16a34a)
+   - TICKET_TOTAL → Rojo (#e63946)
+   - HISTORICO  → Ámbar (#ff9f1c)
+
+4. POPUPS ENRIQUECIDOS PARA BACHEOS EJECUTADOS:
+   - Muestra: Calle, Delegación, Fecha, Área (m²), Etapa.
+   - Badge visual con número de etapa.
+   - Diseño con borde verde y fondo claro.
+
+5. VALIDACIÓN DE COORDENADAS:
+   - Se añadió filtro para excluir puntos con lat/lng = 0 o NaN.
+
+---------------------------------------------------------------
+NOTAS DE RENDIMIENTO:
+---------------------------------------------------------------
+
+- Ambos modos (tramos y clusters) se pre-procesan al cargar.
+- El toggle entre modos es INSTANTÁNEO (no hay reprocesamiento).
+- Los clusters usan chunkedLoading para renderizado progresivo.
+- Los filtros de etapa (E1, E2, E3) aplican a AMBOS modos.
+- Las estadísticas globales (KPIs) NO se ven afectadas por el
+  modo de renderizado.
+
+===============================================================
