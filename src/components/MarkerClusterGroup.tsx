@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useEffect, useRef } from 'react';
 import { useMap } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet.markercluster';
@@ -63,7 +63,6 @@ export default function MarkerClusterGroup({ data, clusterColor }: Props) {
     const clusterGroup = L.markerClusterGroup({
       // --- PERFORMANCE SETTINGS ---
       chunkedLoading: true,
-      chunkSize: 800,
       chunkInterval: 200,
       chunkDelay: 50,
 
