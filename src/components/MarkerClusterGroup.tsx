@@ -11,7 +11,6 @@ interface Props {
 
 /**
  * Generates popup HTML on-demand (only when a marker is clicked).
- * This avoids creating 46,000 DOM string objects upfront.
  */
 function buildPopupContent(p: PotholeData): string {
   if (p.status === 'EJECUTADO') {
@@ -49,19 +48,29 @@ function buildPopupContent(p: PotholeData): string {
   </div>`;
 }
 
+/**
+ * Generates a stable unique key for each data point.
+ * Used to diff previous vs current dataset for incremental updates.
+ */
+function getKey(p: PotholeData): string {
+  return `${p.lat}_${p.lng}_${p.originalId || ''}_${p.status}`;
+}
+
 export default function MarkerClusterGroup({ data, clusterColor }: Props) {
   const map = useMap();
   const clusterGroupRef = useRef<L.MarkerClusterGroup | null>(null);
-  // Store data references keyed by a unique marker id for lazy popup lookup
-  const dataMapRef = useRef<Map<number, PotholeData>>(new Map());
-  const markerIdCounter = useRef(0);
 
-  // Create cluster group once
+  // --- INCREMENTAL UPDATE CACHES ---
+  // These persist across renders so we can diff instead of full-rebuild.
+  const markerCacheRef = useRef<Map<string, L.CircleMarker>>(new Map());
+  const dataCacheRef = useRef<Map<string, PotholeData>>(new Map());
+  const prevKeysRef = useRef<Set<string>>(new Set());
+
+  // Create cluster group once (only recreated if clusterColor changes)
   useEffect(() => {
     const baseColor = clusterColor || '#e63946';
 
     const clusterGroup = L.markerClusterGroup({
-      // --- PERFORMANCE SETTINGS ---
       chunkedLoading: true,
       chunkInterval: 200,
       chunkDelay: 50,
@@ -69,13 +78,12 @@ export default function MarkerClusterGroup({ data, clusterColor }: Props) {
       animate: false,
       animateAddingMarkers: false,
       removeOutsideVisibleBounds: true,
-      disableClusteringAtZoom: 18,  // At max zoom, show individual markers (no clustering overhead)
+      disableClusteringAtZoom: 18,
 
-      maxClusterRadius: 80,  // Larger radius = fewer clusters = faster rendering
+      maxClusterRadius: 80,
 
-      // Spiderfy settings for dense areas
       spiderfyOnMaxZoom: true,
-      showCoverageOnHover: false,  // Disable the polygon outline on hover (saves CPU)
+      showCoverageOnHover: false,
 
       iconCreateFunction: (cluster) => {
         const count = cluster.getChildCount();
@@ -103,13 +111,12 @@ export default function MarkerClusterGroup({ data, clusterColor }: Props) {
       const marker = e.layer;
       if (!marker || marker._popupBound) return;
 
-      const uid = marker.options._dataUid;
-      if (uid === undefined) return;
+      const key = marker.options._dataKey;
+      if (!key) return;
 
-      const pData = dataMapRef.current.get(uid);
+      const pData = dataCacheRef.current.get(key);
       if (!pData) return;
 
-      // Build popup content on-demand (lazy)
       marker.bindPopup(buildPopupContent(pData), { maxWidth: 220 });
       marker._popupBound = true;
       marker.openPopup();
@@ -118,74 +125,91 @@ export default function MarkerClusterGroup({ data, clusterColor }: Props) {
     clusterGroupRef.current = clusterGroup;
     map.addLayer(clusterGroup);
 
+    // On clusterColor change, flush caches (full rebuild needed)
     return () => {
       clusterGroup.off('click');
       map.removeLayer(clusterGroup);
+      markerCacheRef.current.clear();
+      dataCacheRef.current.clear();
+      prevKeysRef.current.clear();
     };
   }, [map, clusterColor]);
 
-  // Rebuild markers when data changes
+  // --- INCREMENTAL DATA UPDATE ---
+  // Instead of clearLayers + addLayers(ALL), we diff old vs new and
+  // only add/remove the DELTA.  During forward playback this is ~200 points
+  // instead of ~40,000 — roughly a 200x speedup per tick.
   useEffect(() => {
     const clusterGroup = clusterGroupRef.current;
     if (!clusterGroup) return;
 
-    clusterGroup.clearLayers();
-    dataMapRef.current.clear();
-    markerIdCounter.current = 0;
+    const cache = markerCacheRef.current;
+    const dataCache = dataCacheRef.current;
+    const prevKeys = prevKeysRef.current;
 
-    if (data.length === 0) return;
-
-    // --- VIEWPORT CULLING ---
-    // Get current map bounds with a generous buffer (50% extra on each side)
-    // so that panning slightly doesn't cause a full rebuild.
-    const bounds = map.getBounds();
-    const latBuffer = (bounds.getNorth() - bounds.getSouth()) * 0.5;
-    const lngBuffer = (bounds.getEast() - bounds.getWest()) * 0.5;
-    const north = bounds.getNorth() + latBuffer;
-    const south = bounds.getSouth() - latBuffer;
-    const east = bounds.getEast() + lngBuffer;
-    const west = bounds.getWest() - lngBuffer;
-
-    // At zoom >= 14 (city-level), apply viewport culling
-    // At lower zooms (overview), show everything (clusters handle it well)
-    const zoom = map.getZoom();
-    const shouldCull = zoom >= 14;
-
-    const markers: L.CircleMarker[] = [];
-    const localDataMap = dataMapRef.current;
+    // Build the set of keys that SHOULD be visible right now
+    const currentKeys = new Set<string>();
+    const dataByKey = new Map<string, PotholeData>();
 
     for (let i = 0; i < data.length; i++) {
       const p = data[i];
       if (!p.lat || !p.lng || isNaN(p.lat) || isNaN(p.lng) || p.lat === 0) continue;
-
-      // Viewport culling: skip points outside the padded bounds
-      if (shouldCull) {
-        if (p.lat < south || p.lat > north || p.lng < west || p.lng > east) continue;
-      }
-
-      let color = '#e63946';
-      if (p.status === 'EJECUTADO') color = '#16a34a';
-      else if (p.status === 'HISTORICO') color = '#ff9f1c';
-
-      const uid = markerIdCounter.current++;
-
-      const marker = L.circleMarker([p.lat, p.lng], {
-        radius: 5,
-        fillColor: color,
-        color: '#fff',
-        weight: 1,
-        fillOpacity: 0.85,
-        bubblingMouseEvents: false,
-        _dataUid: uid  // lightweight ref instead of full popup object
-      } as any);
-
-      // Store data reference — only a Map entry, no popup DOM created
-      localDataMap.set(uid, p);
-      markers.push(marker);
+      const key = getKey(p);
+      currentKeys.add(key);
+      dataByKey.set(key, p);
     }
 
-    clusterGroup.addLayers(markers);
-  }, [data, map]);
+    // --- Phase 1: Find markers to ADD (in current but NOT in previous) ---
+    const toAdd: L.CircleMarker[] = [];
+    for (const key of currentKeys) {
+      if (!prevKeys.has(key)) {
+        const p = dataByKey.get(key)!;
+
+        let color = '#e63946';
+        if (p.status === 'EJECUTADO') color = '#16a34a';
+        else if (p.status === 'HISTORICO') color = '#ff9f1c';
+
+        const marker = L.circleMarker([p.lat, p.lng], {
+          radius: 5,
+          fillColor: color,
+          color: '#fff',
+          weight: 1,
+          fillOpacity: 0.85,
+          bubblingMouseEvents: false,
+          _dataKey: key
+        } as any);
+
+        cache.set(key, marker);
+        dataCache.set(key, p);
+        toAdd.push(marker);
+      }
+    }
+
+    // --- Phase 2: Find markers to REMOVE (in previous but NOT in current) ---
+    const toRemove: L.CircleMarker[] = [];
+    for (const key of prevKeys) {
+      if (!currentKeys.has(key)) {
+        const marker = cache.get(key);
+        if (marker) {
+          toRemove.push(marker);
+          cache.delete(key);
+          dataCache.delete(key);
+        }
+      }
+    }
+
+    // --- Phase 3: Apply ONLY the delta ---
+    if (toRemove.length > 0) {
+      clusterGroup.removeLayers(toRemove);
+    }
+    if (toAdd.length > 0) {
+      clusterGroup.addLayers(toAdd);
+    }
+
+    // Update the reference set for the next tick
+    prevKeysRef.current = currentKeys;
+
+  }, [data]);
 
   return null;
 }
