@@ -189,7 +189,7 @@ export default function App() {
 
   // Throttled cluster data — limits re-clustering to max once per 300ms.
   // This keeps UI responsive during rapid slider dragging or animation playback.
-  const throttledClusterData = useThrottle(visibleData, 300);
+  const throttledClusterData = useThrottle(visibleData, 400);
 
   // Animation Loop
   useEffect(() => {
