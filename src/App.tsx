@@ -33,7 +33,8 @@ export default function App() {
     showPlaneado: true,
     showE1: true,
     showE2: true,
-    showE3: true
+    showE3: true,
+    renderMode: 'tramos' as 'tramos' | 'clusters'
   });
   // Statistics are now calculated dynamically in a useMemo below based on currentDate
   // Tramos are computed once on load — NOT on every timeline change
@@ -420,18 +421,37 @@ export default function App() {
 
             <div className="pt-6 border-t border-slate-200">
               <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center gap-2">
+                <Filter size={14} /> Modo de Visualización
+              </h3>
+              <div className="flex gap-2 mb-4">
+                <button
+                  onClick={() => setFilters(f => ({ ...f, renderMode: 'tramos' }))}
+                  className={`flex-1 p-3 rounded-lg border text-xs font-bold transition-all ${
+                    filters.renderMode === 'tramos'
+                      ? 'bg-green-600 border-green-600 text-white shadow-lg shadow-green-600/20'
+                      : 'bg-white border-slate-200 text-slate-500 hover:bg-slate-50'
+                  }`}
+                >
+                  <span className="block text-[10px] opacity-70 mb-0.5">VISTA</span>
+                  TRAMOS
+                </button>
+                <button
+                  onClick={() => setFilters(f => ({ ...f, renderMode: 'clusters' }))}
+                  className={`flex-1 p-3 rounded-lg border text-xs font-bold transition-all ${
+                    filters.renderMode === 'clusters'
+                      ? 'bg-green-600 border-green-600 text-white shadow-lg shadow-green-600/20'
+                      : 'bg-white border-slate-200 text-slate-500 hover:bg-slate-50'
+                  }`}
+                >
+                  <span className="block text-[10px] opacity-70 mb-0.5">VISTA</span>
+                  PUNTOS
+                </button>
+              </div>
+
+              <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center gap-2">
                 <Filter size={14} /> Filtros de Capa
               </h3>
               <div className="space-y-2">
-                <label className="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
-                  <input 
-                    type="checkbox" 
-                    checked={filters.showTramos} 
-                    onChange={(e) => setFilters(f => ({ ...f, showTramos: e.target.checked }))}
-                    className="w-4 h-4 accent-green-600" 
-                  />
-                  <span className="text-sm font-bold text-slate-700">Tramos Ejecutados</span>
-                </label>
                 <label className="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
                   <input 
                     type="checkbox" 
@@ -512,16 +532,28 @@ export default function App() {
               />
             )}
             
-            {/* Tramos Verdes — filtered by currentDate via the useMemo above */}
-            {filters.showTramos && tramos.map((t, i) => (
+            {/* Tramos Verdes — only visible in tramos mode */}
+            {filters.renderMode === 'tramos' && tramos.map((t, i) => (
               <Polyline key={`tramo-${i}`} positions={t.coords} color="#16a34a" weight={4} opacity={0.6} />
             ))}
 
-            {/* Marker Cluster for points - Dynamic Tickets (Red) */}
-            <MarkerClusterGroup data={visibleData.filter(p => {
-              if (p.status === 'TICKET_TOTAL') return filters.showPlaneado;
-              return false; // Executed are shown as Tramos, and old hist/novos are gone
-            })} />
+            {/* Clusters Verdes — only visible in clusters mode */}
+            {filters.renderMode === 'clusters' && (
+              <MarkerClusterGroup
+                key="cluster-ejecutado"
+                clusterColor="#16a34a"
+                data={visibleData.filter(p => p.status === 'EJECUTADO')}
+              />
+            )}
+
+            {/* Marker Cluster for Dynamic Tickets (Red) — always available */}
+            <MarkerClusterGroup
+              key="cluster-tickets"
+              data={visibleData.filter(p => {
+                if (p.status === 'TICKET_TOTAL') return filters.showPlaneado;
+                return false;
+              })}
+            />
           </MapContainer>
 
           {/* Timeline Overlay */}
