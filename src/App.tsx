@@ -1,4 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
+import { useThrottle } from './hooks/useThrottle.ts';
 import { MapContainer, TileLayer, Polyline, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
@@ -185,6 +186,10 @@ export default function App() {
       return t.date <= currentDate;
     });
   }, [allTramos, currentDate, filters.showE1, filters.showE2, filters.showE3]);
+
+  // Throttled cluster data — limits re-clustering to max once per 300ms.
+  // This keeps UI responsive during rapid slider dragging or animation playback.
+  const throttledClusterData = useThrottle(visibleData, 300);
 
   // Animation Loop
   useEffect(() => {
@@ -537,19 +542,19 @@ export default function App() {
               <Polyline key={`tramo-${i}`} positions={t.coords} color="#16a34a" weight={4} opacity={0.6} />
             ))}
 
-            {/* Clusters Verdes — only visible in clusters mode */}
+            {/* Clusters Verdes — only visible in clusters mode. Uses throttled data for performance. */}
             {filters.renderMode === 'clusters' && (
               <MarkerClusterGroup
                 key="cluster-ejecutado"
                 clusterColor="#16a34a"
-                data={visibleData.filter(p => p.status === 'EJECUTADO')}
+                data={throttledClusterData.filter(p => p.status === 'EJECUTADO')}
               />
             )}
 
-            {/* Marker Cluster for Dynamic Tickets (Red) — always available */}
+            {/* Marker Cluster for Dynamic Tickets (Red) — always available, also throttled */}
             <MarkerClusterGroup
               key="cluster-tickets"
-              data={visibleData.filter(p => {
+              data={throttledClusterData.filter(p => {
                 if (p.status === 'TICKET_TOTAL') return filters.showPlaneado;
                 return false;
               })}
