@@ -10,6 +10,8 @@ export interface PotholeData {
   street: string;
   delegation: string;
   m2?: number;
+  largo?: number;
+  ancho?: number;
   status: 'HISTORICO' | 'EJECUTADO' | 'PLANEADO' | 'TICKET_TOTAL';
   originalId?: string;
   stage?: number;
@@ -165,6 +167,8 @@ export const parseCSV = (
             street,
             delegation,
             m2: parseNumber(m2Str),
+            largo: parseNumber(getVal(row, ['largo', 'LARGO'])),
+            ancho: parseNumber(getVal(row, ['ancho', 'ANCHO'])),
             status,
             stage,
             originalId: getVal(row, ['ID', 'Ticket', 'folioRef', 'folio'])

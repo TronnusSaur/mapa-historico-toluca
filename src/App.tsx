@@ -137,6 +137,7 @@ export default function App() {
       total: data.length,
       // Global metrics recalculate with filters (SPATIAL IGNORED FOR RECONTEO INTEGRITY)
       m2: filteredDoneUpToDate.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
+      ml: filteredDoneUpToDate.reduce((acc, curr) => acc + (curr.largo || 0), 0),
       baches: filteredDoneUpToDate.length,
       demandaActiva: activeTicketsAtDate.length,
       ticketsAtendidos: attendedTicketsAtDate.length,
@@ -236,10 +237,15 @@ export default function App() {
             </div>
           </div>
 
-          <div className="flex gap-12">
+          <div className="flex gap-10">
             <div className="text-center">
               <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Impacto Global</p>
               <p className="text-2xl font-black text-white">{stats.baches.toLocaleString()} <span className="text-sm font-normal opacity-50">Baches</span></p>
+            </div>
+            <div className="w-[1px] h-10 bg-white/10 mt-1" />
+            <div className="text-center">
+              <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Avance Lineal</p>
+              <p className="text-2xl font-black text-toluca-gold">{stats.ml.toLocaleString()} <span className="text-sm font-normal opacity-50">ML</span></p>
             </div>
             <div className="w-[1px] h-10 bg-white/10 mt-1" />
             <div className="text-center">
