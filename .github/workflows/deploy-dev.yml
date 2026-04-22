@@ -1,9 +1,9 @@
-name: 🌐 Deploy Público (main → raíz)
+name: 🔒 Deploy Privado (develop → /dev/)
 
 on:
   push:
     branches:
-      - main
+      - develop
 
 permissions:
   contents: write
@@ -25,16 +25,15 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Build (versión pública)
+      - name: Build (versión privada/financiera)
         run: npm run build
         env:
-          DEPLOY_ENV: production
+          DEPLOY_ENV: development
 
-      - name: Deploy a raíz de gh-pages
+      - name: Deploy a /dev/ en gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: dist
           branch: gh-pages
-          clean: false        # No borrar /dev/ al actualizar la raíz
-          clean-exclude: |
-            dev/
+          target-folder: dev   # Despliega SOLO en la subcarpeta /dev/
+          clean: true          # Limpia /dev/ en cada deploy
