@@ -49,7 +49,7 @@ export default function App() {
         // 1. Load territorial boundaries FIRST
         let boundaries = null;
         try {
-          const geoResp = await fetch(`${baseUrl}data/UTB_REAL.geojson`);
+          const geoResp = await fetch(`${baseUrl}data/DELEGACIONES.geojson`);
           boundaries = await geoResp.json();
           setGeoData(boundaries);
         } catch (geoErr) {
@@ -473,7 +473,7 @@ export default function App() {
                     onChange={(e) => setFilters(f => ({ ...f, showGeoJSON: e.target.checked }))}
                     className="w-4 h-4 accent-toluca-gold" 
                   />
-                  <span className="text-sm font-bold text-slate-700">Límites UTB</span>
+                  <span className="text-sm font-bold text-slate-700">Delegaciones</span>
                 </label>
               </div>
             </div>
@@ -500,36 +500,40 @@ export default function App() {
                 data={geoData} 
                 style={{
                   color: '#d4af37',
-                  weight: 1.5,
+                  weight: 2.5,
                   fillColor: '#7a1531',
-                  fillOpacity: 0.05
+                  fillOpacity: 0.03,
+                  dashArray: '6 3'
                 }}
                 onEachFeature={(feature, layer) => {
-                  const name = feature.properties.name || feature.properties.NOMUT || feature.properties.NOMDEL || 'Zona Toluca';
+                  const name = feature.properties.NOMDEL || 'Zona Toluca';
+                  const utbCount = feature.properties.UTB_COUNT || '';
                   layer.bindTooltip(`
-                    <div style="padding: 4px 8px; font-family: sans-serif;">
-                      <b style="color: #7a1531; font-size: 14px;">${name}</b><br/>
-                      <span style="color: #666; font-size: 10px; font-weight: bold; text-transform: uppercase;">Territorio Toluca Capital</span>
+                    <div style="padding: 6px 10px; font-family: sans-serif;">
+                      <b style="color: #7a1531; font-size: 14px; letter-spacing: -0.5px;">${name}</b><br/>
+                      <span style="color: #999; font-size: 9px; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;">Delegación · ${utbCount} colonias</span>
                     </div>
                   `, { 
                     sticky: true,
                     className: 'premium-tooltip',
-                    opacity: 0.9
+                    opacity: 0.95
                   });
 
                   layer.on({
                     mouseover: (e) => {
                       const l = e.target;
                       l.setStyle({
-                        fillOpacity: 0.2,
-                        weight: 3
+                        fillOpacity: 0.15,
+                        weight: 4,
+                        dashArray: ''
                       });
                     },
                     mouseout: (e) => {
                       const l = e.target;
                       l.setStyle({
-                        fillOpacity: 0.05,
-                        weight: 1.5
+                        fillOpacity: 0.03,
+                        weight: 2.5,
+                        dashArray: '6 3'
                       });
                     }
                   });
