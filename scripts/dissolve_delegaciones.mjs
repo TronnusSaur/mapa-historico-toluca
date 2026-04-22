@@ -15,12 +15,27 @@ console.log('Reading', INPUT, '...');
 const raw = JSON.parse(fs.readFileSync(INPUT, 'utf8'));
 console.log(`  Total UTB features: ${raw.features.length}`);
 
-// Group features by delegation name
-const groups = new Map();
+// Normalize accents for grouping (e.g., "SANTA MARÍA" and "SANTA MARIA" → same key)
+function normalizeKey(str) {
+  return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toUpperCase().trim();
+}
+
+// Group features by delegation name (accent-normalized)
+const groups = new Map();       // normalizedKey → features[]
+const canonicalNames = new Map(); // normalizedKey → display name (prefer accented version)
+
 for (const feature of raw.features) {
-  const del = feature.properties.NOMDEL || 'SIN DELEGACIÓN';
-  if (!groups.has(del)) groups.set(del, []);
-  groups.get(del).push(feature);
+  const del = feature.properties.NOMDEL || 'SIN DELEGACION';
+  const key = normalizeKey(del);
+  if (!groups.has(key)) {
+    groups.set(key, []);
+    canonicalNames.set(key, del);
+  }
+  // Prefer the accented version as the canonical name
+  if (del !== canonicalNames.get(key) && del.normalize('NFD').length > canonicalNames.get(key).normalize('NFD').length) {
+    canonicalNames.set(key, del);
+  }
+  groups.get(key).push(feature);
 }
 
 console.log(`  Unique delegations: ${groups.size}`);
@@ -28,7 +43,8 @@ console.log(`  Unique delegations: ${groups.size}`);
 const outputFeatures = [];
 let i = 0;
 
-for (const [delName, features] of groups) {
+for (const [key, features] of groups) {
+  const delName = canonicalNames.get(key);
   i++;
   process.stdout.write(`  [${i}/${groups.size}] Dissolving: ${delName} (${features.length} UTBs)...`);
 
