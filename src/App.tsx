@@ -59,7 +59,7 @@ export default function App() {
         // 2. Parse all CSV data
         const [e1, e2, e3, totalTickets] = await Promise.all([
           // Libro 1 (Etapa 1 & 2)
-          parseCSV('https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/export?format=csv&gid=1993859173', 'EJECUTADO', 1),
+          parseCSV('https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/export?format=csv&gid=975933544', 'EJECUTADO', 1),
           parseCSV('https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/export?format=csv&gid=1649567244', 'EJECUTADO', 2),
           // Libro 2 (Etapa 3)
           parseCSV('https://docs.google.com/spreadsheets/d/1u-JWLmWk_3YP1Hu3O407j_XJq7p8Rq-MEihzBQjd-IU/export?format=csv&gid=815586952', 'EJECUTADO', 3),
