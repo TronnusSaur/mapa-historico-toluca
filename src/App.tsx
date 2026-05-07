@@ -58,11 +58,11 @@ export default function App() {
 
         // 2. Parse all CSV data
         const [e1, e2, e3, totalTickets] = await Promise.all([
-          // Libro 1 (Etapa 1 & 2)
-          parseCSV('https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/export?format=csv&gid=975933544', 'EJECUTADO', 1),
-          parseCSV('https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/export?format=csv&gid=1649567244', 'EJECUTADO', 2),
-          // Libro 2 (Etapa 3)
-          parseCSV('https://docs.google.com/spreadsheets/d/1u-JWLmWk_3YP1Hu3O407j_XJq7p8Rq-MEihzBQjd-IU/export?format=csv&gid=815586952', 'EJECUTADO', 3),
+          // Libro 1 (Etapa 1 & 2) - Búsqueda por Nombre de Hoja
+          parseCSV(`https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('1.1 - REGISTRO 1RA ETAPA - (ALL INFOS)')}`, 'EJECUTADO', 1),
+          parseCSV(`https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('2 - ETAPA 2 MASTER')}`, 'EJECUTADO', 2),
+          // Libro 2 (Etapa 3) - Búsqueda por Nombre de Hoja
+          parseCSV(`https://docs.google.com/spreadsheets/d/1u-JWLmWk_3YP1Hu3O407j_XJq7p8Rq-MEihzBQjd-IU/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('3 - ETAPA 3 MASTER')}`, 'EJECUTADO', 3),
           // Local CSV
           parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL'),
         ]);
