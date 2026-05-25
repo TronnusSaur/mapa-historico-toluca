@@ -21,6 +21,7 @@ function buildPopupContent(p: PotholeData): string {
         ${p.stage ? `<span style="background:#16a34a;color:white;font-size:9px;padding:2px 6px;border-radius:4px;font-weight:bold;">Etapa ${p.stage}</span>` : ''}
       </div>
       <div style="font-size:12px;margin-bottom:4px;">
+        <b>Folio:</b> ${p.originalId || '—'}<br/>
         <b>Calle:</b> ${p.street || 'S/N'}<br/>
         <b>Delegación:</b> ${p.delegation || 'Toluca'}
       </div>
