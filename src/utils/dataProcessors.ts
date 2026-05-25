@@ -56,10 +56,12 @@ const parseNumber = (val: any): number => {
  * Utility to find a value in an object regardless of key case or whitespace
  */
 const getVal = (obj: Record<string, any>, keys: string[]) => {
-  const foundKey = Object.keys(obj).find(k => 
-    keys.some(key => k.trim().toLowerCase() === key.trim().toLowerCase())
+  const foundKey = keys.find(key => 
+    Object.keys(obj).some(k => k.trim().toLowerCase() === key.trim().toLowerCase())
   );
-  return foundKey ? obj[foundKey] : undefined;
+  if (!foundKey) return undefined;
+  const actualKey = Object.keys(obj).find(k => k.trim().toLowerCase() === foundKey.trim().toLowerCase());
+  return actualKey ? obj[actualKey] : undefined;
 };
 
 /**
