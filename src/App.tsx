@@ -57,13 +57,12 @@ export default function App() {
         }
 
         // 2. Parse all CSV data
-        const cacheBuster = `&tcb=${Date.now()}`;
         const [e1, e2, e3, totalTickets] = await Promise.all([
           // Libro 1 (Etapa 1 & 2) - Búsqueda por Nombre de Hoja
-          parseCSV(`https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('1.1 - REGISTRO 1RA ETAPA - (ALL INFOS)')}${cacheBuster}`, 'EJECUTADO', 1),
-          parseCSV(`https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('2 - ETAPA 2 MASTER')}${cacheBuster}`, 'EJECUTADO', 2),
+          parseCSV(`https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('1.1 - REGISTRO 1RA ETAPA - (ALL INFOS)')}`, 'EJECUTADO', 1),
+          parseCSV(`https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('2 - ETAPA 2 MASTER')}`, 'EJECUTADO', 2),
           // Libro 2 (Etapa 3) - Búsqueda por Nombre de Hoja
-          parseCSV(`https://docs.google.com/spreadsheets/d/1u-JWLmWk_3YP1Hu3O407j_XJq7p8Rq-MEihzBQjd-IU/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('3 - ETAPA 3 MASTER')}${cacheBuster}`, 'EJECUTADO', 3),
+          parseCSV(`https://docs.google.com/spreadsheets/d/1u-JWLmWk_3YP1Hu3O407j_XJq7p8Rq-MEihzBQjd-IU/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('3 - ETAPA 3 MASTER')}`, 'EJECUTADO', 3),
           // Local CSV
           parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL'),
         ]);
@@ -115,11 +114,7 @@ export default function App() {
        return true;
     });
 
-    // 3. Stage-Specific metrics (Progress bars should show TOTAL in sheet vs meta)
-    const e1All = data.filter(p => p.status === 'EJECUTADO' && p.stage === 1);
-    const e2All = data.filter(p => p.status === 'EJECUTADO' && p.stage === 2);
-    const e3All = data.filter(p => p.status === 'EJECUTADO' && p.stage === 3);
-
+    // 3. Stage-Specific metrics (Stable - always use allDoneUpToDate)
     const e1Done = allDoneUpToDate.filter(p => p.stage === 1);
     const e2Done = allDoneUpToDate.filter(p => p.stage === 2);
     const e3Done = allDoneUpToDate.filter(p => p.stage === 3);
@@ -143,40 +138,21 @@ export default function App() {
 
     return {
       total: data.length,
-      // Timeline-dependent metrics (for map visual state if needed)
-      m2AtDate: filteredDoneUpToDate.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
-      mlAtDate: filteredDoneUpToDate.reduce((acc, curr) => acc + (curr.largo || 0), 0),
-      bachesAtDate: filteredDoneUpToDate.length,
-      
-      // Absolute totals (for global header and progress bars)
-      totalBaches: (filters.showE1 ? e1All.length : 0) + (filters.showE2 ? e2All.length : 0) + (filters.showE3 ? e3All.length : 0),
-      totalM2: (filters.showE1 ? e1All.reduce((acc, curr) => acc + (curr.m2 || 0), 0) : 0) + 
-               (filters.showE2 ? e2All.reduce((acc, curr) => acc + (curr.m2 || 0), 0) : 0) + 
-               (filters.showE3 ? e3All.reduce((acc, curr) => acc + (curr.m2 || 0), 0) : 0),
-      totalML: (filters.showE1 ? e1All.reduce((acc, curr) => acc + (curr.largo || 0), 0) : 0) + 
-               (filters.showE2 ? e2All.reduce((acc, curr) => acc + (curr.largo || 0), 0) : 0) + 
-               (filters.showE3 ? e3All.reduce((acc, curr) => acc + (curr.largo || 0), 0) : 0),
-
+      // Global metrics recalculate with filters (SPATIAL IGNORED FOR RECONTEO INTEGRITY)
+      m2: filteredDoneUpToDate.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
+      ml: filteredDoneUpToDate.reduce((acc, curr) => acc + (curr.largo || 0), 0),
+      baches: filteredDoneUpToDate.length,
       demandaActiva: activeTicketsAtDate.length,
       ticketsAtendidos: attendedTicketsAtDate.length,
-      
-      // Stage-specific stats (Absolute)
-      e1BachesTotal: e1All.length,
-      e1M2Total: e1All.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
-      e2BachesTotal: e2All.length,
-      e2M2Total: e2All.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
-      e3BachesTotal: e3All.length,
-      e3M2Total: e3All.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
-      
-      // Stage-specific stats (Timeline dependent)
+      // Stage-specific stats
       e1Baches: e1Done.length,
       e1M2: e1Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
       e2Baches: e2Done.length,
       e2M2: e2Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
       e3Baches: e3Done.length,
-      e3M2: e3Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
+      e3M2: e3Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0)
     };
-  }, [data, currentDate, filters]);
+  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3]);
 
   // Map Visualization Data (Optimized: uses pre-calculated p.inZona)
   const visibleData = useMemo(() => {
@@ -267,17 +243,17 @@ export default function App() {
           <div className="flex gap-10">
             <div className="text-center">
               <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Impacto Global</p>
-              <p className="text-2xl font-black text-white">{stats.totalBaches.toLocaleString()} <span className="text-sm font-normal opacity-50">Baches</span></p>
+              <p className="text-2xl font-black text-white">{stats.baches.toLocaleString()} <span className="text-sm font-normal opacity-50">Baches</span></p>
             </div>
             <div className="w-[1px] h-10 bg-white/10 mt-1" />
             <div className="text-center">
               <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Avance Lineal</p>
-              <p className="text-2xl font-black text-toluca-gold">{stats.totalML.toLocaleString()} <span className="text-sm font-normal opacity-50">ML</span></p>
+              <p className="text-2xl font-black text-toluca-gold">{stats.ml.toLocaleString()} <span className="text-sm font-normal opacity-50">ML</span></p>
             </div>
             <div className="w-[1px] h-10 bg-white/10 mt-1" />
             <div className="text-center">
               <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Superficie Total</p>
-              <p className="text-2xl font-black text-toluca-gold">{stats.totalM2.toLocaleString()} <span className="text-sm font-normal opacity-50">m²</span></p>
+              <p className="text-2xl font-black text-toluca-gold">{stats.m2.toLocaleString()} <span className="text-sm font-normal opacity-50">m²</span></p>
             </div>
           </div>
 
@@ -297,67 +273,67 @@ export default function App() {
             {/* --- ETAPA 3 (ACTUAL) --- */}
             <div>
                 <h3 className="text-xs font-black text-toluca-burgundy tracking-widest uppercase mb-4 flex items-center justify-between">
-                  <span className="flex items-center gap-2"><BarChart3 size={14} /> Etapa 3 ({stats.e3BachesTotal.toLocaleString()} Baches)</span>
+                  <span className="flex items-center gap-2"><BarChart3 size={14} /> Etapa 3 (Actual)</span>
                   <span className="bg-toluca-burgundy/10 text-[10px] px-2 py-0.5 rounded text-toluca-burgundy">EN PROCESO</span>
                 </h3>
                 <div className="space-y-3">
                    <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
                      <div className="flex justify-between items-end mb-2">
                         <span className="text-[10px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
-                        <span className="text-xs font-black text-slate-800">{Math.min(100, Math.round((stats.e3M2Total / 104610.31) * 100))}%</span>
+                        <span className="text-xs font-black text-slate-800">{Math.min(100, Math.round((stats.e3M2 / 104610.31) * 100))}%</span>
                      </div>
                      <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
                         <div 
                          className="bg-toluca-gold h-full transition-all duration-500" 
-                         style={{ width: `${Math.min(100, (stats.e3M2Total / 104610.31) * 100)}%` }} 
+                         style={{ width: `${Math.min(100, (stats.e3M2 / 104610.31) * 100)}%` }} 
                         />
                      </div>
                      <p className="text-[9px] text-slate-400 mt-2 font-bold uppercase text-right">Meta: 104,610.31 m²</p>
                    </div>
                    <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
-                      <div className="flex justify-between items-end mb-2">
-                         <span className="text-[10px] font-bold text-slate-500 uppercase">Baches Realizados</span>
-                         <span className="text-xs font-black text-slate-800">{stats.e3BachesTotal.toLocaleString()} ({Math.min(100, Math.round((stats.e3BachesTotal / 20866) * 100))}%)</span>
-                      </div>
-                      <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                         <div 
-                          className="bg-toluca-burgundy h-full transition-all duration-500" 
-                          style={{ width: `${Math.min(100, (stats.e3BachesTotal / 20866) * 100)}%` }} 
-                         />
-                      </div>
-                      <p className="text-[9px] text-slate-400 mt-2 font-bold uppercase text-right">Meta: 20,866 Baches</p>
-                    </div>
+                     <div className="flex justify-between items-end mb-2">
+                        <span className="text-[10px] font-bold text-slate-500 uppercase">Baches Realizados</span>
+                        <span className="text-xs font-black text-slate-800">{Math.min(100, Math.round((stats.e3Baches / 20866) * 100))}%</span>
+                     </div>
+                     <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                        <div 
+                         className="bg-toluca-burgundy h-full transition-all duration-500" 
+                         style={{ width: `${Math.min(100, (stats.e3Baches / 20866) * 100)}%` }} 
+                        />
+                     </div>
+                     <p className="text-[9px] text-slate-400 mt-2 font-bold uppercase text-right">Meta: 20,866 Baches</p>
+                   </div>
                 </div>
               </div>
 
               {/* --- ETAPA 2 (HISTÓRICA) --- */}
               <div>
                 <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center justify-between">
-                  <span className="flex items-center gap-2"><History size={14} /> Etapa 2 ({stats.e2BachesTotal.toLocaleString()} Baches)</span>
+                  <span className="flex items-center gap-2"><History size={14} /> Etapa 2</span>
                   <span className="text-[10px] opacity-70">FINALIZADA</span>
                 </h3>
                 <div className="space-y-2 opacity-80">
                    <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
                      <div className="flex justify-between items-end mb-1">
                         <span className="text-[9px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
-                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2M2Total / 125095.34) * 100))}%</span>
+                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2M2 / 125095.34) * 100))}%</span>
                      </div>
                      <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
                         <div 
                          className="bg-slate-400 h-full" 
-                         style={{ width: `${Math.min(100, (stats.e2M2Total / 125095.34) * 100)}%` }} 
+                         style={{ width: `${Math.min(100, (stats.e2M2 / 125095.34) * 100)}%` }} 
                         />
                      </div>
                    </div>
                    <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
                      <div className="flex justify-between items-end mb-1">
                         <span className="text-[9px] font-bold text-slate-500 uppercase">Baches</span>
-                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2BachesTotal / 24906) * 100))}%</span>
+                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2Baches / 24906) * 100))}%</span>
                      </div>
                      <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
                         <div 
                          className="bg-slate-400 h-full" 
-                         style={{ width: `${Math.min(100, (stats.e2BachesTotal / 24906) * 100)}%` }} 
+                         style={{ width: `${Math.min(100, (stats.e2Baches / 24906) * 100)}%` }} 
                         />
                      </div>
                    </div>
@@ -367,31 +343,31 @@ export default function App() {
               {/* --- ETAPA 1 (HISTÓRICA) --- */}
               <div>
                 <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center justify-between">
-                  <span className="flex items-center gap-2"><History size={14} /> Etapa 1 ({stats.e1BachesTotal.toLocaleString()} Baches)</span>
+                  <span className="flex items-center gap-2"><History size={14} /> Etapa 1</span>
                   <span className="text-[10px] opacity-70">FINALIZADA</span>
                 </h3>
                 <div className="space-y-2 opacity-80">
                    <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
                      <div className="flex justify-between items-end mb-1">
                         <span className="text-[9px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
-                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e1M2Total / 126698.07) * 100))}%</span>
+                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e1M2 / 126698.07) * 100))}%</span>
                      </div>
                      <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
                         <div 
                          className="bg-slate-400 h-full" 
-                         style={{ width: `${Math.min(100, (stats.e1M2Total / 126698.07) * 100)}%` }} 
+                         style={{ width: `${Math.min(100, (stats.e1M2 / 126698.07) * 100)}%` }} 
                         />
                      </div>
                    </div>
                    <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
                      <div className="flex justify-between items-end mb-1">
                         <span className="text-[9px] font-bold text-slate-500 uppercase">Baches</span>
-                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e1BachesTotal / 12773) * 100))}%</span>
+                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e1Baches / 12773) * 100))}%</span>
                      </div>
                      <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
                         <div 
                          className="bg-slate-400 h-full" 
-                         style={{ width: `${Math.min(100, (stats.e1BachesTotal / 12773) * 100)}%` }} 
+                         style={{ width: `${Math.min(100, (stats.e1Baches / 12773) * 100)}%` }} 
                         />
                      </div>
                    </div>
@@ -430,7 +406,7 @@ export default function App() {
                     {/* KPI: Baches Realizados */}
                     <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
                        <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Baches Totales</p>
-                       <p className="text-2xl font-black text-toluca-burgundy">{stats.totalBaches.toLocaleString()}</p>
+                       <p className="text-2xl font-black text-toluca-burgundy">{stats.baches.toLocaleString()}</p>
                        <p className="text-[9px] text-slate-400 font-bold uppercase mt-1 flex items-center gap-1">
                           <ChevronRight size={10} /> Consolidado Histórico
                        </p>
@@ -515,7 +491,7 @@ export default function App() {
              <div className="bg-white p-4 rounded-xl border border-slate-200 text-center">
                 <History className="w-6 h-6 text-toluca-burgundy mx-auto mb-2" />
                 <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Última actualización</p>
-                <p className="text-xs font-black text-slate-800">21 de Mayo, 2026</p>
+                <p className="text-xs font-black text-slate-800">13 de Abril, 2026</p>
              </div>
           </div>
         </aside>
@@ -619,13 +595,13 @@ export default function App() {
                    </div>
                    <div className="text-right">
                       <p className="text-[10px] font-bold text-slate-400 uppercase mb-1">Total Auditado</p>
-                      <p className="text-sm font-black text-slate-600">{stats.bachesAtDate.toLocaleString()} Baches</p>
+                      <p className="text-sm font-black text-slate-600">{stats.baches.toLocaleString()} Baches</p>
                    </div>
                 </div>
                 <input 
                   type="range" 
                   min={new Date(2024, 11, 31).getTime()} 
-                  max={Math.max(new Date().getTime(), ...data.map(p => p.date?.getTime() || 0))}
+                  max={new Date().getTime()}
                   value={currentDate.getTime()}
                   onChange={(e) => setCurrentDate(new Date(parseInt(e.target.value)))}
                   className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-toluca-burgundy"
