@@ -21,6 +21,7 @@ Error generating stack: `+e.message+`
         ${e.stage?`<span style="background:#16a34a;color:white;font-size:9px;padding:2px 6px;border-radius:4px;font-weight:bold;">Etapa ${e.stage}</span>`:``}
       </div>
       <div style="font-size:12px;margin-bottom:4px;">
+        <b>Folio:</b> ${e.originalId||`—`}<br/>
         <b>Calle:</b> ${e.street||`S/N`}<br/>
         <b>Delegación:</b> ${e.delegation||`Toluca`}
       </div>
