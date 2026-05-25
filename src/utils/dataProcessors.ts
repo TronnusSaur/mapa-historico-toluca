@@ -171,7 +171,7 @@ export const parseCSV = (
             ancho: parseNumber(getVal(row, ['ancho', 'ANCHO'])),
             status,
             stage,
-            originalId: getVal(row, ['ID', 'Ticket', 'folioRef', 'folio'])
+            originalId: getVal(row, ['folio', 'Ticket', 'folioRef', 'ID'])
           };
         }).filter(p => p !== null) as PotholeData[];
         
