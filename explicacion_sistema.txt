@@ -1,0 +1,108 @@
+===============================================================================
+         TORRE DE CONTROL DE BACHEO — AYUNTAMIENTO DE TOLUCA 2025-2027
+               DOCUMENTO DE DIVULGACIÓN Y FUNCIONAMIENTO GENERAL
+===============================================================================
+
+Este documento explica de manera clara y sencilla el funcionamiento, propósito 
+y capacidades de la plataforma web "Torre de Control de Bacheo de Toluca Capital",
+un sistema diseñado para transparentar, supervisar y analizar el avance de la 
+Estrategia Integral de Rehabilitación Vial en nuestro municipio.
+
+---
+1. ¿QUÉ ES LA TORRE DE CONTROL DE BACHEO?
+---
+La Torre de Control es una aplicación web interactiva y visual que recopila toda 
+la información de las obras de bacheo realizadas por el Ayuntamiento (baches 
+ejecutados) y los reportes viales realizados por la ciudadanía a través de los 
+canales oficiales (tickets de demanda activa). 
+
+El sistema consolida decenas de miles de registros geográficos y temporales,
+permitiendo a las autoridades y a los ciudadanos auditar el avance, la cobertura 
+y la eficiencia de los trabajos calle por calle.
+
+---
+2. FUNCIONALIDADES CLAVE PARA EL USUARIO COMÚN
+---
+Cualquier usuario puede interactuar con el sistema de forma intuitiva a través 
+de las siguientes herramientas integradas en la interfaz:
+
+A. Línea de Tiempo Dinámica (Reproducción Temporal)
+   * Ubicada en la parte inferior de la pantalla, permite "viajar en el tiempo"
+     deslizando un control desde diciembre de 2024 hasta la fecha actual.
+   * Cuenta con un botón de reproducción ("Play") que muestra una animación
+     semana a semana del avance histórico de la rehabilitación en la ciudad.
+
+B. Modos de Visualización del Avance Vial
+   * Vista de TRAMOS (Recomendada): Dibuja líneas verdes continuas a lo largo de
+     las vialidades para representar las calles que ya han sido rehabilitadas, 
+     mostrando el flujo de conectividad vial.
+   * Vista de PUNTOS (Clusters): Muestra burbujas agrupadas de color verde con
+     números. Al hacer zoom, estas burbujas se desglosan en la ubicación exacta 
+     de cada bache tapado individualmente.
+
+C. Filtros de Etapa Operativa (E1, E2, E3)
+   * La campaña se compone de tres etapas de trabajo. En el panel izquierdo,
+     el usuario puede encender o apagar las capas de la "Etapa 1", "Etapa 2" y
+     "Etapa 3" para analizar zonas geográficas específicas de cada campaña.
+
+D. Capa de Demanda Ciudadana (Tickets de Reportes Viales)
+   * Al activar la casilla "Demanda Dinámica (Roja)", el mapa muestra burbujas
+     rojas que representan los reportes ciudadanos vigentes a la fecha seleccionada.
+   * Esto permite comparar visualmente la demanda de la ciudadanía frente a la
+     atención brindada por las brigadas de bacheo.
+
+E. Consulta de Detalles bajo Demanda (Popups Informativos)
+   * Al hacer clic sobre cualquier bache ejecutado (punto verde) o reporte
+     de demanda (punto rojo), se despliega una ventana informativa que incluye:
+       - Folio único del reporte.
+       - Calle y número exactos.
+       - Delegación y colonia en la que se ubica.
+       - Fecha en la que fue reportado o ejecutado.
+       - Superficie trabajada en metros cuadrados (m²).
+
+F. Mapa Coroplético de Delegaciones
+   * Al activar la casilla "Delegaciones", el mapa dibuja bordes dorados
+     con los límites políticos del municipio. Al pasar el cursor sobre cualquier
+     zona, el mapa sombrea la delegación y muestra una etiqueta con su nombre y
+     el número de colonias que abarca.
+
+G. Panel Metrológico y Estadísticas
+   * El sistema calcula de forma dinámica en la parte superior y lateral los 
+     totales globales ajustados a la fecha seleccionada en la línea de tiempo:
+       - Impacto Global: Baches totales reparados.
+       - Avance Lineal: Metros lineales (ML) intervenidos.
+       - Superficie Total: Metros cuadrados (m²) cubiertos.
+       - Eficiencia Operativa: Porcentaje de avance frente a las metas de cada etapa.
+       - Demanda Activa: Número de reportes viales que continúan pendientes.
+
+---
+3. ASPECTOS TÉCNICOS ESENCIALES (CÓMO FUNCIONA DETRÁS DE ESCENA)
+---
+Para lograr una experiencia fluida y en tiempo real, el sistema implementa 
+tecnologías de última generación explicadas de forma sencilla:
+
+A. Sincronización de Datos en Tiempo Real
+   * En lugar de cargar archivos estáticos y desactualizados, la Torre de Control
+     se conecta directamente mediante APIs seguras a las hojas de cálculo maestras
+     de Google Sheets utilizadas por los equipos operativos de Toluca Capital.
+   * Cada vez que una brigada reporta un avance en campo, este se refleja en el
+     mapa de manera automática al recargar el navegador.
+
+B. Clasificación y Autodetectado Geográfico (Procesamiento Espacial)
+   * El sistema procesa los tickets reportados mediante un algoritmo de colisión
+     espacial en dos niveles. 
+   * Al recibir una latitud y longitud, el sistema determina geométricamente a qué
+     polígono del mapa territorial oficial de Toluca pertenece. Así, autocompleta 
+     de forma autónoma e infalible el campo de la Delegación y la Colonia para
+     evitar errores tipográficos humanos.
+
+C. Agrupación Inteligente (Marker Clustering)
+   * Graficar más de 50,000 baches individuales congelaría cualquier navegador 
+     común. Para solucionarlo, el sistema agrupa los puntos cercanos en grandes 
+     burbujas numéricas y solo renderiza los marcadores detallados cuando el 
+     usuario se acerca (hace zoom) en una calle específica, garantizando un
+     rendimiento ultrarrápido incluso en computadoras portátiles o teléfonos móviles.
+
+===============================================================================
+                       TOLUCA CAPITAL — AYUNTAMIENTO 2025-2027
+===============================================================================
