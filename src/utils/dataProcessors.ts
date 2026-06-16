@@ -407,3 +407,84 @@ export function isPointInGeoJSON(
   return false;
 }
 
+export interface PavimentacionData {
+  id: string;
+  no: number;
+  tipoObra: string;
+  descripcion: string;
+  delegacion: string;
+  coords: [number, number][];
+  superficie: number;
+  inversion: string;
+  metrosLineales: number;
+}
+
+export const parsePavimentaciones = (url: string): Promise<PavimentacionData[]> => {
+  return new Promise((resolve, reject) => {
+    Papa.parse(url, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        const data = results.data as Record<string, any>[];
+        const parsed: PavimentacionData[] = [];
+        
+        data.forEach((row, index) => {
+          const noStr = getVal(row, ['No.', 'no']);
+          if (!noStr) return;
+          
+          const trimmedNo = noStr.toString().trim();
+          if (trimmedNo.toLowerCase().includes('total') || trimmedNo === '') return;
+          
+          const no = parseInt(trimmedNo);
+          if (isNaN(no)) return;
+
+          const tipoObra = getVal(row, ['Tipo de Obra', 'tipo_obra']) || '';
+          const descripcion = getVal(row, ['Descripción de la Obra', 'descripcion']) || '';
+          const delegacion = getVal(row, ['Delegación', 'delegacion']) || '';
+          
+          // Find all keys matching P[number] (case-insensitive) and sort them numerically
+          const pKeys = Object.keys(row)
+            .filter(key => /^P\d+$/i.test(key.trim()))
+            .sort((a, b) => {
+              const numA = parseInt(a.trim().match(/\d+/)![0], 10);
+              const numB = parseInt(b.trim().match(/\d+/)![0], 10);
+              return numA - numB;
+            });
+          
+          const coords: [number, number][] = [];
+          
+          pKeys.forEach(key => {
+            const pStr = row[key];
+            if (pStr) {
+              const pt = extractCoords(pStr.toString());
+              if (pt && !isNaN(pt.lat) && !isNaN(pt.lng) && pt.lat !== 0 && pt.lng !== 0) {
+                coords.push([pt.lat, pt.lng]);
+              }
+            }
+          });
+
+          const superficieStr = getVal(row, ['Superficie en m2 rehabilitada', 'superficie']);
+          const inversionStr = getVal(row, ['Inversión Ejecutada', 'inversion']) || '';
+          const metrosLinealesStr = getVal(row, ['Metros Lineales', 'metros_lineales']);
+
+          parsed.push({
+            id: `pavimentacion-${index}`,
+            no,
+            tipoObra,
+            descripcion,
+            delegacion,
+            coords,
+            superficie: parseNumber(superficieStr),
+            inversion: inversionStr.toString().trim(),
+            metrosLineales: parseNumber(metrosLinealesStr)
+          });
+        });
+        
+        resolve(parsed);
+      },
+      error: (err: Error) => reject(err)
+    });
+  });
+};
+

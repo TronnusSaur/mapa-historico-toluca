@@ -1,11 +1,11 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useThrottle } from './hooks/useThrottle.ts';
-import { MapContainer, TileLayer, Polyline, GeoJSON } from 'react-leaflet';
+import { MapContainer, TileLayer, Polyline, GeoJSON, CircleMarker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
-import { parseCSV, groupIntoTramos, isPointInGeoJSON } from './utils/dataProcessors.ts';
-import type { PotholeData, Tramo } from './utils/dataProcessors.ts';
+import { parseCSV, groupIntoTramos, isPointInGeoJSON, parsePavimentaciones } from './utils/dataProcessors.ts';
+import type { PotholeData, Tramo, PavimentacionData } from './utils/dataProcessors.ts';
 import { 
   BarChart3, 
   History, 
@@ -35,11 +35,13 @@ export default function App() {
     showE1: true,
     showE2: true,
     showE3: true,
+    showPavimentaciones: true,
     renderMode: 'tramos' as 'tramos' | 'clusters'
   });
   // Statistics are now calculated dynamically in a useMemo below based on currentDate
   // Tramos are computed once on load — NOT on every timeline change
   const [allTramos, setAllTramos] = useState<Tramo[]>([]);
+  const [pavimentaciones, setPavimentaciones] = useState<PavimentacionData[]>([]);
 
   useEffect(() => {
     const loadAll = async () => {
@@ -57,7 +59,7 @@ export default function App() {
         }
 
         // 2. Parse all CSV data
-        const [e1, e2, e3, totalTickets] = await Promise.all([
+        const [e1, e2, e3, totalTickets, parsedPavimentaciones] = await Promise.all([
           // Libro 1 (Etapa 1 & 2) - Búsqueda por Nombre de Hoja
           parseCSV(`https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('1.1 - REGISTRO 1RA ETAPA - (ALL INFOS)')}`, 'EJECUTADO', 1),
           parseCSV(`https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('2 - ETAPA 2 MASTER')}`, 'EJECUTADO', 2),
@@ -65,6 +67,8 @@ export default function App() {
           parseCSV(`https://docs.google.com/spreadsheets/d/1u-JWLmWk_3YP1Hu3O407j_XJq7p8Rq-MEihzBQjd-IU/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('3 - ETAPA 3 MASTER')}`, 'EJECUTADO', 3),
           // Local CSV
           parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL'),
+          // Pavimentaciones CSV (Google Sheets)
+          parsePavimentaciones(`https://docs.google.com/spreadsheets/d/1ghxpCxkAQB-y_dh0dEbcMHvnhPI1r42lkbqEN7Q8kDg/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('DGOP - Pavimentacion')}`),
         ]);
 
         const combinedRaw = [...e1, ...e2, ...e3, ...totalTickets];
@@ -77,8 +81,9 @@ export default function App() {
             inZona: boundaries ? isPointInGeoJSON(p.lat, p.lng, boundaries) : true
           }));
 
-        console.log(`Carga completa: ${enriched.length} registros totales.`);
+        console.log(`Carga completa: ${enriched.length} registros totales. ${parsedPavimentaciones.length} pavimentaciones.`);
         setData(enriched);
+        setPavimentaciones(parsedPavimentaciones);
 
         // Compute tramos from executed points inside boundaries (lines MUST have valid coords)
         setTimeout(() => {
@@ -484,6 +489,20 @@ export default function App() {
                   />
                   <span className="text-sm font-bold text-slate-700">Delegaciones</span>
                 </label>
+                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
+                  <div className="flex items-center gap-3">
+                    <input 
+                      type="checkbox" 
+                      checked={filters.showPavimentaciones} 
+                      onChange={(e) => setFilters(f => ({ ...f, showPavimentaciones: e.target.checked }))}
+                      className="w-4 h-4 accent-blue-600" 
+                    />
+                    <span className="text-sm font-bold text-slate-700">Pavimentaciones (DGOP)</span>
+                  </div>
+                  <span className="text-[10px] font-black px-2 py-0.5 bg-blue-50 text-blue-600 rounded-full border border-blue-100">
+                    {pavimentaciones.filter(p => p.coords.length > 0).length} con trazo / {pavimentaciones.length}
+                  </span>
+                </label>
               </div>
             </div>
 
@@ -572,6 +591,70 @@ export default function App() {
                 return false;
               })}
             />
+
+            {/* Capa de Pavimentaciones (DGOP) */}
+            {filters.showPavimentaciones && pavimentaciones.map((p) => {
+              if (p.coords.length >= 2) {
+                return (
+                  <Polyline 
+                    key={p.id} 
+                    positions={p.coords} 
+                    color="#2563eb" 
+                    weight={5} 
+                    opacity={0.8}
+                  >
+                    <Popup>
+                      <div className="font-sans min-w-[200px]">
+                        <div className="border-b-2 border-blue-600 pb-1 mb-2">
+                          <b className="text-blue-600 text-sm">Obra No. {p.no}</b><br/>
+                          <span className="text-xs font-semibold text-slate-500">{p.tipoObra}</span>
+                        </div>
+                        <div className="text-xs text-slate-700 mb-2 font-medium">
+                          {p.descripcion}
+                        </div>
+                        <div className="bg-blue-50/50 p-2 rounded-lg text-[11px] border border-blue-100/50 space-y-1">
+                          <div><b>Delegación:</b> {p.delegacion}</div>
+                          <div><b>Superficie:</b> {p.superficie.toLocaleString('es-MX')} m²</div>
+                          <div><b>Metros Lineales:</b> {p.metrosLineales.toLocaleString('es-MX')} m</div>
+                          <div><b>Inversión:</b> <span className="font-bold text-blue-700">{p.inversion}</span></div>
+                        </div>
+                      </div>
+                    </Popup>
+                  </Polyline>
+                );
+              } else if (p.coords.length === 1) {
+                return (
+                  <CircleMarker
+                    key={p.id}
+                    center={p.coords[0]}
+                    radius={7}
+                    fillColor="#2563eb"
+                    color="#ffffff"
+                    weight={1.5}
+                    fillOpacity={0.9}
+                  >
+                    <Popup>
+                      <div className="font-sans min-w-[200px]">
+                        <div className="border-b-2 border-blue-600 pb-1 mb-2">
+                          <b className="text-blue-600 text-sm">Obra No. {p.no} (Punto de Referencia)</b><br/>
+                          <span className="text-xs font-semibold text-slate-500">{p.tipoObra}</span>
+                        </div>
+                        <div className="text-xs text-slate-700 mb-2 font-medium">
+                          {p.descripcion}
+                        </div>
+                        <div className="bg-blue-50/50 p-2 rounded-lg text-[11px] border border-blue-100/50 space-y-1">
+                          <div><b>Delegación:</b> {p.delegacion}</div>
+                          <div><b>Superficie:</b> {p.superficie.toLocaleString('es-MX')} m²</div>
+                          <div><b>Metros Lineales:</b> {p.metrosLineales.toLocaleString('es-MX')} m</div>
+                          <div><b>Inversión:</b> <span className="font-bold text-blue-700">{p.inversion}</span></div>
+                        </div>
+                      </div>
+                    </Popup>
+                  </CircleMarker>
+                );
+              }
+              return null;
+            })}
           </MapContainer>
 
           {/* Timeline Overlay */}
