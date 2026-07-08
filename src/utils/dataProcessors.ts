@@ -488,3 +488,42 @@ export const parsePavimentaciones = (url: string): Promise<PavimentacionData[]> 
   });
 };
 
+export const mapSupabaseRowToPothole = (row: any): PotholeData => {
+  const lat = parseFloat(row.latitude);
+  const lng = parseFloat(row.longitude);
+  
+  let date = new Date();
+  if (row.fecha) {
+    const parts = row.fecha.split(/[\/\-]/);
+    if (parts && parts.length === 3) {
+      if (parts[0].length === 4) {
+        date = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+      } else {
+        const year = parts[2].length === 2 ? `20${parts[2]}` : parts[2];
+        date = new Date(parseInt(year), parseInt(parts[1]) - 1, parseInt(parts[0]));
+      }
+    } else {
+      const attempt = new Date(row.fecha);
+      if (!isNaN(attempt.getTime())) date = attempt;
+    }
+  } else if (row.date_added) {
+    const attempt = new Date(row.date_added);
+    if (!isNaN(attempt.getTime())) date = attempt;
+  }
+  
+  return {
+    id: `db-${row.Id}`,
+    lat: isNaN(lat) ? 0 : lat,
+    lng: isNaN(lng) ? 0 : lng,
+    date,
+    street: row.calle || '',
+    delegation: row.delegacion || '',
+    m2: row.m2total ? parseFloat(row.m2total) : 0,
+    largo: row.largo ? parseFloat(row.largo) : 0,
+    ancho: row.ancho ? parseFloat(row.ancho) : 0,
+    status: 'EJECUTADO',
+    stage: row.idEtapa || 1,
+    originalId: row.folio || row.folioRef || ''
+  };
+};
+

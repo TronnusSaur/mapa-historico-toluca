@@ -4,8 +4,9 @@ import { MapContainer, TileLayer, Polyline, GeoJSON, CircleMarker, Popup } from 
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
-import { parseCSV, groupIntoTramos, isPointInGeoJSON, parsePavimentaciones } from './utils/dataProcessors.ts';
+import { parseCSV, groupIntoTramos, isPointInGeoJSON, parsePavimentaciones, mapSupabaseRowToPothole } from './utils/dataProcessors.ts';
 import type { PotholeData, Tramo, PavimentacionData } from './utils/dataProcessors.ts';
+import { supabase } from './lib/supabase.ts';
 import { 
   BarChart3, 
   History, 
@@ -53,33 +54,79 @@ export default function App() {
         try {
           const geoResp = await fetch(`${baseUrl}data/DELEGACIONES.geojson`);
           boundaries = await geoResp.json();
+          
+          // Precalculate bbox for each feature to allow fast bounding-box reject in spatial queries
+          if (boundaries && boundaries.features) {
+            boundaries.features.forEach((feature: any) => {
+              if (!feature.bbox && feature.geometry) {
+                let minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity;
+                const coords = feature.geometry.coordinates;
+                const processRing = (ring: [number, number][]) => {
+                  for (const pt of ring) {
+                    if (pt[0] < minLng) minLng = pt[0];
+                    if (pt[1] < minLat) minLat = pt[1];
+                    if (pt[0] > maxLng) maxLng = pt[0];
+                    if (pt[1] > maxLat) maxLat = pt[1];
+                  }
+                };
+                if (feature.geometry.type === 'Polygon') {
+                  coords.forEach(processRing);
+                } else if (feature.geometry.type === 'MultiPolygon') {
+                  coords.forEach((poly: any) => poly.forEach(processRing));
+                }
+                feature.bbox = [minLng, minLat, maxLng, maxLat];
+              }
+            });
+          }
+          
           setGeoData(boundaries);
         } catch (geoErr) {
           console.error("Error loading GeoJSON boundaries:", geoErr);
         }
 
-        // 2. Parse all CSV data
-        const [e1, e2, e3, totalTickets, parsedPavimentaciones] = await Promise.all([
-          // Libro 1 (Etapa 1 & 2) - Búsqueda por Nombre de Hoja
-          parseCSV(`https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('1.1 - REGISTRO 1RA ETAPA - (ALL INFOS)')}`, 'EJECUTADO', 1),
-          parseCSV(`https://docs.google.com/spreadsheets/d/1XsAB-ADnF8xqFOvsW9w9PGDCDI51OJbvYPVyFXTZ9j8/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('2 - ETAPA 2 MASTER')}`, 'EJECUTADO', 2),
-          // Libro 2 (Etapa 3) - Búsqueda por Nombre de Hoja
-          parseCSV(`https://docs.google.com/spreadsheets/d/1u-JWLmWk_3YP1Hu3O407j_XJq7p8Rq-MEihzBQjd-IU/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('3 - ETAPA 3 MASTER')}`, 'EJECUTADO', 3),
+        // 2. Fetch executed bacheo from Supabase and tickets from CSV in parallel
+        const fetchSupabaseBacheos = async (): Promise<PotholeData[]> => {
+          try {
+            const { data: rows, error } = await supabase
+              .from('bacheo')
+              .select('Id, idEtapa, fecha, estatus, folio, latitude, longitude, m2total, largo, ancho')
+              .in('idEtapa', [1, 2, 3]);
+
+            if (error) {
+              throw error;
+            }
+            if (!rows) return [];
+            return rows.map(mapSupabaseRowToPothole);
+          } catch (dbErr) {
+            console.error("Error reading database bacheos, falling back to empty:", dbErr);
+            return [];
+          }
+        };
+
+        const [dbBacheos, totalTickets, parsedPavimentaciones] = await Promise.all([
+          fetchSupabaseBacheos(),
           // Local CSV
           parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL'),
           // Pavimentaciones CSV (Google Sheets)
           parsePavimentaciones(`https://docs.google.com/spreadsheets/d/1ghxpCxkAQB-y_dh0dEbcMHvnhPI1r42lkbqEN7Q8kDg/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('DGOP - Pavimentacion')}`),
         ]);
 
-        const combinedRaw = [...e1, ...e2, ...e3, ...totalTickets];
+        const combinedRaw = [...dbBacheos, ...totalTickets];
         
         // --- PERFORMANCE OPTIMIZATION: One-time pre-calculation of inZona ---
         const enriched = combinedRaw
           .filter(p => p !== null && p !== undefined)
-          .map(p => ({
-            ...p,
-            inZona: boundaries ? isPointInGeoJSON(p.lat, p.lng, boundaries) : true
-          }));
+          .map(p => {
+            let inZona = true;
+            // Only run the heavy geographical check for citizen tickets or if not from Supabase DB
+            if (boundaries && (p.status === 'TICKET_TOTAL' || !p.id.startsWith('db-'))) {
+              inZona = isPointInGeoJSON(p.lat, p.lng, boundaries);
+            }
+            return {
+              ...p,
+              inZona
+            };
+          });
 
         console.log(`Carga completa: ${enriched.length} registros totales. ${parsedPavimentaciones.length} pavimentaciones.`);
         setData(enriched);
@@ -195,6 +242,22 @@ export default function App() {
       return t.date <= currentDate;
     });
   }, [allTramos, currentDate, filters.showE1, filters.showE2, filters.showE3]);
+
+  // Convert filtered tramos to a single GeoJSON FeatureCollection for high-performance rendering.
+  // This avoids mounting thousands of individual <Polyline> components which freezes React.
+  const tramosGeoJSON = useMemo(() => {
+    return {
+      type: 'FeatureCollection',
+      features: tramos.map((t, idx) => ({
+        type: 'Feature',
+        id: idx,
+        geometry: {
+          type: 'LineString',
+          coordinates: t.coords.map(c => [c[1], c[0]]) // Leaflet GeoJSON expects [lng, lat]
+        }
+      }))
+    };
+  }, [tramos]);
 
   // Throttled cluster data — limits re-clustering to max once per 300ms.
   // This keeps UI responsive during rapid slider dragging or animation playback.
@@ -509,8 +572,11 @@ export default function App() {
           <div className="mt-auto p-6 bg-slate-100/50">
              <div className="bg-white p-4 rounded-xl border border-slate-200 text-center">
                 <History className="w-6 h-6 text-toluca-burgundy mx-auto mb-2" />
-                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Última actualización</p>
-                <p className="text-xs font-black text-slate-800">13 de Abril, 2026</p>
+                <p className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Conexión a Base de Datos</p>
+                <p className="text-xs font-black text-slate-800 flex items-center justify-center gap-1">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                  En Tiempo Real
+                </p>
              </div>
           </div>
         </aside>
@@ -570,9 +636,17 @@ export default function App() {
             )}
             
             {/* Tramos Verdes — only visible in tramos mode */}
-            {filters.renderMode === 'tramos' && tramos.map((t, i) => (
-              <Polyline key={`tramo-${i}`} positions={t.coords} color="#16a34a" weight={4} opacity={0.6} />
-            ))}
+            {filters.renderMode === 'tramos' && (
+              <GeoJSON
+                key={`tramos-geojson-${tramos.length}`}
+                data={tramosGeoJSON as any}
+                style={{
+                  color: '#16a34a',
+                  weight: 4,
+                  opacity: 0.6
+                }}
+              />
+            )}
 
             {/* Clusters Verdes — only visible in clusters mode. Uses throttled data for performance. */}
             {filters.renderMode === 'clusters' && (
