@@ -16,16 +16,20 @@ import {
   Landmark, 
   Calendar,
   ChevronRight,
-  Info
+  Info,
+  Loader2
 } from 'lucide-react';
 
 // Marker Cluster component (manual instantiation for better control with 50k points)
 import MarkerClusterGroup from './components/MarkerClusterGroup.tsx';
+import CoordinateSearch from './components/CoordinateSearch.tsx';
+
 
 export default function App() {
   const [data, setData] = useState<PotholeData[]>([]);
   const [geoData, setGeoData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
+  const [dbLoading, setDbLoading] = useState(false);
   const [currentDate, setCurrentDate] = useState(new Date(2024, 11, 31));
   const [isPlaying, setIsPlaying] = useState(false);
   const [filters, setFilters] = useState({
@@ -46,106 +50,160 @@ export default function App() {
 
   useEffect(() => {
     const loadAll = async () => {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      let loadedBoundaries: any = null;
       try {
         const baseUrl = import.meta.env.BASE_URL;
         
-        // 1. Load territorial boundaries FIRST
-        let boundaries = null;
-        try {
-          const geoResp = await fetch(`${baseUrl}data/DELEGACIONES.geojson`);
-          boundaries = await geoResp.json();
-          
-          // Precalculate bbox for each feature to allow fast bounding-box reject in spatial queries
-          if (boundaries && boundaries.features) {
-            boundaries.features.forEach((feature: any) => {
-              if (!feature.bbox && feature.geometry) {
-                let minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity;
-                const coords = feature.geometry.coordinates;
-                const processRing = (ring: [number, number][]) => {
-                  for (const pt of ring) {
-                    if (pt[0] < minLng) minLng = pt[0];
-                    if (pt[1] < minLat) minLat = pt[1];
-                    if (pt[0] > maxLng) maxLng = pt[0];
-                    if (pt[1] > maxLat) maxLat = pt[1];
+        // 1. Load boundaries, tickets CSV, and pavimentaciones in parallel
+        const fetchGeoJSONBoundaries = async () => {
+          try {
+            const geoResp = await fetch(`${baseUrl}data/DELEGACIONES.geojson`);
+            const boundaries = await geoResp.json();
+            
+            // Precalculate bbox for each feature to allow fast bounding-box reject in spatial queries
+            if (boundaries && boundaries.features) {
+              boundaries.features.forEach((feature: any) => {
+                if (!feature.bbox && feature.geometry) {
+                  let minLng = Infinity, minLat = Infinity, maxLng = -Infinity, maxLat = -Infinity;
+                  const coords = feature.geometry.coordinates;
+                  const processRing = (ring: [number, number][]) => {
+                    for (const pt of ring) {
+                      if (pt[0] < minLng) minLng = pt[0];
+                      if (pt[1] < minLat) minLat = pt[1];
+                      if (pt[0] > maxLng) maxLng = pt[0];
+                      if (pt[1] > maxLat) maxLat = pt[1];
+                    }
+                  };
+                  if (feature.geometry.type === 'Polygon') {
+                    coords.forEach(processRing);
+                  } else if (feature.geometry.type === 'MultiPolygon') {
+                    coords.forEach((poly: any) => poly.forEach(processRing));
                   }
-                };
-                if (feature.geometry.type === 'Polygon') {
-                  coords.forEach(processRing);
-                } else if (feature.geometry.type === 'MultiPolygon') {
-                  coords.forEach((poly: any) => poly.forEach(processRing));
+                  feature.bbox = [minLng, minLat, maxLng, maxLat];
                 }
-                feature.bbox = [minLng, minLat, maxLng, maxLat];
-              }
-            });
+              });
+            }
+            setGeoData(boundaries);
+            loadedBoundaries = boundaries;
+            return boundaries;
+          } catch (geoErr) {
+            console.error("Error loading GeoJSON boundaries:", geoErr);
+            return null;
           }
-          
-          setGeoData(boundaries);
-        } catch (geoErr) {
-          console.error("Error loading GeoJSON boundaries:", geoErr);
-        }
+        };
 
-        // 2. Fetch executed bacheo from Supabase and tickets from CSV in parallel
         const fetchSupabaseBacheos = async (): Promise<PotholeData[]> => {
           try {
-            const { data: rows, error } = await supabase
+            const queryPromise = supabase
               .from('bacheo')
               .select('Id, idEtapa, fecha, estatus, folio, latitude, longitude, m2total, largo, ancho')
               .in('idEtapa', [1, 2, 3]);
+
+            const response = await (Promise.race([
+              queryPromise,
+              new Promise<never>((_, reject) => 
+                setTimeout(() => reject(new Error('Supabase Timeout (35s)')), 35000)
+              )
+            ]) as Promise<{ data: Record<string, unknown>[] | null; error: unknown }>);
+
+            const { data: rows, error } = response;
 
             if (error) {
               throw error;
             }
             if (!rows) return [];
-            return rows.map(mapSupabaseRowToPothole);
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
+            return (rows as unknown as any[]).map(mapSupabaseRowToPothole);
           } catch (dbErr) {
             console.error("Error reading database bacheos, falling back to empty:", dbErr);
             return [];
           }
         };
 
-        const [dbBacheos, totalTickets, parsedPavimentaciones] = await Promise.all([
-          fetchSupabaseBacheos(),
-          // Local CSV
+        const fetchPavimentacionesWithFallback = async (): Promise<PavimentacionData[]> => {
+          const remoteUrl = `https://docs.google.com/spreadsheets/d/1ghxpCxkAQB-y_dh0dEbcMHvnhPI1r42lkbqEN7Q8kDg/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('DGOP - Pavimentacion')}`;
+          const localUrl = `${baseUrl}DGOP - Pavimentacion.csv`;
+          
+          try {
+            return await Promise.race([
+              parsePavimentaciones(remoteUrl),
+              new Promise<never>((_, reject) => 
+                setTimeout(() => reject(new Error('Google Sheets Timeout (5s)')), 5000)
+              )
+            ]);
+          } catch (err) {
+            console.warn("Fallo la carga remota de pavimentaciones (usando respaldo local):", err);
+            try {
+              return await parsePavimentaciones(localUrl);
+            } catch (localErr) {
+              console.error("Fallo tambien la carga local de pavimentaciones:", localErr);
+              return [];
+            }
+          }
+        };
+
+        // Load local files and boundaries first
+        const [boundaries, totalTickets, parsedPavimentaciones] = await Promise.all([
+          fetchGeoJSONBoundaries(),
           parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL'),
-          // Pavimentaciones CSV (Google Sheets)
-          parsePavimentaciones(`https://docs.google.com/spreadsheets/d/1ghxpCxkAQB-y_dh0dEbcMHvnhPI1r42lkbqEN7Q8kDg/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('DGOP - Pavimentacion')}`),
+          fetchPavimentacionesWithFallback()
         ]);
 
-        const combinedRaw = [...dbBacheos, ...totalTickets];
-        
-        // --- PERFORMANCE OPTIMIZATION: One-time pre-calculation of inZona ---
-        const enriched = combinedRaw
+        // Process local tickets immediately
+        const enrichedTickets = totalTickets
           .filter(p => p !== null && p !== undefined)
-          .map(p => {
-            let inZona = true;
-            // Only run the heavy geographical check for citizen tickets or if not from Supabase DB
-            if (boundaries && (p.status === 'TICKET_TOTAL' || !p.id.startsWith('db-'))) {
-              inZona = isPointInGeoJSON(p.lat, p.lng, boundaries);
-            }
-            return {
-              ...p,
-              inZona
-            };
-          });
+          .map(p => ({
+            ...p,
+            inZona: boundaries ? isPointInGeoJSON(p.lat, p.lng, boundaries) : true
+          }));
 
-        console.log(`Carga completa: ${enriched.length} registros totales. ${parsedPavimentaciones.length} pavimentaciones.`);
-        setData(enriched);
-        setPavimentaciones(parsedPavimentaciones);
-
-        // Compute tramos from executed points inside boundaries (lines MUST have valid coords)
-        setTimeout(() => {
-          const ejecutadosEnZona = enriched.filter(p => 
-             p.status === 'EJECUTADO' && 
-             p.inZona && 
-             !isNaN(p.lat) && p.lat !== 0
-          );
-          const computed = groupIntoTramos(ejecutadosEnZona, 80, 2);
-          setAllTramos(computed);
-          setLoading(false);
-        }, 50);
+        console.log(`Carga inicial completada. Cargados ${enrichedTickets.length} tickets ciudadanos. Carga de base de datos ejecutándose en background.`);
         
+        // Show tickets and pavimentaciones immediately, and dismiss the loading screen
+        setData(enrichedTickets);
+        setPavimentaciones(parsedPavimentaciones);
+        setLoading(false);
+
+        // KICK OFF BACKGROUND SUPABASE LOAD
+        setDbLoading(true);
+        fetchSupabaseBacheos().then((dbBacheos) => {
+          if (dbBacheos && dbBacheos.length > 0) {
+            const enrichedBacheos = dbBacheos.map(p => ({
+              ...p,
+              inZona: loadedBoundaries ? isPointInGeoJSON(p.lat, p.lng, loadedBoundaries) : true
+            }));
+
+            // Merge background bacheo points into the dataset
+            setData(prev => {
+              const existingIds = new Set(prev.map(item => item.id));
+              const uniqueNew = enrichedBacheos.filter(item => !existingIds.has(item.id));
+              return [...prev, ...uniqueNew];
+            });
+
+            console.log(`Carga de base de datos completa. ${enrichedBacheos.length} baches ejecutados sincronizados.`);
+
+            // Precalculate tramos from background bacheos (which has the EJECUTADO points)
+            setTimeout(() => {
+              const ejecutadosEnZona = enrichedBacheos.filter(p => 
+                 p.status === 'EJECUTADO' && 
+                 p.inZona && 
+                 !isNaN(p.lat) && p.lat !== 0
+              );
+              const computed = groupIntoTramos(ejecutadosEnZona, 80, 2);
+              setAllTramos(computed);
+              setDbLoading(false);
+            }, 50);
+          } else {
+            setDbLoading(false);
+          }
+        }).catch(dbErr => {
+          console.error("Error loading background Supabase bacheos:", dbErr);
+          setDbLoading(false);
+        });
+
       } catch (err) {
-        console.error("Error loading CSV data:", err);
+        console.error("Error loading initial data:", err);
         setLoading(false);
       }
     };
@@ -327,8 +385,17 @@ export default function App() {
 
           <div className="flex items-center gap-3">
              <div className="bg-white/5 px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-[11px] font-bold tracking-wider">SISTEMA ACTIVO</span>
+                {dbLoading ? (
+                  <>
+                    <Loader2 className="w-3.5 h-3.5 text-toluca-gold animate-spin" />
+                    <span className="text-[11px] font-bold tracking-wider text-toluca-gold animate-pulse">CARGANDO BACHES (+50K)...</span>
+                  </>
+                ) : (
+                  <>
+                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                    <span className="text-[11px] font-bold tracking-wider">SISTEMA ACTIVO</span>
+                  </>
+                )}
              </div>
           </div>
         </div>
@@ -729,6 +796,7 @@ export default function App() {
               }
               return null;
             })}
+            <CoordinateSearch data={data} geoData={geoData} setFilters={setFilters} />
           </MapContainer>
 
           {/* Timeline Overlay */}
