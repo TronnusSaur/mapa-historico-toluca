@@ -387,7 +387,7 @@ export default function CoordinateSearch({ data, geoData, setFilters }: Props) {
           fillOpacity={0.65}
           className="search-highlight-marker"
         >
-          <Popup onClose={() => setSearchMarker(null)}>
+          <Popup eventHandlers={{ remove: () => setSearchMarker(null) }}>
             <div className="font-sans min-w-[150px] p-1">
               <div className="border-b border-slate-100 pb-1.5 mb-1.5">
                 <span className="text-[9px] font-extrabold tracking-widest text-toluca-gold uppercase">Ubicación Buscada</span>
