@@ -1,0 +1,2 @@
+PHOTOS_URL=https://cleaner-promotes-celebrity-str.trycloudflare.com
+SUPABASE_URL=https://decorating-correctly-accent-swing.trycloudflare.com
