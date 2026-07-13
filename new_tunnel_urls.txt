@@ -1,2 +1,2 @@
-PHOTOS_URL=https://cleaner-promotes-celebrity-str.trycloudflare.com
-SUPABASE_URL=https://decorating-correctly-accent-swing.trycloudflare.com
+PHOTOS_URL=https://addressed-flame-centers-sold.trycloudflare.com
+SUPABASE_URL=https://spot-proceedings-vii-carol.trycloudflare.com
