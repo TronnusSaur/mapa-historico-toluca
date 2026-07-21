@@ -11,6 +11,7 @@ interface FilterState {
   showE1: boolean;
   showE2: boolean;
   showE3: boolean;
+  showSP: boolean;
   showPavimentaciones: boolean;
   renderMode: 'tramos' | 'clusters';
 }

@@ -40,6 +40,7 @@ export default function App() {
     showE1: true,
     showE2: true,
     showE3: true,
+    showSP: true,
     showPavimentaciones: true,
     renderMode: 'tramos' as 'tramos' | 'clusters'
   });
@@ -98,7 +99,7 @@ export default function App() {
             const queryPromise = supabase
               .from('bacheo')
               .select('Id, idEtapa, fecha, estatus, folio, latitude, longitude, m2total, largo, ancho')
-              .in('idEtapa', [1, 2, 3]);
+              .in('idEtapa', [1, 2, 3, 101]);
 
             const response = await (Promise.race([
               queryPromise,
@@ -188,6 +189,7 @@ export default function App() {
               const ejecutadosEnZona = enrichedBacheos.filter(p => 
                  p.status === 'EJECUTADO' && 
                  p.inZona && 
+                 p.stage !== 101 &&
                  !isNaN(p.lat) && p.lat !== 0
               );
               const computed = groupIntoTramos(ejecutadosEnZona, 80, 2);
@@ -208,9 +210,7 @@ export default function App() {
       }
     };
     loadAll();
-  }, []);
-
-  // Statistics: dynamic calculation based on timeline
+  }, []);  // Statistics: dynamic calculation based on timeline
   const stats = useMemo(() => {
     // 1. All Work Progress up to today (regardless of visibility, for integrity)
     // We count EVERY record from the CSV here.
@@ -221,6 +221,7 @@ export default function App() {
        if (p.stage === 1 && !filters.showE1) return false;
        if (p.stage === 2 && !filters.showE2) return false;
        if (p.stage === 3 && !filters.showE3) return false;
+       if (p.stage === 101 && !filters.showSP) return false;
        return true;
     });
 
@@ -244,7 +245,7 @@ export default function App() {
        const wasReported = (p.reportDate || p.date) <= currentDate;
        const wasAttended = p.resolvedDate && p.resolvedDate <= currentDate;
        return wasReported && wasAttended;
-    });
+     });
 
     return {
       total: data.length,
@@ -262,7 +263,7 @@ export default function App() {
       e3Baches: e3Done.length,
       e3M2: e3Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0)
     };
-  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3]);
+  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP]);
 
   // Map Visualization Data (Optimized: uses pre-calculated p.inZona)
   const visibleData = useMemo(() => {
@@ -277,6 +278,7 @@ export default function App() {
        if (p.stage === 1 && !filters.showE1) return false;
        if (p.stage === 2 && !filters.showE2) return false;
        if (p.stage === 3 && !filters.showE3) return false;
+       if (p.stage === 101 && !filters.showSP) return false;
 
        // 4. Status/Timeline filter
        if (p.status === 'EJECUTADO') return p.date <= currentDate;
@@ -289,7 +291,7 @@ export default function App() {
 
        return p.date <= currentDate;
     });
-  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3]);
+  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP]);
 
   // Tramos: filter the pre-computed chains by currentDate and stage
   const tramos = useMemo(() => {
@@ -297,9 +299,10 @@ export default function App() {
       if (t.stage === 1 && !filters.showE1) return false;
       if (t.stage === 2 && !filters.showE2) return false;
       if (t.stage === 3 && !filters.showE3) return false;
+      if (t.stage === 101 && !filters.showSP) return false;
       return t.date <= currentDate;
     });
-  }, [allTramos, currentDate, filters.showE1, filters.showE2, filters.showE3]);
+  }, [allTramos, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP]);
 
   // Convert filtered tramos to a single GeoJSON FeatureCollection for high-performance rendering.
   // This avoids mounting thousands of individual <Polyline> components which freezes React.
@@ -513,7 +516,7 @@ export default function App() {
                  <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 mt-4 flex items-center gap-2">
                     <Filter size={14} /> Filtros de Etapa (Mapa)
                  </h3>
-                 <div className="grid grid-cols-3 gap-2 mb-4">
+                 <div className="grid grid-cols-2 gap-2 mb-4">
                     <button 
                       onClick={() => setFilters(f => ({ ...f, showE1: !f.showE1 }))}
                       className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE1 ? 'bg-toluca-gold border-toluca-gold text-white' : 'bg-white border-slate-200 text-slate-400'}`}
@@ -531,6 +534,12 @@ export default function App() {
                       className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE3 ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
                     >
                       ETAPA 3
+                    </button>
+                    <button 
+                      onClick={() => setFilters(f => ({ ...f, showSP: !f.showSP }))}
+                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showSP ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                    >
+                      SERVICIOS PÚBLICOS
                     </button>
                  </div>
 
@@ -715,12 +724,21 @@ export default function App() {
               />
             )}
 
-            {/* Clusters Verdes — only visible in clusters mode. Uses throttled data for performance. */}
+            {/* Clusters Verdes (Obras Públicas) — only visible in clusters mode. Uses throttled data for performance. */}
             {filters.renderMode === 'clusters' && (
               <MarkerClusterGroup
-                key="cluster-ejecutado"
+                key="cluster-ejecutado-op"
                 clusterColor="#16a34a"
-                data={throttledClusterData.filter(p => p.status === 'EJECUTADO')}
+                data={throttledClusterData.filter(p => p.status === 'EJECUTADO' && p.stage !== 101)}
+              />
+            )}
+
+            {/* Clusters Azules (Servicios Públicos) — only visible in clusters mode. Uses throttled data for performance. */}
+            {filters.renderMode === 'clusters' && (
+              <MarkerClusterGroup
+                key="cluster-ejecutado-sp"
+                clusterColor="#2563eb"
+                data={throttledClusterData.filter(p => p.status === 'EJECUTADO' && p.stage === 101)}
               />
             )}
 

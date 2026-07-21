@@ -76,13 +76,43 @@ async function fetchPotholeDetails(id: string): Promise<PotholeDetails> {
  */
 function buildPopupContent(p: PotholeData, details?: PotholeDetails, isLoading = false): string {
   if (p.status === 'EJECUTADO') {
-    const dateStr = p.date.toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric' });
-    
-    // Fall back to preloaded values if details are not loaded yet (useful for loading state)
     const street = details ? details.calle : (p.street || '...');
     const delegation = details ? details.delegacion : (p.delegation || '...');
     const colonia = details ? details.colonia : '';
 
+    if (p.stage === 101) {
+      let photoHTML = '';
+      if (isLoading) {
+        photoHTML = `<div style="margin-top:8px;font-size:11px;color:#4b5563;text-align:center;padding:12px;border-top:1px dashed #cbd5e1;background:#f8fafc;border-radius:6px;">
+          <span style="display:inline-block;animation:pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;">⏳ Cargando foto...</span>
+        </div>`;
+      } else if (details && details.photos.length > 0) {
+        photoHTML = `<div style="margin-top:8px;display:flex;flex-direction:column;align-items:center;">
+          <a href="${details.photos[0]}" target="_blank" rel="noopener noreferrer" style="display:block;width:100%;">
+            <img src="${details.photos[0]}" style="width:100%;height:220px;object-fit:cover;border-radius:8px;border:2px solid #2563eb;box-shadow:0 4px 6px -1px rgba(37, 99, 235, 0.15);" 
+                 alt="Foto de Bache" 
+                 onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=\\'http://www.w3.org/2000/svg\\' width=\\'50\\' height=\\'50\\' viewBox=\\'0 0 24 24\\' fill=\\'none\\' stroke=\\'%232563eb\\' stroke-width=\\'2\\'><rect width=\\'18\\' height=\\'18\\' x=\\'3\\' y=\\'3\\' rx=\\'2\\'/><circle cx=\\'9\\' cy=\\'9\\' r=\\'2\\'/><path d=\\'m21 15-3.086-3.086a2 2 0 0 0-2.828 0L6 21\\'/></svg>';" />
+          </a>
+        </div>`;
+      } else if (details && details.photos.length === 0) {
+        photoHTML = `<div style="margin-top:8px;font-size:11px;color:#94a3b8;text-align:center;padding:12px;border-top:1px dashed #cbd5e1;">
+          Sin foto registrada
+        </div>`;
+      }
+
+      return `<div style="font-family:sans-serif;min-width:320px;max-width:380px;">
+        <div style="border-bottom:2px solid #2563eb;padding-bottom:4px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
+          <b style="color:#2563eb;font-size:14px;">Servicios Públicos</b>
+          <span style="background:#2563eb;color:white;font-size:9px;padding:2px 6px;border-radius:4px;font-weight:bold;">Folio: ${p.originalId || '—'}</span>
+        </div>
+        <div style="font-size:12px;color:#475569;margin-bottom:6px;line-height:1.4;">
+          <b>Ubicación:</b> ${street}
+        </div>
+        ${photoHTML}
+      </div>`;
+    }
+
+    const dateStr = p.date.toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric' });
     let photosHTML = '';
     if (isLoading) {
       photosHTML = `<div style="margin-top:8px;font-size:11px;color:#4b5563;text-align:center;padding:8px 4px;border-top:1px dashed #cbd5e1;background:#f8fafc;border-radius:4px;">
@@ -279,8 +309,11 @@ export default function MarkerClusterGroup({ data, clusterColor }: Props) {
         const p = dataByKey.get(key)!;
 
         let color = '#e63946';
-        if (p.status === 'EJECUTADO') color = '#16a34a';
-        else if (p.status === 'HISTORICO') color = '#ff9f1c';
+        if (p.status === 'EJECUTADO') {
+          color = p.stage === 101 ? '#2563eb' : '#16a34a';
+        } else if (p.status === 'HISTORICO') {
+          color = '#ff9f1c';
+        }
 
         const marker = L.circleMarker([p.lat, p.lng], {
           radius: 5,
