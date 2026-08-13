@@ -80,7 +80,11 @@ function buildPopupContent(p: PotholeData, details?: PotholeDetails, isLoading =
     const delegation = details ? details.delegacion : (p.delegation || '...');
     const colonia = details ? details.colonia : '';
 
-    if (p.stage === 101) {
+    if (p.stage && p.stage >= 100) {
+      let yearLabel = '2025';
+      if (p.stage === 102) yearLabel = '2026';
+      if (p.stage === 103) yearLabel = '2027';
+
       let photoHTML = '';
       if (isLoading) {
         photoHTML = `<div style="margin-top:8px;font-size:11px;color:#4b5563;text-align:center;padding:12px;border-top:1px dashed #cbd5e1;background:#f8fafc;border-radius:6px;">
@@ -102,7 +106,7 @@ function buildPopupContent(p: PotholeData, details?: PotholeDetails, isLoading =
 
       return `<div style="font-family:sans-serif;min-width:320px;max-width:380px;">
         <div style="border-bottom:2px solid #2563eb;padding-bottom:4px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center;">
-          <b style="color:#2563eb;font-size:14px;">Servicios Públicos</b>
+          <b style="color:#2563eb;font-size:14px;">Servicios Públicos (${yearLabel})</b>
           <span style="background:#2563eb;color:white;font-size:9px;padding:2px 6px;border-radius:4px;font-weight:bold;">Folio: ${p.originalId || '—'}</span>
         </div>
         <div style="font-size:12px;color:#475569;margin-bottom:6px;line-height:1.4;">

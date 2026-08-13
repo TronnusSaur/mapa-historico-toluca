@@ -40,7 +40,9 @@ export default function App() {
     showE1: true,
     showE2: true,
     showE3: true,
-    showSP: true,
+    showSP2025: true,
+    showSP2026: true,
+    showSP2027: false,
     showPavimentaciones: true,
     renderMode: 'tramos' as 'tramos' | 'clusters'
   });
@@ -99,7 +101,7 @@ export default function App() {
             const queryPromise = supabase
               .from('bacheo')
               .select('Id, idEtapa, fecha, estatus, folio, latitude, longitude, m2total, largo, ancho')
-              .in('idEtapa', [1, 2, 3, 101]);
+              .in('idEtapa', [1, 2, 3, 101, 102, 103]);
 
             const response = await (Promise.race([
               queryPromise,
@@ -221,7 +223,9 @@ export default function App() {
        if (p.stage === 1 && !filters.showE1) return false;
        if (p.stage === 2 && !filters.showE2) return false;
        if (p.stage === 3 && !filters.showE3) return false;
-       if (p.stage === 101 && !filters.showSP) return false;
+       if (p.stage === 101 && !filters.showSP2025) return false;
+       if (p.stage === 102 && !filters.showSP2026) return false;
+       if (p.stage === 103 && !filters.showSP2027) return false;
        return true;
     });
 
@@ -263,7 +267,7 @@ export default function App() {
       e3Baches: e3Done.length,
       e3M2: e3Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0)
     };
-  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP]);
+  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
 
   // Map Visualization Data (Optimized: uses pre-calculated p.inZona)
   const visibleData = useMemo(() => {
@@ -278,7 +282,9 @@ export default function App() {
        if (p.stage === 1 && !filters.showE1) return false;
        if (p.stage === 2 && !filters.showE2) return false;
        if (p.stage === 3 && !filters.showE3) return false;
-       if (p.stage === 101 && !filters.showSP) return false;
+       if (p.stage === 101 && !filters.showSP2025) return false;
+       if (p.stage === 102 && !filters.showSP2026) return false;
+       if (p.stage === 103 && !filters.showSP2027) return false;
 
        // 4. Status/Timeline filter
        if (p.status === 'EJECUTADO') return p.date <= currentDate;
@@ -291,7 +297,7 @@ export default function App() {
 
        return p.date <= currentDate;
     });
-  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP]);
+  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
 
   // Tramos: filter the pre-computed chains by currentDate and stage
   const tramos = useMemo(() => {
@@ -299,10 +305,12 @@ export default function App() {
       if (t.stage === 1 && !filters.showE1) return false;
       if (t.stage === 2 && !filters.showE2) return false;
       if (t.stage === 3 && !filters.showE3) return false;
-      if (t.stage === 101 && !filters.showSP) return false;
+      if (t.stage === 101 && !filters.showSP2025) return false;
+      if (t.stage === 102 && !filters.showSP2026) return false;
+      if (t.stage === 103 && !filters.showSP2027) return false;
       return t.date <= currentDate;
     });
-  }, [allTramos, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP]);
+  }, [allTramos, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
 
   // Convert filtered tramos to a single GeoJSON FeatureCollection for high-performance rendering.
   // This avoids mounting thousands of individual <Polyline> components which freezes React.
@@ -513,10 +521,10 @@ export default function App() {
               </div>
 
               <div className="pt-2 border-t border-slate-200">
-                 <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 mt-4 flex items-center gap-2">
-                    <Filter size={14} /> Filtros de Etapa (Mapa)
+                 <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 mt-4 flex items-center gap-2">
+                    <Filter size={14} /> DGOP (Obras Públicas)
                  </h3>
-                 <div className="grid grid-cols-2 gap-2 mb-4">
+                 <div className="grid grid-cols-3 gap-2 mb-4">
                     <button 
                       onClick={() => setFilters(f => ({ ...f, showE1: !f.showE1 }))}
                       className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE1 ? 'bg-toluca-gold border-toluca-gold text-white' : 'bg-white border-slate-200 text-slate-400'}`}
@@ -535,11 +543,31 @@ export default function App() {
                     >
                       ETAPA 3
                     </button>
+                 </div>
+
+                 <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 mt-4 flex items-center gap-2">
+                    <Filter size={14} /> Servicios Públicos (DGSP)
+                 </h3>
+                 <div className="grid grid-cols-3 gap-2 mb-4">
                     <button 
-                      onClick={() => setFilters(f => ({ ...f, showSP: !f.showSP }))}
-                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showSP ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                      onClick={() => setFilters(f => ({ ...f, showSP2025: !f.showSP2025 }))}
+                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showSP2025 ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
                     >
-                      SERVICIOS PÚBLICOS
+                      2025
+                    </button>
+                    <button 
+                      onClick={() => setFilters(f => ({ ...f, showSP2026: !f.showSP2026 }))}
+                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showSP2026 ? 'bg-indigo-600 border-indigo-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                    >
+                      2026
+                    </button>
+                    <button 
+                      disabled
+                      className="p-1.5 rounded-lg border border-slate-200 bg-slate-100 text-slate-400 text-[10px] font-bold cursor-not-allowed opacity-60 flex flex-col items-center justify-center"
+                      title="Próximamente"
+                    >
+                      <span>2027</span>
+                      <span className="text-[7px] text-slate-400 font-normal uppercase">Próximamente</span>
                     </button>
                  </div>
 
