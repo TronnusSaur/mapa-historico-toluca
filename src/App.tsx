@@ -96,30 +96,33 @@ export default function App() {
           }
         };
 
-        const fetchSupabaseBacheos = async (): Promise<PotholeData[]> => {
+        const fetchStageBacheos = async (stageFilter: string, stageName: string): Promise<PotholeData[]> => {
           try {
-            const queryPromise = supabase
+            console.log(`Iniciando descarga de ${stageName}...`);
+            let query = supabase
               .from('bacheo')
-              .select('Id, idEtapa, fecha, estatus, folio, latitude, longitude, m2total, largo, ancho')
-              .in('idEtapa', [1, 2, 3, 101, 102, 103]);
+              .select('Id, idEtapa, fecha, folio, latitude, longitude, m2total, largo');
+
+            if (stageFilter === '1') query = query.eq('idEtapa', 1);
+            else if (stageFilter === '2') query = query.eq('idEtapa', 2);
+            else if (stageFilter === '3') query = query.eq('idEtapa', 3);
+            else if (stageFilter === 'sp') query = query.in('idEtapa', [101, 102, 103]);
 
             const response = await (Promise.race([
-              queryPromise,
+              query,
               new Promise<never>((_, reject) => 
-                setTimeout(() => reject(new Error('Supabase Timeout (35s)')), 35000)
+                setTimeout(() => reject(new Error(`Timeout en ${stageName} (180s)`)), 180000)
               )
             ]) as Promise<{ data: Record<string, unknown>[] | null; error: unknown }>);
 
             const { data: rows, error } = response;
-
-            if (error) {
-              throw error;
-            }
+            if (error) throw error;
             if (!rows) return [];
+            console.log(`Descargados ${rows.length} registros de ${stageName}`);
             // eslint-disable-next-line @typescript-eslint/no-explicit-any
             return (rows as unknown as any[]).map(mapSupabaseRowToPothole);
-          } catch (dbErr) {
-            console.error("Error reading database bacheos, falling back to empty:", dbErr);
+          } catch (err) {
+            console.error(`Error al descargar ${stageName}:`, err);
             return [];
           }
         };
@@ -168,41 +171,49 @@ export default function App() {
         setPavimentaciones(parsedPavimentaciones);
         setLoading(false);
 
-        // KICK OFF BACKGROUND SUPABASE LOAD
+        // KICK OFF BACKGROUND SUPABASE LOAD PROGRESSIVELY
         setDbLoading(true);
-        fetchSupabaseBacheos().then((dbBacheos) => {
-          if (dbBacheos && dbBacheos.length > 0) {
-            const enrichedBacheos = dbBacheos.map(p => ({
-              ...p,
-              inZona: loadedBoundaries ? isPointInGeoJSON(p.lat, p.lng, loadedBoundaries) : true
-            }));
+        const stageTasks = [
+          { filter: '1', name: 'Etapa 1' },
+          { filter: 'sp', name: 'Servicios Públicos' },
+          { filter: '3', name: 'Etapa 3' },
+          { filter: '2', name: 'Etapa 2' }
+        ];
 
-            // Merge background bacheo points into the dataset
-            setData(prev => {
-              const existingIds = new Set(prev.map(item => item.id));
-              const uniqueNew = enrichedBacheos.filter(item => !existingIds.has(item.id));
-              return [...prev, ...uniqueNew];
-            });
+        let allLoadedBacheos: PotholeData[] = [];
 
-            console.log(`Carga de base de datos completa. ${enrichedBacheos.length} baches ejecutados sincronizados.`);
+        (async () => {
+          for (const task of stageTasks) {
+            const stageBacheos = await fetchStageBacheos(task.filter, task.name);
+            if (stageBacheos.length > 0) {
+              const enriched = stageBacheos.map(p => ({
+                ...p,
+                inZona: loadedBoundaries ? isPointInGeoJSON(p.lat, p.lng, loadedBoundaries) : true
+              }));
 
-            // Precalculate tramos from background bacheos (which has the EJECUTADO points)
-            setTimeout(() => {
-              const ejecutadosEnZona = enrichedBacheos.filter(p => 
-                 p.status === 'EJECUTADO' && 
-                 p.inZona && 
-                 p.stage !== 101 &&
-                 !isNaN(p.lat) && p.lat !== 0
-              );
-              const computed = groupIntoTramos(ejecutadosEnZona, 80, 2);
-              setAllTramos(computed);
-              setDbLoading(false);
-            }, 50);
-          } else {
-            setDbLoading(false);
+              allLoadedBacheos = [...allLoadedBacheos, ...enriched];
+
+              setData(prev => {
+                const existingIds = new Set(prev.map(item => item.id));
+                const uniqueNew = enriched.filter(item => !existingIds.has(item.id));
+                return [...prev, ...uniqueNew];
+              });
+            }
           }
-        }).catch(dbErr => {
-          console.error("Error loading background Supabase bacheos:", dbErr);
+
+          // Precalculate tramos once all bacheos are downloaded
+          const ejecutadosEnZona = allLoadedBacheos.filter(p => 
+             p.status === 'EJECUTADO' && 
+             p.inZona && 
+             !(p.stage && p.stage >= 100) &&
+             !isNaN(p.lat) && p.lat !== 0
+          );
+          const computed = groupIntoTramos(ejecutadosEnZona, 80, 2);
+          setAllTramos(computed);
+          setDbLoading(false);
+          console.log(`Carga de base de datos completa. ${allLoadedBacheos.length} baches ejecutados sincronizados.`);
+        })().catch(err => {
+          console.error("Error en sincronización progresiva de base de datos:", err);
           setDbLoading(false);
         });
 
