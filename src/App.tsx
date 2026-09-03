@@ -24,6 +24,7 @@ import {
 import MarkerClusterGroup from './components/MarkerClusterGroup.tsx';
 import CoordinateSearch from './components/CoordinateSearch.tsx';
 
+const CARTO_KEY = import.meta.env.VITE_CARTO_KEY || 'cb1_2v8k_1_77d3a08b9dfcaeb412cca4b0';
 
 export default function App() {
   const [data, setData] = useState<PotholeData[]>([]);
@@ -700,8 +701,10 @@ export default function App() {
         <main className="flex-1 relative">
           <MapContainer center={[19.2827, -99.6557]} zoom={13} className="h-full w-full" zoomControl={false}>
             <TileLayer
-              url="https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png"
+              url={`https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`}
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+              subdomains="abcd"
+              maxZoom={20}
             />
             
             {filters.showGeoJSON && geoData && (

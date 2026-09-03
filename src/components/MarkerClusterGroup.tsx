@@ -43,7 +43,7 @@ async function fetchPotholeDetails(id: string): Promise<PotholeDetails> {
       'fotoBacheTerminado1', 'fotoBacheTerminado2', 'fotoBacheTerminado3'
     ];
 
-    const photosUrlBase = import.meta.env.VITE_PHOTOS_URL || 'http://192.168.1.33:8080';
+    const photosUrlBase = import.meta.env.VITE_PHOTOS_URL || 'http://192.168.1.142:8080';
     const urls: string[] = [];
 
     for (const field of photoFields) {
@@ -52,8 +52,12 @@ async function fetchPotholeDetails(id: string): Promise<PotholeDetails> {
         let url = val.trim();
         // If it is a relative path, prefix it with the photos url base
         if (!url.startsWith('http://') && !url.startsWith('https://') && !url.startsWith('data:')) {
-          const base = photosUrlBase.endsWith('/') ? photosUrlBase.slice(0, -1) : photosUrlBase;
-          const path = url.startsWith('/') ? url : '/' + url;
+          let base = photosUrlBase.endsWith('/') ? photosUrlBase.slice(0, -1) : photosUrlBase;
+          let path = url.startsWith('/') ? url : '/' + url;
+          // Avoid duplicate /imagenes segment if both base and path contain it
+          if (base.endsWith('/imagenes') && path.startsWith('/imagenes')) {
+            base = base.replace(/\/imagenes$/, '');
+          }
           url = `${base}${path}`;
         }
         urls.push(url);
