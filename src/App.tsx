@@ -112,7 +112,7 @@ export default function App() {
             const response = await (Promise.race([
               query,
               new Promise<never>((_, reject) => 
-                setTimeout(() => reject(new Error(`Timeout en ${stageName} (180s)`)), 180000)
+                setTimeout(() => reject(new Error(`Timeout en ${stageName} (45s)`)), 45000)
               )
             ]) as Promise<{ data: Record<string, unknown>[] | null; error: unknown }>);
 
