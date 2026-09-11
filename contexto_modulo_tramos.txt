@@ -1,0 +1,251 @@
+===============================================================================
+    CONTEXTO TÉCNICO: MÓDULO DE GENERACIÓN DE TRAMOS VIALES (BACHEO Y PAVIMENTACIÓN)
+===============================================================================
+
+Este documento sirve como especificación técnica y base de contexto (prompt/context feed) para alimentar a otra instancia de IA Antigravity. Contiene el diseño, la lógica de negocio, algoritmos de optimización espacial y la guía de portabilidad de tramos en mapas interactivos.
+
+-------------------------------------------------------------------------------
+1. PROPÓSITO DEL MÓDULO
+-------------------------------------------------------------------------------
+El objetivo es transformar datos geográficos puntuales dispersos o estructurados en polilíneas (tramos viales continuos). Esto mejora drásticamente el rendimiento del mapa y permite una visualización coherente de la conectividad de las vialidades rehabilitadas.
+
+Soporta dos metodologías de ingesta de datos:
+A. BACHEO (Agrupamiento espacial algorítmico): Puntos aislados que representan reparaciones unitarias. Se agrupan según proximidad geográfica (vecinos más cercanos por umbral de distancia).
+B. PAVIMENTACIÓN (Trazado secuencial explícito): Cada fila es una obra de pavimentación única. Su trayecto está predefinido en la tabla por columnas correlativas ordenadas (P1, P2, P3... Pn).
+
+-------------------------------------------------------------------------------
+2. METODOLOGÍA A: BACHEO - ALGORITMO DE AGRUPACIÓN ESPACIAL (CHAINING)
+-------------------------------------------------------------------------------
+Dado un arreglo de puntos dispersos, se busca formar cadenas (tramos). Para evitar una complejidad O(N^2) que congelaría el navegador, se implementa una optimización de Hashing Espacial (Spatial Grid).
+
+1. Rejilla Espacial (buildSpatialGrid):
+   - Se aproxima la equivalencia de metros a grados de latitud (1 grado ≈ 111,320 metros).
+   - Se divide el espacio en celdas de tamaño proporcional al umbral (ej. 80 metros):
+     row = Math.floor(lat / cellDeg)
+     col = Math.floor(lng / cellDeg)
+   - Los puntos se asocian a sus coordenadas de celda usando un Map.
+
+2. Generación de Cadenas (Chaining):
+   - Se recorre cada punto. Si ya pertenece a un tramo, se ignora (marcado en un Uint8Array de visited para consulta instantánea O(1)).
+   - Si no está visitado, se inicia una nueva polilínea.
+   - Para buscar el siguiente punto de la línea, se consultan los vecinos únicamente en la celda actual y en las 8 celdas adyacentes (reduciendo las comparaciones de O(N) a O(1)).
+   - Se calcula la distancia Haversine exacta con los vecinos no visitados locales.
+   - Se selecciona el vecino más cercano dentro del umbral (threshold, ej. 80m). Se marca como visitado, se une a la cadena y se repite recursivamente.
+   - Si no hay vecinos válidos dentro del umbral, se cierra la cadena.
+   - Si la cadena tiene una longitud >= minLength (ej. 2 puntos), se registra como un Tramo.
+
+-------------------------------------------------------------------------------
+3. METODOLOGÍA B: PAVIMENTACIÓN - EXTRACCIÓN ORDENADA (COLUMNAS P1, P2, P3...)
+-------------------------------------------------------------------------------
+Para el dataset "DGOP - Pavimentacion", cada fila ya representa una obra vial en sí misma. La trayectoria de la pavimentación se define mediante columnas dinámicas ordenadas correlativamente (P1, P2, P3... Pn).
+
+Lógica de extracción:
+1. Escanear las llaves de la fila buscando el patrón de columnas que cumpla con la expresión regular /^P\d+$/i.
+2. Ordenar las columnas numéricamente según su índice (evitando que P10 se ordene antes que P2 alfabéticamente).
+3. Extraer las coordenadas lat/lng válidas en orden y generar el arreglo coords directas.
+
+-------------------------------------------------------------------------------
+4. CÓDIGO FUENTE DESACOPLADO (TYPESCRIPT)
+-------------------------------------------------------------------------------
+
+```typescript
+export interface MapPoint {
+  lat: number;
+  lng: number;
+  [key: string]: any;
+}
+
+export interface GeneratedTramo<T = MapPoint> {
+  coords: [number, number][];
+  points: T[];
+}
+
+// 1. DISTANCIA HAVERSINE
+export function haversineDistance(lat1: number, lng1: number, lat2: number, lng2: number): number {
+  const R = 6371000; // Radio de la Tierra en metros
+  const toRad = (deg: number) => (deg * Math.PI) / 180;
+  const dLat = toRad(lat2 - lat1);
+  const dLng = toRad(lng2 - lng1);
+  const a =
+    Math.sin(dLat / 2) ** 2 +
+    Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+  return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+}
+
+// 2. CONSTRUCCIÓN DE GRILLA ESPACIAL
+function buildSpatialGrid<T extends MapPoint>(data: T[], cellSizeMeters: number) {
+  const cellDeg = cellSizeMeters / 111320;
+  const grid = new Map<string, number[]>();
+
+  data.forEach((p, i) => {
+    const row = Math.floor(p.lat / cellDeg);
+    const col = Math.floor(p.lng / cellDeg);
+    const key = `${row}:${col}`;
+    if (!grid.has(key)) grid.set(key, []);
+    grid.get(key)!.push(i);
+  });
+
+  return { grid, cellDeg };
+}
+
+// 3. CONSULTA DE VECINOS LIMITADOS
+function getNeighbors<T extends MapPoint>(
+  idx: number,
+  data: T[],
+  grid: Map<string, number[]>,
+  cellDeg: number,
+  thresholdMeters: number
+): number[] {
+  const p = data[idx];
+  const row = Math.floor(p.lat / cellDeg);
+  const col = Math.floor(p.lng / cellDeg);
+  const neighbors: number[] = [];
+
+  for (let dr = -1; dr <= 1; dr++) {
+    for (let dc = -1; dc <= 1; dc++) {
+      const key = `${row + dr}:${col + dc}`;
+      const cell = grid.get(key);
+      if (!cell) continue;
+      for (const j of cell) {
+        if (j === idx) continue;
+        const dist = haversineDistance(p.lat, p.lng, data[j].lat, data[j].lng);
+        if (dist <= thresholdMeters) {
+          neighbors.push(j);
+        }
+      }
+    }
+  }
+  return neighbors;
+}
+
+// 4. MOTOR DE AGRUPACIÓN (BACHEO)
+export function generateTramosFromPoints<T extends MapPoint>(
+  data: T[],
+  threshold = 80,
+  minLength = 2
+): GeneratedTramo<T>[] {
+  if (!data || data.length === 0) return [];
+
+  const { grid, cellDeg } = buildSpatialGrid(data, threshold);
+  const visited = new Uint8Array(data.length);
+  const tramos: GeneratedTramo<T>[] = [];
+
+  for (let startIdx = 0; startIdx < data.length; startIdx++) {
+    if (visited[startIdx]) continue;
+    visited[startIdx] = 1;
+
+    const coords: [number, number][] = [[data[startIdx].lat, data[startIdx].lng]];
+    const points: T[] = [data[startIdx]];
+    let current = startIdx;
+
+    while (true) {
+      const neighbors = getNeighbors(current, data, grid, cellDeg, threshold);
+      let bestDist = Infinity;
+      let bestIdx = -1;
+
+      for (const n of neighbors) {
+        if (visited[n]) continue;
+        const d = haversineDistance(
+          data[current].lat, data[current].lng,
+          data[n].lat, data[n].lng
+        );
+        if (d < bestDist) {
+          bestDist = d;
+          bestIdx = n;
+        }
+      }
+
+      if (bestIdx === -1) break;
+
+      visited[bestIdx] = 1;
+      coords.push([data[bestIdx].lat, data[bestIdx].lng]);
+      points.push(data[bestIdx]);
+      current = bestIdx;
+    }
+
+    if (coords.length >= minLength) {
+      tramos.push({ coords, points });
+    }
+  }
+
+  return tramos;
+}
+
+// 5. MOTOR DE EXTRACCIÓN SECUENCIAL (PAVIMENTACIÓN)
+export function getLineFromSequentialColumns(
+  row: Record<string, any>,
+  extractCoordsFn: (str: string) => { lat: number; lng: number } | null
+): [number, number][] {
+  // Filtrar y ordenar numéricamente las columnas P1, P2, P3...
+  const pKeys = Object.keys(row)
+    .filter(key => /^P\d+$/i.test(key.trim()))
+    .sort((a, b) => {
+      const numA = parseInt(a.trim().match(/\d+/)![0], 10);
+      const numB = parseInt(b.trim().match(/\d+/)![0], 10);
+      return numA - numB;
+    });
+
+  const coords: [number, number][] = [];
+
+  pKeys.forEach(key => {
+    const val = row[key];
+    if (val) {
+      const pt = extractCoordsFn(val.toString());
+      if (pt && !isNaN(pt.lat) && !isNaN(pt.lng) && pt.lat !== 0 && pt.lng !== 0) {
+        coords.push([pt.lat, pt.lng]);
+      }
+    }
+  });
+
+  return coords;
+}
+```
+
+-------------------------------------------------------------------------------
+5. INTEGRACIÓN EN APIS DE MAPAS COMUNES
+-------------------------------------------------------------------------------
+Dado que ambas metodologías producen arreglos de coordenadas [lat, lng][], la capa de renderizado es compartida.
+
+A. Leaflet (React-Leaflet)
+```tsx
+{tramos.map((t, idx) => (
+  <Polyline key={idx} positions={t.coords} color="#16a34a" weight={4} opacity={0.7} />
+))}
+```
+
+B. Google Maps JS API
+```javascript
+tramos.forEach(t => {
+  new google.maps.Polyline({
+    path: t.coords.map(c => ({ lat: c[0], lng: c[1] })),
+    strokeColor: '#16A34A',
+    strokeWeight: 4,
+    map: map
+  });
+});
+```
+
+C. Mapbox / MapLibre (Por hardware vía GeoJSON MultiLineString)
+```javascript
+const geojson = {
+  type: 'FeatureCollection',
+  features: tramos.map(t => ({
+    type: 'Feature',
+    geometry: {
+      type: 'LineString',
+      coordinates: t.coords.map(c => [c[1], c[0]]) // Mapbox es [lng, lat]
+    }
+  }))
+};
+map.addSource('tramos', { type: 'geojson', data: geojson });
+map.addLayer({ id: 'tramos-layer', type: 'line', source: 'tramos', paint: { 'line-color': '#16a34a', 'line-width': 4 } });
+```
+
+-------------------------------------------------------------------------------
+6. RECOMENDACIÓN DE ARQUITECTURA PARA GRANDES VOLÚMENES (BACKEND)
+-------------------------------------------------------------------------------
+Si la aplicación destino maneja millones de registros, se debe evitar ejecutar la agrupación espacial en el frontend.
+1. Ejecutar la agrupación generateTramosFromPoints o la extracción en un worker backend (ej. Node.js, Python).
+2. Guardar los tramos generados como objetos geométricos en una base de datos espacial, ej. PostgreSQL + PostGIS (columna de tipo GEOMETRY(LineString, 4326)).
+3. Servir los tramos precalculados directamente a través de una API REST/GraphQL en formato GeoJSON simplificado.
+===============================================================================
