@@ -9,6 +9,8 @@ interface ObrasLayersProps {
   currentDate: Date;
   showPavimentacion: boolean;
   showSlurry: boolean;
+  showSenderos: boolean;
+  showArcotechos: boolean;
   showPozos: boolean;
   showSenalamiento: boolean;
   showEquipamiento: boolean;
@@ -26,6 +28,8 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
   currentDate,
   showPavimentacion,
   showSlurry,
+  showSenderos,
+  showArcotechos,
   showPozos,
   showSenalamiento,
   showEquipamiento,
@@ -52,7 +56,8 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
 
   const getTramoColor = (obra: ObraTramo): string => {
     if (obra.tipo === 'slurry') return '#ea580c'; // Naranja intenso
-    if (obra.tipo === 'equipamiento') return '#9333ea'; // Morado equipamiento / senderos
+    if (obra.tipo === 'senderos') return '#c026d3'; // Fucsia / Rosa senderos seguros
+    if (obra.tipo === 'arcotechos' || obra.tipo === 'equipamiento') return '#9333ea'; // Morado arcotechos / equipamiento
     if (obra.tipo === 'senalamiento') return '#eab308'; // Amarillo vial
     if (obra.tipo === 'pozos') return '#06b6d4'; // Cyan agua
     if (obra.subtipo === 'ecologico') return '#059669'; // Verde esmeralda
@@ -63,7 +68,9 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
   const getPuntualColor = (obra: ObraPuntual): string => {
     if (obra.tipo === 'pozos') return '#06b6d4'; // Cyan agua
     if (obra.tipo === 'senalamiento') return '#eab308'; // Amarillo vial
-    if (obra.tipo === 'equipamiento') return '#9333ea'; // Morado equipamiento / arcotechos
+    if (obra.tipo === 'arcotechos') return '#9333ea'; // Morado arcotechos
+    if (obra.tipo === 'senderos') return '#c026d3'; // Fucsia senderos
+    if (obra.tipo === 'equipamiento') return '#a855f7'; // Violeta equipamiento
     if (obra.tipo === 'slurry') return '#ea580c'; // Naranja intenso
     if (obra.tipo === 'pavimentacion') return '#2563eb'; // Azul rey
     return '#64748b';
@@ -91,6 +98,8 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
         // Filtrar por módulo
         if (obra.tipo === 'pavimentacion' && !showPavimentacion) return null;
         if (obra.tipo === 'slurry' && !showSlurry) return null;
+        if (obra.tipo === 'senderos' && !showSenderos) return null;
+        if (obra.tipo === 'arcotechos' && !showArcotechos) return null;
         if (obra.tipo === 'equipamiento' && !showEquipamiento) return null;
         if (obra.tipo === 'senalamiento' && !showSenalamiento) return null;
         if (obra.tipo === 'pozos' && !showPozos) return null;
@@ -242,6 +251,8 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
       {puntuales.map((obra) => {
         if (obra.tipo === 'pozos' && !showPozos) return null;
         if (obra.tipo === 'senalamiento' && !showSenalamiento) return null;
+        if (obra.tipo === 'arcotechos' && !showArcotechos) return null;
+        if (obra.tipo === 'senderos' && !showSenderos) return null;
         if (obra.tipo === 'equipamiento' && !showEquipamiento) return null;
         if (obra.tipo === 'pavimentacion' && !showPavimentacion) return null;
         if (obra.tipo === 'slurry' && !showSlurry) return null;

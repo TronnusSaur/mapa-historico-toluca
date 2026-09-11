@@ -568,6 +568,9 @@ export const clasificarObra = (
   if (combined.includes('slurry')) {
     return { modulo: 'slurry', subtipo: 'Mantenimiento con Slurry' };
   }
+  if (combined.includes('sendero') || combined.includes('andador') || combined.includes('banqueta')) {
+    return { modulo: 'senderos', subtipo: 'Sendero Seguro' };
+  }
   if (combined.includes('pozo')) {
     return { modulo: 'pozos', subtipo: 'Pozo de Agua / Absorción' };
   }
@@ -585,21 +588,20 @@ export const clasificarObra = (
     combined.includes('arcotecho') || 
     combined.includes('techado') || 
     combined.includes('escuela') || 
-    combined.includes('aula') || 
+    combined.includes('aula') ||
+    combined.includes('cbt') ||
+    combined.includes('secundaria') ||
+    combined.includes('primaria')
+  ) {
+    return { modulo: 'arcotechos', subtipo: 'Arcotecho Escolar' };
+  }
+  if (
     combined.includes('multideportivo') || 
     combined.includes('cancha') ||
     combined.includes('edificacion') ||
-    combined.includes('edificación') ||
-    combined.includes('sendero') ||
-    combined.includes('andador') ||
-    combined.includes('banqueta')
+    combined.includes('edificación')
   ) {
-    const subtipo = combined.includes('sendero') 
-      ? 'Sendero Seguro' 
-      : combined.includes('arcotecho') || combined.includes('techado') 
-      ? 'Arcotecho' 
-      : 'Equipamiento e Infraestructura Social';
-    return { modulo: 'equipamiento', subtipo };
+    return { modulo: 'equipamiento', subtipo: 'Equipamiento e Infraestructura Social' };
   }
   if (combined.includes('bacheo') || combined.includes('bache')) {
     return { modulo: 'bacheo', subtipo: 'Bacheo' };

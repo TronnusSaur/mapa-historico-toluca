@@ -10,13 +10,16 @@ import {
   Layers, 
   CheckCircle2, 
   Clock, 
-  CalendarClock
+  CalendarClock,
+  Footprints
 } from 'lucide-react';
 
 interface ModuleCounts {
   bacheo: number;
   pavimentacion: number;
   slurry: number;
+  senderos: number;
+  arcotechos: number;
   pozos: number;
   senalamiento: number;
   equipamiento: number;
@@ -37,13 +40,14 @@ export const ModuleFilterBar: React.FC<ModuleFilterBarProps> = ({
   counts
 }) => {
   const modulos: { id: ModuloObraId; label: string; icon: React.ReactNode; color: string; count: number }[] = [
-    { id: 'todos', label: 'Todos', icon: <Layers size={13} />, color: 'bg-slate-800 text-white', count: counts.bacheo + counts.pavimentacion + counts.slurry + counts.pozos + counts.senalamiento + counts.equipamiento },
+    { id: 'todos', label: 'Todos', icon: <Layers size={13} />, color: 'bg-slate-800 text-white', count: counts.bacheo + counts.pavimentacion + counts.slurry + counts.senderos + counts.arcotechos + counts.pozos + counts.senalamiento + counts.equipamiento },
     { id: 'bacheo', label: 'Bacheo', icon: <Hammer size={13} />, color: 'bg-emerald-600 text-white', count: counts.bacheo },
     { id: 'pavimentacion', label: 'Pavimentaciones', icon: <Construction size={13} />, color: 'bg-blue-600 text-white', count: counts.pavimentacion },
     { id: 'slurry', label: 'Slurry', icon: <Flame size={13} />, color: 'bg-amber-600 text-white', count: counts.slurry },
+    { id: 'senderos', label: 'Senderos Seguros', icon: <Footprints size={13} />, color: 'bg-fuchsia-600 text-white', count: counts.senderos },
+    { id: 'arcotechos', label: 'Arcotechos', icon: <Building2 size={13} />, color: 'bg-purple-600 text-white', count: counts.arcotechos },
     { id: 'pozos', label: 'Pozos', icon: <Droplet size={13} />, color: 'bg-cyan-600 text-white', count: counts.pozos },
     { id: 'senalamiento', label: 'Señalamiento', icon: <AlertTriangle size={13} />, color: 'bg-yellow-500 text-slate-950', count: counts.senalamiento },
-    { id: 'equipamiento', label: 'Equipamiento', icon: <Building2 size={13} />, color: 'bg-purple-600 text-white', count: counts.equipamiento },
   ];
 
   const handleSelectModulo = (id: ModuloObraId) => {
@@ -55,6 +59,8 @@ export const ModuleFilterBar: React.FC<ModuleFilterBarProps> = ({
           showBacheo: true,
           showPavimentacion: true,
           showSlurry: true,
+          showSenderos: true,
+          showArcotechos: true,
           showPozos: true,
           showSenalamiento: true,
           showEquipamiento: true
@@ -66,6 +72,8 @@ export const ModuleFilterBar: React.FC<ModuleFilterBarProps> = ({
         showBacheo: id === 'bacheo',
         showPavimentacion: id === 'pavimentacion',
         showSlurry: id === 'slurry',
+        showSenderos: id === 'senderos',
+        showArcotechos: id === 'arcotechos',
         showPozos: id === 'pozos',
         showSenalamiento: id === 'senalamiento',
         showEquipamiento: id === 'equipamiento'

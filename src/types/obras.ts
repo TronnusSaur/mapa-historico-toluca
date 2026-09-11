@@ -3,6 +3,8 @@ export type ModuloObraId =
   | 'bacheo'
   | 'pavimentacion'
   | 'slurry'
+  | 'senderos'
+  | 'arcotechos'
   | 'pozos'
   | 'senalamiento'
   | 'equipamiento';
@@ -61,6 +63,8 @@ export interface FiltrosModulos {
   showBacheo: boolean;
   showPavimentacion: boolean;
   showSlurry: boolean;
+  showSenderos: boolean;
+  showArcotechos: boolean;
   showPozos: boolean;
   showSenalamiento: boolean;
   showEquipamiento: boolean;

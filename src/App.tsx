@@ -68,6 +68,8 @@ export default function App() {
     showBacheo: true,
     showPavimentacion: true,
     showSlurry: true,
+    showSenderos: true,
+    showArcotechos: true,
     showPozos: true,
     showSenalamiento: true,
     showEquipamiento: true,
@@ -472,6 +474,8 @@ export default function App() {
     const bacheoCount = stats.baches;
     const pavTramos = obrasTramos.filter(o => o.tipo === 'pavimentacion');
     const slurryTramos = obrasTramos.filter(o => o.tipo === 'slurry');
+    const senderosCount = obrasTramos.filter(o => o.tipo === 'senderos').length + obrasPuntuales.filter(o => o.tipo === 'senderos').length;
+    const arcotechosCount = obrasTramos.filter(o => o.tipo === 'arcotechos').length + obrasPuntuales.filter(o => o.tipo === 'arcotechos').length;
     const pozosCount = obrasPuntuales.filter(o => o.tipo === 'pozos').length;
     const senalamientoCount = obrasPuntuales.filter(o => o.tipo === 'senalamiento').length;
     const equipamientoCount = obrasPuntuales.filter(o => o.tipo === 'equipamiento').length;
@@ -484,6 +488,8 @@ export default function App() {
       bacheo: bacheoCount,
       pavimentacion: pavTramos.length,
       slurry: slurryTramos.length,
+      senderos: senderosCount,
+      arcotechos: arcotechosCount,
       pozos: pozosCount,
       senalamiento: senalamientoCount,
       equipamiento: equipamientoCount,
@@ -582,6 +588,49 @@ export default function App() {
         </>
       );
     }
+    if (filtrosModulos.moduloActivo === 'senderos') {
+      const senderos = obrasTramos.filter(o => o.tipo === 'senderos');
+      const totalMl = senderos.reduce((acc, curr) => acc + (curr.metrosLineales || 0), 0);
+      return (
+        <>
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Rutas Seguras</p>
+            <p className="text-2xl font-black text-fuchsia-300">{senderos.length} <span className="text-sm font-normal opacity-50">Tramos</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Longitud Intervenida</p>
+            <p className="text-2xl font-black text-toluca-gold">{totalMl.toLocaleString()} <span className="text-sm font-normal opacity-50">ML</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Enfoque Integral</p>
+            <p className="text-xl font-black text-white mt-1">Movilidad y Género</p>
+          </div>
+        </>
+      );
+    }
+    if (filtrosModulos.moduloActivo === 'arcotechos') {
+      const arcotechos = obrasPuntuales.filter(o => o.tipo === 'arcotechos');
+      return (
+        <>
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Techados Escolares</p>
+            <p className="text-2xl font-black text-purple-300">{arcotechos.length} <span className="text-sm font-normal opacity-50">Arcotechos</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Planteles Beneficiados</p>
+            <p className="text-2xl font-black text-white">{arcotechos.length} <span className="text-sm font-normal opacity-50">Escuelas</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Impacto Social</p>
+            <p className="text-xl font-black text-toluca-gold mt-1">Comunidad Estudiantil</p>
+          </div>
+        </>
+      );
+    }
     if (filtrosModulos.moduloActivo === 'equipamiento') {
       const equip = obrasPuntuales.filter(o => o.tipo === 'equipamiento');
       return (
@@ -647,6 +696,8 @@ export default function App() {
                 {filtrosModulos.moduloActivo === 'pavimentacion' ? 'Torre de Control de Pavimentaciones' :
                  filtrosModulos.moduloActivo === 'pozos' ? 'Torre de Control de Pozos de Agua' :
                  filtrosModulos.moduloActivo === 'slurry' ? 'Torre de Control de Mantenimiento Slurry' :
+                 filtrosModulos.moduloActivo === 'senderos' ? 'Torre de Control de Senderos Seguros' :
+                 filtrosModulos.moduloActivo === 'arcotechos' ? 'Torre de Control de Arcotechos Escolares' :
                  filtrosModulos.moduloActivo === 'senalamiento' ? 'Torre de Control de Señalamiento' :
                  filtrosModulos.moduloActivo === 'equipamiento' ? 'Torre de Control de Equipamiento' :
                  filtrosModulos.moduloActivo === 'bacheo' ? 'Torre de Control de Bacheo' :
@@ -1054,13 +1105,15 @@ export default function App() {
               />
             )}
 
-            {/* Capa Unificada de Obras por Módulo (Pavimentación, Slurry, Pozos, Señalamiento, Equipamiento) */}
+            {/* Capa Unificada de Obras por Módulo (Pavimentación, Slurry, Senderos, Arcotechos, Pozos, Señalamiento, Equipamiento) */}
             <ObrasLayers
               tramos={obrasTramos}
               puntuales={obrasPuntuales}
               currentDate={currentDate}
               showPavimentacion={filtrosModulos.showPavimentacion}
               showSlurry={filtrosModulos.showSlurry}
+              showSenderos={filtrosModulos.showSenderos}
+              showArcotechos={filtrosModulos.showArcotechos}
               showPozos={filtrosModulos.showPozos}
               showSenalamiento={filtrosModulos.showSenalamiento}
               showEquipamiento={filtrosModulos.showEquipamiento}
