@@ -177,19 +177,59 @@ export default function App() {
           }
         };
 
+        const CONTRATOS_SPREADSHEET_ID = '1fHaAXj9qtGqgDBIbTh2jxryElklH6NN6bFWrnUZmYdk';
+
+        const fetchContratosTramosWithFallback = async (): Promise<ObraTramo[]> => {
+          const remoteUrl = `https://docs.google.com/spreadsheets/d/${CONTRATOS_SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('TRAMOS')}`;
+          const localUrl = `${baseUrl}INFO CONTRATOS MAPEO - TRAMOS.csv`;
+          
+          try {
+            return await Promise.race([
+              parseContratosTramos(remoteUrl),
+              new Promise<never>((_, reject) => 
+                setTimeout(() => reject(new Error('Google Sheets Tramos Timeout (5s)')), 5000)
+              )
+            ]);
+          } catch (err) {
+            console.warn("Fallo carga remota de Tramos (usando respaldo local):", err);
+            try {
+              return await parseContratosTramos(localUrl);
+            } catch (localErr) {
+              console.error("Fallo tambien la carga local de Tramos:", localErr);
+              return [];
+            }
+          }
+        };
+
+        const fetchContratosPuntualesWithFallback = async (): Promise<ObraPuntual[]> => {
+          const remoteUrl = `https://docs.google.com/spreadsheets/d/${CONTRATOS_SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('PUNTUALES')}`;
+          const localUrl = `${baseUrl}INFO CONTRATOS MAPEO - PUNTUALES.csv`;
+          
+          try {
+            return await Promise.race([
+              parseContratosPuntuales(remoteUrl),
+              new Promise<never>((_, reject) => 
+                setTimeout(() => reject(new Error('Google Sheets Puntuales Timeout (5s)')), 5000)
+              )
+            ]);
+          } catch (err) {
+            console.warn("Fallo carga remota de Puntuales (usando respaldo local):", err);
+            try {
+              return await parseContratosPuntuales(localUrl);
+            } catch (localErr) {
+              console.error("Fallo tambien la carga local de Puntuales:", localErr);
+              return [];
+            }
+          }
+        };
+
         // Load local files, boundaries, and new contract CSVs first
         const [boundaries, totalTickets, parsedPavimentaciones, contratosTramos, contratosPuntuales] = await Promise.all([
           fetchGeoJSONBoundaries(),
           parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL'),
           fetchPavimentacionesWithFallback(),
-          parseContratosTramos(`${baseUrl}INFO CONTRATOS MAPEO - TRAMOS.csv`).catch(err => {
-            console.warn("Fallo carga de contratos tramos:", err);
-            return [] as ObraTramo[];
-          }),
-          parseContratosPuntuales(`${baseUrl}INFO CONTRATOS MAPEO - PUNTUALES.csv`).catch(err => {
-            console.warn("Fallo carga de contratos puntuales:", err);
-            return [] as ObraPuntual[];
-          })
+          fetchContratosTramosWithFallback(),
+          fetchContratosPuntualesWithFallback()
         ]);
 
         // Convert DGOP Pavimentaciones to ObraTramo structure for unified presentation

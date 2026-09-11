@@ -54,15 +54,18 @@ const parseNumber = (val: any): number => {
 };
 
 /**
- * Utility to find a value in an object regardless of key case or whitespace
+ * Utility to normalize strings for comparison (removes accents, punctuation, case)
+ */
+const normalizeKey = (str: string) => 
+  str.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]/g, "");
+
+/**
+ * Utility to find a value in an object regardless of key case, accents or whitespace
  */
 const getVal = (obj: Record<string, any>, keys: string[]) => {
-  const foundKey = keys.find(key => 
-    Object.keys(obj).some(k => k.trim().toLowerCase() === key.trim().toLowerCase())
-  );
-  if (!foundKey) return undefined;
-  const actualKey = Object.keys(obj).find(k => k.trim().toLowerCase() === foundKey.trim().toLowerCase());
-  return actualKey ? obj[actualKey] : undefined;
+  const normKeys = keys.map(normalizeKey);
+  const foundActualKey = Object.keys(obj).find(k => normKeys.includes(normalizeKey(k)));
+  return foundActualKey ? obj[foundActualKey] : undefined;
 };
 
 /**
@@ -586,9 +589,17 @@ export const clasificarObra = (
     combined.includes('multideportivo') || 
     combined.includes('cancha') ||
     combined.includes('edificacion') ||
-    combined.includes('edificación')
+    combined.includes('edificación') ||
+    combined.includes('sendero') ||
+    combined.includes('andador') ||
+    combined.includes('banqueta')
   ) {
-    return { modulo: 'equipamiento', subtipo: 'Equipamiento e Infraestructura Social' };
+    const subtipo = combined.includes('sendero') 
+      ? 'Sendero Seguro' 
+      : combined.includes('arcotecho') || combined.includes('techado') 
+      ? 'Arcotecho' 
+      : 'Equipamiento e Infraestructura Social';
+    return { modulo: 'equipamiento', subtipo };
   }
   if (combined.includes('bacheo') || combined.includes('bache')) {
     return { modulo: 'bacheo', subtipo: 'Bacheo' };
@@ -661,11 +672,15 @@ export const parseContratosTramos = (url: string): Promise<ObraTramo[]> => {
         const parsed: ObraTramo[] = [];
 
         data.forEach((row, index) => {
-          const contrato = getVal(row, ['No. Contrato', 'contrato', 'no_contrato']) || `CTR-TRAMO-${index + 1}`;
-          const nombre = getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '';
-          if (!nombre && !contrato) return;
-
+          const rawContrato = getVal(row, ['No. Contrato', 'contrato', 'no_contrato']);
           const tipoRaw = getVal(row, ['Tipo de Obra', 'tipo', 'tipo_obra']) || '';
+          const contrato = (rawContrato && rawContrato.toString().trim()) 
+            ? rawContrato.toString().trim() 
+            : (tipoRaw ? `${tipoRaw.toString().trim().toUpperCase()} #${index + 1}` : `OBRA-TRAMO #${index + 1}`);
+
+          const nombre = getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '';
+          if (!nombre && !rawContrato) return;
+
           const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
           const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
           
@@ -674,7 +689,7 @@ export const parseContratosTramos = (url: string): Promise<ObraTramo[]> => {
 
           // Extraer dinámicamente columnas P1, P2... Pn o Geolocalización P1...
           const pKeys = Object.keys(row)
-            .filter(key => /(?:Geolocalizaci[oó]n\s*)?P\d+$/i.test(key.trim()))
+            .filter(key => /P\d+$/i.test(key.trim()))
             .sort((a, b) => {
               const numA = parseInt(a.trim().match(/\d+/)![0], 10);
               const numB = parseInt(b.trim().match(/\d+/)![0], 10);
@@ -741,11 +756,15 @@ export const parseContratosPuntuales = (url: string): Promise<ObraPuntual[]> => 
         const parsed: ObraPuntual[] = [];
 
         data.forEach((row, index) => {
-          const contrato = getVal(row, ['No. Contrato', 'contrato', 'no_contrato']) || `CTR-PUNTUAL-${index + 1}`;
-          const nombre = getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '';
-          if (!nombre && !contrato) return;
-
+          const rawContrato = getVal(row, ['No. Contrato', 'contrato', 'no_contrato']);
           const tipoRaw = getVal(row, ['Tipo de Obra', 'tipo', 'tipo_obra']) || '';
+          const contrato = (rawContrato && rawContrato.toString().trim()) 
+            ? rawContrato.toString().trim() 
+            : (tipoRaw ? `${tipoRaw.toString().trim().toUpperCase()} #${index + 1}` : `OBRA-PUNTUAL #${index + 1}`);
+
+          const nombre = getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '';
+          if (!nombre && !rawContrato) return;
+
           const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
           const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
           
