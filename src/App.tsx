@@ -1,11 +1,20 @@
 import { useState, useEffect, useMemo } from 'react';
 import { useThrottle } from './hooks/useThrottle.ts';
-import { MapContainer, TileLayer, Polyline, GeoJSON, CircleMarker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import 'leaflet.markercluster/dist/MarkerCluster.Default.css';
-import { parseCSV, groupIntoTramos, isPointInGeoJSON, parsePavimentaciones, mapSupabaseRowToPothole } from './utils/dataProcessors.ts';
+import { 
+  parseCSV, 
+  groupIntoTramos, 
+  isPointInGeoJSON, 
+  parsePavimentaciones, 
+  mapSupabaseRowToPothole,
+  parseContratosTramos,
+  parseContratosPuntuales
+} from './utils/dataProcessors.ts';
 import type { PotholeData, Tramo, PavimentacionData } from './utils/dataProcessors.ts';
+import type { FiltrosModulos, ObraTramo, ObraPuntual } from './types/obras.ts';
 import { supabase } from './lib/supabase.ts';
 import { 
   BarChart3, 
@@ -23,6 +32,8 @@ import {
 // Marker Cluster component (manual instantiation for better control with 50k points)
 import MarkerClusterGroup from './components/MarkerClusterGroup.tsx';
 import CoordinateSearch from './components/CoordinateSearch.tsx';
+import { ModuleFilterBar } from './components/ModuleFilterBar.tsx';
+import { ObrasLayers } from './components/ObrasLayers.tsx';
 
 const CARTO_KEY = import.meta.env.VITE_CARTO_KEY || 'cb1_2v8k_1_77d3a08b9dfcaeb412cca4b0';
 
@@ -50,7 +61,23 @@ export default function App() {
   // Statistics are now calculated dynamically in a useMemo below based on currentDate
   // Tramos are computed once on load — NOT on every timeline change
   const [allTramos, setAllTramos] = useState<Tramo[]>([]);
-  const [pavimentaciones, setPavimentaciones] = useState<PavimentacionData[]>([]);
+  const [obrasTramos, setObrasTramos] = useState<ObraTramo[]>([]);
+  const [obrasPuntuales, setObrasPuntuales] = useState<ObraPuntual[]>([]);
+  const [filtrosModulos, setFiltrosModulos] = useState<FiltrosModulos>({
+    moduloActivo: 'todos',
+    showBacheo: true,
+    showPavimentacion: true,
+    showSlurry: true,
+    showPozos: true,
+    showSenalamiento: true,
+    showEquipamiento: true,
+    pavAsfaltica: true,
+    pavHidraulico: true,
+    pavEcologico: true,
+    showConcluidas: true,
+    showEnProceso: true,
+    showProgramadas: true
+  });
 
   useEffect(() => {
     const loadAll = async () => {
@@ -150,12 +177,49 @@ export default function App() {
           }
         };
 
-        // Load local files and boundaries first
-        const [boundaries, totalTickets, parsedPavimentaciones] = await Promise.all([
+        // Load local files, boundaries, and new contract CSVs first
+        const [boundaries, totalTickets, parsedPavimentaciones, contratosTramos, contratosPuntuales] = await Promise.all([
           fetchGeoJSONBoundaries(),
           parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL'),
-          fetchPavimentacionesWithFallback()
+          fetchPavimentacionesWithFallback(),
+          parseContratosTramos(`${baseUrl}INFO CONTRATOS MAPEO - TRAMOS.csv`).catch(err => {
+            console.warn("Fallo carga de contratos tramos:", err);
+            return [] as ObraTramo[];
+          }),
+          parseContratosPuntuales(`${baseUrl}INFO CONTRATOS MAPEO - PUNTUALES.csv`).catch(err => {
+            console.warn("Fallo carga de contratos puntuales:", err);
+            return [] as ObraPuntual[];
+          })
         ]);
+
+        // Convert DGOP Pavimentaciones to ObraTramo structure for unified presentation
+        const dgopTramos: ObraTramo[] = (parsedPavimentaciones || []).map(p => {
+          const isSlurry = p.tipoObra.toLowerCase().includes('slurry');
+          const isEco = p.tipoObra.toLowerCase().includes('ecol') || p.tipoObra.toLowerCase().includes('permeable');
+          const isHidr = p.tipoObra.toLowerCase().includes('hidr');
+          const subtipo = isEco ? 'ecologico' : isHidr ? 'hidraulico' : 'asfaltica';
+          
+          return {
+            id: `dgop-p-${p.no}`,
+            contrato: `DGOP-PAV-${p.no.toString().padStart(3, '0')}`,
+            nombre: p.descripcion || `Obra No. ${p.no} - ${p.tipoObra}`,
+            tipo: isSlurry ? 'slurry' : 'pavimentacion',
+            subtipo: isSlurry ? 'Mantenimiento con Slurry' : subtipo,
+            tipoRaw: p.tipoObra,
+            fechaInicio: new Date(2025, 0, 1),
+            fechaFin: new Date(2025, 11, 31),
+            delegacion: p.delegacion,
+            superficie: p.superficie,
+            metrosLineales: p.metrosLineales,
+            inversion: p.inversion,
+            geometriaTipo: 'tramo',
+            coords: p.coords
+          };
+        });
+
+        const combinedTramos = [...(contratosTramos || []), ...dgopTramos];
+        setObrasTramos(combinedTramos);
+        setObrasPuntuales(contratosPuntuales || []);
 
         // Process local tickets immediately
         const enrichedTickets = totalTickets
@@ -165,11 +229,10 @@ export default function App() {
             inZona: boundaries ? isPointInGeoJSON(p.lat, p.lng, boundaries) : true
           }));
 
-        console.log(`Carga inicial completada. Cargados ${enrichedTickets.length} tickets ciudadanos. Carga de base de datos ejecutándose en background.`);
+        console.log(`Carga inicial completada: ${enrichedTickets.length} tickets, ${combinedTramos.length} obras de tramo, ${contratosPuntuales.length} obras puntuales.`);
         
         // Show tickets and pavimentaciones immediately, and dismiss the loading screen
         setData(enrichedTickets);
-        setPavimentaciones(parsedPavimentaciones);
         setLoading(false);
 
         // KICK OFF BACKGROUND SUPABASE LOAD PROGRESSIVELY
@@ -365,6 +428,162 @@ export default function App() {
     return () => clearInterval(interval);
   }, [isPlaying]);
 
+  const moduleCounts = useMemo(() => {
+    const bacheoCount = stats.baches;
+    const pavTramos = obrasTramos.filter(o => o.tipo === 'pavimentacion');
+    const slurryTramos = obrasTramos.filter(o => o.tipo === 'slurry');
+    const pozosCount = obrasPuntuales.filter(o => o.tipo === 'pozos').length;
+    const senalamientoCount = obrasPuntuales.filter(o => o.tipo === 'senalamiento').length;
+    const equipamientoCount = obrasPuntuales.filter(o => o.tipo === 'equipamiento').length;
+
+    const pavAsfaltica = pavTramos.filter(o => o.subtipo === 'asfaltica').length;
+    const pavHidraulico = pavTramos.filter(o => o.subtipo === 'hidraulico').length;
+    const pavEcologico = pavTramos.filter(o => o.subtipo === 'ecologico').length;
+
+    return {
+      bacheo: bacheoCount,
+      pavimentacion: pavTramos.length,
+      slurry: slurryTramos.length,
+      pozos: pozosCount,
+      senalamiento: senalamientoCount,
+      equipamiento: equipamientoCount,
+      pavAsfaltica,
+      pavHidraulico,
+      pavEcologico
+    };
+  }, [stats.baches, obrasTramos, obrasPuntuales]);
+
+  const renderHeaderMetrics = () => {
+    if (filtrosModulos.moduloActivo === 'pavimentacion') {
+      const pavs = obrasTramos.filter(o => o.tipo === 'pavimentacion');
+      const totalMl = pavs.reduce((acc, curr) => acc + (curr.metrosLineales || 0), 0);
+      const totalM2 = pavs.reduce((acc, curr) => acc + (curr.superficie || 0), 0);
+      return (
+        <>
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Contratos Activos</p>
+            <p className="text-2xl font-black text-white">{pavs.length} <span className="text-sm font-normal opacity-50">Obras</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Avance Lineal</p>
+            <p className="text-2xl font-black text-toluca-gold">{totalMl.toLocaleString()} <span className="text-sm font-normal opacity-50">ML</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Superficie Total</p>
+            <p className="text-2xl font-black text-toluca-gold">{totalM2.toLocaleString()} <span className="text-sm font-normal opacity-50">m²</span></p>
+          </div>
+        </>
+      );
+    }
+    if (filtrosModulos.moduloActivo === 'pozos') {
+      const pozos = obrasPuntuales.filter(o => o.tipo === 'pozos');
+      const delegacionesCount = new Set(pozos.map(p => p.delegacion)).size;
+      return (
+        <>
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Pozos Totales</p>
+            <p className="text-2xl font-black text-cyan-300">{pozos.length} <span className="text-sm font-normal opacity-50">Pozos</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Delegaciones</p>
+            <p className="text-2xl font-black text-white">{delegacionesCount} <span className="text-sm font-normal opacity-50">Zonas</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Organismo</p>
+            <p className="text-xl font-black text-toluca-gold mt-1">OAyST <span className="text-xs font-normal opacity-60">Toluca</span></p>
+          </div>
+        </>
+      );
+    }
+    if (filtrosModulos.moduloActivo === 'slurry') {
+      const slurries = obrasTramos.filter(o => o.tipo === 'slurry');
+      const totalMl = slurries.reduce((acc, curr) => acc + (curr.metrosLineales || 0), 0);
+      return (
+        <>
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Obras Slurry</p>
+            <p className="text-2xl font-black text-amber-300">{slurries.length} <span className="text-sm font-normal opacity-50">Vialidades</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Longitud Preservada</p>
+            <p className="text-2xl font-black text-toluca-gold">{totalMl.toLocaleString()} <span className="text-sm font-normal opacity-50">ML</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Tratamiento</p>
+            <p className="text-xl font-black text-white mt-1">Sello Preventivo</p>
+          </div>
+        </>
+      );
+    }
+    if (filtrosModulos.moduloActivo === 'senalamiento') {
+      const senales = obrasPuntuales.filter(o => o.tipo === 'senalamiento');
+      return (
+        <>
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Intervenciones</p>
+            <p className="text-2xl font-black text-yellow-300">{senales.length} <span className="text-sm font-normal opacity-50">Cruces</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Tipo de Obra</p>
+            <p className="text-xl font-black text-white mt-1">Señalamiento Vial</p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Dirección</p>
+            <p className="text-xl font-black text-toluca-gold mt-1">Seguridad y Tránsito</p>
+          </div>
+        </>
+      );
+    }
+    if (filtrosModulos.moduloActivo === 'equipamiento') {
+      const equip = obrasPuntuales.filter(o => o.tipo === 'equipamiento');
+      return (
+        <>
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Equipamiento Social</p>
+            <p className="text-2xl font-black text-purple-300">{equip.length} <span className="text-sm font-normal opacity-50">Planteles</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Infraestructura</p>
+            <p className="text-xl font-black text-white mt-1">Arcotechos y Aulas</p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Impacto</p>
+            <p className="text-xl font-black text-toluca-gold mt-1">Comunidad Escolar</p>
+          </div>
+        </>
+      );
+    }
+    // Por defecto (Bacheo o Todos)
+    return (
+      <>
+        <div className="text-center">
+          <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Impacto Global</p>
+          <p className="text-2xl font-black text-white">{stats.baches.toLocaleString()} <span className="text-sm font-normal opacity-50">Baches</span></p>
+        </div>
+        <div className="w-[1px] h-10 bg-white/10 mt-1" />
+        <div className="text-center">
+          <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Avance Lineal</p>
+          <p className="text-2xl font-black text-toluca-gold">{stats.ml.toLocaleString()} <span className="text-sm font-normal opacity-50">ML</span></p>
+        </div>
+        <div className="w-[1px] h-10 bg-white/10 mt-1" />
+        <div className="text-center">
+          <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Superficie Total</p>
+          <p className="text-2xl font-black text-toluca-gold">{stats.m2.toLocaleString()} <span className="text-sm font-normal opacity-50">m²</span></p>
+        </div>
+      </>
+    );
+  };
+
   return (
     <div className="flex flex-col h-screen bg-white">
       {/* Header Premium - Toluca Capital Style */}
@@ -384,26 +603,23 @@ export default function App() {
             <div className="w-[1px] h-10 bg-white/10 hidden md:block" />
 
             <div className="hidden lg:block">
-              <h2 className="text-xl font-black tracking-tight leading-none">Torre de Control de Bacheo</h2>
-              <p className="text-[9px] font-bold tracking-[0.2em] opacity-40 uppercase mt-1">ESTRATEGIA INTEGRAL DE REHABILITACIÓN</p>
+              <h2 className="text-xl font-black tracking-tight leading-none">
+                {filtrosModulos.moduloActivo === 'pavimentacion' ? 'Torre de Control de Pavimentaciones' :
+                 filtrosModulos.moduloActivo === 'pozos' ? 'Torre de Control de Pozos de Agua' :
+                 filtrosModulos.moduloActivo === 'slurry' ? 'Torre de Control de Mantenimiento Slurry' :
+                 filtrosModulos.moduloActivo === 'senalamiento' ? 'Torre de Control de Señalamiento' :
+                 filtrosModulos.moduloActivo === 'equipamiento' ? 'Torre de Control de Equipamiento' :
+                 filtrosModulos.moduloActivo === 'bacheo' ? 'Torre de Control de Bacheo' :
+                 'Geoportal de Obra Pública'}
+              </h2>
+              <p className="text-[9px] font-bold tracking-[0.2em] opacity-40 uppercase mt-1">
+                {filtrosModulos.moduloActivo === 'todos' ? 'VISOR INTEGRAL MULTI-MÓDULO TOLUCA' : 'ESTRATEGIA INTEGRAL DE REHABILITACIÓN'}
+              </p>
             </div>
           </div>
 
           <div className="flex gap-10">
-            <div className="text-center">
-              <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Impacto Global</p>
-              <p className="text-2xl font-black text-white">{stats.baches.toLocaleString()} <span className="text-sm font-normal opacity-50">Baches</span></p>
-            </div>
-            <div className="w-[1px] h-10 bg-white/10 mt-1" />
-            <div className="text-center">
-              <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Avance Lineal</p>
-              <p className="text-2xl font-black text-toluca-gold">{stats.ml.toLocaleString()} <span className="text-sm font-normal opacity-50">ML</span></p>
-            </div>
-            <div className="w-[1px] h-10 bg-white/10 mt-1" />
-            <div className="text-center">
-              <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Superficie Total</p>
-              <p className="text-2xl font-black text-toluca-gold">{stats.m2.toLocaleString()} <span className="text-sm font-normal opacity-50">m²</span></p>
-            </div>
+            {renderHeaderMetrics()}
           </div>
 
           <div className="flex items-center gap-3">
@@ -428,237 +644,253 @@ export default function App() {
         {/* Sidebar Táctico */}
         <aside className="w-80 bg-slate-50 border-r border-slate-200 flex flex-col z-40 shadow-inner overflow-y-auto custom-scrollbar">
           <div className="p-6 space-y-6 flex-1">
-            {/* --- ETAPA 3 (ACTUAL) --- */}
-            <div>
-                <h3 className="text-xs font-black text-toluca-burgundy tracking-widest uppercase mb-4 flex items-center justify-between">
-                  <span className="flex items-center gap-2"><BarChart3 size={14} /> Etapa 3 (Actual)</span>
-                  <span className="bg-toluca-burgundy/10 text-[10px] px-2 py-0.5 rounded text-toluca-burgundy">EN PROCESO</span>
-                </h3>
-                <div className="space-y-3">
-                   <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
-                     <div className="flex justify-between items-end mb-2">
-                        <span className="text-[10px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
-                        <span className="text-xs font-black text-slate-800">{Math.min(100, Math.round((stats.e3M2 / 104610.31) * 100))}%</span>
+            {/* 1. Selector de Módulos de Obra y Subtipos */}
+            <ModuleFilterBar
+              filtros={filtrosModulos}
+              onFiltrosChange={setFiltrosModulos}
+              counts={moduleCounts}
+            />
+
+            {/* 2. Secciones Específicas de Bacheo (solo visibles si Bacheo está activo) */}
+            {filtrosModulos.showBacheo && (
+              <>
+                {/* --- ETAPA 3 (ACTUAL) --- */}
+                <div>
+                  <h3 className="text-xs font-black text-toluca-burgundy tracking-widest uppercase mb-4 flex items-center justify-between">
+                    <span className="flex items-center gap-2"><BarChart3 size={14} /> Etapa 3 (Actual)</span>
+                    <span className="bg-toluca-burgundy/10 text-[10px] px-2 py-0.5 rounded text-toluca-burgundy">EN PROCESO</span>
+                  </h3>
+                  <div className="space-y-3">
+                     <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+                       <div className="flex justify-between items-end mb-2">
+                          <span className="text-[10px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
+                          <span className="text-xs font-black text-slate-800">{Math.min(100, Math.round((stats.e3M2 / 104610.31) * 100))}%</span>
+                       </div>
+                       <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                          <div 
+                           className="bg-toluca-gold h-full transition-all duration-500" 
+                           style={{ width: `${Math.min(100, (stats.e3M2 / 104610.31) * 100)}%` }} 
+                          />
+                       </div>
+                       <p className="text-[9px] text-slate-400 mt-2 font-bold uppercase text-right">Meta: 104,610.31 m²</p>
                      </div>
-                     <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                        <div 
-                         className="bg-toluca-gold h-full transition-all duration-500" 
-                         style={{ width: `${Math.min(100, (stats.e3M2 / 104610.31) * 100)}%` }} 
-                        />
+                     <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+                       <div className="flex justify-between items-end mb-2">
+                          <span className="text-[10px] font-bold text-slate-500 uppercase">Baches Realizados</span>
+                          <span className="text-xs font-black text-slate-800">{Math.min(100, Math.round((stats.e3Baches / 20866) * 100))}%</span>
+                       </div>
+                       <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
+                          <div 
+                           className="bg-toluca-burgundy h-full transition-all duration-500" 
+                           style={{ width: `${Math.min(100, (stats.e3Baches / 20866) * 100)}%` }} 
+                          />
+                       </div>
+                       <p className="text-[9px] text-slate-400 mt-2 font-bold uppercase text-right">Meta: 20,866 Baches</p>
                      </div>
-                     <p className="text-[9px] text-slate-400 mt-2 font-bold uppercase text-right">Meta: 104,610.31 m²</p>
+                  </div>
+                </div>
+
+                {/* --- ETAPA 2 (HISTÓRICA) --- */}
+                <div>
+                  <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center justify-between">
+                    <span className="flex items-center gap-2"><History size={14} /> Etapa 2</span>
+                    <span className="text-[10px] opacity-70">FINALIZADA</span>
+                  </h3>
+                  <div className="space-y-2 opacity-80">
+                     <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
+                       <div className="flex justify-between items-end mb-1">
+                          <span className="text-[9px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
+                          <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2M2 / 125095.34) * 100))}%</span>
+                       </div>
+                       <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
+                          <div 
+                           className="bg-slate-400 h-full" 
+                           style={{ width: `${Math.min(100, (stats.e2M2 / 125095.34) * 100)}%` }} 
+                          />
+                       </div>
+                     </div>
+                     <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
+                       <div className="flex justify-between items-end mb-1">
+                          <span className="text-[9px] font-bold text-slate-500 uppercase">Baches</span>
+                          <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2Baches / 24906) * 100))}%</span>
+                       </div>
+                       <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
+                          <div 
+                           className="bg-slate-400 h-full" 
+                           style={{ width: `${Math.min(100, (stats.e2Baches / 24906) * 100)}%` }} 
+                          />
+                       </div>
+                     </div>
+                  </div>
+                </div>
+
+                {/* --- ETAPA 1 (HISTÓRICA) --- */}
+                <div>
+                  <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center justify-between">
+                    <span className="flex items-center gap-2"><History size={14} /> Etapa 1</span>
+                    <span className="text-[10px] opacity-70">FINALIZADA</span>
+                  </h3>
+                  <div className="space-y-2 opacity-80">
+                     <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
+                       <div className="flex justify-between items-end mb-1">
+                          <span className="text-[9px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
+                          <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e1M2 / 126698.07) * 100))}%</span>
+                       </div>
+                       <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
+                          <div 
+                           className="bg-slate-400 h-full" 
+                           style={{ width: `${Math.min(100, (stats.e1M2 / 126698.07) * 100)}%` }} 
+                          />
+                       </div>
+                     </div>
+                     <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
+                       <div className="flex justify-between items-end mb-1">
+                          <span className="text-[9px] font-bold text-slate-500 uppercase">Baches</span>
+                          <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e1Baches / 12773) * 100))}%</span>
+                       </div>
+                       <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
+                          <div 
+                           className="bg-slate-400 h-full" 
+                           style={{ width: `${Math.min(100, (stats.e1Baches / 12773) * 100)}%` }} 
+                          />
+                       </div>
+                     </div>
+                  </div>
+                </div>
+
+                <div className="pt-2 border-t border-slate-200">
+                   <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 mt-4 flex items-center gap-2">
+                      <Filter size={14} /> DGOP (Obras Públicas)
+                   </h3>
+                   <div className="grid grid-cols-3 gap-2 mb-4">
+                      <button 
+                        onClick={() => setFilters(f => ({ ...f, showE1: !f.showE1 }))}
+                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE1 ? 'bg-toluca-gold border-toluca-gold text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                      >
+                        ETAPA 1
+                      </button>
+                      <button 
+                        onClick={() => setFilters(f => ({ ...f, showE2: !f.showE2 }))}
+                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE2 ? 'bg-toluca-burgundy border-toluca-burgundy text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                      >
+                        ETAPA 2
+                      </button>
+                      <button 
+                        onClick={() => setFilters(f => ({ ...f, showE3: !f.showE3 }))}
+                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE3 ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                      >
+                        ETAPA 3
+                      </button>
                    </div>
-                   <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
-                     <div className="flex justify-between items-end mb-2">
-                        <span className="text-[10px] font-bold text-slate-500 uppercase">Baches Realizados</span>
-                        <span className="text-xs font-black text-slate-800">{Math.min(100, Math.round((stats.e3Baches / 20866) * 100))}%</span>
-                     </div>
-                     <div className="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden">
-                        <div 
-                         className="bg-toluca-burgundy h-full transition-all duration-500" 
-                         style={{ width: `${Math.min(100, (stats.e3Baches / 20866) * 100)}%` }} 
-                        />
-                     </div>
-                     <p className="text-[9px] text-slate-400 mt-2 font-bold uppercase text-right">Meta: 20,866 Baches</p>
+
+                   <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 mt-4 flex items-center gap-2">
+                      <Filter size={14} /> Servicios Públicos (DGSP)
+                   </h3>
+                   <div className="grid grid-cols-3 gap-2 mb-4">
+                      <button 
+                        onClick={() => setFilters(f => ({ ...f, showSP2025: !f.showSP2025 }))}
+                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showSP2025 ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                      >
+                        2025
+                      </button>
+                      <button 
+                        onClick={() => setFilters(f => ({ ...f, showSP2026: !f.showSP2026 }))}
+                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showSP2026 ? 'bg-indigo-600 border-indigo-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                      >
+                        2026
+                      </button>
+                      <button 
+                        disabled
+                        className="p-1.5 rounded-lg border border-slate-200 bg-slate-100 text-slate-400 text-[10px] font-bold cursor-not-allowed opacity-60 flex flex-col items-center justify-center"
+                        title="Próximamente"
+                      >
+                        <span>2027</span>
+                        <span className="text-[7px] text-slate-400 font-normal uppercase">Próximamente</span>
+                      </button>
+                   </div>
+
+                   <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 mt-4 flex items-center gap-2">
+                      <BarChart3 size={14} /> Resumen de Operación
+                   </h3>
+                   <div className="space-y-3">
+                      {/* KPI: Baches Realizados */}
+                      <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
+                         <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Baches Totales</p>
+                         <p className="text-2xl font-black text-toluca-burgundy">{stats.baches.toLocaleString()}</p>
+                         <p className="text-[9px] text-slate-400 font-bold uppercase mt-1 flex items-center gap-1">
+                            <ChevronRight size={10} /> Consolidado Histórico
+                         </p>
+                      </div>
+
+                      {/* KPI: Tickets Atendidos */}
+                      <div className="bg-green-50 p-4 rounded-xl border border-green-100">
+                         <p className="text-[10px] font-bold text-green-600 uppercase mb-1">Tickets Atendidos</p>
+                         <p className="text-2xl font-black text-green-800">{stats.ticketsAtendidos.toLocaleString()}</p>
+                         <p className="text-[9px] text-green-400 font-bold uppercase mt-1 flex items-center gap-1">
+                            <ChevronRight size={10} /> Eficiencia Operativa
+                         </p>
+                      </div>
+
+                      {/* KPI: Demanda Activa */}
+                      <div className="bg-red-50 p-4 rounded-xl border border-red-100">
+                         <p className="text-[10px] font-bold text-red-600 uppercase mb-1">Demanda Activa</p>
+                         <p className="text-2xl font-black text-red-800">{stats.demandaActiva.toLocaleString()}</p>
+                         <p className="text-[9px] text-red-400 font-bold uppercase mt-1 flex items-center gap-1">
+                            <Info size={10} /> Tickets sin atención
+                         </p>
+                      </div>
                    </div>
                 </div>
-              </div>
 
-              {/* --- ETAPA 2 (HISTÓRICA) --- */}
-              <div>
-                <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center justify-between">
-                  <span className="flex items-center gap-2"><History size={14} /> Etapa 2</span>
-                  <span className="text-[10px] opacity-70">FINALIZADA</span>
-                </h3>
-                <div className="space-y-2 opacity-80">
-                   <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
-                     <div className="flex justify-between items-end mb-1">
-                        <span className="text-[9px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
-                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2M2 / 125095.34) * 100))}%</span>
-                     </div>
-                     <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
-                        <div 
-                         className="bg-slate-400 h-full" 
-                         style={{ width: `${Math.min(100, (stats.e2M2 / 125095.34) * 100)}%` }} 
-                        />
-                     </div>
-                   </div>
-                   <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
-                     <div className="flex justify-between items-end mb-1">
-                        <span className="text-[9px] font-bold text-slate-500 uppercase">Baches</span>
-                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e2Baches / 24906) * 100))}%</span>
-                     </div>
-                     <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
-                        <div 
-                         className="bg-slate-400 h-full" 
-                         style={{ width: `${Math.min(100, (stats.e2Baches / 24906) * 100)}%` }} 
-                        />
-                     </div>
-                   </div>
+                <div className="pt-4 border-t border-slate-200">
+                  <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center gap-2">
+                    <Filter size={14} /> Modo de Visualización (Bacheo)
+                  </h3>
+                  <div className="flex gap-2 mb-4">
+                    <button
+                      onClick={() => setFilters(f => ({ ...f, renderMode: 'tramos' }))}
+                      className={`flex-1 p-3 rounded-lg border text-xs font-bold transition-all ${
+                        filters.renderMode === 'tramos'
+                          ? 'bg-green-600 border-green-600 text-white shadow-lg shadow-green-600/20'
+                          : 'bg-white border-slate-200 text-slate-500 hover:bg-slate-50'
+                      }`}
+                    >
+                      <span className="block text-[10px] opacity-70 mb-0.5">VISTA</span>
+                      TRAMOS
+                    </button>
+                    <button
+                      onClick={() => setFilters(f => ({ ...f, renderMode: 'clusters' }))}
+                      className={`flex-1 p-3 rounded-lg border text-xs font-bold transition-all ${
+                        filters.renderMode === 'clusters'
+                          ? 'bg-green-600 border-green-600 text-white shadow-lg shadow-green-600/20'
+                          : 'bg-white border-slate-200 text-slate-500 hover:bg-slate-50'
+                      }`}
+                    >
+                      <span className="block text-[10px] opacity-70 mb-0.5">VISTA</span>
+                      PUNTOS
+                    </button>
+                  </div>
                 </div>
-              </div>
+              </>
+            )}
 
-              {/* --- ETAPA 1 (HISTÓRICA) --- */}
-              <div>
-                <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center justify-between">
-                  <span className="flex items-center gap-2"><History size={14} /> Etapa 1</span>
-                  <span className="text-[10px] opacity-70">FINALIZADA</span>
-                </h3>
-                <div className="space-y-2 opacity-80">
-                   <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
-                     <div className="flex justify-between items-end mb-1">
-                        <span className="text-[9px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
-                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e1M2 / 126698.07) * 100))}%</span>
-                     </div>
-                     <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
-                        <div 
-                         className="bg-slate-400 h-full" 
-                         style={{ width: `${Math.min(100, (stats.e1M2 / 126698.07) * 100)}%` }} 
-                        />
-                     </div>
-                   </div>
-                   <div className="bg-slate-100/50 p-2 rounded-lg border border-slate-200">
-                     <div className="flex justify-between items-end mb-1">
-                        <span className="text-[9px] font-bold text-slate-500 uppercase">Baches</span>
-                        <span className="text-[10px] font-black">{Math.min(100, Math.round((stats.e1Baches / 12773) * 100))}%</span>
-                     </div>
-                     <div className="w-full bg-slate-200 h-1 rounded-full overflow-hidden">
-                        <div 
-                         className="bg-slate-400 h-full" 
-                         style={{ width: `${Math.min(100, (stats.e1Baches / 12773) * 100)}%` }} 
-                        />
-                     </div>
-                   </div>
-                </div>
-              </div>
-
-              <div className="pt-2 border-t border-slate-200">
-                 <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 mt-4 flex items-center gap-2">
-                    <Filter size={14} /> DGOP (Obras Públicas)
-                 </h3>
-                 <div className="grid grid-cols-3 gap-2 mb-4">
-                    <button 
-                      onClick={() => setFilters(f => ({ ...f, showE1: !f.showE1 }))}
-                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE1 ? 'bg-toluca-gold border-toluca-gold text-white' : 'bg-white border-slate-200 text-slate-400'}`}
-                    >
-                      ETAPA 1
-                    </button>
-                    <button 
-                      onClick={() => setFilters(f => ({ ...f, showE2: !f.showE2 }))}
-                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE2 ? 'bg-toluca-burgundy border-toluca-burgundy text-white' : 'bg-white border-slate-200 text-slate-400'}`}
-                    >
-                      ETAPA 2
-                    </button>
-                    <button 
-                      onClick={() => setFilters(f => ({ ...f, showE3: !f.showE3 }))}
-                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE3 ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
-                    >
-                      ETAPA 3
-                    </button>
-                 </div>
-
-                 <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 mt-4 flex items-center gap-2">
-                    <Filter size={14} /> Servicios Públicos (DGSP)
-                 </h3>
-                 <div className="grid grid-cols-3 gap-2 mb-4">
-                    <button 
-                      onClick={() => setFilters(f => ({ ...f, showSP2025: !f.showSP2025 }))}
-                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showSP2025 ? 'bg-blue-600 border-blue-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
-                    >
-                      2025
-                    </button>
-                    <button 
-                      onClick={() => setFilters(f => ({ ...f, showSP2026: !f.showSP2026 }))}
-                      className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showSP2026 ? 'bg-indigo-600 border-indigo-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
-                    >
-                      2026
-                    </button>
-                    <button 
-                      disabled
-                      className="p-1.5 rounded-lg border border-slate-200 bg-slate-100 text-slate-400 text-[10px] font-bold cursor-not-allowed opacity-60 flex flex-col items-center justify-center"
-                      title="Próximamente"
-                    >
-                      <span>2027</span>
-                      <span className="text-[7px] text-slate-400 font-normal uppercase">Próximamente</span>
-                    </button>
-                 </div>
-
-                 <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 mt-4 flex items-center gap-2">
-                    <BarChart3 size={14} /> Resumen de Operación
-                 </h3>
-                 <div className="space-y-3">
-                    {/* KPI: Baches Realizados */}
-                    <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-100">
-                       <p className="text-[10px] font-bold text-slate-500 uppercase mb-1">Baches Totales</p>
-                       <p className="text-2xl font-black text-toluca-burgundy">{stats.baches.toLocaleString()}</p>
-                       <p className="text-[9px] text-slate-400 font-bold uppercase mt-1 flex items-center gap-1">
-                          <ChevronRight size={10} /> Consolidado Histórico
-                       </p>
-                    </div>
-
-                    {/* KPI: Tickets Atendidos (NUEVO) */}
-                    <div className="bg-green-50 p-4 rounded-xl border border-green-100">
-                       <p className="text-[10px] font-bold text-green-600 uppercase mb-1">Tickets Atendidos</p>
-                       <p className="text-2xl font-black text-green-800">{stats.ticketsAtendidos.toLocaleString()}</p>
-                       <p className="text-[9px] text-green-400 font-bold uppercase mt-1 flex items-center gap-1">
-                          <ChevronRight size={10} /> Eficiencia Operativa
-                       </p>
-                    </div>
-
-                    {/* KPI: Demanda Activa */}
-                    <div className="bg-red-50 p-4 rounded-xl border border-red-100">
-                       <p className="text-[10px] font-bold text-red-600 uppercase mb-1">Demanda Activa</p>
-                       <p className="text-2xl font-black text-red-800">{stats.demandaActiva.toLocaleString()}</p>
-                       <p className="text-[9px] text-red-400 font-bold uppercase mt-1 flex items-center gap-1">
-                          <Info size={10} /> Tickets sin atención
-                       </p>
-                    </div>
-                 </div>
-              </div>
-            </div>
-
-            <div className="pt-6 border-t border-slate-200">
-              <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center gap-2">
-                <Filter size={14} /> Modo de Visualización
-              </h3>
-              <div className="flex gap-2 mb-4">
-                <button
-                  onClick={() => setFilters(f => ({ ...f, renderMode: 'tramos' }))}
-                  className={`flex-1 p-3 rounded-lg border text-xs font-bold transition-all ${
-                    filters.renderMode === 'tramos'
-                      ? 'bg-green-600 border-green-600 text-white shadow-lg shadow-green-600/20'
-                      : 'bg-white border-slate-200 text-slate-500 hover:bg-slate-50'
-                  }`}
-                >
-                  <span className="block text-[10px] opacity-70 mb-0.5">VISTA</span>
-                  TRAMOS
-                </button>
-                <button
-                  onClick={() => setFilters(f => ({ ...f, renderMode: 'clusters' }))}
-                  className={`flex-1 p-3 rounded-lg border text-xs font-bold transition-all ${
-                    filters.renderMode === 'clusters'
-                      ? 'bg-green-600 border-green-600 text-white shadow-lg shadow-green-600/20'
-                      : 'bg-white border-slate-200 text-slate-500 hover:bg-slate-50'
-                  }`}
-                >
-                  <span className="block text-[10px] opacity-70 mb-0.5">VISTA</span>
-                  PUNTOS
-                </button>
-              </div>
-
-              <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center gap-2">
-                <Filter size={14} /> Filtros de Capa
+            {/* Capas Territoriales Generales */}
+            <div className="pt-4 border-t border-slate-200">
+              <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 flex items-center gap-2">
+                <Filter size={14} /> Capas Territoriales
               </h3>
               <div className="space-y-2">
-                <label className="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
-                  <input 
-                    type="checkbox" 
-                    checked={filters.showPlaneado} 
-                    onChange={(e) => setFilters(f => ({ ...f, showPlaneado: e.target.checked }))}
-                    className="w-4 h-4 accent-red-600" 
-                  />
-                  <span className="text-sm font-bold text-slate-700">Demanda Dinámica (Roja)</span>
-                </label>
+                {filtrosModulos.showBacheo && (
+                  <label className="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
+                    <input 
+                      type="checkbox" 
+                      checked={filters.showPlaneado} 
+                      onChange={(e) => setFilters(f => ({ ...f, showPlaneado: e.target.checked }))}
+                      className="w-4 h-4 accent-red-600" 
+                    />
+                    <span className="text-xs font-bold text-slate-700">Demanda Dinámica (Tickets Rojos)</span>
+                  </label>
+                )}
                 <label className="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
                   <input 
                     type="checkbox" 
@@ -666,24 +898,11 @@ export default function App() {
                     onChange={(e) => setFilters(f => ({ ...f, showGeoJSON: e.target.checked }))}
                     className="w-4 h-4 accent-toluca-gold" 
                   />
-                  <span className="text-sm font-bold text-slate-700">Delegaciones</span>
-                </label>
-                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
-                  <div className="flex items-center gap-3">
-                    <input 
-                      type="checkbox" 
-                      checked={filters.showPavimentaciones} 
-                      onChange={(e) => setFilters(f => ({ ...f, showPavimentaciones: e.target.checked }))}
-                      className="w-4 h-4 accent-blue-600" 
-                    />
-                    <span className="text-sm font-bold text-slate-700">Pavimentaciones (DGOP)</span>
-                  </div>
-                  <span className="text-[10px] font-black px-2 py-0.5 bg-blue-50 text-blue-600 rounded-full border border-blue-100">
-                    {pavimentaciones.filter(p => p.coords.length > 0).length} con trazo / {pavimentaciones.length}
-                  </span>
+                  <span className="text-xs font-bold text-slate-700">Límites Delegacionales (48 Zonas)</span>
                 </label>
               </div>
             </div>
+          </div>
 
           <div className="mt-auto p-6 bg-slate-100/50">
              <div className="bg-white p-4 rounded-xl border border-slate-200 text-center">
@@ -753,8 +972,8 @@ export default function App() {
               />
             )}
             
-            {/* Tramos Verdes — only visible in tramos mode */}
-            {filters.renderMode === 'tramos' && (
+            {/* Tramos Verdes de Bacheo — solo visible en modo tramos y con módulo bacheo activo */}
+            {filtrosModulos.showBacheo && filters.renderMode === 'tramos' && (
               <GeoJSON
                 key={`tramos-geojson-${tramos.length}`}
                 data={tramosGeoJSON as any}
@@ -766,8 +985,8 @@ export default function App() {
               />
             )}
 
-            {/* Clusters Verdes (Obras Públicas) — only visible in clusters mode. Uses throttled data for performance. */}
-            {filters.renderMode === 'clusters' && (
+            {/* Clusters Verdes (Obras Públicas Bacheo) — solo visible en modo clusters con módulo bacheo activo */}
+            {filtrosModulos.showBacheo && filters.renderMode === 'clusters' && (
               <MarkerClusterGroup
                 key="cluster-ejecutado-op"
                 clusterColor="#16a34a"
@@ -775,8 +994,8 @@ export default function App() {
               />
             )}
 
-            {/* Clusters Azules (Servicios Públicos) — only visible in clusters mode. Uses throttled data for performance. */}
-            {filters.renderMode === 'clusters' && (
+            {/* Clusters Azules (Servicios Públicos Bacheo) — solo visible en modo clusters con módulo bacheo activo */}
+            {filtrosModulos.showBacheo && filters.renderMode === 'clusters' && (
               <MarkerClusterGroup
                 key="cluster-ejecutado-sp"
                 clusterColor="#2563eb"
@@ -784,78 +1003,34 @@ export default function App() {
               />
             )}
 
-            {/* Marker Cluster for Dynamic Tickets (Red) — always available, also throttled */}
-            <MarkerClusterGroup
-              key="cluster-tickets"
-              data={throttledClusterData.filter(p => {
-                if (p.status === 'TICKET_TOTAL') return filters.showPlaneado;
-                return false;
-              })}
-            />
+            {/* Marker Cluster for Dynamic Tickets (Red) */}
+            {filtrosModulos.showBacheo && (
+              <MarkerClusterGroup
+                key="cluster-tickets"
+                data={throttledClusterData.filter(p => {
+                  if (p.status === 'TICKET_TOTAL') return filters.showPlaneado;
+                  return false;
+                })}
+              />
+            )}
 
-            {/* Capa de Pavimentaciones (DGOP) */}
-            {filters.showPavimentaciones && pavimentaciones.map((p) => {
-              if (p.coords.length >= 2) {
-                return (
-                  <Polyline 
-                    key={p.id} 
-                    positions={p.coords} 
-                    color="#2563eb" 
-                    weight={5} 
-                    opacity={0.8}
-                  >
-                    <Popup>
-                      <div className="font-sans min-w-[200px]">
-                        <div className="border-b-2 border-blue-600 pb-1 mb-2">
-                          <b className="text-blue-600 text-sm">Obra No. {p.no}</b><br/>
-                          <span className="text-xs font-semibold text-slate-500">{p.tipoObra}</span>
-                        </div>
-                        <div className="text-xs text-slate-700 mb-2 font-medium">
-                          {p.descripcion}
-                        </div>
-                        <div className="bg-blue-50/50 p-2 rounded-lg text-[11px] border border-blue-100/50 space-y-1">
-                          <div><b>Delegación:</b> {p.delegacion}</div>
-                          <div><b>Superficie:</b> {p.superficie.toLocaleString('es-MX')} m²</div>
-                          <div><b>Metros Lineales:</b> {p.metrosLineales.toLocaleString('es-MX')} m</div>
-                          <div><b>Inversión:</b> <span className="font-bold text-blue-700">{p.inversion}</span></div>
-                        </div>
-                      </div>
-                    </Popup>
-                  </Polyline>
-                );
-              } else if (p.coords.length === 1) {
-                return (
-                  <CircleMarker
-                    key={p.id}
-                    center={p.coords[0]}
-                    radius={7}
-                    fillColor="#2563eb"
-                    color="#ffffff"
-                    weight={1.5}
-                    fillOpacity={0.9}
-                  >
-                    <Popup>
-                      <div className="font-sans min-w-[200px]">
-                        <div className="border-b-2 border-blue-600 pb-1 mb-2">
-                          <b className="text-blue-600 text-sm">Obra No. {p.no} (Punto de Referencia)</b><br/>
-                          <span className="text-xs font-semibold text-slate-500">{p.tipoObra}</span>
-                        </div>
-                        <div className="text-xs text-slate-700 mb-2 font-medium">
-                          {p.descripcion}
-                        </div>
-                        <div className="bg-blue-50/50 p-2 rounded-lg text-[11px] border border-blue-100/50 space-y-1">
-                          <div><b>Delegación:</b> {p.delegacion}</div>
-                          <div><b>Superficie:</b> {p.superficie.toLocaleString('es-MX')} m²</div>
-                          <div><b>Metros Lineales:</b> {p.metrosLineales.toLocaleString('es-MX')} m</div>
-                          <div><b>Inversión:</b> <span className="font-bold text-blue-700">{p.inversion}</span></div>
-                        </div>
-                      </div>
-                    </Popup>
-                  </CircleMarker>
-                );
-              }
-              return null;
-            })}
+            {/* Capa Unificada de Obras por Módulo (Pavimentación, Slurry, Pozos, Señalamiento, Equipamiento) */}
+            <ObrasLayers
+              tramos={obrasTramos}
+              puntuales={obrasPuntuales}
+              currentDate={currentDate}
+              showPavimentacion={filtrosModulos.showPavimentacion}
+              showSlurry={filtrosModulos.showSlurry}
+              showPozos={filtrosModulos.showPozos}
+              showSenalamiento={filtrosModulos.showSenalamiento}
+              showEquipamiento={filtrosModulos.showEquipamiento}
+              pavAsfaltica={filtrosModulos.pavAsfaltica}
+              pavHidraulico={filtrosModulos.pavHidraulico}
+              pavEcologico={filtrosModulos.pavEcologico}
+              showConcluidas={filtrosModulos.showConcluidas}
+              showEnProceso={filtrosModulos.showEnProceso}
+              showProgramadas={filtrosModulos.showProgramadas}
+            />
             <CoordinateSearch data={data} geoData={geoData} setFilters={setFilters} />
           </MapContainer>
 

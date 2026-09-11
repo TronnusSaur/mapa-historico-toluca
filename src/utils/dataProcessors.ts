@@ -1,4 +1,5 @@
 import Papa from 'papaparse';
+import type { ModuloObraId, SubtipoPavimentacion, Obra, ObraTramo, ObraPuntual, EstadoTemporalObra } from '../types/obras.ts';
 
 export interface PotholeData {
   id: string;
@@ -525,5 +526,272 @@ export const mapSupabaseRowToPothole = (row: any): PotholeData => {
     stage: row.idEtapa || 1,
     originalId: row.folio || row.folioRef || ''
   };
+};
+
+/**
+ * Parsea fechas flexibles en formatos DD/MM/YYYY, DD-MM-YYYY, YYYY-MM-DD
+ */
+export const parseFechaFlexible = (val: any): Date | null => {
+  if (!val) return null;
+  if (val instanceof Date) return isNaN(val.getTime()) ? null : val;
+  const str = val.toString().trim();
+  if (!str) return null;
+
+  const parts = str.split(/[\/\-]/);
+  if (parts.length === 3) {
+    if (parts[0].length === 4) {
+      const d = new Date(parseInt(parts[0], 10), parseInt(parts[1], 10) - 1, parseInt(parts[2], 10));
+      if (!isNaN(d.getTime())) return d;
+    } else {
+      const yearStr = parts[2].length === 2 ? `20${parts[2]}` : parts[2];
+      const d = new Date(parseInt(yearStr, 10), parseInt(parts[1], 10) - 1, parseInt(parts[0], 10));
+      if (!isNaN(d.getTime())) return d;
+    }
+  }
+
+  const d = new Date(str);
+  return isNaN(d.getTime()) ? null : d;
+};
+
+/**
+ * Clasifica automáticamente el módulo y subtipo de la obra según su texto y tipo reportado
+ */
+export const clasificarObra = (
+  tipoRaw: string = '', 
+  nombreRaw: string = ''
+): { modulo: ModuloObraId; subtipo: SubtipoPavimentacion | string } => {
+  const combined = `${tipoRaw} ${nombreRaw}`.toLowerCase();
+
+  if (combined.includes('slurry')) {
+    return { modulo: 'slurry', subtipo: 'Mantenimiento con Slurry' };
+  }
+  if (combined.includes('pozo')) {
+    return { modulo: 'pozos', subtipo: 'Pozo de Agua / Absorción' };
+  }
+  if (
+    combined.includes('señal') || 
+    combined.includes('senalamiento') || 
+    combined.includes('balizamiento') || 
+    combined.includes('nomenclatura') || 
+    combined.includes('transito') || 
+    combined.includes('tránsito')
+  ) {
+    return { modulo: 'senalamiento', subtipo: 'Señalamiento y Balizamiento' };
+  }
+  if (
+    combined.includes('arcotecho') || 
+    combined.includes('techado') || 
+    combined.includes('escuela') || 
+    combined.includes('aula') || 
+    combined.includes('multideportivo') || 
+    combined.includes('cancha') ||
+    combined.includes('edificacion') ||
+    combined.includes('edificación')
+  ) {
+    return { modulo: 'equipamiento', subtipo: 'Equipamiento e Infraestructura Social' };
+  }
+  if (combined.includes('bacheo') || combined.includes('bache')) {
+    return { modulo: 'bacheo', subtipo: 'Bacheo' };
+  }
+  if (
+    combined.includes('paviment') || 
+    combined.includes('repaviment') || 
+    combined.includes('carpeta') || 
+    combined.includes('hidraulico') || 
+    combined.includes('hidráulico') || 
+    combined.includes('asfált') || 
+    combined.includes('asfalt')
+  ) {
+    if (combined.includes('ecol') || combined.includes('permeable')) {
+      return { modulo: 'pavimentacion', subtipo: 'ecologico' };
+    }
+    if (combined.includes('hidr') || combined.includes('hidráulico')) {
+      return { modulo: 'pavimentacion', subtipo: 'hidraulico' };
+    }
+    return { modulo: 'pavimentacion', subtipo: 'asfaltica' };
+  }
+
+  return { modulo: 'pavimentacion', subtipo: 'asfaltica' };
+};
+
+/**
+ * Extrae la delegación de una descripción de obra si no viene en columna propia
+ */
+export const extraerDelegacion = (texto: string = ''): string => {
+  const match = texto.match(/DELEGACI[ÓO]N\s+([^,.;\n]+)/i);
+  if (match && match[1]) {
+    return match[1].trim().toUpperCase();
+  }
+  return 'TOLUCA';
+};
+
+/**
+ * Calcula la distancia total en metros a lo largo de un arreglo de coordenadas [lat, lng]
+ */
+export const calcularMetrosLinealesTramo = (coords: [number, number][]): number => {
+  if (coords.length < 2) return 0;
+  let total = 0;
+  for (let i = 0; i < coords.length - 1; i++) {
+    total += haversineDistance(coords[i][0], coords[i][1], coords[i + 1][0], coords[i + 1][1]);
+  }
+  return Math.round(total);
+};
+
+/**
+ * Determina el estado temporal de una obra con respecto a la fecha seleccionada en el mapa
+ */
+export const getObraTimelineStatus = (obra: Obra, currentDate: Date): EstadoTemporalObra => {
+  if (!obra.fechaInicio) return 'CONCLUIDA';
+  if (currentDate < obra.fechaInicio) return 'POR_INICIAR';
+  if (obra.fechaFin && currentDate > obra.fechaFin) return 'CONCLUIDA';
+  return 'EN_EJECUCION';
+};
+
+/**
+ * Parsea el CSV de Obras de Tramo (INFO CONTRATOS MAPEO - TRAMOS.csv)
+ */
+export const parseContratosTramos = (url: string): Promise<ObraTramo[]> => {
+  return new Promise((resolve, reject) => {
+    Papa.parse(url, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        const data = results.data as Record<string, any>[];
+        const parsed: ObraTramo[] = [];
+
+        data.forEach((row, index) => {
+          const contrato = getVal(row, ['No. Contrato', 'contrato', 'no_contrato']) || `CTR-TRAMO-${index + 1}`;
+          const nombre = getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '';
+          if (!nombre && !contrato) return;
+
+          const tipoRaw = getVal(row, ['Tipo de Obra', 'tipo', 'tipo_obra']) || '';
+          const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
+          const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
+          
+          const fechaInicio = parseFechaFlexible(inicioRaw);
+          const fechaFin = parseFechaFlexible(terminoRaw);
+
+          // Extraer dinámicamente columnas P1, P2... Pn o Geolocalización P1...
+          const pKeys = Object.keys(row)
+            .filter(key => /(?:Geolocalizaci[oó]n\s*)?P\d+$/i.test(key.trim()))
+            .sort((a, b) => {
+              const numA = parseInt(a.trim().match(/\d+/)![0], 10);
+              const numB = parseInt(b.trim().match(/\d+/)![0], 10);
+              return numA - numB;
+            });
+
+          const coords: [number, number][] = [];
+          pKeys.forEach(key => {
+            const val = row[key];
+            if (val) {
+              const pt = extractCoords(val.toString());
+              if (pt && !isNaN(pt.lat) && !isNaN(pt.lng) && pt.lat !== 0 && pt.lng !== 0) {
+                // Validación para Toluca: lat positiva, lng negativa
+                let lat = pt.lat;
+                let lng = pt.lng;
+                if (lat < 0 && lng > 0) {
+                  lat = pt.lng;
+                  lng = pt.lat;
+                }
+                coords.push([lat, lng]);
+              }
+            }
+          });
+
+          const { modulo, subtipo } = clasificarObra(tipoRaw, nombre);
+          const delegacionCol = getVal(row, ['Delegación', 'delegacion']);
+          const delegacion = delegacionCol ? delegacionCol.toString().trim() : extraerDelegacion(nombre);
+          const metrosLineales = coords.length >= 2 ? calcularMetrosLinealesTramo(coords) : 0;
+
+          parsed.push({
+            id: `tramo-ctr-${index + 1}`,
+            contrato: contrato.toString().trim(),
+            nombre: nombre.toString().trim(),
+            tipo: modulo,
+            subtipo,
+            tipoRaw: tipoRaw.toString().trim(),
+            fechaInicio,
+            fechaFin,
+            delegacion,
+            metrosLineales,
+            geometriaTipo: 'tramo',
+            coords
+          });
+        });
+
+        resolve(parsed);
+      },
+      error: (err: Error) => reject(err)
+    });
+  });
+};
+
+/**
+ * Parsea el CSV de Obras Puntuales (INFO CONTRATOS MAPEO - PUNTUALES.csv)
+ */
+export const parseContratosPuntuales = (url: string): Promise<ObraPuntual[]> => {
+  return new Promise((resolve, reject) => {
+    Papa.parse(url, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        const data = results.data as Record<string, any>[];
+        const parsed: ObraPuntual[] = [];
+
+        data.forEach((row, index) => {
+          const contrato = getVal(row, ['No. Contrato', 'contrato', 'no_contrato']) || `CTR-PUNTUAL-${index + 1}`;
+          const nombre = getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '';
+          if (!nombre && !contrato) return;
+
+          const tipoRaw = getVal(row, ['Tipo de Obra', 'tipo', 'tipo_obra']) || '';
+          const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
+          const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
+          
+          const fechaInicio = parseFechaFlexible(inicioRaw);
+          const fechaFin = parseFechaFlexible(terminoRaw);
+
+          // Extraer coordenadas de la columna Geolocalización
+          const geoStr = getVal(row, ['Geolocalización', 'geolocalizacion', 'coordenadas', 'coordinates']) || '';
+          let lat = 0;
+          let lng = 0;
+          if (geoStr) {
+            const pt = extractCoords(geoStr.toString());
+            if (pt) {
+              lat = pt.lat;
+              lng = pt.lng;
+              if (lat < 0 && lng > 0) {
+                lat = pt.lng;
+                lng = pt.lat;
+              }
+            }
+          }
+
+          const { modulo, subtipo } = clasificarObra(tipoRaw, nombre);
+          const delegacionCol = getVal(row, ['Delegación', 'delegacion']);
+          const delegacion = delegacionCol ? delegacionCol.toString().trim() : extraerDelegacion(nombre);
+
+          parsed.push({
+            id: `puntual-ctr-${index + 1}`,
+            contrato: contrato.toString().trim(),
+            nombre: nombre.toString().trim(),
+            tipo: modulo,
+            subtipo,
+            tipoRaw: tipoRaw.toString().trim(),
+            fechaInicio,
+            fechaFin,
+            delegacion,
+            geometriaTipo: 'puntual',
+            lat,
+            lng
+          });
+        });
+
+        resolve(parsed);
+      },
+      error: (err: Error) => reject(err)
+    });
+  });
 };
 
