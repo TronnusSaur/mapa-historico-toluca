@@ -20,6 +20,8 @@ export type EstadoTemporalObra =
   | 'EN_EJECUCION'
   | 'CONCLUIDA';
 
+export type YearFilter = '2025' | '2026' | '2027' | 'todos';
+
 export interface ObraBase {
   id: string;
   contrato: string;
@@ -27,6 +29,7 @@ export interface ObraBase {
   tipo: ModuloObraId;
   subtipo?: SubtipoPavimentacion | string;
   tipoRaw?: string;
+  anio?: number;
   fechaInicio?: Date | null;
   fechaFin?: Date | null;
   delegacion?: string;

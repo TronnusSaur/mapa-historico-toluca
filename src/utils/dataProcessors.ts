@@ -654,9 +654,22 @@ export const calcularMetrosLinealesTramo = (coords: [number, number][]): number 
  * Determina el estado temporal de una obra con respecto a la fecha seleccionada en el mapa
  */
 export const getObraTimelineStatus = (obra: Obra, currentDate: Date): EstadoTemporalObra => {
-  if (!obra.fechaInicio) return 'CONCLUIDA';
-  if (currentDate < obra.fechaInicio) return 'POR_INICIAR';
+  const anio = obra.anio || 2026;
+
+  // Si ya concluyó su periodo de fin establecido
   if (obra.fechaFin && currentDate > obra.fechaFin) return 'CONCLUIDA';
+
+  // Si es obra de 2025 (obras históricas) y la fecha de consulta es posterior a 2025
+  if (anio === 2025 && (!obra.fechaInicio || currentDate.getFullYear() >= 2026)) return 'CONCLUIDA';
+
+  // Si no tiene fecha de inicio definida en la base de datos
+  if (!obra.fechaInicio) {
+    return anio === 2025 ? 'CONCLUIDA' : 'EN_EJECUCION';
+  }
+
+  // Si la fecha actual en la línea temporal es anterior a la fecha de inicio
+  if (currentDate < obra.fechaInicio) return 'POR_INICIAR';
+
   return 'EN_EJECUCION';
 };
 
@@ -721,13 +734,20 @@ export const parseContratosTramos = (url: string): Promise<ObraTramo[]> => {
           const delegacion = delegacionCol ? delegacionCol.toString().trim() : extraerDelegacion(nombre);
           const metrosLineales = coords.length >= 2 ? calcularMetrosLinealesTramo(coords) : 0;
 
+          const contratoStr = contrato.toString().trim();
+          let anio = 2026;
+          if (contratoStr.includes('/2025') || contratoStr.includes('-2025')) anio = 2025;
+          else if (contratoStr.includes('/2027') || contratoStr.includes('-2027')) anio = 2027;
+          else if (fechaInicio) anio = fechaInicio.getFullYear();
+
           parsed.push({
             id: `tramo-ctr-${index + 1}`,
-            contrato: contrato.toString().trim(),
+            contrato: contratoStr,
             nombre: nombre.toString().trim(),
             tipo: modulo,
             subtipo,
             tipoRaw: tipoRaw.toString().trim(),
+            anio,
             fechaInicio,
             fechaFin,
             delegacion,
@@ -793,13 +813,20 @@ export const parseContratosPuntuales = (url: string): Promise<ObraPuntual[]> => 
           const delegacionCol = getVal(row, ['Delegación', 'delegacion']);
           const delegacion = delegacionCol ? delegacionCol.toString().trim() : extraerDelegacion(nombre);
 
+          const contratoStr = contrato.toString().trim();
+          let anio = 2026;
+          if (contratoStr.includes('/2025') || contratoStr.includes('-2025')) anio = 2025;
+          else if (contratoStr.includes('/2027') || contratoStr.includes('-2027')) anio = 2027;
+          else if (fechaInicio) anio = fechaInicio.getFullYear();
+
           parsed.push({
             id: `puntual-ctr-${index + 1}`,
-            contrato: contrato.toString().trim(),
+            contrato: contratoStr,
             nombre: nombre.toString().trim(),
             tipo: modulo,
             subtipo,
             tipoRaw: tipoRaw.toString().trim(),
+            anio,
             fechaInicio,
             fechaFin,
             delegacion,

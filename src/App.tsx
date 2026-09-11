@@ -14,7 +14,7 @@ import {
   parseContratosPuntuales
 } from './utils/dataProcessors.ts';
 import type { PotholeData, Tramo, PavimentacionData } from './utils/dataProcessors.ts';
-import type { FiltrosModulos, ObraTramo, ObraPuntual } from './types/obras.ts';
+import type { FiltrosModulos, ObraTramo, ObraPuntual, YearFilter } from './types/obras.ts';
 import { supabase } from './lib/supabase.ts';
 import { 
   BarChart3, 
@@ -42,7 +42,8 @@ export default function App() {
   const [geoData, setGeoData] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [dbLoading, setDbLoading] = useState(false);
-  const [currentDate, setCurrentDate] = useState(new Date(2024, 11, 31));
+  const [selectedYear, setSelectedYear] = useState<YearFilter>('todos');
+  const [currentDate, setCurrentDate] = useState(new Date());
   const [isPlaying, setIsPlaying] = useState(false);
   const [filters, setFilters] = useState({
     showHistorico: true,
@@ -248,6 +249,7 @@ export default function App() {
             tipo: isSlurry ? 'slurry' : 'pavimentacion',
             subtipo: isSlurry ? 'Mantenimiento con Slurry' : subtipo,
             tipoRaw: p.tipoObra,
+            anio: 2025,
             fechaInicio: new Date(2025, 0, 1),
             fechaFin: new Date(2025, 11, 31),
             delegacion: p.delegacion,
@@ -329,11 +331,84 @@ export default function App() {
       }
     };
     loadAll();
-  }, []);  // Statistics: dynamic calculation based on timeline
+  }, []);  // Helper para filtrar por año seleccionado
+  const matchesYear = (d?: Date | null, stage?: number): boolean => {
+    if (selectedYear === 'todos') return true;
+    const y = parseInt(selectedYear, 10);
+    if (stage === 101) return y === 2025;
+    if (stage === 102) return y === 2026;
+    if (stage === 103) return y === 2027;
+    if (d instanceof Date && !isNaN(d.getTime())) {
+      return d.getFullYear() === y;
+    }
+    return true;
+  };
+
+  // Obras de Tramo y Puntuales filtradas por año
+  const filteredObrasTramos = useMemo(() => {
+    if (selectedYear === 'todos') return obrasTramos;
+    const y = parseInt(selectedYear, 10);
+    return obrasTramos.filter(o => (o.anio || 2026) === y);
+  }, [obrasTramos, selectedYear]);
+
+  const filteredObrasPuntuales = useMemo(() => {
+    if (selectedYear === 'todos') return obrasPuntuales;
+    const y = parseInt(selectedYear, 10);
+    return obrasPuntuales.filter(o => (o.anio || 2026) === y);
+  }, [obrasPuntuales, selectedYear]);
+
+  // Límites dinámicos del slider temporal según el año activo
+  const sliderBounds = useMemo(() => {
+    if (selectedYear === '2025') {
+      return {
+        min: new Date(2025, 0, 1).getTime(),
+        max: new Date(2025, 11, 31).getTime()
+      };
+    }
+    if (selectedYear === '2026') {
+      return {
+        min: new Date(2026, 0, 1).getTime(),
+        max: new Date(2026, 11, 31).getTime()
+      };
+    }
+    if (selectedYear === '2027') {
+      return {
+        min: new Date(2027, 0, 1).getTime(),
+        max: new Date(2027, 11, 31).getTime()
+      };
+    }
+    // 'todos' (GENERAL): Todo el trienio
+    return {
+      min: new Date(2024, 11, 31).getTime(),
+      max: new Date().getTime()
+    };
+  }, [selectedYear]);
+
+  const handleSelectYear = (year: YearFilter) => {
+    setSelectedYear(year);
+    setIsPlaying(false);
+    const now = new Date();
+    if (year === '2025') {
+      setCurrentDate(new Date(2025, 11, 31));
+      setFilters(f => ({ ...f, showSP2025: true, showSP2026: false, showSP2027: false }));
+    } else if (year === '2026') {
+      setCurrentDate(now.getFullYear() === 2026 ? now : new Date(2026, 11, 31));
+      setFilters(f => ({ ...f, showSP2025: false, showSP2026: true, showSP2027: false }));
+    } else if (year === '2027') {
+      setCurrentDate(new Date(2027, 0, 1));
+      setFilters(f => ({ ...f, showSP2025: false, showSP2026: false, showSP2027: true }));
+    } else {
+      // GENERAL ('todos')
+      setCurrentDate(now);
+      setFilters(f => ({ ...f, showSP2025: true, showSP2026: true, showSP2027: false }));
+    }
+  };
+
+  // Statistics: dynamic calculation based on timeline and active year
   const stats = useMemo(() => {
     // 1. All Work Progress up to today (regardless of visibility, for integrity)
-    // We count EVERY record from the CSV here.
-    const allDoneUpToDate = data.filter(p => p.status === 'EJECUTADO' && p.date <= currentDate);
+    // We count EVERY record from the CSV here that matches the year filter.
+    const allDoneUpToDate = data.filter(p => p.status === 'EJECUTADO' && p.date <= currentDate && matchesYear(p.date, p.stage));
     
     // 2. Filtered Work Progress (respecting stage toggles only, for global header/summary)
     const filteredDoneUpToDate = allDoneUpToDate.filter(p => {
@@ -352,7 +427,7 @@ export default function App() {
     const e3Done = allDoneUpToDate.filter(p => p.stage === 3);
 
     // 4. Tickets Logic (Independent of project stages)
-    const ticketsTotal = data.filter(p => p.status === 'TICKET_TOTAL');
+    const ticketsTotal = data.filter(p => p.status === 'TICKET_TOTAL' && matchesYear(p.date));
     
     // Active (Pending) tickets at current date
     const activeTicketsAtDate = ticketsTotal.filter(p => {
@@ -384,7 +459,7 @@ export default function App() {
       e3Baches: e3Done.length,
       e3M2: e3Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0)
     };
-  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
+  }, [data, currentDate, selectedYear, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
 
   // Map Visualization Data (Optimized: uses pre-calculated p.inZona)
   const visibleData = useMemo(() => {
@@ -395,7 +470,10 @@ export default function App() {
        // 2. Valid Coords Check (Don't try to render 0,0 points or NaN)
        if (!p.lat || !p.lng || isNaN(p.lat)) return false;
 
-       // 3. Stage filter
+       // 3. Year filter
+       if (!matchesYear(p.date, p.stage)) return false;
+
+       // 4. Stage filter
        if (p.stage === 1 && !filters.showE1) return false;
        if (p.stage === 2 && !filters.showE2) return false;
        if (p.stage === 3 && !filters.showE3) return false;
@@ -403,7 +481,7 @@ export default function App() {
        if (p.stage === 102 && !filters.showSP2026) return false;
        if (p.stage === 103 && !filters.showSP2027) return false;
 
-       // 4. Status/Timeline filter
+       // 5. Status/Timeline filter
        if (p.status === 'EJECUTADO') return p.date <= currentDate;
        
        if (p.status === 'TICKET_TOTAL') {
@@ -414,11 +492,12 @@ export default function App() {
 
        return p.date <= currentDate;
     });
-  }, [data, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
+  }, [data, currentDate, selectedYear, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
 
-  // Tramos: filter the pre-computed chains by currentDate and stage
+  // Tramos: filter the pre-computed chains by currentDate, stage, and selectedYear
   const tramos = useMemo(() => {
     return allTramos.filter(t => {
+      if (!matchesYear(t.date, t.stage)) return false;
       if (t.stage === 1 && !filters.showE1) return false;
       if (t.stage === 2 && !filters.showE2) return false;
       if (t.stage === 3 && !filters.showE3) return false;
@@ -427,7 +506,7 @@ export default function App() {
       if (t.stage === 103 && !filters.showSP2027) return false;
       return t.date <= currentDate;
     });
-  }, [allTramos, currentDate, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
+  }, [allTramos, currentDate, selectedYear, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
 
   // Convert filtered tramos to a single GeoJSON FeatureCollection for high-performance rendering.
   // This avoids mounting thousands of individual <Polyline> components which freezes React.
@@ -455,30 +534,27 @@ export default function App() {
     if (isPlaying) {
       interval = setInterval(() => {
         setCurrentDate(prev => {
-          const now = new Date();
-          const next = new Date(prev);
-          next.setDate(next.getDate() + 7); // Move 1 week at a time
-
-          if (next >= now) {
+          const next = new Date(prev.getTime() + 86400000 * 7); // Move 1 week at a time
+          if (next.getTime() >= sliderBounds.max) {
             setIsPlaying(false);
-            return now; // Lock to exactly now
+            return new Date(sliderBounds.max);
           }
           return next;
         });
       }, 500);
     }
     return () => clearInterval(interval);
-  }, [isPlaying]);
+  }, [isPlaying, sliderBounds.max]);
 
   const moduleCounts = useMemo(() => {
     const bacheoCount = stats.baches;
-    const pavTramos = obrasTramos.filter(o => o.tipo === 'pavimentacion');
-    const slurryTramos = obrasTramos.filter(o => o.tipo === 'slurry');
-    const senderosCount = obrasTramos.filter(o => o.tipo === 'senderos').length + obrasPuntuales.filter(o => o.tipo === 'senderos').length;
-    const arcotechosCount = obrasTramos.filter(o => o.tipo === 'arcotechos').length + obrasPuntuales.filter(o => o.tipo === 'arcotechos').length;
-    const pozosCount = obrasPuntuales.filter(o => o.tipo === 'pozos').length;
-    const senalamientoCount = obrasPuntuales.filter(o => o.tipo === 'senalamiento').length;
-    const equipamientoCount = obrasPuntuales.filter(o => o.tipo === 'equipamiento').length;
+    const pavTramos = filteredObrasTramos.filter(o => o.tipo === 'pavimentacion');
+    const slurryTramos = filteredObrasTramos.filter(o => o.tipo === 'slurry');
+    const senderosCount = filteredObrasTramos.filter(o => o.tipo === 'senderos').length + filteredObrasPuntuales.filter(o => o.tipo === 'senderos').length;
+    const arcotechosCount = filteredObrasTramos.filter(o => o.tipo === 'arcotechos').length + filteredObrasPuntuales.filter(o => o.tipo === 'arcotechos').length;
+    const pozosCount = filteredObrasPuntuales.filter(o => o.tipo === 'pozos').length;
+    const senalamientoCount = filteredObrasPuntuales.filter(o => o.tipo === 'senalamiento').length;
+    const equipamientoCount = filteredObrasPuntuales.filter(o => o.tipo === 'equipamiento').length;
 
     const pavAsfaltica = pavTramos.filter(o => o.subtipo === 'asfaltica').length;
     const pavHidraulico = pavTramos.filter(o => o.subtipo === 'hidraulico').length;
@@ -497,11 +573,11 @@ export default function App() {
       pavHidraulico,
       pavEcologico
     };
-  }, [stats.baches, obrasTramos, obrasPuntuales]);
+  }, [stats.baches, filteredObrasTramos, filteredObrasPuntuales]);
 
   const renderHeaderMetrics = () => {
     if (filtrosModulos.moduloActivo === 'pavimentacion') {
-      const pavs = obrasTramos.filter(o => o.tipo === 'pavimentacion');
+      const pavs = filteredObrasTramos.filter(o => o.tipo === 'pavimentacion');
       const totalMl = pavs.reduce((acc, curr) => acc + (curr.metrosLineales || 0), 0);
       const totalM2 = pavs.reduce((acc, curr) => acc + (curr.superficie || 0), 0);
       return (
@@ -524,7 +600,7 @@ export default function App() {
       );
     }
     if (filtrosModulos.moduloActivo === 'pozos') {
-      const pozos = obrasPuntuales.filter(o => o.tipo === 'pozos');
+      const pozos = filteredObrasPuntuales.filter(o => o.tipo === 'pozos');
       const delegacionesCount = new Set(pozos.map(p => p.delegacion)).size;
       return (
         <>
@@ -546,7 +622,7 @@ export default function App() {
       );
     }
     if (filtrosModulos.moduloActivo === 'slurry') {
-      const slurries = obrasTramos.filter(o => o.tipo === 'slurry');
+      const slurries = filteredObrasTramos.filter(o => o.tipo === 'slurry');
       const totalMl = slurries.reduce((acc, curr) => acc + (curr.metrosLineales || 0), 0);
       return (
         <>
@@ -568,7 +644,7 @@ export default function App() {
       );
     }
     if (filtrosModulos.moduloActivo === 'senalamiento') {
-      const senales = obrasPuntuales.filter(o => o.tipo === 'senalamiento');
+      const senales = filteredObrasPuntuales.filter(o => o.tipo === 'senalamiento');
       return (
         <>
           <div className="text-center">
@@ -589,7 +665,7 @@ export default function App() {
       );
     }
     if (filtrosModulos.moduloActivo === 'senderos') {
-      const senderos = obrasTramos.filter(o => o.tipo === 'senderos');
+      const senderos = filteredObrasTramos.filter(o => o.tipo === 'senderos');
       const totalMl = senderos.reduce((acc, curr) => acc + (curr.metrosLineales || 0), 0);
       return (
         <>
@@ -611,7 +687,7 @@ export default function App() {
       );
     }
     if (filtrosModulos.moduloActivo === 'arcotechos') {
-      const arcotechos = obrasPuntuales.filter(o => o.tipo === 'arcotechos');
+      const arcotechos = filteredObrasPuntuales.filter(o => o.tipo === 'arcotechos');
       return (
         <>
           <div className="text-center">
@@ -632,7 +708,7 @@ export default function App() {
       );
     }
     if (filtrosModulos.moduloActivo === 'equipamiento') {
-      const equip = obrasPuntuales.filter(o => o.tipo === 'equipamiento');
+      const equip = filteredObrasPuntuales.filter(o => o.tipo === 'equipamiento');
       return (
         <>
           <div className="text-center">
@@ -1107,8 +1183,8 @@ export default function App() {
 
             {/* Capa Unificada de Obras por Módulo (Pavimentación, Slurry, Senderos, Arcotechos, Pozos, Señalamiento, Equipamiento) */}
             <ObrasLayers
-              tramos={obrasTramos}
-              puntuales={obrasPuntuales}
+              tramos={filteredObrasTramos}
+              puntuales={filteredObrasPuntuales}
               currentDate={currentDate}
               showPavimentacion={filtrosModulos.showPavimentacion}
               showSlurry={filtrosModulos.showSlurry}
@@ -1128,38 +1204,88 @@ export default function App() {
           </MapContainer>
 
           {/* Timeline Overlay */}
-          <div className="absolute bottom-10 left-10 right-10 z-[1000]">
-            <div className="premium-glass p-6 rounded-3xl shadow-2xl border border-white/40 max-w-4xl mx-auto flex items-center gap-6">
+          <div className="absolute bottom-8 left-8 right-8 z-[1000] pointer-events-none">
+            <div className="premium-glass p-5 rounded-3xl shadow-2xl border border-white/50 max-w-5xl mx-auto flex items-center gap-5 pointer-events-auto backdrop-blur-md">
               <button 
                 onClick={() => setIsPlaying(!isPlaying)}
-                className="w-14 h-14 bg-toluca-burgundy text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform shadow-lg shadow-toluca-burgundy/30"
+                className="w-13 h-13 bg-toluca-burgundy text-white rounded-full flex items-center justify-center hover:scale-105 transition-transform shadow-lg shadow-toluca-burgundy/30 shrink-0"
               >
-                {isPlaying ? <Pause fill="currentColor" /> : <Play className="ml-1" fill="currentColor" />}
+                {isPlaying ? <Pause fill="currentColor" size={20} /> : <Play className="ml-1" fill="currentColor" size={20} />}
               </button>
 
-              <div className="flex-1">
-                <div className="flex justify-between mb-3 items-end">
+              <div className="flex-1 min-w-0">
+                <div className="flex justify-between mb-2 items-end">
                    <div>
-                     <p className="text-[10px] font-black text-toluca-burgundy/60 tracking-[0.2em] uppercase">Visualización Temporal</p>
-                     <h2 className="text-xl font-black text-slate-800 flex items-center gap-2">
-                       <Calendar size={18} className="text-toluca-burgundy" /> 
+                     <p className="text-[10px] font-black text-toluca-burgundy/70 tracking-[0.2em] uppercase">Visualización Temporal</p>
+                     <h2 className="text-lg font-black text-slate-800 flex items-center gap-2">
+                       <Calendar size={17} className="text-toluca-burgundy" /> 
                        {currentDate.toLocaleDateString('es-MX', { day: '2-digit', month: 'long', year: 'numeric' }).toUpperCase()}
                      </h2>
                    </div>
                    <div className="text-right">
-                      <p className="text-[10px] font-bold text-slate-400 uppercase mb-1">Total Auditado</p>
-                      <p className="text-sm font-black text-slate-600">{stats.baches.toLocaleString()} Baches</p>
+                      <p className="text-[10px] font-bold text-slate-400 uppercase mb-0.5">Total Auditado</p>
+                      <p className="text-sm font-black text-slate-700">{stats.baches.toLocaleString()} Baches</p>
                    </div>
                 </div>
                 <input 
                   type="range" 
-                  min={new Date(2024, 11, 31).getTime()} 
-                  max={new Date().getTime()}
-                  value={currentDate.getTime()}
+                  min={sliderBounds.min} 
+                  max={sliderBounds.max}
+                  value={Math.min(Math.max(currentDate.getTime(), sliderBounds.min), sliderBounds.max)}
                   onChange={(e) => setCurrentDate(new Date(parseInt(e.target.value)))}
                   className="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-toluca-burgundy"
                 />
               </div>
+
+              {/* Divisor vertical */}
+              <div className="w-[1px] h-11 bg-slate-200 shrink-0 hidden sm:block" />
+
+              {/* Selector de Periodo / Años (3 pequeños + 1 largo GENERAL) */}
+              <div className="flex flex-col gap-1.5 shrink-0 w-36">
+                <div className="grid grid-cols-3 gap-1">
+                  <button 
+                    onClick={() => handleSelectYear('2025')}
+                    className={`py-1.5 px-1 rounded-lg text-[10px] font-black transition-all text-center ${
+                      selectedYear === '2025' 
+                        ? 'bg-blue-600 border-blue-600 text-white shadow-sm ring-2 ring-blue-400/40' 
+                        : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    2025
+                  </button>
+                  <button 
+                    onClick={() => handleSelectYear('2026')}
+                    className={`py-1.5 px-1 rounded-lg text-[10px] font-black transition-all text-center ${
+                      selectedYear === '2026' 
+                        ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm ring-2 ring-indigo-400/40' 
+                        : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                    }`}
+                  >
+                    2026
+                  </button>
+                  <button 
+                    onClick={() => handleSelectYear('2027')}
+                    className={`py-1.5 px-1 rounded-lg text-[10px] font-black transition-all text-center ${
+                      selectedYear === '2027' 
+                        ? 'bg-amber-600 border-amber-600 text-white shadow-sm ring-2 ring-amber-400/40' 
+                        : 'bg-white border border-slate-200 text-slate-400 hover:bg-slate-50'
+                    }`}
+                  >
+                    2027
+                  </button>
+                </div>
+                <button 
+                  onClick={() => handleSelectYear('todos')}
+                  className={`w-full py-1.5 px-2 rounded-lg text-[10px] font-black tracking-wider transition-all uppercase text-center ${
+                    selectedYear === 'todos' 
+                      ? 'bg-toluca-burgundy border-toluca-burgundy text-white shadow-sm ring-2 ring-toluca-burgundy/30' 
+                      : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50'
+                  }`}
+                >
+                  GENERAL
+                </button>
+              </div>
+
             </div>
           </div>
         </main>

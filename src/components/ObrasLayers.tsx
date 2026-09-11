@@ -40,10 +40,12 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
   showEnProceso,
   showProgramadas
 }) => {
-  const getTimelineStatus = (fechaInicio?: Date | null, fechaFin?: Date | null): EstadoTemporalObra => {
-    if (!fechaInicio) return 'CONCLUIDA';
-    if (currentDate < fechaInicio) return 'POR_INICIAR';
+  const getTimelineStatus = (fechaInicio?: Date | null, fechaFin?: Date | null, anio?: number): EstadoTemporalObra => {
+    const year = anio || 2026;
     if (fechaFin && currentDate > fechaFin) return 'CONCLUIDA';
+    if (year === 2025 && (!fechaInicio || currentDate.getFullYear() >= 2026)) return 'CONCLUIDA';
+    if (!fechaInicio) return year === 2025 ? 'CONCLUIDA' : 'EN_EJECUCION';
+    if (currentDate < fechaInicio) return 'POR_INICIAR';
     return 'EN_EJECUCION';
   };
 
@@ -86,9 +88,9 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
       return <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">Concluida</span>;
     }
     if (status === 'EN_EJECUCION') {
-      return <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 animate-pulse">En Ejecución</span>;
+      return <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 animate-pulse">En Proceso</span>;
     }
-    return <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 border border-slate-300">Programada</span>;
+    return <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 border border-blue-300">Programada</span>;
   };
 
   return (
@@ -112,7 +114,7 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
         }
 
         // Filtrar por estado temporal
-        const status = getTimelineStatus(obra.fechaInicio, obra.fechaFin);
+        const status = getTimelineStatus(obra.fechaInicio, obra.fechaFin, obra.anio);
         if (!matchesStatusFilter(status)) return null;
 
         if (!obra.coords || obra.coords.length === 0) return null;
@@ -257,7 +259,7 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
         if (obra.tipo === 'pavimentacion' && !showPavimentacion) return null;
         if (obra.tipo === 'slurry' && !showSlurry) return null;
 
-        const status = getTimelineStatus(obra.fechaInicio, obra.fechaFin);
+        const status = getTimelineStatus(obra.fechaInicio, obra.fechaFin, obra.anio);
         if (!matchesStatusFilter(status)) return null;
 
         if (!obra.lat || !obra.lng || obra.lat === 0 || obra.lng === 0) return null;
