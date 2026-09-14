@@ -49,7 +49,7 @@ export default function App() {
     showHistorico: true,
     showTramos: true,
     showGeoJSON: true,
-    showPlaneado: true,
+    showPlaneado: false,
     showE1: true,
     showE2: true,
     showE3: true,
@@ -818,8 +818,8 @@ export default function App() {
               counts={moduleCounts}
             />
 
-            {/* 2. Secciones Específicas de Bacheo (solo visibles si Bacheo está activo) */}
-            {filtrosModulos.showBacheo && (
+            {/* 2. Secciones Específicas de Bacheo (solo visibles si el módulo Bacheo está activo) */}
+            {filtrosModulos.moduloActivo === 'bacheo' && (
               <>
                 {/* --- ETAPA 3 (ACTUAL) --- */}
                 <div>
@@ -1047,7 +1047,7 @@ export default function App() {
                 <Filter size={14} /> Capas Territoriales
               </h3>
               <div className="space-y-2">
-                {filtrosModulos.showBacheo && (
+                {filtrosModulos.moduloActivo === 'bacheo' && (
                   <label className="flex items-center gap-3 p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors">
                     <input 
                       type="checkbox" 
