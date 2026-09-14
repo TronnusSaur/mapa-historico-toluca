@@ -671,7 +671,7 @@ export default function App() {
         <>
           <div className="text-center">
             <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Rutas Seguras</p>
-            <p className="text-2xl font-black text-fuchsia-300">{senderos.length} <span className="text-sm font-normal opacity-50">Tramos</span></p>
+            <p className="text-2xl font-black text-purple-300">{senderos.length} <span className="text-sm font-normal opacity-50">Tramos</span></p>
           </div>
           <div className="w-[1px] h-10 bg-white/10 mt-1" />
           <div className="text-center">
@@ -692,7 +692,7 @@ export default function App() {
         <>
           <div className="text-center">
             <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Techados Escolares</p>
-            <p className="text-2xl font-black text-purple-300">{arcotechos.length} <span className="text-sm font-normal opacity-50">Arcotechos</span></p>
+            <p className="text-2xl font-black text-amber-400">{arcotechos.length} <span className="text-sm font-normal opacity-50">Arcotechos</span></p>
           </div>
           <div className="w-[1px] h-10 bg-white/10 mt-1" />
           <div className="text-center">

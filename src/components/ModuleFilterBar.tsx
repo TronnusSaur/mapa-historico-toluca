@@ -44,8 +44,8 @@ export const ModuleFilterBar: React.FC<ModuleFilterBarProps> = ({
     { id: 'bacheo', label: 'Bacheo', icon: <Hammer size={13} />, color: 'bg-emerald-600 text-white', count: counts.bacheo },
     { id: 'pavimentacion', label: 'Pavimentaciones', icon: <Construction size={13} />, color: 'bg-blue-600 text-white', count: counts.pavimentacion },
     { id: 'slurry', label: 'Slurry', icon: <Flame size={13} />, color: 'bg-amber-600 text-white', count: counts.slurry },
-    { id: 'senderos', label: 'Senderos Seguros', icon: <Footprints size={13} />, color: 'bg-fuchsia-600 text-white', count: counts.senderos },
-    { id: 'arcotechos', label: 'Arcotechos', icon: <Building2 size={13} />, color: 'bg-purple-600 text-white', count: counts.arcotechos },
+    { id: 'senderos', label: 'Senderos Seguros', icon: <Footprints size={13} />, color: 'bg-purple-600 text-white', count: counts.senderos },
+    { id: 'arcotechos', label: 'Arcotechos', icon: <Building2 size={13} />, color: 'bg-[#78350f] text-white', count: counts.arcotechos },
     { id: 'pozos', label: 'Pozos', icon: <Droplet size={13} />, color: 'bg-cyan-600 text-white', count: counts.pozos },
     { id: 'senalamiento', label: 'Señalamiento', icon: <AlertTriangle size={13} />, color: 'bg-yellow-500 text-slate-950', count: counts.senalamiento },
   ];

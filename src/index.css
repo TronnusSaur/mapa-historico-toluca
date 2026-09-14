@@ -51,3 +51,46 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
+
+/* Custom Obra Pin Badges on Map */
+.obra-pin-marker {
+  background: transparent !important;
+  border: none !important;
+}
+
+.obra-pin-badge {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: 2px solid #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.35), 0 1px 3px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.2s ease;
+  user-select: none;
+}
+
+.obra-pin-badge:hover {
+  transform: scale(1.22);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+  z-index: 1000;
+}
+
+.obra-pin-badge.is-in-progress {
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.45), 0 3px 8px rgba(0, 0, 0, 0.35);
+  animation: obraPulse 2s infinite ease-in-out;
+}
+
+@keyframes obraPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7), 0 3px 8px rgba(0, 0, 0, 0.35);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(245, 158, 11, 0), 0 3px 8px rgba(0, 0, 0, 0.35);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(245, 158, 11, 0), 0 3px 8px rgba(0, 0, 0, 0.35);
+  }
+}
