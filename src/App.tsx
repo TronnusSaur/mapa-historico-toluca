@@ -183,7 +183,7 @@ export default function App() {
         const CONTRATOS_SPREADSHEET_ID = '1fHaAXj9qtGqgDBIbTh2jxryElklH6NN6bFWrnUZmYdk';
 
         const fetchContratosTramosWithFallback = async (): Promise<ObraTramo[]> => {
-          const remoteUrl = `https://docs.google.com/spreadsheets/d/${CONTRATOS_SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('TRAMOS')}`;
+          const remoteUrl = `https://docs.google.com/spreadsheets/d/${CONTRATOS_SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('TRAMOS')}&headers=1`;
           const localUrl = `${baseUrl}INFO CONTRATOS MAPEO - TRAMOS.csv`;
           
           try {
@@ -205,7 +205,7 @@ export default function App() {
         };
 
         const fetchContratosPuntualesWithFallback = async (): Promise<ObraPuntual[]> => {
-          const remoteUrl = `https://docs.google.com/spreadsheets/d/${CONTRATOS_SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('PUNTUALES')}`;
+          const remoteUrl = `https://docs.google.com/spreadsheets/d/${CONTRATOS_SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('PUNTUALES')}&headers=1`;
           const localUrl = `${baseUrl}INFO CONTRATOS MAPEO - PUNTUALES.csv`;
           
           try {

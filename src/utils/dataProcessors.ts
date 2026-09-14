@@ -704,10 +704,12 @@ export const parseContratosTramos = (url: string): Promise<ObraTramo[]> => {
 
           // Extraer dinámicamente columnas P1, P2... Pn o Geolocalización P1...
           const pKeys = Object.keys(row)
-            .filter(key => /P\d+$/i.test(key.trim()))
+            .filter(key => /P\d+/i.test(key))
             .sort((a, b) => {
-              const numA = parseInt(a.trim().match(/\d+/)![0], 10);
-              const numB = parseInt(b.trim().match(/\d+/)![0], 10);
+              const matchA = a.match(/P(\d+)/i);
+              const matchB = b.match(/P(\d+)/i);
+              const numA = matchA ? parseInt(matchA[1], 10) : 0;
+              const numB = matchB ? parseInt(matchB[1], 10) : 0;
               return numA - numB;
             });
 
@@ -776,6 +778,7 @@ export const parseContratosPuntuales = (url: string): Promise<ObraPuntual[]> => 
       complete: (results) => {
         const data = results.data as Record<string, any>[];
         const parsed: ObraPuntual[] = [];
+        const coordCounts = new Map<string, number>();
 
         data.forEach((row, index) => {
           const rawContrato = getVal(row, ['No. Contrato', 'contrato', 'no_contrato']);
@@ -806,6 +809,19 @@ export const parseContratosPuntuales = (url: string): Promise<ObraPuntual[]> => 
                 lat = pt.lng;
                 lng = pt.lat;
               }
+            }
+          }
+
+          // Si dos obras puntuales comparten exactamente la misma coordenada, aplicar un leve desplazamiento (~15m)
+          // para que ambos pines sean visibles e interactivos individualmente
+          if (lat !== 0 && lng !== 0) {
+            const coordKey = `${lat.toFixed(5)},${lng.toFixed(5)}`;
+            const existingCount = coordCounts.get(coordKey) || 0;
+            coordCounts.set(coordKey, existingCount + 1);
+
+            if (existingCount > 0) {
+              lat += 0.00018 * existingCount;
+              lng += 0.00018 * existingCount;
             }
           }
 
