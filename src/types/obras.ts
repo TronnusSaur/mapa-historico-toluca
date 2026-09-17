@@ -23,6 +23,27 @@ export type EstadoTemporalObra =
 
 export type YearFilter = '2025' | '2026' | '2027' | 'todos';
 
+export interface ObraEvidenciasFotos {
+  inicio?: string | null;
+  proceso: string[];
+  terminado?: string | null;
+}
+
+export interface ObraEvidenciaData {
+  idContrato: string;
+  noContrato: string;
+  nombreObra?: string;
+  tipoObra?: string;
+  idEmpresa?: string;
+  idDelegacion?: string;
+  montoContratado?: string;
+  fechaInicio?: string;
+  fechaFin?: string;
+  categoria?: string;
+  fotos: ObraEvidenciasFotos;
+  fotosFallback?: ObraEvidenciasFotos;
+}
+
 export interface ObraBase {
   id: string;
   contrato: string;
@@ -37,6 +58,10 @@ export interface ObraBase {
   superficie?: number;
   metrosLineales?: number;
   inversion?: string;
+  idContrato?: string;
+  contratista?: string;
+  montoContratado?: string;
+  evidencias?: ObraEvidenciaData;
 }
 
 export interface ObraTramo extends ObraBase {

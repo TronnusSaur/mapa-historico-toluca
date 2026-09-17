@@ -1,8 +1,7 @@
 import React from 'react';
 import L from 'leaflet';
-import { Polyline, Marker, Popup, Tooltip } from 'react-leaflet';
+import { Polyline, Marker, Tooltip } from 'react-leaflet';
 import type { ObraTramo, ObraPuntual, EstadoTemporalObra } from '../types/obras.ts';
-import { Calendar, Layers, MapPin, Ruler } from 'lucide-react';
 
 interface ObrasLayersProps {
   tramos: ObraTramo[];
@@ -21,6 +20,7 @@ interface ObrasLayersProps {
   showConcluidas: boolean;
   showEnProceso: boolean;
   showProgramadas: boolean;
+  onSelectObra?: (obra: ObraTramo | ObraPuntual) => void;
 }
 
 // Genera el SVG blanco centrado correspondiente al tipo de obra
@@ -109,7 +109,8 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
   pavEcologico,
   showConcluidas,
   showEnProceso,
-  showProgramadas
+  showProgramadas,
+  onSelectObra
 }) => {
   const getTimelineStatus = (fechaInicio?: Date | null, fechaFin?: Date | null, anio?: number): EstadoTemporalObra => {
     const year = anio || 2026;
@@ -147,99 +148,6 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
     if (obra.tipo === 'pavimentacion') return '#2563eb'; // Azul rey
     return '#64748b';
   };
-
-  const formatDate = (date?: Date | null): string => {
-    if (!date) return 'No definida';
-    return date.toLocaleDateString('es-MX', { day: '2-digit', month: 'short', year: 'numeric' });
-  };
-
-  const renderBadge = (status: EstadoTemporalObra) => {
-    if (status === 'CONCLUIDA') {
-      return <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 border border-emerald-300">Concluida</span>;
-    }
-    if (status === 'EN_EJECUCION') {
-      return <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 border border-amber-300 animate-pulse">En Proceso</span>;
-    }
-    return <span className="text-[9px] font-black uppercase px-2 py-0.5 rounded-full bg-blue-100 text-blue-700 border border-blue-300">Programada</span>;
-  };
-
-  const renderTramoPopup = (obra: ObraTramo, status: EstadoTemporalObra) => (
-    <div className="font-sans min-w-[240px] max-w-[320px] p-1">
-      <div className="border-b border-slate-200 pb-2 mb-2">
-        <div className="flex justify-between items-center mb-1">
-          <span className="text-[9px] font-black uppercase tracking-wider text-slate-400">
-            {obra.tipo.toUpperCase()}
-          </span>
-          {renderBadge(status)}
-        </div>
-        <b className="text-xs font-bold text-slate-900 leading-tight block">
-          {obra.contrato}
-        </b>
-        <span className="text-[10px] font-semibold text-toluca-burgundy block mt-0.5">
-          {obra.subtipo}
-        </span>
-      </div>
-
-      <p className="text-xs text-slate-700 leading-snug mb-3">
-        {obra.nombre}
-      </p>
-
-      <div className="bg-slate-50 rounded-lg p-2.5 space-y-1.5 text-[11px] border border-slate-100">
-        <div className="flex items-center gap-1.5 text-slate-600">
-          <MapPin size={13} className="text-toluca-gold shrink-0" />
-          <span><b>Delegación:</b> {obra.delegacion || 'Toluca'}</span>
-        </div>
-        {obra.metrosLineales ? (
-          <div className="flex items-center gap-1.5 text-slate-600">
-            <Ruler size={13} className="text-blue-600 shrink-0" />
-            <span><b>Avance Lineal:</b> {obra.metrosLineales.toLocaleString()} ML</span>
-          </div>
-        ) : null}
-        <div className="flex items-center gap-1.5 text-slate-600">
-          <Calendar size={13} className="text-slate-400 shrink-0" />
-          <span><b>Periodo:</b> {formatDate(obra.fechaInicio)} al {formatDate(obra.fechaFin)}</span>
-        </div>
-      </div>
-    </div>
-  );
-
-  const renderPuntualPopup = (obra: ObraPuntual, status: EstadoTemporalObra) => (
-    <div className="font-sans min-w-[240px] max-w-[320px] p-1">
-      <div className="border-b border-slate-200 pb-2 mb-2">
-        <div className="flex justify-between items-center mb-1">
-          <span className="text-[9px] font-black uppercase tracking-wider text-slate-400">
-            {obra.tipo.toUpperCase()}
-          </span>
-          {renderBadge(status)}
-        </div>
-        <b className="text-xs font-bold text-slate-900 leading-tight block">
-          {obra.contrato}
-        </b>
-        <span className="text-[10px] font-semibold text-toluca-burgundy block mt-0.5">
-          {obra.subtipo}
-        </span>
-      </div>
-
-      <p className="text-xs text-slate-700 leading-snug mb-3">
-        {obra.nombre}
-      </p>
-
-      <div className="bg-slate-50 rounded-lg p-2.5 space-y-1.5 text-[11px] border border-slate-100">
-        <div className="flex items-center gap-1.5 text-slate-600">
-          <MapPin size={13} className="text-toluca-gold shrink-0" />
-          <span><b>Delegación:</b> {obra.delegacion || 'Toluca'}</span>
-        </div>
-        <div className="flex items-center gap-1.5 text-slate-600">
-          <Calendar size={13} className="text-slate-400 shrink-0" />
-          <span><b>Periodo:</b> {formatDate(obra.fechaInicio)} al {formatDate(obra.fechaFin)}</span>
-        </div>
-        <div className="flex items-center gap-1.5 text-slate-600">
-          <Layers size={13} className="text-slate-400 shrink-0" />
-          <span><b>Coordenadas:</b> {obra.lat.toFixed(4)}, {obra.lng.toFixed(4)}</span>
-        </div>
-      </div>
-    </div>
-  );
 
   return (
     <>
@@ -279,17 +187,18 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
             key={`pin-${obra.id}`}
             position={midpoint}
             icon={createObraPinIcon(obra, color, status)}
+            eventHandlers={{
+              click: () => onSelectObra?.(obra)
+            }}
           >
             <Tooltip sticky className="premium-tooltip">
               <div className="font-sans">
                 <p className="text-[10px] font-bold text-slate-500 uppercase">{obra.tipo.toUpperCase()} · {obra.subtipo}</p>
                 <p className="text-xs font-black text-slate-800 line-clamp-2">{obra.nombre}</p>
                 <p className="text-[10px] text-slate-500 mt-0.5">{obra.metrosLineales ? `${obra.metrosLineales.toLocaleString()} ML · ` : ''}{obra.delegacion}</p>
+                <span className="inline-block mt-1 text-[9px] font-bold text-toluca-burgundy">Clic para ver detalle y fotos →</span>
               </div>
             </Tooltip>
-            <Popup>
-              {renderTramoPopup(obra, status)}
-            </Popup>
           </Marker>
         );
 
@@ -307,17 +216,18 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
                 opacity,
                 dashArray
               }}
+              eventHandlers={{
+                click: () => onSelectObra?.(obra)
+              }}
             >
               <Tooltip sticky className="premium-tooltip">
                 <div className="font-sans">
                   <p className="text-[10px] font-bold text-slate-500 uppercase">{obra.tipo.toUpperCase()} · {obra.subtipo}</p>
                   <p className="text-xs font-black text-slate-800 line-clamp-2">{obra.nombre}</p>
                   <p className="text-[10px] text-slate-500 mt-0.5">{obra.metrosLineales ? `${obra.metrosLineales.toLocaleString()} ML · ` : ''}{obra.delegacion}</p>
+                  <span className="inline-block mt-1 text-[9px] font-bold text-toluca-burgundy">Clic para ver detalle y fotos →</span>
                 </div>
               </Tooltip>
-              <Popup>
-                {renderTramoPopup(obra, status)}
-              </Popup>
             </Polyline>
             {pinMarker}
           </React.Fragment>
@@ -346,17 +256,18 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
             key={obra.id}
             position={[obra.lat, obra.lng]}
             icon={createObraPinIcon(obra, color, status)}
+            eventHandlers={{
+              click: () => onSelectObra?.(obra)
+            }}
           >
             <Tooltip sticky className="premium-tooltip">
               <div className="font-sans">
                 <p className="text-[10px] font-bold text-slate-500 uppercase">{obra.tipo.toUpperCase()}</p>
                 <p className="text-xs font-black text-slate-800">{obra.contrato}</p>
                 <p className="text-[10px] text-slate-500">{obra.delegacion}</p>
+                <span className="inline-block mt-1 text-[9px] font-bold text-toluca-burgundy">Clic para ver detalle y fotos →</span>
               </div>
             </Tooltip>
-            <Popup>
-              {renderPuntualPopup(obra, status)}
-            </Popup>
           </Marker>
         );
       })}

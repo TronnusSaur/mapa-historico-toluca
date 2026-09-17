@@ -1,5 +1,5 @@
 import Papa from 'papaparse';
-import type { ModuloObraId, SubtipoPavimentacion, Obra, ObraTramo, ObraPuntual, EstadoTemporalObra } from '../types/obras.ts';
+import type { ModuloObraId, SubtipoPavimentacion, Obra, ObraTramo, ObraPuntual, EstadoTemporalObra, ObraEvidenciaData } from '../types/obras.ts';
 
 export interface PotholeData {
   id: string;
@@ -742,9 +742,13 @@ export const parseContratosTramos = (url: string): Promise<ObraTramo[]> => {
           else if (contratoStr.includes('/2027') || contratoStr.includes('-2027')) anio = 2027;
           else if (fechaInicio) anio = fechaInicio.getFullYear();
 
+          const idContratoRaw = getVal(row, ['idContrato', 'id_contrato']);
+          const idContrato = idContratoRaw ? idContratoRaw.toString().trim() : undefined;
+
           parsed.push({
             id: `tramo-ctr-${index + 1}`,
             contrato: contratoStr,
+            idContrato,
             nombre: nombre.toString().trim(),
             tipo: modulo,
             subtipo,
@@ -835,9 +839,13 @@ export const parseContratosPuntuales = (url: string): Promise<ObraPuntual[]> => 
           else if (contratoStr.includes('/2027') || contratoStr.includes('-2027')) anio = 2027;
           else if (fechaInicio) anio = fechaInicio.getFullYear();
 
+          const idContratoRaw = getVal(row, ['idContrato', 'id_contrato']);
+          const idContrato = idContratoRaw ? idContratoRaw.toString().trim() : undefined;
+
           parsed.push({
             id: `puntual-ctr-${index + 1}`,
             contrato: contratoStr,
+            idContrato,
             nombre: nombre.toString().trim(),
             tipo: modulo,
             subtipo,
@@ -858,4 +866,94 @@ export const parseContratosPuntuales = (url: string): Promise<ObraPuntual[]> => 
     });
   });
 };
+
+/**
+ * Carga el catálogo de evidencias fotográficas de obras 2026
+ */
+export const fetchEvidenciasObras = async (baseUrl: string = ''): Promise<Record<string, ObraEvidenciaData>> => {
+  try {
+    const url = `${baseUrl}data/evidencias_obras_2026.json`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (err) {
+    console.warn("Aviso: No se pudo cargar el archivo evidencias_obras_2026.json:", err);
+    return {};
+  }
+};
+
+/**
+ * Vincula cada obra con sus evidencias fotográficas y metadatos de contrato según idContrato o No. Contrato
+ */
+export const vincularEvidenciasAObras = <T extends Obra>(
+  obras: T[],
+  evidenciasMap: Record<string, ObraEvidenciaData>
+): T[] => {
+  if (!evidenciasMap || Object.keys(evidenciasMap).length === 0) return obras;
+
+  const byId = new Map<string, ObraEvidenciaData>();
+  const byNo = new Map<string, ObraEvidenciaData>();
+  const byLpn = new Map<string, ObraEvidenciaData>();
+
+  Object.values(evidenciasMap).forEach(ev => {
+    if (ev.idContrato) {
+      byId.set(ev.idContrato.toUpperCase().trim(), ev);
+    }
+    if (ev.noContrato) {
+      const cleanNo = ev.noContrato.toUpperCase().replace(/[\s\/-]+/g, '-').trim();
+      byNo.set(cleanNo, ev);
+
+      const lpnMatch = ev.noContrato.match(/LPN[-\s/]*(\d+)[-\s/]*(\d{4})/i);
+      if (lpnMatch) {
+        byLpn.set(`LPN-${lpnMatch[1]}-${lpnMatch[2]}`, ev);
+      }
+    }
+  });
+
+  return obras.map(obra => {
+    let matchedEv: ObraEvidenciaData | undefined;
+
+    // 1. Por idContrato si la obra ya lo trae
+    if (obra.idContrato && byId.has(obra.idContrato.toUpperCase().trim())) {
+      matchedEv = byId.get(obra.idContrato.toUpperCase().trim());
+    }
+
+    // 2. Por contrato exacto / normalizado
+    if (!matchedEv && obra.contrato) {
+      const cleanC = obra.contrato.toUpperCase().replace(/[\s\/-]+/g, '-').trim();
+      matchedEv = byNo.get(cleanC);
+    }
+
+    // 3. Por LPN (ej: LPN-050-2026)
+    if (!matchedEv && obra.contrato) {
+      const lpnMatch = obra.contrato.match(/LPN[-\s/]*(\d+)[-\s/]*(\d{4})/i);
+      if (lpnMatch) {
+        matchedEv = byLpn.get(`LPN-${lpnMatch[1]}-${lpnMatch[2]}`);
+      }
+    }
+
+    // 4. Por inclusión especial en caso de nombres descriptivos
+    if (!matchedEv && obra.nombre) {
+      const upperNombre = obra.nombre.toUpperCase();
+      if (upperNombre.includes('LAS JARAS') || upperNombre.includes('BARRANCA GRANDE')) {
+        matchedEv = byId.get('FENA-097');
+      } else if (upperNombre.includes('SEÑALAMIENTO') || upperNombre.includes('SENALAMIENTO')) {
+        matchedEv = byId.get('VIFUD-049');
+      }
+    }
+
+    if (matchedEv) {
+      return {
+        ...obra,
+        idContrato: matchedEv.idContrato,
+        contratista: matchedEv.idEmpresa || obra.contratista,
+        montoContratado: matchedEv.montoContratado || obra.montoContratado,
+        evidencias: matchedEv
+      };
+    }
+
+    return obra;
+  });
+};
+
 

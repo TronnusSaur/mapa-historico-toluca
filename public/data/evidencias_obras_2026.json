@@ -1,0 +1,1264 @@
+{
+  "FENA-097": {
+    "idContrato": "FENA-097",
+    "noContrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-097/2026",
+    "nombreObra": "CONSTRUCCIÓN DE COLECTOR DE AGUAS RESIDUALES LAS JARAS (BARRANCA GRANDE), TRAMO PANTEÓN MUNICIPAL CAPULTITLÁN A CALLE HERIBERTO ENRÍQUEZ, EN LA DELEGACIÓN SAN FELIPE TLALMIMILOLPAN, MUNICIPIO DE TOLUCA, ESTADO DE MÉXICO (ETAPA 1 DE 2)",
+    "tipoObra": "Pozos",
+    "idEmpresa": "FENA",
+    "idDelegacion": "TLALMI-29",
+    "montoContratado": "$49,969,905.24",
+    "fechaInicio": "10/8/2026",
+    "fechaFin": "20/12/2026",
+    "categoria": "COLECTOR",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/FENA-097/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/FENA-097/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "TERRA-061": {
+    "idContrato": "TERRA-061",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-061/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON\nCONCRETO ECOLÓGICO EN LA CALLE\nIGNACIO MANUEL ALTAMIRANO, DEL\nTRAMO COMPRENDIDO ENTRE CALLE\nGENERAL ABELARDO RODRÍGUEZ Y\nPROLONGACIÓN GENERAL JUAN ANDREW\nALMAZÁN, DELEGACIÓN DEL PARQUE,\nMUNICIPIO DE TOLUCA",
+    "tipoObra": "Pavimentación con Concreto Ecológico / Permeable",
+    "idEmpresa": "TERRA",
+    "idDelegacion": "PARQUE-11",
+    "montoContratado": "$2,152,066.46",
+    "fechaInicio": "7/7/2026",
+    "fechaFin": "4/10/2026",
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_proceso.jpg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/PROCESO.jpg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/TERMINADO.jpeg"
+    }
+  },
+  "IAP-062": {
+    "idContrato": "IAP-062",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-062/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON\nCONCRETO ECOLÓGICO EN LA CALLE\nPARQUE TEPOTZOTLAN, DEL TRAMO\nCOMPRENDIDO ENTRE CALLE PARQUE DE\nLOS CIERVOS Y BOULEVARD SOLIDARIDAD\nLAS TORRES, DELEGACIÓN ADOLFO LÓPEZ\nMATEOS, MUNICIPIO DE TOLUCA",
+    "tipoObra": "Pavimentación con Concreto Ecológico / Permeable",
+    "idEmpresa": "IAP",
+    "idDelegacion": "LOPEZM-20",
+    "montoContratado": "$2,623,369.22",
+    "fechaInicio": "7/7/2026",
+    "fechaFin": "4/10/2026",
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-062/_inicio.jpg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-062/_proceso.jpg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/INICIO.JPG",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/PROCESO.JPG"
+      ],
+      "terminado": null
+    }
+  },
+  "IAP-063": {
+    "idContrato": "IAP-063",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-063/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON\nCONCRETO ECOLÓGICO EN LA CALLE\nPARQUE VALLE ESCONDIDO, DEL TRAMO\nCOMPRENDIDO ENTRE BOULEVARD\nSOLIDARIDAD LAS TORRES Y CALLE ISLA\nDE LAS AVES, DELEGACIÓN ADOLFO LOPEZ\nMATEOS, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación con Concreto Ecológico / Permeable",
+    "idEmpresa": "IAP",
+    "idDelegacion": "LOPEZM-20",
+    "montoContratado": "$2,991,993.37",
+    "fechaInicio": "7/7/2026",
+    "fechaFin": "4/10/2026",
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_inicio.jpg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/INICIO.JPG",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/TERMINADO.jpeg"
+    }
+  },
+  "TERRA-064": {
+    "idContrato": "TERRA-064",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-064/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON\nCONCRETO ECOLÓGICO EN LA CALLE\nPARQUE MOLINO DE LAS FLORES, DEL\nTRAMO COMPRENDIDO ENTRE\nBOULEVARD SOLIDARIDAD LAS TORRES Y\nCALLE ISLA DE LAS AVES, DELEGACIÓN\nADOLFO LOPEZ MATEOS, MUNICIPIO DE\nTOLUCA",
+    "tipoObra": "Pavimentación con Concreto Ecológico / Permeable",
+    "idEmpresa": "TERRA",
+    "idDelegacion": "LOPEZM-20",
+    "montoContratado": "$1,192,986.48",
+    "fechaInicio": "8/7/2026",
+    "fechaFin": "5/10/2026",
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_proceso.jpg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/PROCESO.JPG"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/TERMINADO.jpeg"
+    }
+  },
+  "TERRA-065": {
+    "idContrato": "TERRA-065",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-065/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON\nCONCRETO ECOLÓGICO EN LA CALLE\nDESIERTO DEL CARMEN, DEL TRAMO\nCOMPRENDIDO ENTRE BOULEVARD\nSOLIDARIDAD LAS TORRES Y CALLE\nPARQUE EL OCOTAL, DELEGACIÓN\nADOLFO LOPEZ MATEOS, MUNICIPIO DE\nTOLUCA",
+    "tipoObra": "Pavimentación con Concreto Ecológico / Permeable",
+    "idEmpresa": "TERRA",
+    "idDelegacion": "LOPEZM-20",
+    "montoContratado": "$1,665,182.23",
+    "fechaInicio": "8/7/2026",
+    "fechaFin": "5/10/2026",
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_proceso.jpg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/PROCESO.JPG"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/TERMINADO.jpeg"
+    }
+  },
+  "IAP-066": {
+    "idContrato": "IAP-066",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-066/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON\nCONCRETO ECOLÓGICO EN LA CALLE\nPARQUE MATLAZINCAS, DEL TRAMO\nCOMPRENDIDO ENTRE BOULEVARD\nSOLIDARIDAD LAS TORRES Y CALLE LA\nMARQUESA, DELEGACIÓN ADOLFO LOPEZ\nMATEOS, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación con Concreto Ecológico / Permeable",
+    "idEmpresa": "IAP",
+    "idDelegacion": "LOPEZM-20",
+    "montoContratado": "$3,758,750.45",
+    "fechaInicio": "8/7/2026",
+    "fechaFin": "5/10/2026",
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_proceso.jpg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/PROCESO.JPG"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/TERMINADO.jpeg"
+    }
+  },
+  "IAP-067": {
+    "idContrato": "IAP-067",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-067/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON\nCONCRETO ECOLÓGICO EN LA CALLE\nPARQUE DE LOS REMEDIOS, DEL TRAMO\nCOMPRENDIDO ENTRE BOULEVARD\nSOLIDARIDAD LAS TORRES Y CALLE\nPARQUE NEVADO DE TOLUCA,\nDELEGACIÓN ADOLFO LOPEZ MATEOS,\nMUNICIPIO DE TOLUCA",
+    "tipoObra": "Pavimentación con Concreto Ecológico / Permeable",
+    "idEmpresa": "IAP",
+    "idDelegacion": "LOPEZM-20",
+    "montoContratado": "$4,360,038.20",
+    "fechaInicio": "8/7/2026",
+    "fechaFin": "5/10/2026",
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-067/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-067/_proceso.jpg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/PROCESO.JPG"
+      ],
+      "terminado": null
+    }
+  },
+  "TERRA-086": {
+    "idContrato": "TERRA-086",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-086/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON CONCRETO ECOLÓGICO EN LA CALLE PARQUE OTOMI, DEL TRAMO COMPRENDIDO ENTRE BOULEVARD SOLIDARIDAD LAS TORRES Y CALLE PARQUE NAUCALLI, DELEGACIÓN ADOLFO LOPEZ MATEOS, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación con Concreto Ecológico / Permeable",
+    "idEmpresa": "TERRA",
+    "idDelegacion": "LOPEZM-20",
+    "montoContratado": "$1,327,709.90",
+    "fechaInicio": "28/7/2026",
+    "fechaFin": "25/10/2026",
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_proceso.jpg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/PROCESO.JPG"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/TERMINADO.jpeg"
+    }
+  },
+  "IAP-087": {
+    "idContrato": "IAP-087",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-087/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON CONCRETO ECOLÓGICO EN LA CALLE NAUCALLI, DEL TRAMO COMPRENDIDO ENTRE BOULEVARD SOLIDARIDAD LAS TORRES Y CALLE TORRES CHICAS, DELEGACIÓN ADOLFO LOPEZ MATEOS, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación con Concreto Ecológico / Permeable",
+    "idEmpresa": "IAP",
+    "idDelegacion": "LOPEZM-20",
+    "montoContratado": "$4,771,548.52",
+    "fechaInicio": "28/7/2026",
+    "fechaFin": "25/10/2026",
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-087/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-087/_proceso.jpg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/PROCESO.JPG"
+      ],
+      "terminado": null
+    }
+  },
+  "AZTLAN-059": {
+    "idContrato": "AZTLAN-059",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-059/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON\nCONCRETO HIDRÁULICO EN LA CALLE EL\nNEVADO, DEL TRAMO COMPRENDIDO\nENTRE CALLE CEDRO Y CALZADA DE LOS\nMISTERIOS, DELEGACIÓN CACALOMACÁN,\nMUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación con Concreto Hidráulico",
+    "idEmpresa": "AZTLAN",
+    "idDelegacion": "CALOMA-22",
+    "montoContratado": "$8,428,755.19",
+    "fechaInicio": "7/7/2026",
+    "fechaFin": "4/10/2026",
+    "categoria": "CONCRETOS HIDRAULICOS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_proceso.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_proceso_2.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO-2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "FENA-053": {
+    "idContrato": "FENA-053",
+    "noContrato": "MT/DGOP/IPDM/LPN-053/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON\nCONCRETO HIDRAULICO EN LA CALLE\nFRANCISCO VILLA, DEL TRAMO\nCOMPRENDIDO ENTRE CALLE ROMÁN\nBADILLO Y PRIVADA DE FRANCISCO VILLA,\nDELEGACIÓN SANTA CRUZ\nATZCAPOTZALTONGO, MUNICIPIO DE\nTOLUCA",
+    "tipoObra": "Pavimentación con Concreto Hidráulico",
+    "idEmpresa": "FENA",
+    "idDelegacion": "ATZCA-39",
+    "montoContratado": "$5,554,700.96",
+    "fechaInicio": "6/7/2026",
+    "fechaFin": "3/10/2026",
+    "categoria": "CONCRETOS HIDRAULICOS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/TERMINO.jpeg"
+    }
+  },
+  "MAMUTEE-060": {
+    "idContrato": "MAMUTEE-060",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-060/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON\nCARPETA ASFÁLTICA EN LA CALLE MANUEL\nGÓMEZ PEDRAZA, DEL TRAMO\nCOMPRENDIDO ENTRE CALLE NICOLÁS\nBRAVO Y CALLE JOSE VICENTE VILLADA,\nDELEGACIÓN SAN PABLO AUTOPAN,\nMUNICIPIO DE TOLUCA",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "MAMUTEE",
+    "idDelegacion": "PABLO-36",
+    "montoContratado": "$11,655,163.37",
+    "fechaInicio": "7/7/2026",
+    "fechaFin": "4/10/2026",
+    "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/TERMINADO.jpeg"
+    }
+  },
+  "CARASTOL-092": {
+    "idContrato": "CARASTOL-092",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-092/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE CERRADA DE FRIDA KAHLO, DEL TRAMO COMPRENDIDO ENTRE CALLE LIBERTAD AL CADENAMIENTO 0+278, DELEGACIÓN SAN FELIPE TLALMIMILOLPAN, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "CARASTOL",
+    "idDelegacion": "TLALMI-29",
+    "montoContratado": "$2,800,017.73",
+    "fechaInicio": "3/8/2026",
+    "fechaFin": "1/10/2026",
+    "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/CARASTOL-092/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/CARASTOL-092/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "EDIT-095": {
+    "idContrato": "EDIT-095",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-095/2026",
+    "nombreObra": "RECONSTRUCCIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA EN LA CALLE SAN PABLO, EN EL TRAMO COMPRENDIDO DE CALLE SILVERIO PÉREZ Y CARRETERA A VILLA CUAUHTÉMOC, VILLAS SANTÍN, DELEGACIÓN SAUCES, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "EDIT",
+    "idDelegacion": "SAUCES-47",
+    "montoContratado": "$4,309,476.76",
+    "fechaInicio": "3/8/2026",
+    "fechaFin": "1/10/2026",
+    "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/EDIT-095/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/EDIT-095/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "JDJ-084": {
+    "idContrato": "JDJ-084",
+    "noContrato": "MT /DGOP/FAISMUN/LPN-084/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA EN LA CALLE AURELIO VENEGAS, DEL TRAMO COMPRENDIDO ENTRE AV. SEBASTIÁN LERDO DE TEJADA Y AV. JOSÉ MARÍA MORELOS  Y PAVÓN, DELEGACIÓN CIUDAD UNIVERSITARIA, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "JDJ",
+    "idDelegacion": "CU-46",
+    "montoContratado": "$3,335,985.06",
+    "fechaInicio": "27/7/2026",
+    "fechaFin": "24/10/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/TERMINADO.jpeg"
+    }
+  },
+  "VERDE-050": {
+    "idContrato": "VERDE-050",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-050/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON \nCARPETA ASFÁLTICA EN LA AVENIDA \nVICENTE LOMBARDO TOLEDANO, 1ª ETAPA, \nDEL TRAMO COMPRENDIDO ENTRE CALLE \nREVOLUCIÓN Y CALLE INDEPENDENCIA, \nDELEGACIÓN SAN MATEO OTZACATIPAN, \nMUNICIPIO DE TOLUCA. ",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "VERDE",
+    "idDelegacion": "MTOTZA-34",
+    "montoContratado": "$18,999,766.44",
+    "fechaInicio": "16/5/2026",
+    "fechaFin": "16/7/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/TERMINADO.jpeg"
+    }
+  },
+  "SINFRA-051": {
+    "idContrato": "SINFRA-051",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-051/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON \nCARPETA ASFÁLTICA EN LA CALLE \nGUADALUPE VICTORIA, DEL TRAMO \nCOMPRENDIDO ENTRE CALLE TOLUCA Y \nCALLE IGNACIO PICHARDO PAGAZA, \nSUBDELEGACIÓN JICALTEPEC AUTOPAN, \nMUNICIPIO DE TOLUCA. ",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "SINFRA",
+    "idDelegacion": "PABLO-36",
+    "montoContratado": "$9,599,640.91",
+    "fechaInicio": "16/5/2026",
+    "fechaFin": "16/7/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_proceso.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_proceso_2.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO-2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/TERMINADO.jpeg"
+    }
+  },
+  "EDIT-052": {
+    "idContrato": "EDIT-052",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-052/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON \nCARPETA ASFÁLTICA EN LA AVENIDA DEL \nTRABAJO, DEL TRAMO COMPRENDIDO \nENTRE 1RO DE MAYO Y CALLE MANUEL \nBUENDÍA TÉLLEZ GIRÓN, DELEGACIÓN LA \nMAQUINITA, MUNICIPIO DE TOLUCA. ",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "EDIT",
+    "idDelegacion": "MAQUINITA-04",
+    "montoContratado": "$7,232,699.57",
+    "fechaInicio": "16/5/2026",
+    "fechaFin": "16/7/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/TERMINADO.jpeg"
+    }
+  },
+  "ARPLEX-058": {
+    "idContrato": "ARPLEX-058",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-058/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON\nCARPETA ASFÁLTICA EN EL CAMINO AL\nREFUGIO, DEL TRAMO COMPRENDIDO\nENTRE CALLE JOSEFA ORTIZ DE\nDOMÍNGUEZ Y CALLE LOS CUERVOS,\nDELEGACIÓN SANTIAGO TLACOTEPEC,\nMUNICIPIO DE TOLUCA",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "ARPLEX",
+    "idDelegacion": "TLACO-42",
+    "montoContratado": "$17,999,347.67",
+    "fechaInicio": "7/7/2026",
+    "fechaFin": "4/10/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_proceso.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_proceso_2.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO-2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "CARASTOL-078": {
+    "idContrato": "CARASTOL-078",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-078/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA EN LA CALLE ISABEL LA CATÓLICA, 2ª ETAPA, DEL TRAMO COMPRENDIDO ENTRE AV. JOSÉ MARÍA MORELOS Y PAVÓN Y CALLE NEZAHUALCÓYOTL, DELEGACIÓN SAN SEBASTIÁN, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "CARASTOL",
+    "idDelegacion": "SEBASTIAN-06",
+    "montoContratado": "$2,876,878.67",
+    "fechaInicio": "27/7/2026",
+    "fechaFin": "24/10/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/TERMINADO.jpeg"
+    }
+  },
+  "CREA-081": {
+    "idContrato": "CREA-081",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-081/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE LEONA VICARIO, EN EL TRAMO COMPRENDIDO ENTRE AVENIDA MIGUEL HIDALGO Y AVENIDA SEBASTIÁN LERDO DE TEJADA, DELEGACIÓN CENTRO HISTÓRICO, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "CREA",
+    "idDelegacion": "CENTRO-01",
+    "montoContratado": "$3,858,720.77",
+    "fechaInicio": "27/7/2026",
+    "fechaFin": "24/10/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CREA-081/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CREA-081/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/TERMINADO.jpeg"
+    }
+  },
+  "REDNI-082": {
+    "idContrato": "REDNI-082",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-082/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE FELIPE PESCADOR, EN EL TRAMO COMPRENDIDO ENTRE CALLE MAXIMILIANO ÁLVAREZ Y CALLE ALBERTO GARCÍA, DELEGACIÓN INDEPENDENCIA, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "REDNI",
+    "idDelegacion": "INDEPENDENCIA-05",
+    "montoContratado": "$1,072,094.42",
+    "fechaInicio": "27/7/2026",
+    "fechaFin": "24/10/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/TERMINADO.jpeg"
+    }
+  },
+  "ESCARPIO-083": {
+    "idContrato": "ESCARPIO-083",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-083/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA EN LA CALLE ALEJANDRO VON HUMBOLDT, 2ª ETAPA, DEL TRAMO COMPRENDIDO ENTRE CALLE MIGUEL HIDALGO Y CALLE INDEPENDENCIA, DELEGACIÓN CENTRO HISTÓRICO, MUNICIPIO DE TOLUCA",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "ESCARPIO",
+    "idDelegacion": "CENTRO-01",
+    "montoContratado": "$2,268,894.41",
+    "fechaInicio": "27/7/2026",
+    "fechaFin": "24/10/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/TERMINADO.jpeg"
+    }
+  },
+  "MAMUTEE-089": {
+    "idContrato": "MAMUTEE-089",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-089/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA EN LA CALLE MELCHOR OCAMPO, EN EL TRAMO COMPRENDIDO DE AVENIDA JOSÉ MARÍA MORELOS Y PAVÓN Y CALLE PLUTARCO GONZÁLEZ, DELEGACIÓN CENTRO HISTÓRICO, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "MAMUTEE",
+    "idDelegacion": "CENTRO-01",
+    "montoContratado": "$876,163.97",
+    "fechaInicio": "28/7/2026",
+    "fechaFin": "25/10/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/TERMINADO.jpeg"
+    }
+  },
+  "SINFRA-090": {
+    "idContrato": "SINFRA-090",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-090/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE IGNACIO LÓPEZ RAYÓN 2ª ETAPA, EN EL TRAMO COMPRENDIDO DESDE LA CARRETERA TOLUCA-IXTLAHUACA Y CALLE JOSÉ MARÍA ARTEAGA, DELEGACIÓN SANTIAGO MILTEPEC, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "SINFRA",
+    "idDelegacion": "MILTEPEC-41",
+    "montoContratado": "$16,208,770.10",
+    "fechaInicio": "28/7/2026",
+    "fechaFin": "25/10/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_proceso.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_proceso_2.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO-2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "ESCARPIO-091": {
+    "idContrato": "ESCARPIO-091",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-091/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA EN EL CAMINO A SAN JUAN TILAPA, DEL TRAMO COMPRENDIDO ENTRE SAN FELIPE TLALMIMILOLPAN Y CALLE DE LA CRUZ, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "ESCARPIO",
+    "idDelegacion": "TLALMI-29",
+    "montoContratado": "$20,864,443.75",
+    "fechaInicio": "3/8/2026",
+    "fechaFin": "30/11/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_proceso.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_proceso_2.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO-2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "FENA-054": {
+    "idContrato": "FENA-054",
+    "noContrato": "MT/DGOP/IPDM/LPN-054/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON\nCARPETA ASFÁLTICA EN LA CALLE\nRINCONADA DE PINO SUÁREZ, DEL TRAMO\nCOMPRENDIDO ENTRE EL BOULEVARD\nJOSÉ MARÍA PINO SUÁREZ Y LA CALLE\nINSTITUTO LITERARIO, DELEGACIÓN\nCENTRO HISTÓRICO, MUNICIPIO DE\nTOLUCA",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "FENA",
+    "idDelegacion": "CENTRO-01",
+    "montoContratado": "$2,515,629.27",
+    "fechaInicio": "6/7/2026",
+    "fechaFin": "3/10/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/TERMINADO.jpeg"
+    }
+  },
+  "RASECA-056": {
+    "idContrato": "RASECA-056",
+    "noContrato": "MT/DGOP/IPDM/LPN-056/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON\nCARPETA ASFÁLTICA DE LA CALLE\nAGUSTÍN MILLÁN EN EL TRAMO\nCOMPRENDIDO ENTRE BOULEVARD\nMIGUEL ALEMÁN Y CALLE SAN ANTONIO\nDELEGACIÓN SAN PEDRO TOTOLTEPEC,\nMUNICIPIO DE TOLUCA.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "idEmpresa": "RASECA",
+    "idDelegacion": "MTOTOL-40",
+    "montoContratado": "$4,238,949.38",
+    "fechaInicio": "6/7/2026",
+    "fechaFin": "3/10/2026",
+    "categoria": "REHABILITACIÓN DE CARPETAS",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_proceso.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_proceso_2.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO-2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/TERMINADO.jpeg"
+    }
+  },
+  "ICI-077": {
+    "idContrato": "ICI-077",
+    "noContrato": "MT/DGOP/AVGFDyFCI/LPN-077/2026",
+    "nombreObra": "RECUPERACIÓN DE ESPACIOS PÚBLICOS\nCON PERSPECTIVA DE GÉNERO EN LA\nCALLE MANUEL BUENDÍA TÉLLEZ GIRÓN,\nEN EL TRAMO COMPRENDIDO DEL\nCADENAMIENTO 0+000 (CONCRETO\nEXISTENTE) A CALLE INDEPENDENCIA,\nCADENAMIENTO 0+000 AL 3+157,\nMUNICIPIO DE TOLUCA.",
+    "tipoObra": "Rescate de Espacios Públicos, Parques y Senderos Seguros",
+    "idEmpresa": "ICI",
+    "idDelegacion": "",
+    "montoContratado": "$18,920,069.59",
+    "fechaInicio": "9/7/2026",
+    "fechaFin": "5/11/2026",
+    "categoria": "SENDEROS Y PARQUES",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_proceso.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_proceso_2.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO-2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "ICI-076": {
+    "idContrato": "ICI-076",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-076/2026",
+    "nombreObra": "CONSTRUCCIÓN DE SENDERO SEGURO EN\nLA CALLE JOSÉ MARÍA MORELOS Y PAVÓN,\nEN EL TRAMO COMPRENDIDO DESDE\nCARRETERA TOLUCA - ATLACOMULCO\nHASTA CALLE HEROES DE LA\nINDEPENDENCIA, DELEGACIÓN SAN\nCAYETANO MORELOS, MUNICIPIO DE\nTOLUCA.",
+    "tipoObra": "Rescate de Espacios Públicos, Parques y Senderos Seguros",
+    "idEmpresa": "ICI",
+    "idDelegacion": "CAYETANO-45",
+    "montoContratado": "$7,279,215.86",
+    "fechaInicio": "9/7/2026",
+    "fechaFin": "6/10/2026",
+    "categoria": "SENDEROS Y PARQUES",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-076/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-076/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "EAPRO-094": {
+    "idContrato": "EAPRO-094",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-094/2026",
+    "nombreObra": "CONSTRUCCIÓN DE SENDERO SEGURO EN PASEO VICENTE LOMBARDO TOLEDANO, EN EL TRAMO COMPRENDIDO DE CALLE MIGUEL HIDALGO Y CALLE REVOLUCIÓN, DELEGACIÓN SAN LORENZO TEPALTITLÁN, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Rescate de Espacios Públicos, Parques y Senderos Seguros",
+    "idEmpresa": "EAPRO",
+    "idDelegacion": "SNLORENZO-31",
+    "montoContratado": "$16,920,478.59",
+    "fechaInicio": "3/8/2026",
+    "fechaFin": "30/11/2026",
+    "categoria": "SENDEROS Y PARQUES",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/EAPRO-094/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/EAPRO-094/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "TERRA-057": {
+    "idContrato": "TERRA-057",
+    "noContrato": "MT/DGOP/IPDM/LPN-057/2026",
+    "nombreObra": "REHABILITACIÓN DEL PARQUE LAURA\nMÉNDEZ DE CUENCA EN LA DELEGACIÓN\nSAN SEBASTIÁN, MUNICIPIO DE TOLUCA. ",
+    "tipoObra": "Rescate de Espacios Públicos, Parques y Senderos Seguros",
+    "idEmpresa": "TERRA",
+    "idDelegacion": "SEBASTIAN-06",
+    "montoContratado": "$2,631,825.30",
+    "fechaInicio": "6/7/2026",
+    "fechaFin": "3/10/2026",
+    "categoria": "SENDEROS Y PARQUES",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/TERMINADO.jpeg"
+    }
+  },
+  "VIFUD-049": {
+    "idContrato": "VIFUD-049",
+    "noContrato": "MT/DGOP/IPDM/LPN-049/2026",
+    "nombreObra": "SUMINISTRO Y COLOCACIÓN DE \nSEÑALAMIENTO HORIZONTAL Y \nVERTICAL EN DIVERSAS CALLES DEL \nMUNICIPIO DE TOLUCA. ",
+    "tipoObra": "Señalamiento Horizontal y Vertical Municipal",
+    "idEmpresa": "VIFUD",
+    "idDelegacion": "",
+    "montoContratado": "$7,979,406.20",
+    "fechaInicio": "27/3/2026",
+    "fechaFin": "30/10/2026",
+    "categoria": "SEÑALAMIENTO",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/PROCESO%20%282%29.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/FINAL.jpeg"
+    }
+  },
+  "SAQEB-079": {
+    "idContrato": "SAQEB-079",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-079/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN DE CARPETA ASFÁLTICA A TRAVÉS DE SLURRY EN LA CALLE FELIPE VILLANUEVA, DEL TRAMO COMPRENDIDO ENTRE AVENIDA JOSÉ MARÍA MORELOS Y PAVÓN Y AVENIDA SEBASTIÁN LERDO DE TEJADA, DELEGACIÓN CIUDAD UNIVERSITARIA, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Mantenimiento y Rodadura con Slurry Asfáltico ",
+    "idEmpresa": "SAQEB",
+    "idDelegacion": "CU-46",
+    "montoContratado": "$1,391,119.06",
+    "fechaInicio": "27/7/2026",
+    "fechaFin": "24/10/2026",
+    "categoria": "SLURRY",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/TERMINADO.jpeg"
+    }
+  },
+  "GZALES-080": {
+    "idContrato": "GZALES-080",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-080/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN DE CARPETA ASFÁLTICA A TRAVES DE SLURRY EN LA CALLE SOR JUANA INÉS DE LA CRUZ, DEL TRAMO COMPRENDIDO ENTRE AVENIDA MORELOS Y CALLE SANTOS DEGOLLADO, DELEGACIÓN CENTRO HISTÓRICO, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Mantenimiento y Rodadura con Slurry Asfáltico ",
+    "idEmpresa": "GZALES",
+    "idDelegacion": "CENTRO-01",
+    "montoContratado": "$1,283,360.11",
+    "fechaInicio": "27/7/2026",
+    "fechaFin": "24/10/2026",
+    "categoria": "SLURRY",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/TERMINADO.jpeg"
+    }
+  },
+  "TOVAR-085": {
+    "idContrato": "TOVAR-085",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-085/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN DE CARPETA ASFÁLTICA A TRAVES DE SLURRY EN LA CALLE IGNACIO LÓPEZ RAYÓN, EN EL TRAMO COMPRENDIDO ENTRE CALLE VALENTÍN GÓMEZ FARÍAS Y CALLE SANTOS DEGOLLADO, DELEGACIÓN CENTRO HISTÓRICO, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Mantenimiento y Rodadura con Slurry Asfáltico ",
+    "idEmpresa": "TOVAR",
+    "idDelegacion": "CENTRO-01",
+    "montoContratado": "$1,754,010.67",
+    "fechaInicio": "27/7/2026",
+    "fechaFin": "24/10/2026",
+    "categoria": "SLURRY",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/FINAL.jpeg"
+    }
+  },
+  "EAPRO-055": {
+    "idContrato": "EAPRO-055",
+    "noContrato": "MT/DGOP/IPDM/LPN-055/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN DE\nCARPETA ASFÁLTICA A TRAVES DE\nSLURRY EN LA CALLE ALPINISMO, DEL\nTRAMO COMPRENDIDO ENTRE CALLE\nVENUSTIANO CARRANZA Y AVENIDA AL\nPACÍFICO, DELEGACIÓN SAN\nBUENAVENTURA, MUNICIPIO DE TOLUCA",
+    "tipoObra": "Mantenimiento y Rodadura con Slurry Asfáltico ",
+    "idEmpresa": "EAPRO",
+    "idDelegacion": "SNBUENA-27",
+    "montoContratado": "$4,330,441.08",
+    "fechaInicio": "6/7/2026",
+    "fechaFin": "3/10/2026",
+    "categoria": "SLURRY",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_proceso.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_terminado.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/TERMINADO.jpeg"
+    }
+  },
+  "CREA-068": {
+    "idContrato": "CREA-068",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-068/2026",
+    "nombreObra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA\nDE USOS MÚLTIPLES DE LA ESCUELA PRIM.\nPROFR. AGRIPÍN GARCÍA ESTRADA, C.C.T.\n15EPR2287E, SUBDELEGACIÓN ARROYO\nVISTA HERMOSA, MUNICIPIO DE TOLUCA",
+    "tipoObra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "idEmpresa": "CREA",
+    "idDelegacion": "CERRILLO-09",
+    "montoContratado": "$2,480,051.39",
+    "fechaInicio": "8/7/2026",
+    "fechaFin": "5/10/2026",
+    "categoria": "TECHADO",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-068/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-068/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "CREA-069": {
+    "idContrato": "CREA-069",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-069/2026",
+    "nombreObra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA\nDE USOS MÚLTIPLES DE LA SECUNDARIA\nTÉCNICA NO. 214 FEDERALIZADA SOR JUAN\nINÉS DE LA CRUZ, C.C.T. 15DST0219G,\nSUBDELEGACIÓN SAN MIGUEL\nTOTOLTEPEC, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "idEmpresa": "CREA",
+    "idDelegacion": "PTOTOL-37",
+    "montoContratado": "$2,479,942.75",
+    "fechaInicio": "8/7/2026",
+    "fechaFin": "5/10/2026",
+    "categoria": "TECHADO",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-069/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-069/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "SBSL-070": {
+    "idContrato": "SBSL-070",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-070/2026",
+    "nombreObra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA\nDE USOS MÚLTIPLES DE LA PRIMARIA\nEMILIANO ZAPATA, C.C.T. 15EPR0690A,\nSUBDELEGACIÓN SAN JOSÉ GUADALUPE\nOTZACATIPAN, MUNICIPIO DE TOLUCA",
+    "tipoObra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "idEmpresa": "SBSL",
+    "idDelegacion": "MTOTZA-34",
+    "montoContratado": "$2,480,012.55",
+    "fechaInicio": "8/7/2026",
+    "fechaFin": "5/10/2026",
+    "categoria": "TECHADO",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-070/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-070/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "SBSL-071": {
+    "idContrato": "SBSL-071",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-071/2026",
+    "nombreObra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA\nDE USOS MÚLTIPLES DE LA ESCUELA\nPREPARATORIA OFICIAL NO. 139,\nC.C.T.15EBH0266V, SUBDELEGACIÓN\nJICALTEPEC AUTOPAN, MUNICIPIO DE\nTOLUCA",
+    "tipoObra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "idEmpresa": "SBSL",
+    "idDelegacion": "PABLO-36",
+    "montoContratado": "$2,478,964.63",
+    "fechaInicio": "8/7/2026",
+    "fechaFin": "5/10/2026",
+    "categoria": "TECHADO",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-071/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-071/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/INICIO.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "FENA-072": {
+    "idContrato": "FENA-072",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-072/2026",
+    "nombreObra": " CONSTRUCCIÓN DE TECHADO EN EL ÁREA\nDE USOS MÚLTIPLES DEL PLANTEL 32\nTOLUCA III DEL COBAEM, C.C.T.\n15ECB0043R DELEGACIÓN SAN CRISTÓBAL\nHUICHOCHITLÁN, MUNICIPIO DE TOLUCA",
+    "tipoObra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "idEmpresa": "FENA",
+    "idDelegacion": "HUICHO-28",
+    "montoContratado": "$2,479,516.76",
+    "fechaInicio": "9/7/2026",
+    "fechaFin": "6/10/2026",
+    "categoria": "TECHADO",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-072/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-072/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "FENA-073": {
+    "idContrato": "FENA-073",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-073/2026",
+    "nombreObra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA\nDE USOS MÚLTIPLES DEL CBT- NO. 1\nEMILIANO ZAPATA, C.C.T. 15ECT0037,\nDELEGACIÓN CALIXTLAHUACA, MUNICIPIO\nDE TOLUCA",
+    "tipoObra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "idEmpresa": "FENA",
+    "idDelegacion": "CALIX-23",
+    "montoContratado": "$2,479,374.99",
+    "fechaInicio": "9/7/2026",
+    "fechaFin": "6/10/2026",
+    "categoria": "TECHADO",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-073/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-073/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "REDNI-074": {
+    "idContrato": "REDNI-074",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-074/2026",
+    "nombreObra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA\nDE USOS MÚLTIPLES DE LA SECUNDARIA\nIGNACIO RAMÍREZ, ES 354-12 C.C.T.\n15DES0012X, COLONIA CUAUHTÉMOC,\nDELEGACION UNIVERSIDAD, MUNICIPIO DE\nTOLUCA",
+    "tipoObra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "idEmpresa": "REDNI",
+    "idDelegacion": "UNIVERSIDAD-07",
+    "montoContratado": "$2,480,081.79",
+    "fechaInicio": "9/7/2026",
+    "fechaFin": "6/10/2026",
+    "categoria": "TECHADO",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/REDNI-074/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/REDNI-074/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "INOVA-075": {
+    "idContrato": "INOVA-075",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-075/2026",
+    "nombreObra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA\nDE USOS MÚLTIPLES DEL JARDÍN DE NIÑOS\n\" ROSA MARÍA QUIROZ CAMACHO\", C.C.T.\n15DJN1684H, DELEGACIÓN SAN\nBUENAVENTURA, MUNICIPIO DE TOLUCA",
+    "tipoObra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "idEmpresa": "INOVA",
+    "idDelegacion": "SNBUENA-27",
+    "montoContratado": "$2,477,153.95",
+    "fechaInicio": "9/7/2026",
+    "fechaFin": "6/10/2026",
+    "categoria": "TECHADO",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/INOVA-075/_inicio.jpg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/INOVA-075/_proceso.jpg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-075-2026/INICIAL.jpg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-075-2026/PROCESO.jpg"
+      ],
+      "terminado": null
+    }
+  },
+  "MAMUTEE-088": {
+    "idContrato": "MAMUTEE-088",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-088/2026",
+    "nombreObra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA DE USOS MÚLTIPLES DE LA PRIMARIA JOSEFA ORTIZ DE DOMÍNGUEZ C.C.T. 15DPR03320, DELEGACIÓN SANTIAGO TLACOTEPEC, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "idEmpresa": "MAMUTEE",
+    "idDelegacion": "TLACO-42",
+    "montoContratado": "$2,480,074.11",
+    "fechaInicio": "28/7/2026",
+    "fechaFin": "25/10/2026",
+    "categoria": "TECHADO",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MAMUTEE-088/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MAMUTEE-088/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-088-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-088-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "FENA-093": {
+    "idContrato": "FENA-093",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-093/2026",
+    "nombreObra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA DE USOS MÚLTIPLES DEL CENTRO DE ESTUDIOS TECNOLÓGICOS INDUSTRIALES Y DE SERVICIOS NO. 64 GRAL. LÁZARO CÁRDENAS DEL RÍO, C.C.T. 15DCT0006D, DELEGACIÓN SAN MATEO OXTOTITLÁN, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "idEmpresa": "FENA",
+    "idDelegacion": "MTOXTO-35",
+    "montoContratado": "$2,479,374.99",
+    "fechaInicio": "3/8/2026",
+    "fechaFin": "31/10/2026",
+    "categoria": "TECHADO",
+    "fotos": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-093/_inicio.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-093/_proceso.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-093-2026/INICIAL.jpeg",
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-093-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  }
+}

@@ -11,10 +11,12 @@ import {
   parsePavimentaciones, 
   mapSupabaseRowToPothole,
   parseContratosTramos,
-  parseContratosPuntuales
+  parseContratosPuntuales,
+  fetchEvidenciasObras,
+  vincularEvidenciasAObras
 } from './utils/dataProcessors.ts';
 import type { PotholeData, Tramo, PavimentacionData } from './utils/dataProcessors.ts';
-import type { FiltrosModulos, ObraTramo, ObraPuntual, YearFilter } from './types/obras.ts';
+import type { FiltrosModulos, ObraTramo, ObraPuntual, Obra, YearFilter } from './types/obras.ts';
 import { supabase } from './lib/supabase.ts';
 import { 
   BarChart3, 
@@ -35,6 +37,7 @@ import CoordinateSearch from './components/CoordinateSearch.tsx';
 import { ModuleFilterBar, toggleModuloFilter } from './components/ModuleFilterBar.tsx';
 import { ObrasLayers } from './components/ObrasLayers.tsx';
 import { MapLegend } from './components/MapLegend.tsx';
+import { ObraDetailModal } from './components/ObraDetailModal.tsx';
 
 const CARTO_KEY = import.meta.env.VITE_CARTO_KEY || 'cb1_2v8k_1_77d3a08b9dfcaeb412cca4b0';
 
@@ -65,6 +68,7 @@ export default function App() {
   const [allTramos, setAllTramos] = useState<Tramo[]>([]);
   const [obrasTramos, setObrasTramos] = useState<ObraTramo[]>([]);
   const [obrasPuntuales, setObrasPuntuales] = useState<ObraPuntual[]>([]);
+  const [selectedObra, setSelectedObra] = useState<Obra | null>(null);
   const [filtrosModulos, setFiltrosModulos] = useState<FiltrosModulos>({
     moduloActivo: 'todos',
     showBacheo: true,
@@ -227,13 +231,14 @@ export default function App() {
           }
         };
 
-        // Load local files, boundaries, and new contract CSVs first
-        const [boundaries, totalTickets, parsedPavimentaciones, contratosTramos, contratosPuntuales] = await Promise.all([
+        // Load local files, boundaries, new contract CSVs and evidencias manifest
+        const [boundaries, totalTickets, parsedPavimentaciones, contratosTramos, contratosPuntuales, evidenciasMap] = await Promise.all([
           fetchGeoJSONBoundaries(),
           parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL'),
           fetchPavimentacionesWithFallback(),
           fetchContratosTramosWithFallback(),
-          fetchContratosPuntualesWithFallback()
+          fetchContratosPuntualesWithFallback(),
+          fetchEvidenciasObras(baseUrl)
         ]);
 
         // Convert DGOP Pavimentaciones to ObraTramo structure for unified presentation
@@ -262,9 +267,10 @@ export default function App() {
           };
         });
 
-        const combinedTramos = [...(contratosTramos || []), ...dgopTramos];
+        const combinedTramos = vincularEvidenciasAObras([...(contratosTramos || []), ...dgopTramos], evidenciasMap);
+        const puntualesConEvidencias = vincularEvidenciasAObras(contratosPuntuales || [], evidenciasMap);
         setObrasTramos(combinedTramos);
-        setObrasPuntuales(contratosPuntuales || []);
+        setObrasPuntuales(puntualesConEvidencias);
 
         // Process local tickets immediately
         const enrichedTickets = totalTickets
@@ -1255,6 +1261,7 @@ export default function App() {
               showConcluidas={filtrosModulos.showConcluidas}
               showEnProceso={filtrosModulos.showEnProceso}
               showProgramadas={filtrosModulos.showProgramadas}
+              onSelectObra={(obra) => setSelectedObra(obra)}
             />
             <CoordinateSearch data={data} geoData={geoData} setFilters={setFilters} />
             <MapLegend 
@@ -1350,6 +1357,12 @@ export default function App() {
           </div>
         </main>
       </div>
+
+      {/* Modal Interactivo de Detalle y Evidencias de Obra */}
+      <ObraDetailModal
+        obra={selectedObra}
+        onClose={() => setSelectedObra(null)}
+      />
 
       {loading && (
         <div className="fixed inset-0 bg-toluca-burgundy/90 z-[9999] flex flex-col items-center justify-center text-white backdrop-blur-sm">
