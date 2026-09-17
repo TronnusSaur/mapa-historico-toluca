@@ -32,8 +32,9 @@ import {
 // Marker Cluster component (manual instantiation for better control with 50k points)
 import MarkerClusterGroup from './components/MarkerClusterGroup.tsx';
 import CoordinateSearch from './components/CoordinateSearch.tsx';
-import { ModuleFilterBar } from './components/ModuleFilterBar.tsx';
+import { ModuleFilterBar, toggleModuloFilter } from './components/ModuleFilterBar.tsx';
 import { ObrasLayers } from './components/ObrasLayers.tsx';
+import { MapLegend } from './components/MapLegend.tsx';
 
 const CARTO_KEY = import.meta.env.VITE_CARTO_KEY || 'cb1_2v8k_1_77d3a08b9dfcaeb412cca4b0';
 
@@ -728,6 +729,54 @@ export default function App() {
         </>
       );
     }
+    if (filtrosModulos.moduloActivo === 'multiple') {
+      const selectedTramos = filteredObrasTramos.filter(o => {
+        if (o.tipo === 'pavimentacion') return filtrosModulos.showPavimentacion;
+        if (o.tipo === 'slurry') return filtrosModulos.showSlurry;
+        if (o.tipo === 'senderos') return filtrosModulos.showSenderos;
+        if (o.tipo === 'arcotechos') return filtrosModulos.showArcotechos;
+        return false;
+      });
+      const selectedPuntuales = filteredObrasPuntuales.filter(o => {
+        if (o.tipo === 'arcotechos') return filtrosModulos.showArcotechos;
+        if (o.tipo === 'pozos') return filtrosModulos.showPozos;
+        if (o.tipo === 'senalamiento') return filtrosModulos.showSenalamiento;
+        if (o.tipo === 'equipamiento') return filtrosModulos.showEquipamiento;
+        return false;
+      });
+      const totalObras = (filtrosModulos.showBacheo ? stats.baches : 0) + selectedTramos.length + selectedPuntuales.length;
+      const totalMl = selectedTramos.reduce((acc, curr) => acc + (curr.metrosLineales || 0), 0) + (filtrosModulos.showBacheo ? stats.ml : 0);
+
+      const activeNames: string[] = [];
+      if (filtrosModulos.showBacheo) activeNames.push('Bacheo');
+      if (filtrosModulos.showPavimentacion) activeNames.push('Pavimentos');
+      if (filtrosModulos.showSlurry) activeNames.push('Slurry');
+      if (filtrosModulos.showSenderos) activeNames.push('Senderos');
+      if (filtrosModulos.showArcotechos) activeNames.push('Arcotechos');
+      if (filtrosModulos.showPozos) activeNames.push('Pozos');
+      if (filtrosModulos.showSenalamiento) activeNames.push('Señalamiento');
+
+      return (
+        <>
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Obras Activas</p>
+            <p className="text-2xl font-black text-white">{totalObras.toLocaleString()} <span className="text-sm font-normal opacity-50">Intervenciones</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Alcance Lineal</p>
+            <p className="text-2xl font-black text-toluca-gold">{totalMl.toLocaleString()} <span className="text-sm font-normal opacity-50">ML</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Filtros Activos</p>
+            <p className="text-sm font-black text-toluca-gold mt-1 truncate max-w-[210px]" title={activeNames.join(', ')}>
+              {activeNames.length > 0 ? activeNames.join(' + ') : 'Ninguno'}
+            </p>
+          </div>
+        </>
+      );
+    }
     // Por defecto (Bacheo o Todos)
     return (
       <>
@@ -777,10 +826,13 @@ export default function App() {
                  filtrosModulos.moduloActivo === 'senalamiento' ? 'Torre de Control de Señalamiento' :
                  filtrosModulos.moduloActivo === 'equipamiento' ? 'Torre de Control de Equipamiento' :
                  filtrosModulos.moduloActivo === 'bacheo' ? 'Torre de Control de Bacheo' :
+                 filtrosModulos.moduloActivo === 'multiple' ? 'Torre de Control · Selección Combinada' :
                  'Geoportal de Obra Pública'}
               </h2>
               <p className="text-[9px] font-bold tracking-[0.2em] opacity-40 uppercase mt-1">
-                {filtrosModulos.moduloActivo === 'todos' ? 'VISOR INTEGRAL MULTI-MÓDULO TOLUCA' : 'ESTRATEGIA INTEGRAL DE REHABILITACIÓN'}
+                {filtrosModulos.moduloActivo === 'todos' ? 'VISOR INTEGRAL MULTI-MÓDULO TOLUCA' : 
+                 filtrosModulos.moduloActivo === 'multiple' ? 'FILTRO DINÁMICO MULTI-OBRA' : 
+                 'ESTRATEGIA INTEGRAL DE REHABILITACIÓN'}
               </p>
             </div>
           </div>
@@ -1201,6 +1253,10 @@ export default function App() {
               showProgramadas={filtrosModulos.showProgramadas}
             />
             <CoordinateSearch data={data} geoData={geoData} setFilters={setFilters} />
+            <MapLegend 
+              filtros={filtrosModulos} 
+              onToggleModulo={(id) => setFiltrosModulos(prev => toggleModuloFilter(id, prev))} 
+            />
           </MapContainer>
 
           {/* Timeline Overlay */}

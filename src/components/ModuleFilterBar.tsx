@@ -14,6 +14,91 @@ import {
   Footprints
 } from 'lucide-react';
 
+// Helper exportado para reutilizar la lógica de selección múltiple tanto en la barra como en la simbología
+export const toggleModuloFilter = (id: ModuloObraId, prev: FiltrosModulos): FiltrosModulos => {
+  if (id === 'todos') {
+    return {
+      ...prev,
+      moduloActivo: 'todos',
+      showBacheo: true,
+      showPavimentacion: true,
+      showSlurry: true,
+      showSenderos: true,
+      showArcotechos: true,
+      showPozos: true,
+      showSenalamiento: true,
+      showEquipamiento: true
+    };
+  }
+
+  // Si estamos en 'todos' (todo encendido) y el usuario pulsa un módulo, aislamos ese módulo
+  if (prev.moduloActivo === 'todos') {
+    return {
+      ...prev,
+      moduloActivo: id,
+      showBacheo: id === 'bacheo',
+      showPavimentacion: id === 'pavimentacion',
+      showSlurry: id === 'slurry',
+      showSenderos: id === 'senderos',
+      showArcotechos: id === 'arcotechos',
+      showPozos: id === 'pozos',
+      showSenalamiento: id === 'senalamiento',
+      showEquipamiento: id === 'arcotechos' || id === 'equipamiento'
+    };
+  }
+
+  // Si ya estamos en una vista filtrada (individual o múltiple), alternamos el estado de ese módulo
+  const next = { ...prev };
+  if (id === 'bacheo') next.showBacheo = !prev.showBacheo;
+  if (id === 'pavimentacion') next.showPavimentacion = !prev.showPavimentacion;
+  if (id === 'slurry') next.showSlurry = !prev.showSlurry;
+  if (id === 'senderos') next.showSenderos = !prev.showSenderos;
+  if (id === 'arcotechos') {
+    next.showArcotechos = !prev.showArcotechos;
+    next.showEquipamiento = next.showArcotechos;
+  }
+  if (id === 'pozos') next.showPozos = !prev.showPozos;
+  if (id === 'senalamiento') next.showSenalamiento = !prev.showSenalamiento;
+  if (id === 'equipamiento') {
+    next.showEquipamiento = !prev.showEquipamiento;
+    next.showArcotechos = next.showEquipamiento;
+  }
+
+  const activeKeys: ModuloObraId[] = [];
+  if (next.showBacheo) activeKeys.push('bacheo');
+  if (next.showPavimentacion) activeKeys.push('pavimentacion');
+  if (next.showSlurry) activeKeys.push('slurry');
+  if (next.showSenderos) activeKeys.push('senderos');
+  if (next.showArcotechos) activeKeys.push('arcotechos');
+  if (next.showPozos) activeKeys.push('pozos');
+  if (next.showSenalamiento) activeKeys.push('senalamiento');
+
+  if (activeKeys.length === 0 || activeKeys.length === 7) {
+    return {
+      ...next,
+      moduloActivo: 'todos',
+      showBacheo: true,
+      showPavimentacion: true,
+      showSlurry: true,
+      showSenderos: true,
+      showArcotechos: true,
+      showPozos: true,
+      showSenalamiento: true,
+      showEquipamiento: true
+    };
+  } else if (activeKeys.length === 1) {
+    return {
+      ...next,
+      moduloActivo: activeKeys[0]
+    };
+  } else {
+    return {
+      ...next,
+      moduloActivo: 'multiple'
+    };
+  }
+};
+
 interface ModuleCounts {
   bacheo: number;
   pavimentacion: number;
@@ -50,35 +135,21 @@ export const ModuleFilterBar: React.FC<ModuleFilterBarProps> = ({
     { id: 'senalamiento', label: 'Señalamiento', icon: <AlertTriangle size={13} />, color: 'bg-yellow-500 text-slate-950', count: counts.senalamiento },
   ];
 
+  const isModuleActive = (id: ModuloObraId): boolean => {
+    switch (id) {
+      case 'bacheo': return filtros.showBacheo;
+      case 'pavimentacion': return filtros.showPavimentacion;
+      case 'slurry': return filtros.showSlurry;
+      case 'senderos': return filtros.showSenderos;
+      case 'arcotechos': return filtros.showArcotechos;
+      case 'pozos': return filtros.showPozos;
+      case 'senalamiento': return filtros.showSenalamiento;
+      default: return false;
+    }
+  };
+
   const handleSelectModulo = (id: ModuloObraId) => {
-    onFiltrosChange(prev => {
-      if (id === 'todos') {
-        return {
-          ...prev,
-          moduloActivo: 'todos',
-          showBacheo: true,
-          showPavimentacion: true,
-          showSlurry: true,
-          showSenderos: true,
-          showArcotechos: true,
-          showPozos: true,
-          showSenalamiento: true,
-          showEquipamiento: true
-        };
-      }
-      return {
-        ...prev,
-        moduloActivo: id,
-        showBacheo: id === 'bacheo',
-        showPavimentacion: id === 'pavimentacion',
-        showSlurry: id === 'slurry',
-        showSenderos: id === 'senderos',
-        showArcotechos: id === 'arcotechos',
-        showPozos: id === 'pozos',
-        showSenalamiento: id === 'senalamiento',
-        showEquipamiento: id === 'equipamiento'
-      };
-    });
+    onFiltrosChange(prev => toggleModuloFilter(id, prev));
   };
 
   return (
@@ -97,21 +168,37 @@ export const ModuleFilterBar: React.FC<ModuleFilterBarProps> = ({
           </button>
         </div>
 
+        {/* Banner de Selección Múltiple Dinámica */}
+        {filtros.moduloActivo === 'multiple' && (
+          <div className="mb-2 px-2.5 py-1.5 rounded-xl bg-purple-50 border border-purple-200 flex items-center justify-between text-[10px] animate-in fade-in duration-150">
+            <span className="font-bold text-purple-900 flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-purple-600 animate-pulse" />
+              Filtro Combinado Dinámico
+            </span>
+            <button
+              onClick={() => handleSelectModulo('todos')}
+              className="font-bold text-toluca-burgundy hover:underline uppercase text-[9px]"
+            >
+              Restablecer
+            </button>
+          </div>
+        )}
+
         <div className="grid grid-cols-2 gap-1.5">
           {modulos.filter(m => m.id !== 'todos').map((m) => {
-            const isActive = filtros.moduloActivo === m.id || (filtros.moduloActivo === 'todos');
-            const isExclusive = filtros.moduloActivo === m.id;
+            const isSelected = isModuleActive(m.id);
+            const isAllMode = filtros.moduloActivo === 'todos';
 
             return (
               <button
                 key={m.id}
                 onClick={() => handleSelectModulo(m.id)}
                 className={`flex items-center justify-between px-2.5 py-2 rounded-xl text-left border transition-all text-xs font-bold ${
-                  isExclusive
-                    ? `${m.color} shadow-md scale-[1.02] border-transparent`
-                    : isActive
-                    ? 'bg-white border-slate-200 text-slate-800 hover:border-slate-300'
-                    : 'bg-slate-100/60 border-slate-200/60 text-slate-400 opacity-60'
+                  isAllMode
+                    ? 'bg-white border-slate-200 text-slate-800 hover:border-slate-300 hover:shadow-sm'
+                    : isSelected
+                    ? `${m.color} shadow-md scale-[1.02] border-transparent ring-1 ring-black/10`
+                    : 'bg-slate-100/50 border-slate-200/50 text-slate-400 opacity-40 hover:opacity-75'
                 }`}
               >
                 <span className="flex items-center gap-1.5 truncate">
@@ -119,7 +206,9 @@ export const ModuleFilterBar: React.FC<ModuleFilterBarProps> = ({
                   <span className="truncate text-[11px]">{m.label}</span>
                 </span>
                 <span className={`text-[10px] font-black px-1.5 py-0.2 rounded-full ${
-                  isExclusive ? 'bg-black/20 text-white' : 'bg-slate-100 text-slate-600'
+                  !isAllMode && isSelected 
+                    ? 'bg-black/20 text-white' 
+                    : 'bg-slate-100 text-slate-600'
                 }`}>
                   {m.count}
                 </span>

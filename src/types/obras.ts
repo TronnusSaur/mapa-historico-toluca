@@ -1,5 +1,6 @@
 export type ModuloObraId = 
   | 'todos'
+  | 'multiple'
   | 'bacheo'
   | 'pavimentacion'
   | 'slurry'
