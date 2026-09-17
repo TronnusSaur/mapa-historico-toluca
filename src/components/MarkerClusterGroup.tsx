@@ -43,7 +43,7 @@ async function fetchPotholeDetails(id: string): Promise<PotholeDetails> {
       'fotoBacheTerminado1', 'fotoBacheTerminado2', 'fotoBacheTerminado3'
     ];
 
-    const DEFAULT_PHOTOS_URL = 'https://nurses-forming-toolkit-allocated.trycloudflare.com';
+    const DEFAULT_PHOTOS_URL = 'https://dependent-max-warcraft-portsmouth.trycloudflare.com';
     let photosUrlBase = import.meta.env.VITE_PHOTOS_URL || DEFAULT_PHOTOS_URL;
     if (typeof window !== 'undefined' && window.location.protocol === 'https:' && photosUrlBase.startsWith('http://192.168.')) {
       photosUrlBase = DEFAULT_PHOTOS_URL;
