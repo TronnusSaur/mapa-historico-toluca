@@ -200,15 +200,10 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                 </h2>
               </div>
 
-              {/* 2. Badges: idContrato y Estado */}
+              {/* 2. Badges: Estado y Tipo de Obra */}
               <div className="flex flex-wrap items-center gap-1.5 my-2.5">
-                {obra.idContrato ? (
-                  <span className="px-2.5 py-0.5 bg-toluca-burgundy text-white rounded-full text-[11px] font-black tracking-wider uppercase shadow-sm">
-                    {obra.idContrato}
-                  </span>
-                ) : null}
                 {renderStatusBadge()}
-                <span className="px-2 py-0.5 bg-slate-100 text-slate-600 rounded-full text-[11px] font-semibold uppercase">
+                <span className="px-2.5 py-0.5 bg-slate-100 text-slate-600 rounded-full text-[11px] font-semibold uppercase">
                   {obra.tipo.toUpperCase()}{obra.subtipo ? ` · ${obra.subtipo}` : ''}
                 </span>
               </div>
