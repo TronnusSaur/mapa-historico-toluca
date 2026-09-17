@@ -34,8 +34,8 @@ export const MapLegend: React.FC<MapLegendProps> = ({ filtros, onToggleModulo })
   const items: SimbologiaItem[] = [
     {
       id: 'bacheo',
-      label: 'Bacheo Integral',
-      sublabel: 'Baches y carpetas en frío/caliente',
+      label: 'Bacheo (DGOP / DGSP)',
+      sublabel: 'Verde: DGOP · Azul: DGSP',
       color: 'bg-emerald-600',
       icon: <Hammer size={12} className="text-white" />,
       tipoGeometria: 'Baches masivos',

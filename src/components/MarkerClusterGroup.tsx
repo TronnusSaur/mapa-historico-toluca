@@ -8,6 +8,7 @@ import { supabase } from '../lib/supabase.ts';
 interface Props {
   data: PotholeData[];
   clusterColor?: string;
+  iconType?: 'hammer' | 'ticket';
 }
 
 interface PotholeDetails {
@@ -195,7 +196,7 @@ function getKey(p: PotholeData): string {
   return `${p.lat}_${p.lng}_${p.originalId || ''}_${p.status}`;
 }
 
-export default function MarkerClusterGroup({ data, clusterColor }: Props) {
+export default function MarkerClusterGroup({ data, clusterColor, iconType = 'hammer' }: Props) {
   const map = useMap();
   const clusterGroupRef = useRef<L.MarkerClusterGroup | null>(null);
 
@@ -222,9 +223,26 @@ export default function MarkerClusterGroup({ data, clusterColor }: Props) {
       iconCreateFunction: (cluster) => {
         const count = cluster.getChildCount();
         let size = 38;
-        if (count > 5000) size = 62;
-        else if (count > 1000) size = 54;
-        else if (count > 100) size = 46;
+        let iconSize = 12;
+        let fontSize = 10;
+
+        if (count > 5000) {
+          size = 60;
+          iconSize = 15;
+          fontSize = 13;
+        } else if (count > 1000) {
+          size = 52;
+          iconSize = 14;
+          fontSize = 12;
+        } else if (count > 100) {
+          size = 46;
+          iconSize = 13;
+          fontSize = 11;
+        } else if (count > 20) {
+          size = 40;
+          iconSize = 12;
+          fontSize = 10;
+        }
 
         const label = count > 9999
           ? (count / 1000).toFixed(0) + 'k'
@@ -232,8 +250,12 @@ export default function MarkerClusterGroup({ data, clusterColor }: Props) {
             ? (count / 1000).toFixed(1) + 'k'
             : count;
 
+        const iconSvg = (iconType === 'ticket')
+          ? `<svg xmlns="http://www.w3.org/2000/svg" width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2Z"/><path d="M13 5v2"/><path d="M13 17v2"/><path d="M13 11v2"/></svg>`
+          : `<svg xmlns="http://www.w3.org/2000/svg" width="${iconSize}" height="${iconSize}" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="m15 12-8.373 8.373a1 1 0 1 1-3-3L12 9"/><path d="m18 15 4-4"/><path d="m21.5 11.5-1.914-1.914A2 2 0 0 1 19 8.172V7l-2.26-2.26a6 6 0 0 0-4.242-1.758H11"/><path d="m8.5 8.5 2.5 2.5"/></svg>`;
+
         return L.divIcon({
-          html: `<div class="custom-marker-cluster" style="width:${size}px;height:${size}px;font-size:11px;background:${baseColor};">${label}</div>`,
+          html: `<div class="custom-marker-cluster" style="width:${size}px;height:${size}px;background:${baseColor};"><div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;line-height:1;">${iconSvg}<span style="font-weight:900;font-size:${fontSize}px;letter-spacing:-0.2px;">${label}</span></div></div>`,
           className: '',
           iconSize: L.point(size, size)
         });
@@ -288,7 +310,7 @@ export default function MarkerClusterGroup({ data, clusterColor }: Props) {
       dataCacheRef.current.clear();
       prevKeysRef.current.clear();
     };
-  }, [map, clusterColor]);
+  }, [map, clusterColor, iconType]);
 
   // --- INCREMENTAL DATA UPDATE ---
   // Instead of clearLayers + addLayers(ALL), we diff old vs new and
@@ -320,19 +342,20 @@ export default function MarkerClusterGroup({ data, clusterColor }: Props) {
       if (!prevKeys.has(key)) {
         const p = dataByKey.get(key)!;
 
+        const isSP = Boolean(p.stage && p.stage >= 100);
         let color = '#e63946';
         if (p.status === 'EJECUTADO') {
-          color = p.stage === 101 ? '#2563eb' : '#16a34a';
+          color = isSP ? '#2563eb' : '#16a34a';
         } else if (p.status === 'HISTORICO') {
           color = '#ff9f1c';
         }
 
         const marker = L.circleMarker([p.lat, p.lng], {
-          radius: 5,
+          radius: 6,
           fillColor: color,
-          color: '#fff',
-          weight: 1,
-          fillOpacity: 0.85,
+          color: '#ffffff',
+          weight: 2,
+          fillOpacity: 0.95,
           bubblingMouseEvents: false,
           _dataKey: key
         } as any);

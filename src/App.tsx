@@ -1204,28 +1204,32 @@ export default function App() {
               />
             )}
 
-            {/* Clusters Verdes (Obras Públicas Bacheo) — solo visible en modo clusters con módulo bacheo activo */}
+            {/* Clusters Verdes (DGOP Bacheo) — solo visible en modo clusters con módulo bacheo activo */}
             {filtrosModulos.showBacheo && filters.renderMode === 'clusters' && (
               <MarkerClusterGroup
                 key="cluster-ejecutado-op"
                 clusterColor="#16a34a"
-                data={throttledClusterData.filter(p => p.status === 'EJECUTADO' && p.stage !== 101)}
+                iconType="hammer"
+                data={throttledClusterData.filter(p => p.status === 'EJECUTADO' && !(p.stage && p.stage >= 100))}
               />
             )}
 
-            {/* Clusters Azules (Servicios Públicos Bacheo) — solo visible en modo clusters con módulo bacheo activo */}
+            {/* Clusters Azules (DGSP Bacheo) — solo visible en modo clusters con módulo bacheo activo */}
             {filtrosModulos.showBacheo && filters.renderMode === 'clusters' && (
               <MarkerClusterGroup
                 key="cluster-ejecutado-sp"
                 clusterColor="#2563eb"
-                data={throttledClusterData.filter(p => p.status === 'EJECUTADO' && p.stage === 101)}
+                iconType="hammer"
+                data={throttledClusterData.filter(p => p.status === 'EJECUTADO' && Boolean(p.stage && p.stage >= 100))}
               />
             )}
 
-            {/* Marker Cluster for Dynamic Tickets (Red) */}
+            {/* Marker Cluster for Dynamic Tickets (Red/Burgundy) */}
             {filtrosModulos.showBacheo && (
               <MarkerClusterGroup
                 key="cluster-tickets"
+                clusterColor="#7a1531"
+                iconType="ticket"
                 data={throttledClusterData.filter(p => {
                   if (p.status === 'TICKET_TOTAL') return filters.showPlaneado;
                   return false;
