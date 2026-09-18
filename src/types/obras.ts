@@ -8,7 +8,8 @@ export type ModuloObraId =
   | 'arcotechos'
   | 'pozos'
   | 'senalamiento'
-  | 'equipamiento';
+  | 'equipamiento'
+  | 'dragon';
 
 export type SubtipoPavimentacion = 
   | 'asfaltica'
@@ -27,6 +28,7 @@ export interface ObraEvidenciasFotos {
   inicio?: string | null;
   proceso: string[];
   terminado?: string | null;
+  fotosDragon?: string[];
 }
 
 export interface ObraEvidenciaData {
@@ -97,6 +99,7 @@ export interface FiltrosModulos {
   showPozos: boolean;
   showSenalamiento: boolean;
   showEquipamiento: boolean;
+  showDragon: boolean;
   // Subtipos de pavimentación
   pavAsfaltica: boolean;
   pavHidraulico: boolean;

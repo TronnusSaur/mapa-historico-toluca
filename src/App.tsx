@@ -14,6 +14,7 @@ import {
   parseContratosPuntuales,
   fetchObrasTramosSupabase,
   fetchObrasPuntualesSupabase,
+  fetchObrasDragonSupabase,
   fetchEvidenciasObras,
   vincularEvidenciasAObras
 } from './utils/dataProcessors.ts';
@@ -81,6 +82,7 @@ export default function App() {
     showPozos: true,
     showSenalamiento: true,
     showEquipamiento: true,
+    showDragon: true,
     pavAsfaltica: true,
     pavHidraulico: true,
     pavEcologico: true,
@@ -257,12 +259,26 @@ export default function App() {
           }
         };
 
+        const fetchDiabloDragonWithFallback = async (): Promise<ObraTramo[]> => {
+          try {
+            const data = await fetchObrasDragonSupabase();
+            if (data && data.length > 0) {
+              console.log(`Cargadas ${data.length} obras de Diablo Dragón desde Supabase Alfa.`);
+              return data;
+            }
+          } catch (e) {
+            console.warn("Fallo carga de Diablo Dragón desde Supabase Alfa:", e);
+          }
+          return [];
+        };
+
         // FASE 1: Carga INMEDIATA y prioritaria de Obras 2026, Pavimentaciones y Límites (<1 segundo)
-        const [, parsedPavimentaciones, contratosTramos, contratosPuntuales, evidenciasMap] = await Promise.all([
+        const [, parsedPavimentaciones, contratosTramos, contratosPuntuales, dragonTramos, evidenciasMap] = await Promise.all([
           fetchGeoJSONBoundaries(),
           fetchPavimentacionesWithFallback(),
           fetchContratosTramosWithFallback(),
           fetchContratosPuntualesWithFallback(),
+          fetchDiabloDragonWithFallback(),
           fetchEvidenciasObras(baseUrl)
         ]);
 
@@ -292,7 +308,10 @@ export default function App() {
           };
         });
 
-        const combinedTramos = vincularEvidenciasAObras([...(contratosTramos || []), ...dgopTramos], evidenciasMap);
+        const combinedTramos = [
+          ...vincularEvidenciasAObras([...(contratosTramos || []), ...dgopTramos], evidenciasMap),
+          ...(dragonTramos || [])
+        ];
         const puntualesConEvidencias = vincularEvidenciasAObras(contratosPuntuales || [], evidenciasMap);
         setObrasTramos(combinedTramos);
         setObrasPuntuales(puntualesConEvidencias);
@@ -589,6 +608,7 @@ export default function App() {
     const bacheoCount = stats.baches;
     const pavTramos = filteredObrasTramos.filter(o => o.tipo === 'pavimentacion');
     const slurryTramos = filteredObrasTramos.filter(o => o.tipo === 'slurry');
+    const dragonTramos = filteredObrasTramos.filter(o => o.tipo === 'dragon');
     const senderosCount = filteredObrasTramos.filter(o => o.tipo === 'senderos').length + filteredObrasPuntuales.filter(o => o.tipo === 'senderos').length;
     const arcotechosCount = filteredObrasTramos.filter(o => o.tipo === 'arcotechos').length + filteredObrasPuntuales.filter(o => o.tipo === 'arcotechos').length;
     const pozosCount = filteredObrasPuntuales.filter(o => o.tipo === 'pozos').length + filteredObrasTramos.filter(o => o.tipo === 'pozos').length;
@@ -603,6 +623,7 @@ export default function App() {
       bacheo: bacheoCount,
       pavimentacion: pavTramos.length,
       slurry: slurryTramos.length,
+      dragon: dragonTramos.length,
       senderos: senderosCount,
       arcotechos: arcotechosCount,
       pozos: pozosCount,
@@ -685,6 +706,33 @@ export default function App() {
           <div className="text-center">
             <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Tratamiento</p>
             <p className="text-xl font-black text-white mt-1">Sello Preventivo</p>
+          </div>
+        </>
+      );
+    }
+    if (filtrosModulos.moduloActivo === 'dragon') {
+      const dragons = filteredObrasTramos.filter(o => o.tipo === 'dragon');
+      const totalMl = dragons.reduce((acc, curr) => acc + (curr.metrosLineales || 0), 0);
+      return (
+        <>
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Vialidades Intervenidas</p>
+            <p className="text-2xl font-black text-red-400">{dragons.length} <span className="text-sm font-normal opacity-50">Tramos</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Avance Lineal</p>
+            <p className="text-2xl font-black text-toluca-gold">{totalMl.toLocaleString()} <span className="text-sm font-normal opacity-50">ML</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Maquinaria</p>
+            <p className="text-xl font-black text-white mt-1">Diablo Dragón</p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Tecnología</p>
+            <p className="text-xl font-black text-toluca-gold mt-1">Reciclado en Sitio</p>
           </div>
         </>
       );
@@ -778,6 +826,7 @@ export default function App() {
       const selectedTramos = filteredObrasTramos.filter(o => {
         if (o.tipo === 'pavimentacion') return filtrosModulos.showPavimentacion;
         if (o.tipo === 'slurry') return filtrosModulos.showSlurry;
+        if (o.tipo === 'dragon') return filtrosModulos.showDragon;
         if (o.tipo === 'senderos') return filtrosModulos.showSenderos;
         if (o.tipo === 'arcotechos') return filtrosModulos.showArcotechos;
         return false;
@@ -796,6 +845,7 @@ export default function App() {
       if (filtrosModulos.showBacheo) activeNames.push('Bacheo');
       if (filtrosModulos.showPavimentacion) activeNames.push('Pavimentos');
       if (filtrosModulos.showSlurry) activeNames.push('Slurry');
+      if (filtrosModulos.showDragon) activeNames.push('Diablo Dragón');
       if (filtrosModulos.showSenderos) activeNames.push('Senderos');
       if (filtrosModulos.showArcotechos) activeNames.push('Arcotechos');
       if (filtrosModulos.showPozos) activeNames.push('Pozos');
@@ -864,6 +914,7 @@ export default function App() {
             <div className="hidden lg:block">
               <h2 className="text-xl font-black tracking-tight leading-none">
                 {filtrosModulos.moduloActivo === 'pavimentacion' ? 'Torre de Control de Pavimentaciones' :
+                 filtrosModulos.moduloActivo === 'dragon' ? 'Torre de Control · Pavimentadora Diablo Dragón' :
                  filtrosModulos.moduloActivo === 'pozos' ? 'Torre de Control de Pozos y Drenajes' :
                  filtrosModulos.moduloActivo === 'slurry' ? 'Torre de Control de Mantenimiento Slurry' :
                  filtrosModulos.moduloActivo === 'senderos' ? 'Torre de Control de Senderos Seguros' :
@@ -1289,6 +1340,7 @@ export default function App() {
               currentDate={currentDate}
               showPavimentacion={filtrosModulos.showPavimentacion}
               showSlurry={filtrosModulos.showSlurry}
+              showDragon={filtrosModulos.showDragon}
               showSenderos={filtrosModulos.showSenderos}
               showArcotechos={filtrosModulos.showArcotechos}
               showPozos={filtrosModulos.showPozos}

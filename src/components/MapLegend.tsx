@@ -60,6 +60,15 @@ export const MapLegend: React.FC<MapLegendProps> = ({ filtros, onToggleModulo })
       isActive: filtros.showSlurry,
     },
     {
+      id: 'dragon',
+      label: 'Diablo Dragón',
+      sublabel: 'Reciclado y repavimentación en frío/caliente con máquina Dragón',
+      color: 'bg-red-600',
+      icon: <Flame size={12} className="text-white" />,
+      tipoGeometria: 'Tramo vial',
+      isActive: filtros.showDragon,
+    },
+    {
       id: 'senderos',
       label: 'Senderos Seguros',
       sublabel: 'Caminos peatonales iluminados',

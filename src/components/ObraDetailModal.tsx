@@ -24,14 +24,19 @@ type EtapaFoto = 'inicio' | 'proceso' | 'terminado';
 export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose }) => {
   const [etapaActiva, setEtapaActiva] = useState<EtapaFoto>('inicio');
   const [procesoIndex, setProcesoIndex] = useState<number>(0);
+  const [dragonIndex, setDragonIndex] = useState<number>(0);
   const [isZoomed, setIsZoomed] = useState<boolean>(false);
   const [imgLoaded, setImgLoaded] = useState<boolean>(false);
   const [imgError, setImgError] = useState<boolean>(false);
   const [triedFallback, setTriedFallback] = useState<boolean>(false);
   const [currentSrc, setCurrentSrc] = useState<string | null>(null);
 
+  const isDragon = obra?.tipo === 'dragon';
   const fotos = obra?.evidencias?.fotos;
   const fotosFallback = obra?.evidencias?.fotosFallback;
+
+  const fotosDragon = obra?.evidencias?.fotos?.fotosDragon || (isDragon && fotos?.proceso && fotos.proceso.length > 0 ? fotos.proceso : []);
+  const totalDragon = fotosDragon.length;
 
   const fotoInicio = fotos?.inicio || null;
   const fotosProceso = (fotos?.proceso && fotos.proceso.length > 0) ? fotos.proceso : [];
@@ -50,6 +55,7 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
   // Determinar la etapa inicial preferida según las fotos disponibles
   useEffect(() => {
     if (!obra) return;
+    setDragonIndex(0);
     if (hasTerminado) {
       setEtapaActiva('terminado');
     } else if (hasProceso) {
@@ -67,7 +73,10 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
   let primaryUrl: string | null = null;
   let fallbackUrl: string | null = null;
 
-  if (etapaActiva === 'inicio') {
+  if (isDragon) {
+    primaryUrl = fotosDragon.length > 0 ? (fotosDragon[dragonIndex] || fotosDragon[0]) : null;
+    fallbackUrl = null;
+  } else if (etapaActiva === 'inicio') {
     primaryUrl = fotoInicio;
     fallbackUrl = fallbackInicio;
   } else if (etapaActiva === 'proceso') {
@@ -86,7 +95,27 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
     setImgError(false);
   }, [primaryUrl, fallbackUrl]);
 
-  // Cerrar con Escape
+  const handlePrevDragon = () => {
+    if (totalDragon <= 1) return;
+    setDragonIndex((prev) => (prev > 0 ? prev - 1 : totalDragon - 1));
+  };
+
+  const handleNextDragon = () => {
+    if (totalDragon <= 1) return;
+    setDragonIndex((prev) => (prev < totalDragon - 1 ? prev + 1 : 0));
+  };
+
+  const handlePrevProceso = () => {
+    if (totalProceso <= 1) return;
+    setProcesoIndex((prev) => (prev > 0 ? prev - 1 : totalProceso - 1));
+  };
+
+  const handleNextProceso = () => {
+    if (totalProceso <= 1) return;
+    setProcesoIndex((prev) => (prev < totalProceso - 1 ? prev + 1 : 0));
+  };
+
+  // Cerrar con Escape y navegación con teclas de flecha
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
@@ -95,11 +124,23 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
         } else {
           onClose();
         }
+      } else if (e.key === 'ArrowLeft') {
+        if (isDragon && totalDragon > 1) {
+          handlePrevDragon();
+        } else if (etapaActiva === 'proceso' && totalProceso > 1) {
+          handlePrevProceso();
+        }
+      } else if (e.key === 'ArrowRight') {
+        if (isDragon && totalDragon > 1) {
+          handleNextDragon();
+        } else if (etapaActiva === 'proceso' && totalProceso > 1) {
+          handleNextProceso();
+        }
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [isZoomed, onClose]);
+  }, [isZoomed, onClose, isDragon, totalDragon, etapaActiva, totalProceso]);
 
   if (!obra) return null;
 
@@ -142,16 +183,6 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
       month: '2-digit',
       year: 'numeric'
     });
-  };
-
-  const handlePrevProceso = () => {
-    if (totalProceso <= 1) return;
-    setProcesoIndex((prev) => (prev > 0 ? prev - 1 : totalProceso - 1));
-  };
-
-  const handleNextProceso = () => {
-    if (totalProceso <= 1) return;
-    setProcesoIndex((prev) => (prev < totalProceso - 1 ? prev + 1 : 0));
   };
 
   return (
@@ -288,10 +319,17 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                   )}
 
                   {/* Etiqueta de la etapa activa sobre la imagen */}
-                  <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-[11px] font-bold flex items-center gap-1.5 shadow-md">
-                    <span className="w-1.5 h-1.5 rounded-full bg-toluca-gold" />
-                    Etapa: {etapaActiva.toUpperCase()} {etapaActiva === 'proceso' && totalProceso > 1 ? `(${procesoIndex + 1}/${totalProceso})` : ''}
-                  </div>
+                  {isDragon ? (
+                    <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-[11px] font-bold flex items-center gap-1.5 shadow-md">
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse" />
+                      Diablo Dragón · Evidencia {dragonIndex + 1} de {totalDragon}
+                    </div>
+                  ) : (
+                    <div className="absolute top-3 left-3 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full text-white text-[11px] font-bold flex items-center gap-1.5 shadow-md">
+                      <span className="w-1.5 h-1.5 rounded-full bg-toluca-gold" />
+                      Etapa: {etapaActiva.toUpperCase()} {etapaActiva === 'proceso' && totalProceso > 1 ? `(${procesoIndex + 1}/${totalProceso})` : ''}
+                    </div>
+                  )}
 
                   {/* Botón para Zoom / Pantalla Completa */}
                   <button
@@ -302,8 +340,33 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                     <Maximize2 size={15} />
                   </button>
 
-                  {/* Flechas del carrusel en la imagen (cuando etapa es proceso y hay >1 foto) */}
-                  {etapaActiva === 'proceso' && totalProceso > 1 && (
+                  {/* Flechas del carrusel en la imagen */}
+                  {isDragon && totalDragon > 1 ? (
+                    <>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handlePrevDragon();
+                        }}
+                        className="absolute left-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm transition-all hover:scale-110 shadow-lg focus:outline-none"
+                        title="Evidencia anterior"
+                      >
+                        <ChevronLeft size={18} />
+                      </button>
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          handleNextDragon();
+                        }}
+                        className="absolute right-2 top-1/2 -translate-y-1/2 p-1.5 rounded-full bg-black/50 hover:bg-black/80 text-white backdrop-blur-sm transition-all hover:scale-110 shadow-lg focus:outline-none"
+                        title="Evidencia siguiente"
+                      >
+                        <ChevronRight size={18} />
+                      </button>
+                    </>
+                  ) : etapaActiva === 'proceso' && totalProceso > 1 ? (
                     <>
                       <button
                         type="button"
@@ -328,7 +391,7 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                         <ChevronRight size={18} />
                       </button>
                     </>
-                  )}
+                  ) : null}
                 </>
               ) : (
                 /* Estado cuando no hay foto para esta etapa */
@@ -346,18 +409,18 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
               )}
             </div>
 
-            {/* Carrusel / Línea de tiempo de avance para etapa de Proceso */}
-            {etapaActiva === 'proceso' && totalProceso > 1 && (
-              <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 shadow-sm animate-in fade-in duration-150">
-                <div className="flex items-center justify-between mb-1.5 px-1">
+            {isDragon ? (
+              /* Carrusel Especializado Diablo Dragón: Línea de tiempo y 6 miniaturas */
+              <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 shadow-sm space-y-3 animate-in fade-in duration-150">
+                <div className="flex items-center justify-between px-1">
                   <div className="flex items-center gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-toluca-burgundy animate-pulse" />
+                    <div className="w-2 h-2 rounded-full bg-red-600 animate-pulse" />
                     <span className="text-[10px] font-bold text-slate-700 uppercase tracking-wide">
-                      Línea de tiempo de avance en obra
+                      Seguimiento en Tramo · Pavimentadora Diablo Dragón
                     </span>
                   </div>
                   <span className="text-[10px] font-semibold text-slate-500">
-                    Evidencia {procesoIndex + 1} de {totalProceso}
+                    Evidencia {dragonIndex + 1} de {totalDragon}
                   </span>
                 </div>
 
@@ -368,122 +431,205 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                   
                   {/* Línea de progreso activa */}
                   <div 
-                    className="absolute left-6 top-1/2 -translate-y-1/2 h-1 bg-toluca-burgundy rounded-full transition-all duration-300"
+                    className="absolute left-6 top-1/2 -translate-y-1/2 h-1 bg-red-600 rounded-full transition-all duration-300"
                     style={{ 
-                      width: `${(procesoIndex / Math.max(1, totalProceso - 1)) * 100}%`,
+                      width: `${(dragonIndex / Math.max(1, totalDragon - 1)) * 100}%`,
                       maxWidth: 'calc(100% - 3rem)' 
                     }}
                   />
 
-                  {Array.from({ length: totalProceso }).map((_, idx) => (
+                  {Array.from({ length: totalDragon }).map((_, idx) => (
                     <button
                       key={idx}
                       type="button"
-                      onClick={() => setProcesoIndex(idx)}
+                      onClick={() => setDragonIndex(idx)}
                       className="relative z-10 flex flex-col items-center group focus:outline-none"
                     >
                       <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black transition-all shadow-sm ${
-                        idx === procesoIndex
-                          ? 'bg-toluca-burgundy text-white ring-4 ring-rose-200 scale-110'
-                          : idx < procesoIndex
-                            ? 'bg-rose-700 text-white'
-                            : 'bg-white border-2 border-slate-300 text-slate-500 hover:border-toluca-burgundy hover:text-toluca-burgundy'
+                        idx === dragonIndex
+                          ? 'bg-red-600 text-white ring-4 ring-red-200 scale-110'
+                          : idx < dragonIndex
+                            ? 'bg-red-800 text-white'
+                            : 'bg-white border-2 border-slate-300 text-slate-500 hover:border-red-600 hover:text-red-600'
                       }`}>
                         {idx + 1}
                       </div>
                       <span className={`text-[9px] mt-0.5 font-bold tracking-tight transition-colors ${
-                        idx === procesoIndex ? 'text-toluca-burgundy font-black' : 'text-slate-400 group-hover:text-slate-600'
+                        idx === dragonIndex ? 'text-red-600 font-black' : 'text-slate-400 group-hover:text-slate-600'
                       }`}>
                         Fase {idx + 1}
                       </span>
                     </button>
                   ))}
                 </div>
+
+                {/* Tira interactiva de 6 miniaturas fotográficas */}
+                <div className="grid grid-cols-6 gap-2 pt-0.5">
+                  {fotosDragon.map((src, idx) => (
+                    <button
+                      key={idx}
+                      type="button"
+                      onClick={() => setDragonIndex(idx)}
+                      className={`relative aspect-video rounded-lg overflow-hidden border-2 transition-all group focus:outline-none bg-slate-900 ${
+                        idx === dragonIndex
+                          ? 'border-red-600 ring-2 ring-red-200 scale-[1.03] shadow-md'
+                          : 'border-slate-200 hover:border-slate-400 opacity-70 hover:opacity-100'
+                      }`}
+                      title={`Ver Evidencia ${idx + 1}`}
+                    >
+                      <img 
+                        src={src} 
+                        alt={`Evidencia ${idx + 1}`} 
+                        className="w-full h-full object-cover" 
+                        loading="lazy"
+                      />
+                      <span className="absolute bottom-0.5 right-1 text-[8px] font-black text-white bg-black/70 px-1 rounded backdrop-blur-xs">
+                        {idx + 1}
+                      </span>
+                    </button>
+                  ))}
+                </div>
               </div>
+            ) : (
+              /* Para obras regulares: Carrusel de proceso si aplica y las 3 tarjetas inferiores */
+              <>
+                {etapaActiva === 'proceso' && totalProceso > 1 && (
+                  <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-2.5 shadow-sm animate-in fade-in duration-150">
+                    <div className="flex items-center justify-between mb-1.5 px-1">
+                      <div className="flex items-center gap-1.5">
+                        <div className="w-2 h-2 rounded-full bg-toluca-burgundy animate-pulse" />
+                        <span className="text-[10px] font-bold text-slate-700 uppercase tracking-wide">
+                          Línea de tiempo de avance en obra
+                        </span>
+                      </div>
+                      <span className="text-[10px] font-semibold text-slate-500">
+                        Evidencia {procesoIndex + 1} de {totalProceso}
+                      </span>
+                    </div>
+
+                    {/* Stepper / Timeline horizontal interactivo */}
+                    <div className="relative flex items-center justify-between px-4 py-1.5">
+                      {/* Línea conectora base */}
+                      <div className="absolute left-6 right-6 top-1/2 -translate-y-1/2 h-1 bg-slate-200 rounded-full" />
+                      
+                      {/* Línea de progreso activa */}
+                      <div 
+                        className="absolute left-6 top-1/2 -translate-y-1/2 h-1 bg-toluca-burgundy rounded-full transition-all duration-300"
+                        style={{ 
+                          width: `${(procesoIndex / Math.max(1, totalProceso - 1)) * 100}%`,
+                          maxWidth: 'calc(100% - 3rem)' 
+                        }}
+                      />
+
+                      {Array.from({ length: totalProceso }).map((_, idx) => (
+                        <button
+                          key={idx}
+                          type="button"
+                          onClick={() => setProcesoIndex(idx)}
+                          className="relative z-10 flex flex-col items-center group focus:outline-none"
+                        >
+                          <div className={`w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black transition-all shadow-sm ${
+                            idx === procesoIndex
+                              ? 'bg-toluca-burgundy text-white ring-4 ring-rose-200 scale-110'
+                              : idx < procesoIndex
+                                ? 'bg-rose-700 text-white'
+                                : 'bg-white border-2 border-slate-300 text-slate-500 hover:border-toluca-burgundy hover:text-toluca-burgundy'
+                          }`}>
+                            {idx + 1}
+                          </div>
+                          <span className={`text-[9px] mt-0.5 font-bold tracking-tight transition-colors ${
+                            idx === procesoIndex ? 'text-toluca-burgundy font-black' : 'text-slate-400 group-hover:text-slate-600'
+                          }`}>
+                            Fase {idx + 1}
+                          </span>
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                )}
+
+                {/* Selector de 3 Tarjetas Inferiores: [ 1 ] Inicial, [ 2 ] Proceso, [ 3 ] Terminado */}
+                <div className="grid grid-cols-3 gap-2.5 pt-1">
+                  {/* Botón 1: Inicial */}
+                  <button
+                    type="button"
+                    onClick={() => setEtapaActiva('inicio')}
+                    className={`relative flex flex-col items-center justify-center p-2.5 rounded-xl border-2 transition-all text-left focus:outline-none ${
+                      etapaActiva === 'inicio'
+                        ? 'border-toluca-burgundy bg-rose-50/50 shadow-md shadow-rose-900/10 scale-[1.02]'
+                        : 'border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-black ${
+                        etapaActiva === 'inicio' ? 'bg-toluca-burgundy text-white' : 'bg-slate-200 text-slate-700'
+                      }`}>
+                        1
+                      </span>
+                      <span className="text-xs font-bold text-slate-900">Inicial</span>
+                    </div>
+                    <span className="text-[9px] text-slate-500 font-medium">
+                      {hasInicio ? '1 Foto disponible' : 'Sin evidencia'}
+                    </span>
+                    {hasInicio && (
+                      <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    )}
+                  </button>
+
+                  {/* Botón 2: Proceso */}
+                  <button
+                    type="button"
+                    onClick={() => setEtapaActiva('proceso')}
+                    className={`relative flex flex-col items-center justify-center p-2.5 rounded-xl border-2 transition-all text-left focus:outline-none ${
+                      etapaActiva === 'proceso'
+                        ? 'border-toluca-burgundy bg-rose-50/50 shadow-md shadow-rose-900/10 scale-[1.02]'
+                        : 'border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-black ${
+                        etapaActiva === 'proceso' ? 'bg-toluca-burgundy text-white' : 'bg-slate-200 text-slate-700'
+                      }`}>
+                        2
+                      </span>
+                      <span className="text-xs font-bold text-slate-900">Proceso</span>
+                    </div>
+                    <span className="text-[9px] text-slate-500 font-medium">
+                      {hasProceso ? `${totalProceso} Foto${totalProceso > 1 ? 's' : ''}` : 'Sin evidencia'}
+                    </span>
+                    {hasProceso && (
+                      <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    )}
+                  </button>
+
+                  {/* Botón 3: Terminado */}
+                  <button
+                    type="button"
+                    onClick={() => setEtapaActiva('terminado')}
+                    className={`relative flex flex-col items-center justify-center p-2.5 rounded-xl border-2 transition-all text-left focus:outline-none ${
+                      etapaActiva === 'terminado'
+                        ? 'border-toluca-burgundy bg-rose-50/50 shadow-md shadow-rose-900/10 scale-[1.02]'
+                        : 'border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50'
+                    }`}
+                  >
+                    <div className="flex items-center gap-1.5 mb-0.5">
+                      <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-black ${
+                        etapaActiva === 'terminado' ? 'bg-toluca-burgundy text-white' : 'bg-slate-200 text-slate-700'
+                      }`}>
+                        3
+                      </span>
+                      <span className="text-xs font-bold text-slate-900">Terminado</span>
+                    </div>
+                    <span className="text-[9px] text-slate-500 font-medium">
+                      {hasTerminado ? '1 Foto disponible' : 'Sin evidencia'}
+                    </span>
+                    {hasTerminado && (
+                      <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                    )}
+                  </button>
+                </div>
+              </>
             )}
-
-            {/* Selector de 3 Tarjetas Inferiores: [ 1 ] Inicial, [ 2 ] Proceso, [ 3 ] Terminado */}
-            <div className="grid grid-cols-3 gap-2.5 pt-1">
-              
-              {/* Botón 1: Inicial */}
-              <button
-                type="button"
-                onClick={() => setEtapaActiva('inicio')}
-                className={`relative flex flex-col items-center justify-center p-2.5 rounded-xl border-2 transition-all text-left focus:outline-none ${
-                  etapaActiva === 'inicio'
-                    ? 'border-toluca-burgundy bg-rose-50/50 shadow-md shadow-rose-900/10 scale-[1.02]'
-                    : 'border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50'
-                }`}
-              >
-                <div className="flex items-center gap-1.5 mb-0.5">
-                  <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-black ${
-                    etapaActiva === 'inicio' ? 'bg-toluca-burgundy text-white' : 'bg-slate-200 text-slate-700'
-                  }`}>
-                    1
-                  </span>
-                  <span className="text-xs font-bold text-slate-900">Inicial</span>
-                </div>
-                <span className="text-[9px] text-slate-500 font-medium">
-                  {hasInicio ? '1 Foto disponible' : 'Sin evidencia'}
-                </span>
-                {hasInicio && (
-                  <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                )}
-              </button>
-
-              {/* Botón 2: Proceso */}
-              <button
-                type="button"
-                onClick={() => setEtapaActiva('proceso')}
-                className={`relative flex flex-col items-center justify-center p-2.5 rounded-xl border-2 transition-all text-left focus:outline-none ${
-                  etapaActiva === 'proceso'
-                    ? 'border-toluca-burgundy bg-rose-50/50 shadow-md shadow-rose-900/10 scale-[1.02]'
-                    : 'border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50'
-                }`}
-              >
-                <div className="flex items-center gap-1.5 mb-0.5">
-                  <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-black ${
-                    etapaActiva === 'proceso' ? 'bg-toluca-burgundy text-white' : 'bg-slate-200 text-slate-700'
-                  }`}>
-                    2
-                  </span>
-                  <span className="text-xs font-bold text-slate-900">Proceso</span>
-                </div>
-                <span className="text-[9px] text-slate-500 font-medium">
-                  {hasProceso ? `${totalProceso} Foto${totalProceso > 1 ? 's' : ''}` : 'Sin evidencia'}
-                </span>
-                {hasProceso && (
-                  <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                )}
-              </button>
-
-              {/* Botón 3: Terminado */}
-              <button
-                type="button"
-                onClick={() => setEtapaActiva('terminado')}
-                className={`relative flex flex-col items-center justify-center p-2.5 rounded-xl border-2 transition-all text-left focus:outline-none ${
-                  etapaActiva === 'terminado'
-                    ? 'border-toluca-burgundy bg-rose-50/50 shadow-md shadow-rose-900/10 scale-[1.02]'
-                    : 'border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50'
-                }`}
-              >
-                <div className="flex items-center gap-1.5 mb-0.5">
-                  <span className={`w-4 h-4 rounded-full flex items-center justify-center text-[10px] font-black ${
-                    etapaActiva === 'terminado' ? 'bg-toluca-burgundy text-white' : 'bg-slate-200 text-slate-700'
-                  }`}>
-                    3
-                  </span>
-                  <span className="text-xs font-bold text-slate-900">Terminado</span>
-                </div>
-                <span className="text-[9px] text-slate-500 font-medium">
-                  {hasTerminado ? '1 Foto disponible' : 'Sin evidencia'}
-                </span>
-                {hasTerminado && (
-                  <span className="absolute top-2 right-2 w-1.5 h-1.5 rounded-full bg-emerald-500" />
-                )}
-              </button>
-
-            </div>
 
           </div>
 

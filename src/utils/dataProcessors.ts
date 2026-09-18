@@ -616,6 +616,13 @@ export const clasificarObra = (
   ) {
     return { modulo: 'equipamiento', subtipo: 'Equipamiento e Infraestructura Social' };
   }
+  if (
+    combined.includes('dragon') || 
+    combined.includes('dragón') || 
+    combined.includes('diablo')
+  ) {
+    return { modulo: 'dragon', subtipo: 'Reciclado Asfáltico (Diablo Dragón)' };
+  }
   if (combined.includes('bacheo') || combined.includes('bache')) {
     return { modulo: 'bacheo', subtipo: 'Bacheo' };
   }
@@ -674,6 +681,13 @@ export const getObraTimelineStatus = (obra: Obra, currentDate: Date): EstadoTemp
     obra.evidencias?.fotosFallback?.terminado
   );
   if (tieneFotoTerminado) return 'CONCLUIDA';
+
+  // Obras de Diablo Dragón concluidas con evidencias de tramo completas
+  if (obra.tipo === 'dragon') {
+    if (obra.evidencias?.fotos?.fotosDragon && obra.evidencias.fotos.fotosDragon.length > 0) return 'CONCLUIDA';
+    if (obra.fechaFin && currentDate >= obra.fechaFin) return 'CONCLUIDA';
+    return 'CONCLUIDA';
+  }
 
   const anio = obra.anio || 2026;
 
@@ -942,6 +956,126 @@ export const fetchObrasPuntualesSupabase = async (): Promise<ObraPuntual[]> => {
 
   const timeoutPromise = new Promise<never>((_, reject) => 
     setTimeout(() => reject(new Error('Supabase mapeo_p timeout (3.5s)')), 3500)
+  );
+
+  return await Promise.race([fetchPromise, timeoutPromise]);
+};
+
+/**
+ * Mapeo de identificadores de Diablo Dragón a las carpetas fotográficas correspondientes
+ */
+export const DIABLO_DRAGON_FOLDERS: Record<string, string> = {
+  'DR-01': 'BENITO JUAREZ',
+  'DR-02': 'LAGUNA SIETE COLORES',
+  'DR-03': 'FRANCISCO MURGIA',
+  'DR-04': 'VALENTIN GOMEZ FARIAS',
+  'DR-05': 'DE LOS PANTEONES',
+  'DR-06': 'PASEO MATLAZINCAS',
+  'DR-07': 'SANTOS DEGOLLADO',
+  'DR-08': 'HEROICO COLEGIO MILITAR DERECHA',
+  'DR-09': 'HEROICO COLEGIO MILITAR IZQUIERDA',
+  'DR-10': 'JUAN ALDAMA'
+};
+
+/**
+ * Carga directa de Obras del Diablo Dragón desde Supabase Alfa (public.diablo_dragon)
+ */
+export const fetchObrasDragonSupabase = async (): Promise<ObraTramo[]> => {
+  const fetchPromise = (async () => {
+    const { data, error } = await supabase
+      .from('diablo_dragon')
+      .select('*');
+
+    if (error) throw error;
+    if (!data || data.length === 0) throw new Error('No se encontraron registros en public.diablo_dragon');
+    
+    const parsed: ObraTramo[] = [];
+    const baseImgUrl = 'https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/';
+
+    data.forEach((row, index) => {
+      const idDragon = (getVal(row, ['idDragon', 'id_dragon', 'iddragon']) || `DR-${String(index + 1).padStart(2, '0')}`).toString().trim();
+      const nombre = (getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion']) || `Rehabilitación con Diablo Dragón #${index + 1}`).toString().trim();
+      const calle = (getVal(row, ['Calle', 'calle']) || '').toString().trim();
+      const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
+      const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
+      
+      const fechaInicio = parseFechaFlexible(inicioRaw);
+      const fechaFin = parseFechaFlexible(terminoRaw);
+
+      // Coordenadas dinámicas P1 a P17
+      const pKeys = Object.keys(row)
+        .filter(key => /P\d+/i.test(key))
+        .sort((a, b) => {
+          const matchA = a.match(/P(\d+)/i);
+          const matchB = b.match(/P(\d+)/i);
+          const numA = matchA ? parseInt(matchA[1], 10) : 0;
+          const numB = matchB ? parseInt(matchB[1], 10) : 0;
+          return numA - numB;
+        });
+
+      const coords: [number, number][] = [];
+      pKeys.forEach(key => {
+        const val = row[key];
+        if (val) {
+          const pt = extractCoords(val.toString());
+          if (pt && !isNaN(pt.lat) && !isNaN(pt.lng) && pt.lat !== 0 && pt.lng !== 0) {
+            let lat = pt.lat;
+            let lng = pt.lng;
+            if (lat < 0 && lng > 0) {
+              lat = pt.lng;
+              lng = pt.lat;
+            }
+            coords.push([lat, lng]);
+          }
+        }
+      });
+
+      const metrosLineales = coords.length >= 2 ? calcularMetrosLinealesTramo(coords) : 0;
+      const delegacion = extraerDelegacion(nombre) || 'TOLUCA';
+
+      const folderName = DIABLO_DRAGON_FOLDERS[idDragon] || calle;
+      const fotosUrls = Array.from({ length: 6 }, (_, i) => 
+        `${baseImgUrl}${encodeURIComponent(folderName)}/${i + 1}.jpeg`
+      );
+
+      parsed.push({
+        id: `dragon-${idDragon}`,
+        contrato: `DRAGÓN-${idDragon}`,
+        idContrato: idDragon,
+        nombre,
+        tipo: 'dragon',
+        subtipo: 'Reciclado Asfáltico (Diablo Dragón)',
+        tipoRaw: 'DIABLO DRAGON',
+        anio: 2026,
+        fechaInicio: fechaInicio || new Date(2026, 4, 1),
+        fechaFin: fechaFin || new Date(2026, 8, 30),
+        delegacion,
+        metrosLineales,
+        geometriaTipo: 'tramo',
+        coords,
+        evidencias: {
+          idContrato: idDragon,
+          noContrato: `DRAGÓN-${idDragon}`,
+          nombreObra: nombre,
+          tipoObra: 'Diablo Dragón',
+          fechaInicio: inicioRaw ? inicioRaw.toString() : undefined,
+          fechaFin: terminoRaw ? terminoRaw.toString() : undefined,
+          categoria: 'DIABLO DRAGON',
+          fotos: {
+            inicio: null,
+            proceso: fotosUrls,
+            terminado: fotosUrls[5],
+            fotosDragon: fotosUrls
+          }
+        }
+      });
+    });
+
+    return parsed;
+  })();
+
+  const timeoutPromise = new Promise<never>((_, reject) => 
+    setTimeout(() => reject(new Error('Supabase diablo_dragon timeout (3.5s)')), 3500)
   );
 
   return await Promise.race([fetchPromise, timeoutPromise]);

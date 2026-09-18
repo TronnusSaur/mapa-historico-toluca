@@ -27,7 +27,8 @@ export const toggleModuloFilter = (id: ModuloObraId, prev: FiltrosModulos): Filt
       showArcotechos: true,
       showPozos: true,
       showSenalamiento: true,
-      showEquipamiento: true
+      showEquipamiento: true,
+      showDragon: true
     };
   }
 
@@ -43,7 +44,8 @@ export const toggleModuloFilter = (id: ModuloObraId, prev: FiltrosModulos): Filt
       showArcotechos: id === 'arcotechos',
       showPozos: id === 'pozos',
       showSenalamiento: id === 'senalamiento',
-      showEquipamiento: id === 'arcotechos' || id === 'equipamiento'
+      showEquipamiento: id === 'arcotechos' || id === 'equipamiento',
+      showDragon: id === 'dragon'
     };
   }
 
@@ -63,6 +65,7 @@ export const toggleModuloFilter = (id: ModuloObraId, prev: FiltrosModulos): Filt
     next.showEquipamiento = !prev.showEquipamiento;
     next.showArcotechos = next.showEquipamiento;
   }
+  if (id === 'dragon') next.showDragon = !prev.showDragon;
 
   const activeKeys: ModuloObraId[] = [];
   if (next.showBacheo) activeKeys.push('bacheo');
@@ -72,8 +75,9 @@ export const toggleModuloFilter = (id: ModuloObraId, prev: FiltrosModulos): Filt
   if (next.showArcotechos) activeKeys.push('arcotechos');
   if (next.showPozos) activeKeys.push('pozos');
   if (next.showSenalamiento) activeKeys.push('senalamiento');
+  if (next.showDragon) activeKeys.push('dragon');
 
-  if (activeKeys.length === 0 || activeKeys.length === 7) {
+  if (activeKeys.length === 0 || activeKeys.length === 8) {
     return {
       ...next,
       moduloActivo: 'todos',
@@ -84,7 +88,8 @@ export const toggleModuloFilter = (id: ModuloObraId, prev: FiltrosModulos): Filt
       showArcotechos: true,
       showPozos: true,
       showSenalamiento: true,
-      showEquipamiento: true
+      showEquipamiento: true,
+      showDragon: true
     };
   } else if (activeKeys.length === 1) {
     return {
@@ -108,6 +113,7 @@ interface ModuleCounts {
   pozos: number;
   senalamiento: number;
   equipamiento: number;
+  dragon: number;
   pavAsfaltica: number;
   pavHidraulico: number;
   pavEcologico: number;
@@ -125,10 +131,11 @@ export const ModuleFilterBar: React.FC<ModuleFilterBarProps> = ({
   counts
 }) => {
   const modulos: { id: ModuloObraId; label: string; icon: React.ReactNode; color: string; count: number }[] = [
-    { id: 'todos', label: 'Todos', icon: <Layers size={13} />, color: 'bg-slate-800 text-white', count: counts.bacheo + counts.pavimentacion + counts.slurry + counts.senderos + counts.arcotechos + counts.pozos + counts.senalamiento + counts.equipamiento },
+    { id: 'todos', label: 'Todos', icon: <Layers size={13} />, color: 'bg-slate-800 text-white', count: counts.bacheo + counts.pavimentacion + counts.slurry + counts.senderos + counts.arcotechos + counts.pozos + counts.senalamiento + counts.equipamiento + counts.dragon },
     { id: 'bacheo', label: 'Bacheo', icon: <Hammer size={13} />, color: 'bg-emerald-600 text-white', count: counts.bacheo },
     { id: 'pavimentacion', label: 'Pavimentaciones', icon: <Construction size={13} />, color: 'bg-blue-600 text-white', count: counts.pavimentacion },
     { id: 'slurry', label: 'Slurry', icon: <Flame size={13} />, color: 'bg-amber-600 text-white', count: counts.slurry },
+    { id: 'dragon', label: 'Diablo Dragón', icon: <Flame size={13} />, color: 'bg-red-600 text-white', count: counts.dragon },
     { id: 'senderos', label: 'Senderos Seguros', icon: <Footprints size={13} />, color: 'bg-purple-600 text-white', count: counts.senderos },
     { id: 'arcotechos', label: 'Arcotechos', icon: <Building2 size={13} />, color: 'bg-[#78350f] text-white', count: counts.arcotechos },
     { id: 'pozos', label: 'Pozos y Drenajes', icon: <Droplet size={13} />, color: 'bg-cyan-600 text-white', count: counts.pozos },
@@ -140,6 +147,7 @@ export const ModuleFilterBar: React.FC<ModuleFilterBarProps> = ({
       case 'bacheo': return filtros.showBacheo;
       case 'pavimentacion': return filtros.showPavimentacion;
       case 'slurry': return filtros.showSlurry;
+      case 'dragon': return filtros.showDragon;
       case 'senderos': return filtros.showSenderos;
       case 'arcotechos': return filtros.showArcotechos;
       case 'pozos': return filtros.showPozos;
