@@ -12,6 +12,8 @@ import {
   mapSupabaseRowToPothole,
   parseContratosTramos,
   parseContratosPuntuales,
+  fetchObrasTramosSupabase,
+  fetchObrasPuntualesSupabase,
   fetchEvidenciasObras,
   vincularEvidenciasAObras
 } from './utils/dataProcessors.ts';
@@ -188,6 +190,18 @@ export default function App() {
         const CONTRATOS_SPREADSHEET_ID = '1fHaAXj9qtGqgDBIbTh2jxryElklH6NN6bFWrnUZmYdk';
 
         const fetchContratosTramosWithFallback = async (): Promise<ObraTramo[]> => {
+          // 1. Intento primario: Base de datos Supabase Alfa (public.mapeo_t)
+          try {
+            const data = await fetchObrasTramosSupabase();
+            if (data && data.length > 0) {
+              console.log(`Cargadas ${data.length} obras de tramo desde Supabase Alfa.`);
+              return data;
+            }
+          } catch (e) {
+            console.warn("Fallo carga de Tramos desde Supabase Alfa, probando respaldos:", e);
+          }
+
+          // 2. Intento secundario: Google Sheets
           const remoteUrl = `https://docs.google.com/spreadsheets/d/${CONTRATOS_SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('TRAMOS')}&headers=1`;
           const localUrl = `${baseUrl}INFO CONTRATOS MAPEO - TRAMOS.csv`;
           
@@ -195,7 +209,7 @@ export default function App() {
             return await Promise.race([
               parseContratosTramos(remoteUrl),
               new Promise<never>((_, reject) => 
-                setTimeout(() => reject(new Error('Google Sheets Tramos Timeout (5s)')), 5000)
+                setTimeout(() => reject(new Error('Google Sheets Tramos Timeout (3.5s)')), 3500)
               )
             ]);
           } catch (err) {
@@ -210,6 +224,18 @@ export default function App() {
         };
 
         const fetchContratosPuntualesWithFallback = async (): Promise<ObraPuntual[]> => {
+          // 1. Intento primario: Base de datos Supabase Alfa (public.mapeo_p)
+          try {
+            const data = await fetchObrasPuntualesSupabase();
+            if (data && data.length > 0) {
+              console.log(`Cargadas ${data.length} obras puntuales desde Supabase Alfa.`);
+              return data;
+            }
+          } catch (e) {
+            console.warn("Fallo carga de Puntuales desde Supabase Alfa, probando respaldos:", e);
+          }
+
+          // 2. Intento secundario: Google Sheets
           const remoteUrl = `https://docs.google.com/spreadsheets/d/${CONTRATOS_SPREADSHEET_ID}/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('PUNTUALES')}&headers=1`;
           const localUrl = `${baseUrl}INFO CONTRATOS MAPEO - PUNTUALES.csv`;
           
@@ -217,7 +243,7 @@ export default function App() {
             return await Promise.race([
               parseContratosPuntuales(remoteUrl),
               new Promise<never>((_, reject) => 
-                setTimeout(() => reject(new Error('Google Sheets Puntuales Timeout (5s)')), 5000)
+                setTimeout(() => reject(new Error('Google Sheets Puntuales Timeout (3.5s)')), 3500)
               )
             ]);
           } catch (err) {
@@ -231,10 +257,9 @@ export default function App() {
           }
         };
 
-        // Load local files, boundaries, new contract CSVs and evidencias manifest
-        const [boundaries, totalTickets, parsedPavimentaciones, contratosTramos, contratosPuntuales, evidenciasMap] = await Promise.all([
+        // FASE 1: Carga INMEDIATA y prioritaria de Obras 2026, Pavimentaciones y Límites (<1 segundo)
+        const [, parsedPavimentaciones, contratosTramos, contratosPuntuales, evidenciasMap] = await Promise.all([
           fetchGeoJSONBoundaries(),
-          parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL'),
           fetchPavimentacionesWithFallback(),
           fetchContratosTramosWithFallback(),
           fetchContratosPuntualesWithFallback(),
@@ -272,65 +297,72 @@ export default function App() {
         setObrasTramos(combinedTramos);
         setObrasPuntuales(puntualesConEvidencias);
 
-        // Process local tickets immediately
-        const enrichedTickets = totalTickets
-          .filter(p => p !== null && p !== undefined)
-          .map(p => ({
-            ...p,
-            inZona: boundaries ? isPointInGeoJSON(p.lat, p.lng, boundaries) : true
-          }));
-
-        console.log(`Carga inicial completada: ${enrichedTickets.length} tickets, ${combinedTramos.length} obras de tramo, ${contratosPuntuales.length} obras puntuales.`);
-        
-        // Show tickets and pavimentaciones immediately, and dismiss the loading screen
-        setData(enrichedTickets);
+        // ¡DESMONTAR PANTALLA DE CARGA INMEDIATAMENTE!
+        // El mapa, polígonos de Toluca, tramos y pines ya están listos e interactivos
         setLoading(false);
+        console.log(`Fase 1 completada: ${combinedTramos.length} obras de tramo y ${puntualesConEvidencias.length} obras puntuales listas en mapa.`);
 
-        // KICK OFF BACKGROUND SUPABASE LOAD PROGRESSIVELY
+        // FASE 2: Sincronización en segundo plano de Bacheo (+50,000 registros, no bloquea el mapa)
         setDbLoading(true);
-        const stageTasks = [
-          { filter: '1', name: 'Etapa 1' },
-          { filter: 'sp', name: 'Servicios Públicos' },
-          { filter: '3', name: 'Etapa 3' },
-          { filter: '2', name: 'Etapa 2' }
-        ];
-
-        let allLoadedBacheos: PotholeData[] = [];
 
         (async () => {
-          for (const task of stageTasks) {
-            const stageBacheos = await fetchStageBacheos(task.filter, task.name);
-            if (stageBacheos.length > 0) {
-              const enriched = stageBacheos.map(p => ({
+          try {
+            // 1. Cargar tickets locales (50,000 registros)
+            const totalTickets = await parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL');
+            const enrichedTickets = totalTickets
+              .filter(p => p !== null && p !== undefined)
+              .map(p => ({
                 ...p,
                 inZona: loadedBoundaries ? isPointInGeoJSON(p.lat, p.lng, loadedBoundaries) : true
               }));
 
-              allLoadedBacheos = [...allLoadedBacheos, ...enriched];
+            setData(enrichedTickets);
+            console.log(`Tickets locales cargados en segundo plano: ${enrichedTickets.length}`);
 
-              setData(prev => {
-                const existingIds = new Set(prev.map(item => item.id));
-                const uniqueNew = enriched.filter(item => !existingIds.has(item.id));
-                return [...prev, ...uniqueNew];
-              });
+            // 2. Sincronizar etapas ejecutadas de Supabase
+            const stageTasks = [
+              { filter: '1', name: 'Etapa 1' },
+              { filter: 'sp', name: 'Servicios Públicos' },
+              { filter: '3', name: 'Etapa 3' },
+              { filter: '2', name: 'Etapa 2' }
+            ];
+
+            let allLoadedBacheos: PotholeData[] = [];
+
+            for (const task of stageTasks) {
+              const stageBacheos = await fetchStageBacheos(task.filter, task.name);
+              if (stageBacheos.length > 0) {
+                const enriched = stageBacheos.map(p => ({
+                  ...p,
+                  inZona: loadedBoundaries ? isPointInGeoJSON(p.lat, p.lng, loadedBoundaries) : true
+                }));
+
+                allLoadedBacheos = [...allLoadedBacheos, ...enriched];
+
+                setData(prev => {
+                  const existingIds = new Set(prev.map(item => item.id));
+                  const uniqueNew = enriched.filter(item => !existingIds.has(item.id));
+                  return [...prev, ...uniqueNew];
+                });
+              }
             }
-          }
 
-          // Precalculate tramos once all bacheos are downloaded
-          const ejecutadosEnZona = allLoadedBacheos.filter(p => 
-             p.status === 'EJECUTADO' && 
-             p.inZona && 
-             !(p.stage && p.stage >= 100) &&
-             !isNaN(p.lat) && p.lat !== 0
-          );
-          const computed = groupIntoTramos(ejecutadosEnZona, 80, 2);
-          setAllTramos(computed);
-          setDbLoading(false);
-          console.log(`Carga de base de datos completa. ${allLoadedBacheos.length} baches ejecutados sincronizados.`);
-        })().catch(err => {
-          console.error("Error en sincronización progresiva de base de datos:", err);
-          setDbLoading(false);
-        });
+            // Precalcular tramos de bacheo una vez sincronizados
+            const ejecutadosEnZona = allLoadedBacheos.filter(p => 
+               p.status === 'EJECUTADO' && 
+               p.inZona && 
+               !(p.stage && p.stage >= 100) &&
+               !isNaN(p.lat) && p.lat !== 0
+            );
+            const computed = groupIntoTramos(ejecutadosEnZona, 80, 2);
+            setAllTramos(computed);
+            setDbLoading(false);
+            console.log(`Carga de base de datos de bacheo completa. ${allLoadedBacheos.length} baches ejecutados sincronizados.`);
+          } catch (bgErr) {
+            console.warn("Aviso en sincronización de bacheo en segundo plano:", bgErr);
+            setDbLoading(false);
+          }
+        })();
 
       } catch (err) {
         console.error("Error loading initial data:", err);
@@ -1367,8 +1399,8 @@ export default function App() {
       {loading && (
         <div className="fixed inset-0 bg-toluca-burgundy/90 z-[9999] flex flex-col items-center justify-center text-white backdrop-blur-sm">
            <div className="w-16 h-16 border-4 border-toluca-gold border-t-transparent rounded-full animate-spin mb-6" />
-           <h2 className="text-2xl font-black tracking-widest uppercase">Cargando Estrategia</h2>
-           <p className="text-sm font-medium tracking-widest opacity-60 mt-2 uppercase">Procesando +50,000 registros históricos</p>
+           <h2 className="text-2xl font-black tracking-widest uppercase">Toluca Capital</h2>
+           <p className="text-sm font-medium tracking-widest opacity-60 mt-2 uppercase">Cargando Estrategia de Obras Públicas...</p>
         </div>
       )}
     </div>

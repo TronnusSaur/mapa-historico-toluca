@@ -1,4 +1,5 @@
 import Papa from 'papaparse';
+import { supabase } from '../lib/supabase.ts';
 import type { ModuloObraId, SubtipoPavimentacion, Obra, ObraTramo, ObraPuntual, EstadoTemporalObra, ObraEvidenciaData } from '../types/obras.ts';
 
 export interface PotholeData {
@@ -674,6 +675,183 @@ export const getObraTimelineStatus = (obra: Obra, currentDate: Date): EstadoTemp
 };
 
 /**
+ * Parsea un arreglo de filas (desde Supabase o CSV) en objetos ObraTramo
+ */
+export const parseTramosRows = (data: Record<string, any>[]): ObraTramo[] => {
+  const parsed: ObraTramo[] = [];
+
+  data.forEach((row, index) => {
+    const rawContrato = getVal(row, ['No. Contrato', 'contrato', 'no_contrato']);
+    const tipoRaw = getVal(row, ['Tipo de Obra', 'tipo', 'tipo_obra']) || '';
+    const contrato = (rawContrato && rawContrato.toString().trim()) 
+      ? rawContrato.toString().trim() 
+      : (tipoRaw ? `${tipoRaw.toString().trim().toUpperCase()} #${index + 1}` : `OBRA-TRAMO #${index + 1}`);
+
+    const nombre = getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '';
+    if (!nombre && !rawContrato) return;
+
+    const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
+    const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
+    
+    const fechaInicio = parseFechaFlexible(inicioRaw);
+    const fechaFin = parseFechaFlexible(terminoRaw);
+
+    // Extraer dinámicamente columnas P1, P2... Pn o Geolocalización P1...
+    const pKeys = Object.keys(row)
+      .filter(key => /P\d+/i.test(key))
+      .sort((a, b) => {
+        const matchA = a.match(/P(\d+)/i);
+        const matchB = b.match(/P(\d+)/i);
+        const numA = matchA ? parseInt(matchA[1], 10) : 0;
+        const numB = matchB ? parseInt(matchB[1], 10) : 0;
+        return numA - numB;
+      });
+
+    const coords: [number, number][] = [];
+    pKeys.forEach(key => {
+      const val = row[key];
+      if (val) {
+        const pt = extractCoords(val.toString());
+        if (pt && !isNaN(pt.lat) && !isNaN(pt.lng) && pt.lat !== 0 && pt.lng !== 0) {
+          // Validación para Toluca: lat positiva, lng negativa
+          let lat = pt.lat;
+          let lng = pt.lng;
+          if (lat < 0 && lng > 0) {
+            lat = pt.lng;
+            lng = pt.lat;
+          }
+          coords.push([lat, lng]);
+        }
+      }
+    });
+
+    const { modulo, subtipo } = clasificarObra(tipoRaw, nombre);
+    const delegacionCol = getVal(row, ['Delegación', 'delegacion']);
+    const delegacion = delegacionCol ? delegacionCol.toString().trim() : extraerDelegacion(nombre);
+    const metrosLineales = coords.length >= 2 ? calcularMetrosLinealesTramo(coords) : 0;
+
+    const contratoStr = contrato.toString().trim();
+    let anio = 2026;
+    if (contratoStr.includes('/2025') || contratoStr.includes('-2025')) anio = 2025;
+    else if (contratoStr.includes('/2027') || contratoStr.includes('-2027')) anio = 2027;
+    else if (fechaInicio) anio = fechaInicio.getFullYear();
+
+    const idContratoRaw = getVal(row, ['idContrato', 'id_contrato']);
+    const idContrato = idContratoRaw ? idContratoRaw.toString().trim() : undefined;
+
+    parsed.push({
+      id: `tramo-ctr-${index + 1}`,
+      contrato: contratoStr,
+      idContrato,
+      nombre: nombre.toString().trim(),
+      tipo: modulo,
+      subtipo,
+      tipoRaw: tipoRaw.toString().trim(),
+      anio,
+      fechaInicio,
+      fechaFin,
+      delegacion,
+      metrosLineales,
+      geometriaTipo: 'tramo',
+      coords
+    });
+  });
+
+  return parsed;
+};
+
+/**
+ * Parsea un arreglo de filas (desde Supabase o CSV) en objetos ObraPuntual
+ */
+export const parsePuntualesRows = (data: Record<string, any>[]): ObraPuntual[] => {
+  const parsed: ObraPuntual[] = [];
+  const coordCounts = new Map<string, number>();
+
+  data.forEach((row, index) => {
+    const rawContrato = getVal(row, ['No. Contrato', 'contrato', 'no_contrato']);
+    const tipoRaw = getVal(row, ['Tipo de Obra', 'tipo', 'tipo_obra']) || '';
+    const contrato = (rawContrato && rawContrato.toString().trim()) 
+      ? rawContrato.toString().trim() 
+      : (tipoRaw ? `${tipoRaw.toString().trim().toUpperCase()} #${index + 1}` : `OBRA-PUNTUAL #${index + 1}`);
+
+    const nombre = getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '';
+    if (!nombre && !rawContrato) return;
+
+    const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
+    const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
+    
+    const fechaInicio = parseFechaFlexible(inicioRaw);
+    const fechaFin = parseFechaFlexible(terminoRaw);
+
+    // Extraer coordenadas de la columna Geolocalización robustamente
+    let geoStr = getVal(row, ['Geolocalización', 'geolocalizacion', 'geolocalizacin', 'coordenadas', 'coordinates']);
+    if (!geoStr) {
+      const altKey = Object.keys(row).find(k => /geolocal/i.test(k) && !/P\d+/i.test(k));
+      if (altKey) geoStr = row[altKey];
+    }
+
+    let lat = 0;
+    let lng = 0;
+    if (geoStr) {
+      const pt = extractCoords(geoStr.toString());
+      if (pt) {
+        lat = pt.lat;
+        lng = pt.lng;
+        if (lat < 0 && lng > 0) {
+          lat = pt.lng;
+          lng = pt.lat;
+        }
+      }
+    }
+
+    // Si dos obras puntuales comparten exactamente la misma coordenada, aplicar un leve desplazamiento (~15m)
+    // para que ambos pines sean visibles e interactivos individualmente
+    if (lat !== 0 && lng !== 0) {
+      const coordKey = `${lat.toFixed(5)},${lng.toFixed(5)}`;
+      const existingCount = coordCounts.get(coordKey) || 0;
+      coordCounts.set(coordKey, existingCount + 1);
+
+      if (existingCount > 0) {
+        lat += 0.00018 * existingCount;
+        lng += 0.00018 * existingCount;
+      }
+    }
+
+    const { modulo, subtipo } = clasificarObra(tipoRaw, nombre);
+    const delegacionCol = getVal(row, ['Delegación', 'delegacion']);
+    const delegacion = delegacionCol ? delegacionCol.toString().trim() : extraerDelegacion(nombre);
+
+    const contratoStr = contrato.toString().trim();
+    let anio = 2026;
+    if (contratoStr.includes('/2025') || contratoStr.includes('-2025')) anio = 2025;
+    else if (contratoStr.includes('/2027') || contratoStr.includes('-2027')) anio = 2027;
+    else if (fechaInicio) anio = fechaInicio.getFullYear();
+
+    const idContratoRaw = getVal(row, ['idContrato', 'id_contrato']);
+    const idContrato = idContratoRaw ? idContratoRaw.toString().trim() : undefined;
+
+    parsed.push({
+      id: `puntual-ctr-${index + 1}`,
+      contrato: contratoStr,
+      idContrato,
+      nombre: nombre.toString().trim(),
+      tipo: modulo,
+      subtipo,
+      tipoRaw: tipoRaw.toString().trim(),
+      anio,
+      fechaInicio,
+      fechaFin,
+      delegacion,
+      geometriaTipo: 'puntual',
+      lat,
+      lng
+    });
+  });
+
+  return parsed;
+};
+
+/**
  * Parsea el CSV de Obras de Tramo (INFO CONTRATOS MAPEO - TRAMOS.csv)
  */
 export const parseContratosTramos = (url: string): Promise<ObraTramo[]> => {
@@ -683,87 +861,7 @@ export const parseContratosTramos = (url: string): Promise<ObraTramo[]> => {
       header: true,
       skipEmptyLines: true,
       complete: (results) => {
-        const data = results.data as Record<string, any>[];
-        const parsed: ObraTramo[] = [];
-
-        data.forEach((row, index) => {
-          const rawContrato = getVal(row, ['No. Contrato', 'contrato', 'no_contrato']);
-          const tipoRaw = getVal(row, ['Tipo de Obra', 'tipo', 'tipo_obra']) || '';
-          const contrato = (rawContrato && rawContrato.toString().trim()) 
-            ? rawContrato.toString().trim() 
-            : (tipoRaw ? `${tipoRaw.toString().trim().toUpperCase()} #${index + 1}` : `OBRA-TRAMO #${index + 1}`);
-
-          const nombre = getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '';
-          if (!nombre && !rawContrato) return;
-
-          const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
-          const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
-          
-          const fechaInicio = parseFechaFlexible(inicioRaw);
-          const fechaFin = parseFechaFlexible(terminoRaw);
-
-          // Extraer dinámicamente columnas P1, P2... Pn o Geolocalización P1...
-          const pKeys = Object.keys(row)
-            .filter(key => /P\d+/i.test(key))
-            .sort((a, b) => {
-              const matchA = a.match(/P(\d+)/i);
-              const matchB = b.match(/P(\d+)/i);
-              const numA = matchA ? parseInt(matchA[1], 10) : 0;
-              const numB = matchB ? parseInt(matchB[1], 10) : 0;
-              return numA - numB;
-            });
-
-          const coords: [number, number][] = [];
-          pKeys.forEach(key => {
-            const val = row[key];
-            if (val) {
-              const pt = extractCoords(val.toString());
-              if (pt && !isNaN(pt.lat) && !isNaN(pt.lng) && pt.lat !== 0 && pt.lng !== 0) {
-                // Validación para Toluca: lat positiva, lng negativa
-                let lat = pt.lat;
-                let lng = pt.lng;
-                if (lat < 0 && lng > 0) {
-                  lat = pt.lng;
-                  lng = pt.lat;
-                }
-                coords.push([lat, lng]);
-              }
-            }
-          });
-
-          const { modulo, subtipo } = clasificarObra(tipoRaw, nombre);
-          const delegacionCol = getVal(row, ['Delegación', 'delegacion']);
-          const delegacion = delegacionCol ? delegacionCol.toString().trim() : extraerDelegacion(nombre);
-          const metrosLineales = coords.length >= 2 ? calcularMetrosLinealesTramo(coords) : 0;
-
-          const contratoStr = contrato.toString().trim();
-          let anio = 2026;
-          if (contratoStr.includes('/2025') || contratoStr.includes('-2025')) anio = 2025;
-          else if (contratoStr.includes('/2027') || contratoStr.includes('-2027')) anio = 2027;
-          else if (fechaInicio) anio = fechaInicio.getFullYear();
-
-          const idContratoRaw = getVal(row, ['idContrato', 'id_contrato']);
-          const idContrato = idContratoRaw ? idContratoRaw.toString().trim() : undefined;
-
-          parsed.push({
-            id: `tramo-ctr-${index + 1}`,
-            contrato: contratoStr,
-            idContrato,
-            nombre: nombre.toString().trim(),
-            tipo: modulo,
-            subtipo,
-            tipoRaw: tipoRaw.toString().trim(),
-            anio,
-            fechaInicio,
-            fechaFin,
-            delegacion,
-            metrosLineales,
-            geometriaTipo: 'tramo',
-            coords
-          });
-        });
-
-        resolve(parsed);
+        resolve(parseTramosRows(results.data as Record<string, any>[]));
       },
       error: (err: Error) => reject(err)
     });
@@ -780,91 +878,53 @@ export const parseContratosPuntuales = (url: string): Promise<ObraPuntual[]> => 
       header: true,
       skipEmptyLines: true,
       complete: (results) => {
-        const data = results.data as Record<string, any>[];
-        const parsed: ObraPuntual[] = [];
-        const coordCounts = new Map<string, number>();
-
-        data.forEach((row, index) => {
-          const rawContrato = getVal(row, ['No. Contrato', 'contrato', 'no_contrato']);
-          const tipoRaw = getVal(row, ['Tipo de Obra', 'tipo', 'tipo_obra']) || '';
-          const contrato = (rawContrato && rawContrato.toString().trim()) 
-            ? rawContrato.toString().trim() 
-            : (tipoRaw ? `${tipoRaw.toString().trim().toUpperCase()} #${index + 1}` : `OBRA-PUNTUAL #${index + 1}`);
-
-          const nombre = getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '';
-          if (!nombre && !rawContrato) return;
-
-          const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
-          const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
-          
-          const fechaInicio = parseFechaFlexible(inicioRaw);
-          const fechaFin = parseFechaFlexible(terminoRaw);
-
-          // Extraer coordenadas de la columna Geolocalización
-          const geoStr = getVal(row, ['Geolocalización', 'geolocalizacion', 'coordenadas', 'coordinates']) || '';
-          let lat = 0;
-          let lng = 0;
-          if (geoStr) {
-            const pt = extractCoords(geoStr.toString());
-            if (pt) {
-              lat = pt.lat;
-              lng = pt.lng;
-              if (lat < 0 && lng > 0) {
-                lat = pt.lng;
-                lng = pt.lat;
-              }
-            }
-          }
-
-          // Si dos obras puntuales comparten exactamente la misma coordenada, aplicar un leve desplazamiento (~15m)
-          // para que ambos pines sean visibles e interactivos individualmente
-          if (lat !== 0 && lng !== 0) {
-            const coordKey = `${lat.toFixed(5)},${lng.toFixed(5)}`;
-            const existingCount = coordCounts.get(coordKey) || 0;
-            coordCounts.set(coordKey, existingCount + 1);
-
-            if (existingCount > 0) {
-              lat += 0.00018 * existingCount;
-              lng += 0.00018 * existingCount;
-            }
-          }
-
-          const { modulo, subtipo } = clasificarObra(tipoRaw, nombre);
-          const delegacionCol = getVal(row, ['Delegación', 'delegacion']);
-          const delegacion = delegacionCol ? delegacionCol.toString().trim() : extraerDelegacion(nombre);
-
-          const contratoStr = contrato.toString().trim();
-          let anio = 2026;
-          if (contratoStr.includes('/2025') || contratoStr.includes('-2025')) anio = 2025;
-          else if (contratoStr.includes('/2027') || contratoStr.includes('-2027')) anio = 2027;
-          else if (fechaInicio) anio = fechaInicio.getFullYear();
-
-          const idContratoRaw = getVal(row, ['idContrato', 'id_contrato']);
-          const idContrato = idContratoRaw ? idContratoRaw.toString().trim() : undefined;
-
-          parsed.push({
-            id: `puntual-ctr-${index + 1}`,
-            contrato: contratoStr,
-            idContrato,
-            nombre: nombre.toString().trim(),
-            tipo: modulo,
-            subtipo,
-            tipoRaw: tipoRaw.toString().trim(),
-            anio,
-            fechaInicio,
-            fechaFin,
-            delegacion,
-            geometriaTipo: 'puntual',
-            lat,
-            lng
-          });
-        });
-
-        resolve(parsed);
+        resolve(parsePuntualesRows(results.data as Record<string, any>[]));
       },
       error: (err: Error) => reject(err)
     });
   });
+};
+
+/**
+ * Carga directa de Obras de Tramo desde Supabase Alfa (public.mapeo_t)
+ */
+export const fetchObrasTramosSupabase = async (): Promise<ObraTramo[]> => {
+  const fetchPromise = (async () => {
+    const { data, error } = await supabase
+      .from('mapeo_t')
+      .select('*');
+
+    if (error) throw error;
+    if (!data || data.length === 0) throw new Error('No se encontraron registros en public.mapeo_t');
+    return parseTramosRows(data);
+  })();
+
+  const timeoutPromise = new Promise<never>((_, reject) => 
+    setTimeout(() => reject(new Error('Supabase mapeo_t timeout (3.5s)')), 3500)
+  );
+
+  return await Promise.race([fetchPromise, timeoutPromise]);
+};
+
+/**
+ * Carga directa de Obras Puntuales desde Supabase Alfa (public.mapeo_p)
+ */
+export const fetchObrasPuntualesSupabase = async (): Promise<ObraPuntual[]> => {
+  const fetchPromise = (async () => {
+    const { data, error } = await supabase
+      .from('mapeo_p')
+      .select('*');
+
+    if (error) throw error;
+    if (!data || data.length === 0) throw new Error('No se encontraron registros en public.mapeo_p');
+    return parsePuntualesRows(data);
+  })();
+
+  const timeoutPromise = new Promise<never>((_, reject) => 
+    setTimeout(() => reject(new Error('Supabase mapeo_p timeout (3.5s)')), 3500)
+  );
+
+  return await Promise.race([fetchPromise, timeoutPromise]);
 };
 
 /**
