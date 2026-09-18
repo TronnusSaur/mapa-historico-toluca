@@ -591,7 +591,7 @@ export default function App() {
     const slurryTramos = filteredObrasTramos.filter(o => o.tipo === 'slurry');
     const senderosCount = filteredObrasTramos.filter(o => o.tipo === 'senderos').length + filteredObrasPuntuales.filter(o => o.tipo === 'senderos').length;
     const arcotechosCount = filteredObrasTramos.filter(o => o.tipo === 'arcotechos').length + filteredObrasPuntuales.filter(o => o.tipo === 'arcotechos').length;
-    const pozosCount = filteredObrasPuntuales.filter(o => o.tipo === 'pozos').length;
+    const pozosCount = filteredObrasPuntuales.filter(o => o.tipo === 'pozos').length + filteredObrasTramos.filter(o => o.tipo === 'pozos').length;
     const senalamientoCount = filteredObrasPuntuales.filter(o => o.tipo === 'senalamiento').length;
     const equipamientoCount = filteredObrasPuntuales.filter(o => o.tipo === 'equipamiento').length;
 
@@ -639,18 +639,25 @@ export default function App() {
       );
     }
     if (filtrosModulos.moduloActivo === 'pozos') {
-      const pozos = filteredObrasPuntuales.filter(o => o.tipo === 'pozos');
-      const delegacionesCount = new Set(pozos.map(p => p.delegacion)).size;
+      const pozosPuntuales = filteredObrasPuntuales.filter(o => o.tipo === 'pozos');
+      const drenajesTramos = filteredObrasTramos.filter(o => o.tipo === 'pozos');
+      const totalMl = drenajesTramos.reduce((acc, curr) => acc + (curr.metrosLineales || 0), 0);
+      const totalObras = pozosPuntuales.length + drenajesTramos.length;
       return (
         <>
           <div className="text-center">
-            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Pozos Totales</p>
-            <p className="text-2xl font-black text-cyan-300">{pozos.length} <span className="text-sm font-normal opacity-50">Pozos</span></p>
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Obras OAyST</p>
+            <p className="text-2xl font-black text-cyan-300">{totalObras} <span className="text-sm font-normal opacity-50">Totales</span></p>
           </div>
           <div className="w-[1px] h-10 bg-white/10 mt-1" />
           <div className="text-center">
-            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Delegaciones</p>
-            <p className="text-2xl font-black text-white">{delegacionesCount} <span className="text-sm font-normal opacity-50">Zonas</span></p>
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Red de Drenaje</p>
+            <p className="text-2xl font-black text-toluca-gold">{totalMl.toLocaleString()} <span className="text-sm font-normal opacity-50">ML</span></p>
+          </div>
+          <div className="w-[1px] h-10 bg-white/10 mt-1" />
+          <div className="text-center">
+            <p className="text-[9px] font-bold tracking-widest opacity-50 uppercase mb-1">Pozos de Agua</p>
+            <p className="text-2xl font-black text-white">{pozosPuntuales.length} <span className="text-sm font-normal opacity-50">Pozos</span></p>
           </div>
           <div className="w-[1px] h-10 bg-white/10 mt-1" />
           <div className="text-center">
@@ -857,7 +864,7 @@ export default function App() {
             <div className="hidden lg:block">
               <h2 className="text-xl font-black tracking-tight leading-none">
                 {filtrosModulos.moduloActivo === 'pavimentacion' ? 'Torre de Control de Pavimentaciones' :
-                 filtrosModulos.moduloActivo === 'pozos' ? 'Torre de Control de Pozos de Agua' :
+                 filtrosModulos.moduloActivo === 'pozos' ? 'Torre de Control de Pozos y Drenajes' :
                  filtrosModulos.moduloActivo === 'slurry' ? 'Torre de Control de Mantenimiento Slurry' :
                  filtrosModulos.moduloActivo === 'senderos' ? 'Torre de Control de Senderos Seguros' :
                  filtrosModulos.moduloActivo === 'arcotechos' ? 'Torre de Control de Arcotechos Escolares' :

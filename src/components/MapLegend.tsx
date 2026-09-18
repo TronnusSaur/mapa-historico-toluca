@@ -24,7 +24,7 @@ interface SimbologiaItem {
   sublabel: string;
   color: string;
   icon: React.ReactNode;
-  tipoGeometria: 'Tramo vial' | 'Punto específico' | 'Baches masivos';
+  tipoGeometria: 'Tramo vial' | 'Punto específico' | 'Baches masivos' | 'Mixto (Trazados y Puntos)';
   isActive: boolean;
 }
 
@@ -79,11 +79,11 @@ export const MapLegend: React.FC<MapLegendProps> = ({ filtros, onToggleModulo })
     },
     {
       id: 'pozos',
-      label: 'Pozos de Agua',
-      sublabel: 'Rehabilitación y mantenimiento',
+      label: 'Pozos y Drenajes',
+      sublabel: 'Pozos de agua, colectores y redes sanitarias (OAyST)',
       color: 'bg-cyan-600',
       icon: <Droplet size={12} className="text-white" />,
-      tipoGeometria: 'Punto específico',
+      tipoGeometria: 'Mixto (Trazados y Puntos)',
       isActive: filtros.showPozos,
     },
     {

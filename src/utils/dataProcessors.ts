@@ -572,7 +572,19 @@ export const clasificarObra = (
   if (combined.includes('sendero') || combined.includes('andador') || combined.includes('banqueta')) {
     return { modulo: 'senderos', subtipo: 'Sendero Seguro' };
   }
-  if (combined.includes('pozo')) {
+  if (
+    combined.includes('pozo') || 
+    combined.includes('drenaje') || 
+    combined.includes('colector') || 
+    combined.includes('alcantarill') || 
+    combined.includes('sanitario')
+  ) {
+    if (combined.includes('colector')) {
+      return { modulo: 'pozos', subtipo: 'Colector de Aguas Residuales' };
+    }
+    if (combined.includes('drenaje') || combined.includes('sanitario') || combined.includes('alcantarill')) {
+      return { modulo: 'pozos', subtipo: 'Red de Drenaje Sanitario' };
+    }
     return { modulo: 'pozos', subtipo: 'Pozo de Agua / Absorción' };
   }
   if (

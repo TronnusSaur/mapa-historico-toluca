@@ -177,9 +177,7 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
         if (!obra.coords || obra.coords.length === 0) return null;
 
         const color = getTramoColor(obra);
-        const dashArray = status === 'POR_INICIAR' ? '6, 6' : undefined;
         const opacity = status === 'POR_INICIAR' ? 0.45 : 0.85;
-        const weight = status === 'EN_EJECUCION' ? 6 : 5;
 
         const midpoint = obra.coords.length === 1 ? obra.coords[0] : getTramoMidpoint(obra.coords);
 
@@ -207,15 +205,37 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
           return pinMarker;
         }
 
+        const isDrenaje = obra.tipo === 'pozos';
+        const tramoDashArray = isDrenaje 
+          ? '10, 6' 
+          : (status === 'POR_INICIAR' ? '6, 6' : undefined);
+        const tramoWeight = isDrenaje ? 6 : (status === 'EN_EJECUCION' ? 6 : 5);
+        const tramoOpacity = isDrenaje ? 0.95 : opacity;
+
         return (
           <React.Fragment key={obra.id}>
+            {/* Halo blanco de protección para que los drenajes no colisionen ni se oculten bajo otras obras */}
+            {isDrenaje && (
+              <Polyline
+                positions={obra.coords}
+                pathOptions={{
+                  color: '#ffffff',
+                  weight: tramoWeight + 3,
+                  opacity: 0.9,
+                  lineCap: 'round',
+                  lineJoin: 'round'
+                }}
+              />
+            )}
             <Polyline
               positions={obra.coords}
               pathOptions={{
                 color,
-                weight,
-                opacity,
-                dashArray
+                weight: tramoWeight,
+                opacity: tramoOpacity,
+                dashArray: tramoDashArray,
+                lineCap: 'round',
+                lineJoin: 'round'
               }}
               eventHandlers={{
                 click: () => onSelectObra?.(obra)
