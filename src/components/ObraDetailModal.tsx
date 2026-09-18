@@ -12,6 +12,7 @@ import {
   ChevronRight
 } from 'lucide-react';
 import type { Obra, EstadoTemporalObra } from '../types/obras.ts';
+import { getObraTimelineStatus } from '../utils/dataProcessors.ts';
 
 interface ObraDetailModalProps {
   obra: Obra | null;
@@ -102,12 +103,9 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
 
   if (!obra) return null;
 
-  // Estado temporal de la obra
+  // Estado temporal de la obra (si tiene foto de terminado, se marca como concluida)
   const getTimelineStatus = (): EstadoTemporalObra => {
-    const now = new Date();
-    if (obra.fechaInicio && now < obra.fechaInicio) return 'POR_INICIAR';
-    if (obra.fechaFin && now > obra.fechaFin) return 'CONCLUIDA';
-    return 'EN_EJECUCION';
+    return getObraTimelineStatus(obra, new Date());
   };
 
   const status = getTimelineStatus();
@@ -115,8 +113,8 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
   const renderStatusBadge = () => {
     if (status === 'CONCLUIDA') {
       return (
-        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide bg-blue-50 text-blue-700 border border-blue-200 shadow-sm">
-          <CheckCircle2 size={12} className="text-blue-600" />
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide bg-amber-50/90 text-amber-900 border border-[#d4af37] shadow-sm">
+          <CheckCircle2 size={12} className="text-[#b89327]" />
           CONCLUIDA
         </span>
       );

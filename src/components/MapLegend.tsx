@@ -187,8 +187,8 @@ export const MapLegend: React.FC<MapLegendProps> = ({ filtros, onToggleModulo })
                 Estatus de Ejecución
               </span>
               <div className="grid grid-cols-3 gap-1 text-[9px] font-bold">
-                <div className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50/80 px-2 py-1 rounded-lg border border-emerald-200/60">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 shrink-0" />
+                <div className="flex items-center gap-1.5 text-emerald-800 bg-emerald-50/80 px-2 py-1 rounded-lg border border-[#d4af37]/60" title="Borde dorado en mapa">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-[#d4af37] shadow-sm shrink-0" />
                   <span className="truncate">Concluida</span>
                 </div>
                 <div className="flex items-center gap-1.5 text-amber-700 bg-amber-50/80 px-2 py-1 rounded-lg border border-amber-200/60">
@@ -200,6 +200,10 @@ export const MapLegend: React.FC<MapLegendProps> = ({ filtros, onToggleModulo })
                   <span className="truncate">Programada</span>
                 </div>
               </div>
+              <p className="text-[8.5px] text-slate-500 font-medium tracking-tight pt-1 flex items-center gap-1">
+                <span className="w-2.5 h-2.5 rounded-full border-2 border-[#d4af37] bg-white inline-block shrink-0 shadow-xs" />
+                <span>Pines con <strong className="text-[#b89327] font-extrabold">borde dorado</strong> = Obra concluida</span>
+              </p>
             </div>
           </div>
         </div>

@@ -655,6 +655,14 @@ export const calcularMetrosLinealesTramo = (coords: [number, number][]): number 
  * Determina el estado temporal de una obra con respecto a la fecha seleccionada en el mapa
  */
 export const getObraTimelineStatus = (obra: Obra, currentDate: Date): EstadoTemporalObra => {
+  // Si la obra ya tiene la foto de "_terminado", se marca automáticamente como concluida
+  // aunque su periodo de ejecución todavía no acabe
+  const tieneFotoTerminado = Boolean(
+    obra.evidencias?.fotos?.terminado || 
+    obra.evidencias?.fotosFallback?.terminado
+  );
+  if (tieneFotoTerminado) return 'CONCLUIDA';
+
   const anio = obra.anio || 2026;
 
   // Si ya concluyó su periodo de fin establecido

@@ -86,6 +86,16 @@ body {
   z-index: 1000;
 }
 
+.obra-pin-badge.is-concluida {
+  border: 2.5px solid #d4af37 !important;
+  box-shadow: 0 0 0 1.5px rgba(212, 175, 55, 0.5), 0 3px 8px rgba(0, 0, 0, 0.35);
+}
+
+.obra-pin-badge.is-concluida:hover {
+  border-color: #f59e0b !important;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.7), 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
 .obra-pin-badge.is-in-progress {
   box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.45), 0 3px 8px rgba(0, 0, 0, 0.35);
   animation: obraPulse 2s infinite ease-in-out;

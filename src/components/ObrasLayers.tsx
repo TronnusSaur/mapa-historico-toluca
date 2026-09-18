@@ -2,6 +2,7 @@ import React from 'react';
 import L from 'leaflet';
 import { Polyline, Marker, Tooltip } from 'react-leaflet';
 import type { ObraTramo, ObraPuntual, EstadoTemporalObra } from '../types/obras.ts';
+import { getObraTimelineStatus } from '../utils/dataProcessors.ts';
 
 interface ObrasLayersProps {
   tramos: ObraTramo[];
@@ -80,13 +81,18 @@ const getTramoMidpoint = (coords: [number, number][]): [number, number] => {
   return coords[Math.floor(coords.length / 2)];
 };
 
-// Crea el DivIcon con borde blanco, centro de color y el ícono en blanco
+// Crea el DivIcon con borde blanco (o dorado si está concluida), centro de color y el ícono en blanco
 const createObraPinIcon = (obra: ObraTramo | ObraPuntual, color: string, status: EstadoTemporalObra) => {
   const svg = getObraSvg(obra.tipo);
   const isEnProceso = status === 'EN_EJECUCION';
+  const isConcluida = status === 'CONCLUIDA';
+  const borderStyle = isConcluida 
+    ? 'border: 2.5px solid #d4af37 !important; box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5), 0 3px 8px rgba(0, 0, 0, 0.35);' 
+    : '';
+
   return L.divIcon({
     className: 'obra-pin-marker',
-    html: `<div class="obra-pin-badge ${isEnProceso ? 'is-in-progress' : ''}" style="background-color: ${color};" title="${obra.nombre.replace(/"/g, '&quot;')}">${svg}</div>`,
+    html: `<div class="obra-pin-badge ${isEnProceso ? 'is-in-progress' : ''} ${isConcluida ? 'is-concluida' : ''}" style="background-color: ${color}; ${borderStyle}" title="${obra.nombre.replace(/"/g, '&quot;')}">${svg}</div>`,
     iconSize: [26, 26],
     iconAnchor: [13, 13],
     popupAnchor: [0, -14],
@@ -112,13 +118,8 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
   showProgramadas,
   onSelectObra
 }) => {
-  const getTimelineStatus = (fechaInicio?: Date | null, fechaFin?: Date | null, anio?: number): EstadoTemporalObra => {
-    const year = anio || 2026;
-    if (fechaFin && currentDate > fechaFin) return 'CONCLUIDA';
-    if (year === 2025 && (!fechaInicio || currentDate.getFullYear() >= 2026)) return 'CONCLUIDA';
-    if (!fechaInicio) return year === 2025 ? 'CONCLUIDA' : 'EN_EJECUCION';
-    if (currentDate < fechaInicio) return 'POR_INICIAR';
-    return 'EN_EJECUCION';
+  const getTimelineStatus = (obra: ObraTramo | ObraPuntual): EstadoTemporalObra => {
+    return getObraTimelineStatus(obra, currentDate);
   };
 
   const matchesStatusFilter = (status: EstadoTemporalObra): boolean => {
@@ -170,7 +171,7 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
         }
 
         // Filtrar por estado temporal
-        const status = getTimelineStatus(obra.fechaInicio, obra.fechaFin, obra.anio);
+        const status = getTimelineStatus(obra);
         if (!matchesStatusFilter(status)) return null;
 
         if (!obra.coords || obra.coords.length === 0) return null;
@@ -244,7 +245,7 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
         if (obra.tipo === 'pavimentacion' && !showPavimentacion) return null;
         if (obra.tipo === 'slurry' && !showSlurry) return null;
 
-        const status = getTimelineStatus(obra.fechaInicio, obra.fechaFin, obra.anio);
+        const status = getTimelineStatus(obra);
         if (!matchesStatusFilter(status)) return null;
 
         if (!obra.lat || !obra.lng || obra.lat === 0 || obra.lng === 0) return null;
