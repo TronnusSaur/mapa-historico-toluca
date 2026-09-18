@@ -1260,5 +1260,275 @@
       ],
       "terminado": null
     }
+  },
+  "DR-01": {
+    "idContrato": "DR-01",
+    "noContrato": "DRAGÓN-DR-01",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACION POR MEDIO DEL PASO DEL DIABLO DRAGON SOBRE LA CALLE BENITO JUAREZ DELEGACION MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Diablo Dragón",
+    "categoria": "DIABLO DRAGON",
+    "fotos": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/6.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/6.jpeg",
+      "fotosDragon": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/6.jpeg"
+      ]
+    }
+  },
+  "DR-02": {
+    "idContrato": "DR-02",
+    "noContrato": "DRAGÓN-DR-02",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACION POR MEDIO DEL PASO DEL DIABLO DRAGON SOBRE LA CALLE LAGUNA 7 COLORES DELEGACION MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Diablo Dragón",
+    "categoria": "DIABLO DRAGON",
+    "fotos": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/6.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/6.jpeg",
+      "fotosDragon": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/6.jpeg"
+      ]
+    }
+  },
+  "DR-03": {
+    "idContrato": "DR-03",
+    "noContrato": "DRAGÓN-DR-03",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACION POR MEDIO DEL PASO DEL DIABLO DRAGON SOBRE LA CALLE FRANCISCO MURGIA DELEGACION MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Diablo Dragón",
+    "categoria": "DIABLO DRAGON",
+    "fotos": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/6.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/6.jpeg",
+      "fotosDragon": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/6.jpeg"
+      ]
+    }
+  },
+  "DR-04": {
+    "idContrato": "DR-04",
+    "noContrato": "DRAGÓN-DR-04",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACION POR MEDIO DEL PASO DEL DIABLO DRAGON SOBRE LA CALLE VALENTIN GOMEZ FARIAS DELEGACION MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Diablo Dragón",
+    "categoria": "DIABLO DRAGON",
+    "fotos": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/6.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/6.jpeg",
+      "fotosDragon": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/6.jpeg"
+      ]
+    }
+  },
+  "DR-05": {
+    "idContrato": "DR-05",
+    "noContrato": "DRAGÓN-DR-05",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACION POR MEDIO DEL PASO DEL DIABLO DRAGON SOBRE LA CALLE DE LOS PANTEONES DELEGACION MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Diablo Dragón",
+    "categoria": "DIABLO DRAGON",
+    "fotos": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/6.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/6.jpeg",
+      "fotosDragon": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/6.jpeg"
+      ]
+    }
+  },
+  "DR-06": {
+    "idContrato": "DR-06",
+    "noContrato": "DRAGÓN-DR-06",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACION POR MEDIO DEL PASO DEL DIABLO DRAGON SOBRE LA CALLE PASEO MATLAZINCAS DELEGACION MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Diablo Dragón",
+    "categoria": "DIABLO DRAGON",
+    "fotos": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/6.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/6.jpeg",
+      "fotosDragon": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/6.jpeg"
+      ]
+    }
+  },
+  "DR-07": {
+    "idContrato": "DR-07",
+    "noContrato": "DRAGÓN-DR-07",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACION POR MEDIO DEL PASO DEL DIABLO DRAGON SOBRE LA CALLE SANTOS DEGOLLADO DELEGACION MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Diablo Dragón",
+    "categoria": "DIABLO DRAGON",
+    "fotos": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/6.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/6.jpeg",
+      "fotosDragon": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/6.jpeg"
+      ]
+    }
+  },
+  "DR-08": {
+    "idContrato": "DR-08",
+    "noContrato": "DRAGÓN-DR-08",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACION POR MEDIO DEL PASO DEL DIABLO DRAGON SOBRE LA AV. HEROICO COLEGIO MILITAR CARRIL DERECHO DELEGACION MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Diablo Dragón",
+    "categoria": "DIABLO DRAGON",
+    "fotos": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/6.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/6.jpeg",
+      "fotosDragon": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/6.jpeg"
+      ]
+    }
+  },
+  "DR-09": {
+    "idContrato": "DR-09",
+    "noContrato": "DRAGÓN-DR-09",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACION POR MEDIO DEL PASO DEL DIABLO DRAGON SOBRE LA AV. HEROICO COLEGIO MILITAR CARRIL IZQUIERDO DELEGACION MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Diablo Dragón",
+    "categoria": "DIABLO DRAGON",
+    "fotos": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/6.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/6.jpeg",
+      "fotosDragon": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/6.jpeg"
+      ]
+    }
+  },
+  "DR-10": {
+    "idContrato": "DR-10",
+    "noContrato": "DRAGÓN-DR-10",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACION POR MEDIO DEL PASO DEL DIABLO DRAGON SOBRE LA CALLE JUAN ALDAMA DELEGACION MUNICIPIO DE TOLUCA.",
+    "tipoObra": "Diablo Dragón",
+    "categoria": "DIABLO DRAGON",
+    "fotos": {
+      "inicio": null,
+      "proceso": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/6.jpeg"
+      ],
+      "terminado": "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/6.jpeg",
+      "fotosDragon": [
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/1.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/2.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/3.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/4.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/5.jpeg",
+        "https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/6.jpeg"
+      ]
+    }
   }
 }
