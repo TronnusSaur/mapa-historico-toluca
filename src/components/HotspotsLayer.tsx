@@ -32,6 +32,7 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = React.memo(({
   const layerGroupRef = useRef<L.LayerGroup | null>(null);
   const markersMapRef = useRef<Map<string, L.Marker>>(new Map());
   const circlesMapRef = useRef<Map<string, L.Circle>>(new Map());
+  const hoverCircleRef = useRef<L.Circle | null>(null);
   const onSelectRef = useRef(onSelectHotspot);
   onSelectRef.current = onSelectHotspot;
 
@@ -49,7 +50,8 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = React.memo(({
   // Level of Detail (LOD) filtering based on current zoom:
   // - Zoom <= 12: Regional macro view — Only Top 15 / 'critica'
   // - Zoom 13: Municipal view — Top 25 / 'critica' & 'alta'
-  // - Zoom >= 14: Neighborhood / street view — Full 101 hotspots
+  // - Zoom 14: Semi-detailed view — Top 35 prioritarios
+  // - Zoom >= 15: Neighborhood / street view — Full 101 hotspots
   // Hotspot selected by user is always preserved regardless of zoom level.
   const visibleHotspots = useMemo(() => {
     if (!hotspots || hotspots.length === 0) return [];
@@ -59,12 +61,19 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = React.memo(({
     if (currentZoom === 13) {
       return hotspots.filter((h, idx) => h.severity === 'critica' || h.severity === 'alta' || idx < 25 || h.id === selectedHotspotId);
     }
+    if (currentZoom === 14) {
+      return hotspots.filter((h, idx) => h.severity === 'critica' || h.severity === 'alta' || idx < 35 || h.id === selectedHotspotId);
+    }
     return hotspots;
   }, [hotspots, currentZoom, selectedHotspotId]);
 
   useEffect(() => {
     // If not visible or no hotspots, clean up
     if (!visible || !visibleHotspots || visibleHotspots.length === 0) {
+      if (hoverCircleRef.current && map.hasLayer(hoverCircleRef.current)) {
+        map.removeLayer(hoverCircleRef.current);
+        hoverCircleRef.current = null;
+      }
       if (layerGroupRef.current && map.hasLayer(layerGroupRef.current)) {
         map.removeLayer(layerGroupRef.current);
       }
@@ -78,8 +87,6 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = React.memo(({
     const layerGroup = L.layerGroup();
     markersMapRef.current.clear();
     circlesMapRef.current.clear();
-
-    const showCirclesAtZoom = currentZoom >= 14;
 
     visibleHotspots.forEach((cluster) => {
       const isCritical = cluster.severity === 'critica';
@@ -102,15 +109,16 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = React.memo(({
       const shouldPulse = (cluster.rank <= 3) || isSelected;
 
       // 1. Círculo de cobertura espacial (radio del hotspot en metros)
-      // Rendered only at detailed zoom (>= 14) or for the currently selected hotspot
-      if (showCirclesAtZoom || isSelected) {
+      // En vistas intermedias (zoom < 16), NO dibujamos 101 círculos continuos para no saturar.
+      // Solo se dibuja el círculo si está seleccionado activamente o si estamos a nivel calle (>= 16).
+      if (isSelected || currentZoom >= 16) {
         const circle = L.circle(cluster.center, {
           radius: cluster.radiusMeters,
           color: mainColor,
           fillColor: mainColor,
-          fillOpacity: isSelected ? 0.25 : 0.1,
+          fillOpacity: isSelected ? 0.25 : 0.08,
           weight: isSelected ? 2.5 : 1.5,
-          dashArray: '5 5'
+          dashArray: isSelected ? undefined : '5 5'
         });
         layerGroup.addLayer(circle);
         circlesMapRef.current.set(cluster.id, circle);
@@ -171,6 +179,30 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = React.memo(({
       });
 
       const marker = L.marker(cluster.center, { icon: customIcon });
+
+      // Círculo interactivo al pasar el cursor (Hover on-demand):
+      // Dibuja el radio de cobertura al posar el cursor, sin costo continuo en reposo
+      marker.on('mouseover', () => {
+        if (selectedHotspotId === cluster.id || currentZoom >= 16) return;
+        if (hoverCircleRef.current && map.hasLayer(hoverCircleRef.current)) {
+          map.removeLayer(hoverCircleRef.current);
+        }
+        hoverCircleRef.current = L.circle(cluster.center, {
+          radius: cluster.radiusMeters,
+          color: mainColor,
+          fillColor: mainColor,
+          fillOpacity: 0.18,
+          weight: 2,
+          dashArray: '4 4'
+        }).addTo(map);
+      });
+
+      marker.on('mouseout', () => {
+        if (hoverCircleRef.current && map.hasLayer(hoverCircleRef.current)) {
+          map.removeLayer(hoverCircleRef.current);
+          hoverCircleRef.current = null;
+        }
+      });
 
       // Breakdown of types HTML
       const topTipos = Object.entries(cluster.tipoCounts)
@@ -308,6 +340,10 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = React.memo(({
     layerGroupRef.current = layerGroup;
 
     return () => {
+      if (hoverCircleRef.current && map.hasLayer(hoverCircleRef.current)) {
+        map.removeLayer(hoverCircleRef.current);
+        hoverCircleRef.current = null;
+      }
       if (layerGroupRef.current && map.hasLayer(layerGroupRef.current)) {
         map.removeLayer(layerGroupRef.current);
       }
@@ -319,7 +355,7 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = React.memo(({
     circlesMapRef.current.forEach((circle, id) => {
       const isSelected = selectedHotspotId === id;
       circle.setStyle({
-        fillOpacity: isSelected ? 0.25 : 0.1,
+        fillOpacity: isSelected ? 0.25 : 0.08,
         weight: isSelected ? 2.5 : 1.5
       });
     });

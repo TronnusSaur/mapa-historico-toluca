@@ -52,6 +52,7 @@ import { PeticionesCiudadanasLayer } from './components/PeticionesCiudadanasLaye
 import { HeatmapLayer } from './components/HeatmapLayer.tsx';
 import { HotspotsLayer } from './components/HotspotsLayer.tsx';
 import { HotspotsPanel } from './components/HotspotsPanel.tsx';
+import { TramosLayer } from './components/TramosLayer.tsx';
 import { unifyCitizenReports, detectHotspots, getHeatmapPoints } from './utils/hotspotDetector.ts';
 import type { HotspotFilterOptions, HotspotCluster } from './types/hotspots.ts';
 
@@ -623,21 +624,6 @@ export default function App() {
     });
   }, [allTramos, currentDate, selectedYear, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
 
-  // Convert filtered tramos to a single GeoJSON FeatureCollection for high-performance rendering.
-  // This avoids mounting thousands of individual <Polyline> components which freezes React.
-  const tramosGeoJSON = useMemo(() => {
-    return {
-      type: 'FeatureCollection',
-      features: tramos.map((t, idx) => ({
-        type: 'Feature',
-        id: idx,
-        geometry: {
-          type: 'LineString',
-          coordinates: t.coords.map(c => [c[1], c[0]]) // Leaflet GeoJSON expects [lng, lat]
-        }
-      }))
-    };
-  }, [tramos]);
 
   // Throttled cluster data — limits re-clustering to max once per 300ms.
   // This keeps UI responsive during rapid slider dragging or animation playback.
@@ -1521,18 +1507,14 @@ export default function App() {
               />
             )}
             
-            {/* Tramos Verdes de Bacheo — solo visible en modo tramos y con módulo bacheo activo */}
-            {filtrosModulos.showBacheo && filters.renderMode === 'tramos' && (
-              <GeoJSON
-                key={`tramos-geojson-${tramos.length}`}
-                data={tramosGeoJSON as any}
-                style={{
-                  color: '#16a34a',
-                  weight: 4,
-                  opacity: 0.6
-                }}
-              />
-            )}
+            {/* Tramos Verdes de Bacheo — Aceleración nativa por GPU en Canvas */}
+            <TramosLayer
+              tramos={tramos}
+              visible={Boolean(filtrosModulos.showBacheo && filters.renderMode === 'tramos')}
+              color="#16a34a"
+              weight={4}
+              opacity={0.65}
+            />
 
             {/* Clusters Verdes (DGOP Bacheo) — solo visible en modo clusters con módulo bacheo activo */}
             {filtrosModulos.showBacheo && filters.renderMode === 'clusters' && (

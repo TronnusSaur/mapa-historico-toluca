@@ -29,9 +29,9 @@ export const DemandaCiudadanaLayer: React.FC<DemandaCiudadanaLayerProps> = React
       animateAddingMarkers: false,
       removeOutsideVisibleBounds: true,
       maxClusterRadius: (zoom: number) => {
-        if (zoom <= 12) return 100;
-        if (zoom <= 13) return 85;
-        if (zoom <= 15) return 65;
+        if (zoom <= 12) return 110;
+        if (zoom <= 14) return 90;
+        if (zoom <= 15) return 70;
         return 45;
       },
       disableClusteringAtZoom: 17,
