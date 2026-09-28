@@ -1,6 +1,6 @@
 import Papa from 'papaparse';
 import { supabase } from '../lib/supabase.ts';
-import type { ModuloObraId, SubtipoPavimentacion, Obra, ObraTramo, ObraPuntual, EstadoTemporalObra, ObraEvidenciaData } from '../types/obras.ts';
+import type { ModuloObraId, SubtipoPavimentacion, Obra, ObraTramo, ObraPuntual, EstadoTemporalObra, ObraEvidenciaData, DemandaCiudadana, PeticionCiudadana } from '../types/obras.ts';
 
 export interface PotholeData {
   id: string;
@@ -499,25 +499,40 @@ export const mapSupabaseRowToPothole = (row: any): PotholeData => {
   
   let date = new Date();
   if (row.fecha) {
-    const parts = row.fecha.split(/[\/\-]/);
-    if (parts && parts.length === 3) {
-      if (parts[0].length === 4) {
-        date = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
-      } else {
-        const year = parts[2].length === 2 ? `20${parts[2]}` : parts[2];
-        date = new Date(parseInt(year), parseInt(parts[1]) - 1, parseInt(parts[0]));
-      }
+    const rawFecha = row.fecha.toString().trim();
+    // Soporte para número de serie de fecha de Excel (ej: 46245.72)
+    const numericDate = parseFloat(rawFecha);
+    if (!isNaN(numericDate) && numericDate > 30000 && numericDate < 60000 && !rawFecha.includes('/') && !rawFecha.includes('-')) {
+      date = new Date((numericDate - 25569) * 86400 * 1000);
     } else {
-      const attempt = new Date(row.fecha);
-      if (!isNaN(attempt.getTime())) date = attempt;
+      const parts = rawFecha.split(/[\/\-]/);
+      if (parts && parts.length === 3) {
+        if (parts[0].length === 4) {
+          date = new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]));
+        } else {
+          const year = parts[2].length === 2 ? `20${parts[2]}` : parts[2];
+          date = new Date(parseInt(year), parseInt(parts[1]) - 1, parseInt(parts[0]));
+        }
+      } else {
+        const attempt = new Date(rawFecha);
+        if (!isNaN(attempt.getTime())) {
+          date = attempt;
+        } else if (row.date_added) {
+          const addedAttempt = new Date(row.date_added);
+          if (!isNaN(addedAttempt.getTime())) date = addedAttempt;
+        }
+      }
     }
   } else if (row.date_added) {
     const attempt = new Date(row.date_added);
     if (!isNaN(attempt.getTime())) date = attempt;
   }
   
+  // Usar folio como identificador único principal (clave primaria en Supabase)
+  const uniqueId = row.folio ? `folio-${row.folio}` : (row.Id ? `db-${row.Id}` : `bache-${row.idEtapa || 1}-${Math.random()}`);
+
   return {
-    id: `db-${row.Id}`,
+    id: uniqueId,
     lat: isNaN(lat) ? 0 : lat,
     lng: isNaN(lng) ? 0 : lng,
     date,
@@ -978,107 +993,127 @@ export const DIABLO_DRAGON_FOLDERS: Record<string, string> = {
 };
 
 /**
- * Carga directa de Obras del Diablo Dragón desde Supabase Alfa (public.diablo_dragon)
+ * Parser de filas para obras del Diablo Dragón
  */
-export const fetchObrasDragonSupabase = async (): Promise<ObraTramo[]> => {
-  const fetchPromise = (async () => {
-    const { data, error } = await supabase
-      .from('diablo_dragon')
-      .select('*');
+export const parseDragonRows = (data: any[]): ObraTramo[] => {
+  const parsed: ObraTramo[] = [];
+  const baseImgUrl = 'https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/';
 
-    if (error) throw error;
-    if (!data || data.length === 0) throw new Error('No se encontraron registros en public.diablo_dragon');
+  data.forEach((row, index) => {
+    const idDragon = (getVal(row, ['idDragon', 'id_dragon', 'iddragon']) || `DR-${String(index + 1).padStart(2, '0')}`).toString().trim();
+    const nombre = (getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion']) || `Rehabilitación con Diablo Dragón #${index + 1}`).toString().trim();
+    const calle = (getVal(row, ['Calle', 'calle']) || '').toString().trim();
+    const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
+    const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
     
-    const parsed: ObraTramo[] = [];
-    const baseImgUrl = 'https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/';
+    const fechaInicio = parseFechaFlexible(inicioRaw);
+    const fechaFin = parseFechaFlexible(terminoRaw);
 
-    data.forEach((row, index) => {
-      const idDragon = (getVal(row, ['idDragon', 'id_dragon', 'iddragon']) || `DR-${String(index + 1).padStart(2, '0')}`).toString().trim();
-      const nombre = (getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion']) || `Rehabilitación con Diablo Dragón #${index + 1}`).toString().trim();
-      const calle = (getVal(row, ['Calle', 'calle']) || '').toString().trim();
-      const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
-      const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
-      
-      const fechaInicio = parseFechaFlexible(inicioRaw);
-      const fechaFin = parseFechaFlexible(terminoRaw);
-
-      // Coordenadas dinámicas P1 a P17
-      const pKeys = Object.keys(row)
-        .filter(key => /P\d+/i.test(key))
-        .sort((a, b) => {
-          const matchA = a.match(/P(\d+)/i);
-          const matchB = b.match(/P(\d+)/i);
-          const numA = matchA ? parseInt(matchA[1], 10) : 0;
-          const numB = matchB ? parseInt(matchB[1], 10) : 0;
-          return numA - numB;
-        });
-
-      const coords: [number, number][] = [];
-      pKeys.forEach(key => {
-        const val = row[key];
-        if (val) {
-          const pt = extractCoords(val.toString());
-          if (pt && !isNaN(pt.lat) && !isNaN(pt.lng) && pt.lat !== 0 && pt.lng !== 0) {
-            let lat = pt.lat;
-            let lng = pt.lng;
-            if (lat < 0 && lng > 0) {
-              lat = pt.lng;
-              lng = pt.lat;
-            }
-            coords.push([lat, lng]);
-          }
-        }
+    // Coordenadas dinámicas P1 a P17
+    const pKeys = Object.keys(row)
+      .filter(key => /P\d+/i.test(key))
+      .sort((a, b) => {
+        const matchA = a.match(/P(\d+)/i);
+        const matchB = b.match(/P(\d+)/i);
+        const numA = matchA ? parseInt(matchA[1], 10) : 0;
+        const numB = matchB ? parseInt(matchB[1], 10) : 0;
+        return numA - numB;
       });
 
-      const metrosLineales = coords.length >= 2 ? calcularMetrosLinealesTramo(coords) : 0;
-      const delegacion = extraerDelegacion(nombre) || 'TOLUCA';
-
-      const folderName = DIABLO_DRAGON_FOLDERS[idDragon] || calle;
-      const fotosUrls = Array.from({ length: 6 }, (_, i) => 
-        `${baseImgUrl}${encodeURIComponent(folderName)}/${i + 1}.jpeg`
-      );
-
-      parsed.push({
-        id: `dragon-${idDragon}`,
-        contrato: `DRAGÓN-${idDragon}`,
-        idContrato: idDragon,
-        nombre,
-        tipo: 'dragon',
-        subtipo: 'Reciclado Asfáltico (Diablo Dragón)',
-        tipoRaw: 'DIABLO DRAGON',
-        anio: 2026,
-        fechaInicio: fechaInicio || new Date(2026, 4, 1),
-        fechaFin: fechaFin || new Date(2026, 8, 30),
-        delegacion,
-        metrosLineales,
-        geometriaTipo: 'tramo',
-        coords,
-        evidencias: {
-          idContrato: idDragon,
-          noContrato: `DRAGÓN-${idDragon}`,
-          nombreObra: nombre,
-          tipoObra: 'Diablo Dragón',
-          fechaInicio: inicioRaw ? inicioRaw.toString() : undefined,
-          fechaFin: terminoRaw ? terminoRaw.toString() : undefined,
-          categoria: 'DIABLO DRAGON',
-          fotos: {
-            inicio: null,
-            proceso: fotosUrls,
-            terminado: fotosUrls[5],
-            fotosDragon: fotosUrls
+    const coords: [number, number][] = [];
+    pKeys.forEach(key => {
+      const val = row[key];
+      if (val) {
+        const pt = extractCoords(val.toString());
+        if (pt && !isNaN(pt.lat) && !isNaN(pt.lng) && pt.lat !== 0 && pt.lng !== 0) {
+          let lat = pt.lat;
+          let lng = pt.lng;
+          if (lat < 0 && lng > 0) {
+            lat = pt.lng;
+            lng = pt.lat;
           }
+          coords.push([lat, lng]);
         }
-      });
+      }
     });
 
-    return parsed;
-  })();
+    const metrosLineales = coords.length >= 2 ? calcularMetrosLinealesTramo(coords) : 0;
+    const delegacion = extraerDelegacion(nombre) || 'TOLUCA';
 
-  const timeoutPromise = new Promise<never>((_, reject) => 
-    setTimeout(() => reject(new Error('Supabase diablo_dragon timeout (3.5s)')), 3500)
-  );
+    const folderName = DIABLO_DRAGON_FOLDERS[idDragon] || calle;
+    const fotosUrls = Array.from({ length: 6 }, (_, i) => 
+      `${baseImgUrl}${encodeURIComponent(folderName)}/${i + 1}.jpeg`
+    );
 
-  return await Promise.race([fetchPromise, timeoutPromise]);
+    parsed.push({
+      id: `dragon-${idDragon}`,
+      contrato: `DRAGÓN-${idDragon}`,
+      idContrato: idDragon,
+      nombre,
+      tipo: 'dragon',
+      subtipo: 'Reciclado Asfáltico (Diablo Dragón)',
+      tipoRaw: 'DIABLO DRAGON',
+      anio: 2026,
+      fechaInicio: fechaInicio || new Date(2026, 4, 1),
+      fechaFin: fechaFin || new Date(2026, 8, 30),
+      delegacion,
+      metrosLineales,
+      geometriaTipo: 'tramo',
+      coords,
+      evidencias: {
+        idContrato: idDragon,
+        noContrato: `DRAGÓN-${idDragon}`,
+        nombreObra: nombre,
+        tipoObra: 'Diablo Dragón',
+        fechaInicio: inicioRaw ? inicioRaw.toString() : undefined,
+        fechaFin: terminoRaw ? terminoRaw.toString() : undefined,
+        categoria: 'DIABLO DRAGON',
+        fotos: {
+          inicio: null,
+          proceso: fotosUrls,
+          terminado: fotosUrls[5],
+          fotosDragon: fotosUrls
+        }
+      }
+    });
+  });
+
+  return parsed;
+};
+
+/**
+ * Carga directa de Obras del Diablo Dragón desde Supabase Alfa con fallback a JSON local
+ */
+export const fetchObrasDragonSupabase = async (baseUrl: string = ''): Promise<ObraTramo[]> => {
+  try {
+    const fetchPromise = (async () => {
+      const { data, error } = await supabase
+        .from('diablo_dragon')
+        .select('*');
+
+      if (error) throw error;
+      if (!data || data.length === 0) throw new Error('No se encontraron registros en public.diablo_dragon');
+      return parseDragonRows(data);
+    })();
+
+    const timeoutPromise = new Promise<never>((_, reject) => 
+      setTimeout(() => reject(new Error('Supabase diablo_dragon timeout (4s)')), 4000)
+    );
+
+    return await Promise.race([fetchPromise, timeoutPromise]);
+  } catch (err) {
+    console.warn("Aviso: Supabase Alfa no respondió a tiempo para Diablo Dragón, cargando respaldo local...", err);
+    try {
+      const res = await fetch(`${baseUrl}data/diablo_dragon.json`);
+      if (res.ok) {
+        const localData = await res.json();
+        return parseDragonRows(localData);
+      }
+    } catch (localErr) {
+      console.error("Fallo tambien la carga local de respaldo de Diablo Dragón:", localErr);
+    }
+    throw err;
+  }
 };
 
 /**
@@ -1169,5 +1204,161 @@ export const vincularEvidenciasAObras = <T extends Obra>(
     return obra;
   });
 };
+
+/**
+ * Carga la capa de Demanda Ciudadana General desde Google Sheets con fallback al JSON local
+ */
+export const fetchDemandaCiudadanaGeneral = async (baseUrl: string = ''): Promise<DemandaCiudadana[]> => {
+  const SPREADSHEET_ID = '1-l-zptyjbWxWqiDQL4N7Xw2AlvtLWvEI0E9vEpAonMc';
+  const remoteUrl = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&gid=0`;
+  const localUrl = `${baseUrl}data/demanda_ciudadana_general.json`;
+
+  const parseRemotePromise = new Promise<DemandaCiudadana[]>((resolve, reject) => {
+    Papa.parse(remoteUrl, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        try {
+          const items: DemandaCiudadana[] = [];
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (results.data as any[]).forEach((row, i) => {
+            const rawLat = parseFloat(row.LATITUD || row.latitud || row.lat || '0');
+            const rawLng = parseFloat(row.LONGITUD || row.longitud || row.lng || '0');
+            let lat = isNaN(rawLat) ? 0 : rawLat;
+            let lng = isNaN(rawLng) ? 0 : rawLng;
+            if (lat < 0 && lng > 0) {
+              const temp = lat;
+              lat = lng;
+              lng = temp;
+            }
+            if (lat !== 0 && lng !== 0) {
+              items.push({
+                id: `demanda-${i + 1}`,
+                ticket: (row.TICKET || row.ticket || `TCK-${i+1}`).toString().trim(),
+                solicitante: (row.SOLICITANTE || row.solicitante || 'Ciudadano').toString().trim(),
+                observaciones: (row.OBSERVACIONES || row.observaciones || '').toString().trim(),
+                calleYNumero: (row.CALLE_Y_NUMERO || row.calle_y_numero || '').toString().trim(),
+                trabajo: (row.TRABAJO || row.trabajo || 'Bacheo').toString().trim(),
+                delegacion: (row.DELEGACION || row.delegacion || 'Toluca').toString().trim(),
+                lat,
+                lng
+              });
+            }
+          });
+          if (items.length > 0) resolve(items);
+          else reject(new Error('No records in remote Google Sheet'));
+        } catch (e) {
+          reject(e);
+        }
+      },
+      error: (err) => reject(err)
+    });
+  });
+
+  const timeoutPromise = new Promise<never>((_, reject) => 
+    setTimeout(() => reject(new Error('Google Sheets Demanda Ciudadana timeout (3.5s)')), 3500)
+  );
+
+  try {
+    const remoteData = await Promise.race([parseRemotePromise, timeoutPromise]);
+    console.log(`Cargadas ${remoteData.length} demandas ciudadanas desde Google Sheets.`);
+    return remoteData;
+  } catch (err) {
+    console.warn("Fallo carga en vivo de Demanda Ciudadana (usando respaldo local):", err);
+    try {
+      const resp = await fetch(localUrl);
+      if (resp.ok) {
+        const localData = await resp.json();
+        console.log(`Cargadas ${localData.length} demandas ciudadanas desde respaldo local.`);
+        return localData as DemandaCiudadana[];
+      }
+    } catch (localErr) {
+      console.error("Fallo tambien el respaldo local de Demanda Ciudadana:", localErr);
+    }
+    return [];
+  }
+};
+
+/**
+ * Carga la capa de Peticiones Ciudadanas (Oficios DGOP) desde Google Sheets con fallback al JSON local
+ */
+export const fetchPeticionesCiudadanas = async (baseUrl: string = ''): Promise<PeticionCiudadana[]> => {
+  const SPREADSHEET_ID = '1-l-zptyjbWxWqiDQL4N7Xw2AlvtLWvEI0E9vEpAonMc';
+  const remoteUrl = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&gid=2113321054`;
+  const localUrl = `${baseUrl}data/peticiones_ciudadanas.json`;
+
+  const parseRemotePromise = new Promise<PeticionCiudadana[]>((resolve, reject) => {
+    Papa.parse(remoteUrl, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        try {
+          const items: PeticionCiudadana[] = [];
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (results.data as any[]).forEach((row, i) => {
+            const rawCoord = (row.COORDENADA || row.coordenada || '').toString().trim();
+            if (!rawCoord) return;
+            const m = rawCoord.match(/[-+]?\d*\.\d+|\d+/g);
+            if (m && m.length >= 2) {
+              let lat = parseFloat(m[0]);
+              let lng = parseFloat(m[1]);
+              if (lat < 0 && lng > 0) {
+                const temp = lat;
+                lat = lng;
+                lng = temp;
+              }
+              if (lat > 18.5 && lat < 20.0 && lng > -100.5 && lng < -99.0) {
+                items.push({
+                  id: `peticion-${i + 1}`,
+                  noProg: (row['NO. PROG.'] || row.no_prog || `${i + 1}`).toString().trim(),
+                  fecha: (row.FECHA || row.fecha || '').toString().trim(),
+                  oficio: (row['OT-DGOP'] || row.ot_dgop || row.oficio || `OFICIO-${i + 1}`).toString().trim(),
+                  asunto: (row.ASUNTO || row.asunto || '').toString().trim(),
+                  tipoSolicitud: (row['TIPO DE SOLICITUD'] || row.tipo_de_solicitud || 'BACHEO').toString().trim(),
+                  calle: (row.CALLE || row.calle || '').toString().trim(),
+                  delegacion: (row.DELEGACION || row.delegacion || 'TOLUCA').toString().trim(),
+                  lat,
+                  lng
+                });
+              }
+            }
+          });
+          if (items.length > 0) resolve(items);
+          else reject(new Error('No valid records in remote Google Sheet for Peticiones'));
+        } catch (e) {
+          reject(e);
+        }
+      },
+      error: (err) => reject(err)
+    });
+  });
+
+  const timeoutPromise = new Promise<never>((_, reject) => 
+    setTimeout(() => reject(new Error('Google Sheets Peticiones timeout (3.5s)')), 3500)
+  );
+
+  try {
+    const remoteData = await Promise.race([parseRemotePromise, timeoutPromise]);
+    console.log(`Cargadas ${remoteData.length} peticiones ciudadanas desde Google Sheets.`);
+    return remoteData;
+  } catch (err) {
+    console.warn("Fallo carga en vivo de Peticiones Ciudadanas (usando respaldo local):", err);
+    try {
+      const resp = await fetch(localUrl);
+      if (resp.ok) {
+        const localData = await resp.json();
+        console.log(`Cargadas ${localData.length} peticiones ciudadanas desde respaldo local.`);
+        return localData as PeticionCiudadana[];
+      }
+    } catch (localErr) {
+      console.error("Fallo tambien el respaldo local de Peticiones Ciudadanas:", localErr);
+    }
+    return [];
+  }
+};
+
+
 
 

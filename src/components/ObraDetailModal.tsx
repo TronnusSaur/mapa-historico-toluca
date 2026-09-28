@@ -3,6 +3,7 @@ import {
   X, 
   MapPin, 
   Calendar, 
+  CalendarCheck,
   Ruler, 
   Maximize2, 
   Image as ImageIcon,
@@ -270,14 +271,28 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                 </div>
               ) : null}
 
-              {/* Periodo de Ejecución */}
-              <div className="flex items-center gap-2.5 p-2 rounded-lg bg-slate-50/80 border border-slate-100">
-                <Calendar size={15} className="text-slate-500 shrink-0" />
-                <div>
-                  <span className="text-[9px] text-slate-400 font-bold uppercase block">Periodo de Ejecución</span>
-                  <span className="text-xs font-semibold text-slate-800">
-                    {formatDate(obra.fechaInicio)} al {formatDate(obra.fechaFin)}
-                  </span>
+              {/* Fechas Siamesas: Inicio y Término de Obra (50% cada una) */}
+              <div className="grid grid-cols-2 divide-x divide-slate-200/90 rounded-lg bg-slate-50/80 border border-slate-100 overflow-hidden shadow-xs">
+                {/* Inicio de Obra (50%) */}
+                <div className="flex items-center gap-2 p-2 min-w-0">
+                  <Calendar size={14} className="text-emerald-600 shrink-0" />
+                  <div className="min-w-0">
+                    <span className="text-[9px] text-slate-400 font-bold uppercase block truncate">Inicio de Obra</span>
+                    <span className="text-xs font-semibold text-slate-800 truncate block">
+                      {formatDate(obra.fechaInicio)}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Término de Obra (50%) */}
+                <div className="flex items-center gap-2 p-2 pl-2.5 min-w-0">
+                  <CalendarCheck size={14} className="text-toluca-burgundy shrink-0" />
+                  <div className="min-w-0">
+                    <span className="text-[9px] text-slate-400 font-bold uppercase block truncate">Término de Obra</span>
+                    <span className="text-xs font-semibold text-slate-800 truncate block">
+                      {formatDate(obra.fechaFin)}
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>

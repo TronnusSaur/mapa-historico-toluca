@@ -108,4 +108,32 @@ export interface FiltrosModulos {
   showConcluidas: boolean;
   showEnProceso: boolean;
   showProgramadas: boolean;
+  // Capas de Demanda Ciudadana y Peticiones
+  showDemandaCiudadana?: boolean;
+  showPeticionesCiudadanas?: boolean;
+}
+
+export interface DemandaCiudadana {
+  id: string;
+  ticket: string;
+  solicitante: string;
+  observaciones: string;
+  calleYNumero: string;
+  trabajo: string;
+  delegacion: string;
+  lat: number;
+  lng: number;
+}
+
+export interface PeticionCiudadana {
+  id: string;
+  noProg: string;
+  fecha: string;
+  oficio: string;
+  asunto: string;
+  tipoSolicitud: string;
+  calle: string;
+  delegacion: string;
+  lat: number;
+  lng: number;
 }

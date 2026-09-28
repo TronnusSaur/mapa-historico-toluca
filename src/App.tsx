@@ -16,10 +16,12 @@ import {
   fetchObrasPuntualesSupabase,
   fetchObrasDragonSupabase,
   fetchEvidenciasObras,
-  vincularEvidenciasAObras
+  vincularEvidenciasAObras,
+  fetchDemandaCiudadanaGeneral,
+  fetchPeticionesCiudadanas
 } from './utils/dataProcessors.ts';
 import type { PotholeData, Tramo, PavimentacionData } from './utils/dataProcessors.ts';
-import type { FiltrosModulos, ObraTramo, ObraPuntual, Obra, YearFilter } from './types/obras.ts';
+import type { FiltrosModulos, ObraTramo, ObraPuntual, Obra, YearFilter, DemandaCiudadana, PeticionCiudadana } from './types/obras.ts';
 import { supabase } from './lib/supabase.ts';
 import { 
   BarChart3, 
@@ -31,7 +33,10 @@ import {
   Calendar,
   ChevronRight,
   Info,
-  Loader2
+  Loader2,
+  Megaphone,
+  Users,
+  FileText
 } from 'lucide-react';
 
 // Marker Cluster component (manual instantiation for better control with 50k points)
@@ -41,6 +46,8 @@ import { ModuleFilterBar, toggleModuloFilter } from './components/ModuleFilterBa
 import { ObrasLayers } from './components/ObrasLayers.tsx';
 import { MapLegend } from './components/MapLegend.tsx';
 import { ObraDetailModal } from './components/ObraDetailModal.tsx';
+import { DemandaCiudadanaLayer } from './components/DemandaCiudadanaLayer.tsx';
+import { PeticionesCiudadanasLayer } from './components/PeticionesCiudadanasLayer.tsx';
 
 const CARTO_KEY = import.meta.env.VITE_CARTO_KEY || 'cb1_2v8k_1_77d3a08b9dfcaeb412cca4b0';
 
@@ -72,6 +79,10 @@ export default function App() {
   const [obrasTramos, setObrasTramos] = useState<ObraTramo[]>([]);
   const [obrasPuntuales, setObrasPuntuales] = useState<ObraPuntual[]>([]);
   const [selectedObra, setSelectedObra] = useState<Obra | null>(null);
+  const [demandasCiudadanas, setDemandasCiudadanas] = useState<DemandaCiudadana[]>([]);
+  const [showDemandaCiudadana, setShowDemandaCiudadana] = useState<boolean>(true);
+  const [peticionesCiudadanas, setPeticionesCiudadanas] = useState<PeticionCiudadana[]>([]);
+  const [showPeticionesCiudadanas, setShowPeticionesCiudadanas] = useState<boolean>(true);
   const [filtrosModulos, setFiltrosModulos] = useState<FiltrosModulos>({
     moduloActivo: 'todos',
     showBacheo: true,
@@ -261,26 +272,35 @@ export default function App() {
 
         const fetchDiabloDragonWithFallback = async (): Promise<ObraTramo[]> => {
           try {
-            const data = await fetchObrasDragonSupabase();
+            const data = await fetchObrasDragonSupabase(baseUrl);
             if (data && data.length > 0) {
-              console.log(`Cargadas ${data.length} obras de Diablo Dragón desde Supabase Alfa.`);
+              console.log(`Cargadas ${data.length} obras de Diablo Dragón.`);
               return data;
             }
           } catch (e) {
-            console.warn("Fallo carga de Diablo Dragón desde Supabase Alfa:", e);
+            console.warn("Fallo carga de Diablo Dragón:", e);
           }
           return [];
         };
 
         // FASE 1: Carga INMEDIATA y prioritaria de Obras 2026, Pavimentaciones y Límites (<1 segundo)
-        const [, parsedPavimentaciones, contratosTramos, contratosPuntuales, dragonTramos, evidenciasMap] = await Promise.all([
+        const [, parsedPavimentaciones, contratosTramos, contratosPuntuales, dragonTramos, evidenciasMap, demandasData, peticionesData] = await Promise.all([
           fetchGeoJSONBoundaries(),
           fetchPavimentacionesWithFallback(),
           fetchContratosTramosWithFallback(),
           fetchContratosPuntualesWithFallback(),
           fetchDiabloDragonWithFallback(),
-          fetchEvidenciasObras(baseUrl)
+          fetchEvidenciasObras(baseUrl),
+          fetchDemandaCiudadanaGeneral(baseUrl),
+          fetchPeticionesCiudadanas(baseUrl)
         ]);
+
+        if (demandasData && demandasData.length > 0) {
+          setDemandasCiudadanas(demandasData);
+        }
+        if (peticionesData && peticionesData.length > 0) {
+          setPeticionesCiudadanas(peticionesData);
+        }
 
         // Convert DGOP Pavimentaciones to ObraTramo structure for unified presentation
         const dgopTramos: ObraTramo[] = (parsedPavimentaciones || []).map(p => {
@@ -1217,6 +1237,58 @@ export default function App() {
                 </label>
               </div>
             </div>
+
+            {/* Capas de Demanda y Peticiones Ciudadanas */}
+            <div className="pt-4 border-t border-slate-200">
+              <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 flex items-center gap-2">
+                <Users size={14} /> Demanda y Peticiones
+              </h3>
+              <div className="space-y-2">
+                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors group">
+                  <div className="flex items-center gap-3">
+                    <input 
+                      type="checkbox" 
+                      checked={showDemandaCiudadana} 
+                      onChange={(e) => setShowDemandaCiudadana(e.target.checked)}
+                      className="w-4 h-4 accent-amber-600" 
+                    />
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-amber-600 to-orange-500 text-white flex items-center justify-center text-[10px] shadow-xs">
+                        <Megaphone size={11} />
+                      </div>
+                      <span className="text-xs font-bold text-slate-700 group-hover:text-amber-800 transition-colors">
+                        Demanda Ciudadana General
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">
+                    {demandasCiudadanas.length}
+                  </span>
+                </label>
+
+                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors group">
+                  <div className="flex items-center gap-3">
+                    <input 
+                      type="checkbox" 
+                      checked={showPeticionesCiudadanas} 
+                      onChange={(e) => setShowPeticionesCiudadanas(e.target.checked)}
+                      className="w-4 h-4 accent-indigo-600" 
+                    />
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-indigo-600 to-indigo-500 text-white flex items-center justify-center text-[10px] shadow-xs">
+                        <FileText size={11} />
+                      </div>
+                      <span className="text-xs font-bold text-slate-700 group-hover:text-indigo-800 transition-colors">
+                        Peticiones Ciudadanas
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">
+                    {peticionesCiudadanas.length}
+                  </span>
+                </label>
+              </div>
+            </div>
           </div>
 
           <div className="mt-auto p-6 bg-slate-100/50">
@@ -1354,10 +1426,26 @@ export default function App() {
               showProgramadas={filtrosModulos.showProgramadas}
               onSelectObra={(obra) => setSelectedObra(obra)}
             />
+            {/* Capa de Demanda Ciudadana General */}
+            <DemandaCiudadanaLayer 
+              data={demandasCiudadanas} 
+              visible={showDemandaCiudadana} 
+            />
+            {/* Capa de Peticiones Ciudadanas (Oficios DGOP) */}
+            <PeticionesCiudadanasLayer 
+              data={peticionesCiudadanas} 
+              visible={showPeticionesCiudadanas} 
+            />
             <CoordinateSearch data={data} geoData={geoData} setFilters={setFilters} />
             <MapLegend 
               filtros={filtrosModulos} 
-              onToggleModulo={(id) => setFiltrosModulos(prev => toggleModuloFilter(id, prev))} 
+              onToggleModulo={(id) => setFiltrosModulos(prev => toggleModuloFilter(id, prev))}
+              showDemandaCiudadana={showDemandaCiudadana}
+              onToggleDemandaCiudadana={() => setShowDemandaCiudadana(prev => !prev)}
+              demandaCount={demandasCiudadanas.length}
+              showPeticionesCiudadanas={showPeticionesCiudadanas}
+              onTogglePeticionesCiudadanas={() => setShowPeticionesCiudadanas(prev => !prev)}
+              peticionesCount={peticionesCiudadanas.length}
             />
           </MapContainer>
 

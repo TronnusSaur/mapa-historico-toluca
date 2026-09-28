@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import L from 'leaflet';
 import type { ModuloObraId, FiltrosModulos } from '../types/obras.ts';
 import { 
   Hammer, 
@@ -10,12 +11,20 @@ import {
   AlertTriangle,
   ChevronDown,
   ChevronUp,
-  Layers
+  Layers,
+  Megaphone,
+  FileText
 } from 'lucide-react';
 
 interface MapLegendProps {
   filtros: FiltrosModulos;
   onToggleModulo?: (id: ModuloObraId) => void;
+  showDemandaCiudadana?: boolean;
+  onToggleDemandaCiudadana?: () => void;
+  demandaCount?: number;
+  showPeticionesCiudadanas?: boolean;
+  onTogglePeticionesCiudadanas?: () => void;
+  peticionesCount?: number;
 }
 
 interface SimbologiaItem {
@@ -28,8 +37,36 @@ interface SimbologiaItem {
   isActive: boolean;
 }
 
-export const MapLegend: React.FC<MapLegendProps> = ({ filtros, onToggleModulo }) => {
+export const MapLegend: React.FC<MapLegendProps> = ({ 
+  filtros, 
+  onToggleModulo,
+  showDemandaCiudadana = true,
+  onToggleDemandaCiudadana,
+  demandaCount = 288,
+  showPeticionesCiudadanas = true,
+  onTogglePeticionesCiudadanas,
+  peticionesCount = 601
+}) => {
   const [isExpanded, setIsExpanded] = useState(true);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  // Evitar que el zoom de Leaflet se active cuando se hace scroll dentro de la simbología
+  useEffect(() => {
+    const el = cardRef.current;
+    if (!el) return;
+
+    L.DomEvent.disableScrollPropagation(el);
+    L.DomEvent.disableClickPropagation(el);
+
+    const stopWheel = (e: WheelEvent) => {
+      e.stopPropagation();
+    };
+
+    el.addEventListener('wheel', stopWheel, { passive: false });
+    return () => {
+      el.removeEventListener('wheel', stopWheel);
+    };
+  }, [isExpanded]);
 
   const items: SimbologiaItem[] = [
     {
@@ -122,7 +159,11 @@ export const MapLegend: React.FC<MapLegendProps> = ({ filtros, onToggleModulo })
           <ChevronDown size={14} className="text-slate-400 group-hover:text-toluca-burgundy transition-colors" />
         </button>
       ) : (
-        <div className="pointer-events-auto w-[290px] sm:w-[310px] bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200/90 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200">
+        <div 
+          ref={cardRef}
+          onWheel={(e) => e.stopPropagation()}
+          className="pointer-events-auto w-[290px] sm:w-[310px] bg-white/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-200/90 overflow-hidden animate-in fade-in slide-in-from-top-2 duration-200"
+        >
           {/* Header de la Simbologia */}
           <div className="bg-gradient-to-r from-toluca-burgundy to-[#8b1c3b] px-3.5 py-2.5 flex items-center justify-between text-white shadow-sm">
             <div className="flex items-center gap-2">
@@ -148,7 +189,10 @@ export const MapLegend: React.FC<MapLegendProps> = ({ filtros, onToggleModulo })
           </div>
 
           {/* Lista de Iconos y Obras */}
-          <div className="p-2.5 space-y-1 max-h-[340px] overflow-y-auto custom-scrollbar">
+          <div 
+            onWheel={(e) => e.stopPropagation()}
+            className="p-2.5 space-y-1 max-h-[340px] overflow-y-auto custom-scrollbar"
+          >
             <div className="text-[9px] font-bold tracking-widest text-slate-400 uppercase px-1.5 pb-1 flex items-center justify-between">
               <span>Tipo de Intervención</span>
               <span className="text-[8px] text-slate-400">Click para filtrar</span>
@@ -189,6 +233,75 @@ export const MapLegend: React.FC<MapLegendProps> = ({ filtros, onToggleModulo })
                 </div>
               </div>
             ))}
+
+            {/* Capa de Demanda Ciudadana */}
+            <div className="pt-2 mt-1 border-t border-slate-100 px-1">
+              <span className="text-[9px] font-bold tracking-widest text-slate-400 uppercase block mb-1">
+                Participación y Demanda
+              </span>
+              <div 
+                onClick={onToggleDemandaCiudadana}
+                className={`group flex items-center justify-between p-1.5 rounded-xl transition-all cursor-pointer border ${
+                  showDemandaCiudadana
+                    ? 'bg-amber-50/70 hover:bg-amber-100/80 border-amber-200/80'
+                    : 'bg-slate-50/30 hover:bg-slate-100/50 border-transparent opacity-40 hover:opacity-75'
+                }`}
+              >
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="relative shrink-0 w-6 h-6 rounded-full bg-gradient-to-tr from-amber-600 to-orange-500 flex items-center justify-center shadow-sm border-2 border-white ring-1 ring-amber-200/50 transition-transform group-hover:scale-110">
+                    <Megaphone size={11} className="text-white" />
+                  </div>
+                  <div className="min-w-0 flex flex-col">
+                    <span className="text-[11px] font-bold text-slate-800 truncate leading-tight group-hover:text-amber-800 transition-colors">
+                      Demanda Ciudadana
+                    </span>
+                    <span className="text-[9px] text-amber-700 font-semibold truncate leading-tight">
+                      {demandaCount} reportes
+                    </span>
+                  </div>
+                </div>
+
+                <div className="shrink-0 flex items-center gap-1 pl-1.5">
+                  {showDemandaCiudadana ? (
+                    <span className="w-2 h-2 rounded-full bg-amber-500 shadow-sm" title="Capa visible" />
+                  ) : (
+                    <span className="w-2 h-2 rounded-full bg-slate-300" title="Capa oculta" />
+                  )}
+                </div>
+              </div>
+
+              {/* Peticiones Ciudadanas (Oficios DGOP) */}
+              <div 
+                onClick={onTogglePeticionesCiudadanas}
+                className={`group flex items-center justify-between p-1.5 rounded-xl transition-all cursor-pointer border mt-1 ${
+                  showPeticionesCiudadanas
+                    ? 'bg-indigo-50/70 hover:bg-indigo-100/80 border-indigo-200/80'
+                    : 'bg-slate-50/30 hover:bg-slate-100/50 border-transparent opacity-40 hover:opacity-75'
+                }`}
+              >
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="relative shrink-0 w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-600 to-indigo-500 flex items-center justify-center shadow-sm border-2 border-white ring-1 ring-indigo-200/50 transition-transform group-hover:scale-110">
+                    <FileText size={11} className="text-white" />
+                  </div>
+                  <div className="min-w-0 flex flex-col">
+                    <span className="text-[11px] font-bold text-slate-800 truncate leading-tight group-hover:text-indigo-800 transition-colors">
+                      Peticiones Ciudadanas
+                    </span>
+                    <span className="text-[9px] text-indigo-700 font-semibold truncate leading-tight">
+                      {peticionesCount} oficios DGOP
+                    </span>
+                  </div>
+                </div>
+
+                <div className="shrink-0 flex items-center gap-1 pl-1.5">
+                  {showPeticionesCiudadanas ? (
+                    <span className="w-2 h-2 rounded-full bg-indigo-500 shadow-sm" title="Capa visible" />
+                  ) : (
+                    <span className="w-2 h-2 rounded-full bg-slate-300" title="Capa oculta" />
+                  )}
+                </div>
+              </div>
+            </div>
 
             {/* Convención de Estados y Trazos */}
             <div className="pt-2.5 mt-2 border-t border-slate-100 space-y-1.5 px-1">

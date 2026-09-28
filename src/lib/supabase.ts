@@ -7,11 +7,13 @@ const DEFAULT_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZ
 let supabaseUrl = import.meta.env.VITE_SUPABASE_URL || DEFAULT_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || DEFAULT_ANON_KEY;
 
-// Si la aplicación se carga en HTTPS (como GitHub Pages) y la URL apunta a una IP privada local HTTP,
-// redirigir automáticamente al túnel HTTPS para evitar error de Mixed Content y bloqueo de Private Network Access
-if (typeof window !== 'undefined' && window.location.protocol === 'https:' && supabaseUrl.startsWith('http://192.168.')) {
-  console.warn('Detectado entorno HTTPS con URL local de Supabase. Usando túnel Cloudflare seguro para evitar bloqueo del navegador.');
-  supabaseUrl = DEFAULT_SUPABASE_URL;
+// Si la aplicación se carga en HTTPS o si la variable de entorno apunta a la IP obsoleta 192.168.1.142,
+// redirigir automáticamente al túnel Cloudflare en línea para garantizar conectividad total
+if (typeof window !== 'undefined') {
+  if (supabaseUrl.includes('192.168.1.142') || (window.location.protocol === 'https:' && supabaseUrl.startsWith('http://192.168.'))) {
+    console.warn('Redirigiendo al túnel Cloudflare activo para Supabase Alfa.');
+    supabaseUrl = DEFAULT_SUPABASE_URL;
+  }
 }
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);

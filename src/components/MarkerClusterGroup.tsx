@@ -19,20 +19,28 @@ interface PotholeDetails {
 }
 
 /**
- * Fetches pothole details and photos on-demand from Supabase by ID.
+ * Fetches pothole details and photos on-demand from Supabase by folio or ID.
  */
-async function fetchPotholeDetails(id: string): Promise<PotholeDetails> {
-  const dbId = parseInt(id.replace('db-', ''), 10);
-  if (isNaN(dbId)) {
-    return { calle: '', delegacion: '', colonia: '', photos: [] };
-  }
-
+async function fetchPotholeDetails(pData: PotholeData): Promise<PotholeDetails> {
   try {
-    const { data, error } = await supabase
+    let query = supabase
       .from('bacheo')
-      .select('calle, delegacion, colonia, fotoBache1, fotoBache2, fotoBache3, fotoBacheProceso1, fotoBacheProceso2, fotoBacheProceso3, fotoBacheProceso4, fotoBacheProceso5, fotoBacheTerminado1, fotoBacheTerminado2, fotoBacheTerminado3')
-      .eq('Id', dbId)
-      .single();
+      .select('calle, delegacion, colonia, fotoBache1, fotoBache2, fotoBache3, fotoBacheProceso1, fotoBacheProceso2, fotoBacheProceso3, fotoBacheProceso4, fotoBacheProceso5, fotoBacheTerminado1, fotoBacheTerminado2, fotoBacheTerminado3');
+
+    if (pData.originalId) {
+      query = query.eq('folio', pData.originalId);
+    } else if (pData.id.startsWith('db-')) {
+      const dbId = parseInt(pData.id.replace('db-', ''), 10);
+      if (!isNaN(dbId)) {
+        query = query.eq('Id', dbId);
+      } else {
+        return { calle: '', delegacion: '', colonia: '', photos: [] };
+      }
+    } else {
+      return { calle: '', delegacion: '', colonia: '', photos: [] };
+    }
+
+    const { data, error } = await query.maybeSingle();
 
     if (error || !data) {
       return { calle: '', delegacion: '', colonia: '', photos: [] };
@@ -278,14 +286,14 @@ export default function MarkerClusterGroup({ data, clusterColor, iconType = 'ham
         return;
       }
 
-      if (pData.status === 'EJECUTADO' && pData.id.startsWith('db-')) {
+      if (pData.status === 'EJECUTADO' && (pData.id.startsWith('db-') || pData.id.startsWith('folio-'))) {
         // Bind loading popup
         marker.bindPopup(buildPopupContent(pData, undefined, true), { maxWidth: 400 });
         marker._popupBound = true;
         marker.openPopup();
 
         // Fetch details on demand
-        fetchPotholeDetails(pData.id).then((details) => {
+        fetchPotholeDetails(pData).then((details) => {
           marker.setPopupContent(buildPopupContent(pData, details, false));
         }).catch((err) => {
           console.error("Error fetching details:", err);
