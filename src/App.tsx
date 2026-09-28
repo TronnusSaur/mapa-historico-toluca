@@ -1467,7 +1467,7 @@ export default function App() {
 
         {/* Mapa Container */}
         <main className="flex-1 relative">
-          <MapContainer center={[19.2827, -99.6557]} zoom={13} className="h-full w-full" zoomControl={false}>
+          <MapContainer center={[19.2827, -99.6557]} zoom={13} className="h-full w-full" zoomControl={false} preferCanvas={true}>
             <TileLayer
               url={`https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`}
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'

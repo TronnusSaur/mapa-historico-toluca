@@ -25,8 +25,15 @@ export const PeticionesCiudadanasLayer: React.FC<PeticionesCiudadanasLayerProps>
       chunkedLoading: true,
       chunkInterval: 150,
       chunkDelay: 30,
-      animate: true,
-      maxClusterRadius: 65,
+      animate: false,
+      animateAddingMarkers: false,
+      removeOutsideVisibleBounds: true,
+      maxClusterRadius: (zoom: number) => {
+        if (zoom <= 12) return 100;
+        if (zoom <= 13) return 85;
+        if (zoom <= 15) return 65;
+        return 45;
+      },
       disableClusteringAtZoom: 17,
       spiderfyOnMaxZoom: true,
       showCoverageOnHover: false,
