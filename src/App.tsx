@@ -36,7 +36,8 @@ import {
   Loader2,
   Megaphone,
   Users,
-  FileText
+  FileText,
+  Flame
 } from 'lucide-react';
 
 // Marker Cluster component (manual instantiation for better control with 50k points)
@@ -48,6 +49,11 @@ import { MapLegend } from './components/MapLegend.tsx';
 import { ObraDetailModal } from './components/ObraDetailModal.tsx';
 import { DemandaCiudadanaLayer } from './components/DemandaCiudadanaLayer.tsx';
 import { PeticionesCiudadanasLayer } from './components/PeticionesCiudadanasLayer.tsx';
+import { HeatmapLayer } from './components/HeatmapLayer.tsx';
+import { HotspotsLayer } from './components/HotspotsLayer.tsx';
+import { HotspotsPanel } from './components/HotspotsPanel.tsx';
+import { unifyCitizenReports, detectHotspots, getHeatmapPoints } from './utils/hotspotDetector.ts';
+import type { HotspotFilterOptions } from './types/hotspots.ts';
 
 const CARTO_KEY = import.meta.env.VITE_CARTO_KEY || 'cb1_2v8k_1_77d3a08b9dfcaeb412cca4b0';
 
@@ -83,6 +89,15 @@ export default function App() {
   const [showDemandaCiudadana, setShowDemandaCiudadana] = useState<boolean>(true);
   const [peticionesCiudadanas, setPeticionesCiudadanas] = useState<PeticionCiudadana[]>([]);
   const [showPeticionesCiudadanas, setShowPeticionesCiudadanas] = useState<boolean>(true);
+  const [showHeatmap, setShowHeatmap] = useState<boolean>(false);
+  const [showHotspots, setShowHotspots] = useState<boolean>(false);
+  const [showHotspotsPanel, setShowHotspotsPanel] = useState<boolean>(false);
+  const [selectedHotspotId, setSelectedHotspotId] = useState<string | null>(null);
+  const [hotspotFilterOptions, setHotspotFilterOptions] = useState<HotspotFilterOptions>({
+    radiusMeters: 300,
+    minPoints: 3,
+    sourceFilter: 'todos'
+  });
   const [filtrosModulos, setFiltrosModulos] = useState<FiltrosModulos>({
     moduloActivo: 'todos',
     showBacheo: true,
@@ -655,6 +670,18 @@ export default function App() {
     };
   }, [stats.baches, filteredObrasTramos, filteredObrasPuntuales]);
 
+  const allCitizenPoints = useMemo(() => {
+    return unifyCitizenReports(demandasCiudadanas, peticionesCiudadanas);
+  }, [demandasCiudadanas, peticionesCiudadanas]);
+
+  const detectedHotspots = useMemo(() => {
+    return detectHotspots(allCitizenPoints, hotspotFilterOptions);
+  }, [allCitizenPoints, hotspotFilterOptions]);
+
+  const heatmapPoints = useMemo(() => {
+    return getHeatmapPoints(allCitizenPoints, detectedHotspots);
+  }, [allCitizenPoints, detectedHotspots]);
+
   const renderHeaderMetrics = () => {
     if (filtrosModulos.moduloActivo === 'pavimentacion') {
       const pavs = filteredObrasTramos.filter(o => o.tipo === 'pavimentacion');
@@ -958,19 +985,40 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-3">
-             <div className="bg-white/5 px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
-                {dbLoading ? (
-                  <>
-                    <Loader2 className="w-3.5 h-3.5 text-toluca-gold animate-spin" />
-                    <span className="text-[11px] font-bold tracking-wider text-toluca-gold animate-pulse">CARGANDO BACHES (+50K)...</span>
-                  </>
-                ) : (
-                  <>
-                    <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                    <span className="text-[11px] font-bold tracking-wider">SISTEMA ACTIVO</span>
-                  </>
-                )}
-             </div>
+            {/* Botón de Concentración Espacial y Hotspots */}
+            <button
+              onClick={() => {
+                setShowHotspotsPanel(prev => !prev);
+                if (!showHotspots && !showHeatmap) {
+                  setShowHotspots(true);
+                }
+              }}
+              className={`px-3.5 py-1.5 rounded-full border transition-all flex items-center gap-2 cursor-pointer ${
+                showHotspotsPanel || showHeatmap || showHotspots
+                  ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-md ring-2 ring-amber-400/20'
+                  : 'bg-white/10 border-white/20 text-white/90 hover:bg-white/20'
+              }`}
+              title="Abrir análisis de concentración de demanda y focos críticos"
+            >
+              <Flame className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
+              <span className="text-[11px] font-black tracking-wider uppercase">
+                Concentración ({detectedHotspots.length} Focos)
+              </span>
+            </button>
+
+            <div className="bg-white/5 px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
+              {dbLoading ? (
+                <>
+                  <Loader2 className="w-3.5 h-3.5 text-toluca-gold animate-spin" />
+                  <span className="text-[11px] font-bold tracking-wider text-toluca-gold animate-pulse">CARGANDO BACHES (+50K)...</span>
+                </>
+              ) : (
+                <>
+                  <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                  <span className="text-[11px] font-bold tracking-wider">SISTEMA ACTIVO</span>
+                </>
+              )}
+            </div>
           </div>
         </div>
       </header>
@@ -1287,6 +1335,61 @@ export default function App() {
                     {peticionesCiudadanas.length}
                   </span>
                 </label>
+
+                {/* Switch Mapa de Calor */}
+                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors group">
+                  <div className="flex items-center gap-3">
+                    <input 
+                      type="checkbox" 
+                      checked={showHeatmap} 
+                      onChange={(e) => setShowHeatmap(e.target.checked)}
+                      className="w-4 h-4 accent-red-600" 
+                    />
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-red-600 via-amber-500 to-blue-500 text-white flex items-center justify-center text-[10px] shadow-xs">
+                        <Flame size={11} className="animate-pulse" />
+                      </div>
+                      <span className="text-xs font-bold text-slate-700 group-hover:text-red-700 transition-colors">
+                        Mapa de Calor (Densidad)
+                      </span>
+                    </div>
+                  </div>
+                  <span className={`text-[9px] font-black px-2 py-0.5 rounded-full ${showHeatmap ? 'bg-red-100 text-red-700' : 'bg-slate-100 text-slate-400'}`}>
+                    {showHeatmap ? 'ACTIVO' : 'OFF'}
+                  </span>
+                </label>
+
+                {/* Switch Focos de Concentración */}
+                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors group">
+                  <div className="flex items-center gap-3">
+                    <input 
+                      type="checkbox" 
+                      checked={showHotspots} 
+                      onChange={(e) => setShowHotspots(e.target.checked)}
+                      className="w-4 h-4 accent-rose-600" 
+                    />
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-red-600 to-rose-700 text-white flex items-center justify-center text-[10px] shadow-xs">
+                        <span className="text-[10px] leading-none">🔥</span>
+                      </div>
+                      <span className="text-xs font-bold text-slate-700 group-hover:text-rose-700 transition-colors">
+                        Focos de Concentración
+                      </span>
+                    </div>
+                  </div>
+                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800">
+                    {detectedHotspots.length} zonas
+                  </span>
+                </label>
+
+                {/* Botón para abrir panel ejecutivo de concentración */}
+                <button
+                  onClick={() => setShowHotspotsPanel(true)}
+                  className="w-full mt-2 py-2 px-3 bg-gradient-to-r from-toluca-burgundy to-red-900 hover:from-red-900 hover:to-toluca-burgundy text-white rounded-xl text-xs font-black tracking-wide flex items-center justify-center gap-2 shadow-xs transition-all hover:shadow-sm"
+                >
+                  <Flame size={13} className="text-amber-300" />
+                  <span>Ranking de Zonas Críticas</span>
+                </button>
               </div>
             </div>
           </div>
@@ -1436,6 +1539,21 @@ export default function App() {
               data={peticionesCiudadanas} 
               visible={showPeticionesCiudadanas} 
             />
+
+            {/* Capa de Mapa de Calor (Heatmap) */}
+            <HeatmapLayer 
+              points={heatmapPoints} 
+              visible={showHeatmap} 
+            />
+
+            {/* Capa de Focos Críticos de Concentración Espacial */}
+            <HotspotsLayer 
+              hotspots={detectedHotspots} 
+              visible={showHotspots} 
+              selectedHotspotId={selectedHotspotId}
+              onSelectHotspot={(cluster) => setSelectedHotspotId(cluster.id)}
+            />
+
             <CoordinateSearch data={data} geoData={geoData} setFilters={setFilters} />
             <MapLegend 
               filtros={filtrosModulos} 
@@ -1446,8 +1564,32 @@ export default function App() {
               showPeticionesCiudadanas={showPeticionesCiudadanas}
               onTogglePeticionesCiudadanas={() => setShowPeticionesCiudadanas(prev => !prev)}
               peticionesCount={peticionesCiudadanas.length}
+              showHeatmap={showHeatmap}
+              onToggleHeatmap={() => setShowHeatmap(prev => !prev)}
+              showHotspots={showHotspots}
+              onToggleHotspots={() => setShowHotspots(prev => !prev)}
+              hotspotsCount={detectedHotspots.length}
+              onOpenHotspotsPanel={() => setShowHotspotsPanel(true)}
             />
           </MapContainer>
+
+          {/* Panel Ejecutivo de Concentración y Focos Críticos */}
+          <HotspotsPanel
+            isOpen={showHotspotsPanel}
+            onClose={() => setShowHotspotsPanel(false)}
+            hotspots={detectedHotspots}
+            totalPointsCount={allCitizenPoints.length}
+            showHeatmap={showHeatmap}
+            onToggleHeatmap={setShowHeatmap}
+            showHotspots={showHotspots}
+            onToggleHotspots={setShowHotspots}
+            filterOptions={hotspotFilterOptions}
+            onChangeFilterOptions={setHotspotFilterOptions}
+            selectedHotspotId={selectedHotspotId}
+            onSelectHotspot={(cluster) => {
+              setSelectedHotspotId(cluster.id);
+            }}
+          />
 
           {/* Timeline Overlay */}
           <div className="absolute bottom-8 left-8 right-8 z-[1000] pointer-events-none">
