@@ -103,7 +103,7 @@ const createObraPinIcon = (obra: ObraTramo | ObraPuntual, color: string, status:
   });
 };
 
-export const ObrasLayers: React.FC<ObrasLayersProps> = ({
+export const ObrasLayers: React.FC<ObrasLayersProps> = React.memo(({
   tramos,
   puntuales,
   currentDate,
@@ -302,4 +302,4 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = ({
       })}
     </>
   );
-};
+});

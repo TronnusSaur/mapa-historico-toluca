@@ -43,7 +43,7 @@ interface SimbologiaItem {
   isActive: boolean;
 }
 
-export const MapLegend: React.FC<MapLegendProps> = ({ 
+export const MapLegend: React.FC<MapLegendProps> = React.memo(({ 
   filtros, 
   onToggleModulo,
   showDemandaCiudadana = true,
@@ -419,4 +419,4 @@ export const MapLegend: React.FC<MapLegendProps> = ({
       )}
     </div>
   );
-};
+});

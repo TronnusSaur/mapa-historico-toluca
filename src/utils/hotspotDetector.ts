@@ -126,11 +126,30 @@ export function detectHotspots(
 
   if (filteredPoints.length === 0) return [];
 
-  // Calculate neighbor density for each candidate seed
-  const candidates = filteredPoints.map((p) => {
+  // Pre-calculate coordinate deltas for fast bounding box rejection
+  // In Toluca (~19.3° N), 1 deg lat ≈ 111,100 m, 1 deg lng ≈ 104,800 m.
+  const maxLatDelta = (radiusMeters / 111000) * 1.05;
+  const maxLngDelta = (radiusMeters / 104800) * 1.05;
+
+  // Calculate neighbor density for each candidate seed with ultra-fast Bounding Box pre-filter
+  const numPoints = filteredPoints.length;
+  const candidates = filteredPoints.map((p, i) => {
     const neighbors: { index: number; dist: number }[] = [];
-    for (let j = 0; j < filteredPoints.length; j++) {
-      const dist = getHaversineDistanceMeters(p.lat, p.lng, filteredPoints[j].lat, filteredPoints[j].lng);
+    const pLat = p.lat;
+    const pLng = p.lng;
+
+    for (let j = 0; j < numPoints; j++) {
+      const target = filteredPoints[j];
+      
+      // Fast Bounding Box Reject (1 float subtraction per axis)
+      const dLat = Math.abs(pLat - target.lat);
+      if (dLat > maxLatDelta) continue;
+
+      const dLng = Math.abs(pLng - target.lng);
+      if (dLng > maxLngDelta) continue;
+
+      // Only compute expensive trigonometric Haversine if within bounding box
+      const dist = (i === j) ? 0 : getHaversineDistanceMeters(pLat, pLng, target.lat, target.lng);
       if (dist <= radiusMeters) {
         neighbors.push({ index: j, dist });
       }

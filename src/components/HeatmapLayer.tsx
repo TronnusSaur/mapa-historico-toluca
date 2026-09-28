@@ -17,7 +17,7 @@ interface HeatmapLayerProps {
   minOpacity?: number;
 }
 
-export const HeatmapLayer: React.FC<HeatmapLayerProps> = ({
+export const HeatmapLayer: React.FC<HeatmapLayerProps> = React.memo(({
   points,
   visible,
   radius = 30,
@@ -37,9 +37,10 @@ export const HeatmapLayer: React.FC<HeatmapLayerProps> = ({
       return;
     }
 
-    // Remove existing layer if already present to recreate cleanly
+    // If layer already exists on map, update points dynamically without recreating canvas
     if (heatLayerRef.current && map.hasLayer(heatLayerRef.current)) {
-      map.removeLayer(heatLayerRef.current);
+      heatLayerRef.current.setLatLngs(points);
+      return;
     }
 
     try {
@@ -73,4 +74,4 @@ export const HeatmapLayer: React.FC<HeatmapLayerProps> = ({
   }, [map, visible, points, radius, blur, maxZoom, minOpacity]);
 
   return null;
-};
+});

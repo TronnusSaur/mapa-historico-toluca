@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useThrottle } from './hooks/useThrottle.ts';
 import { MapContainer, TileLayer, GeoJSON } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
@@ -21,7 +21,7 @@ import {
   fetchPeticionesCiudadanas
 } from './utils/dataProcessors.ts';
 import type { PotholeData, Tramo, PavimentacionData } from './utils/dataProcessors.ts';
-import type { FiltrosModulos, ObraTramo, ObraPuntual, Obra, YearFilter, DemandaCiudadana, PeticionCiudadana } from './types/obras.ts';
+import type { FiltrosModulos, ObraTramo, ObraPuntual, Obra, YearFilter, DemandaCiudadana, PeticionCiudadana, ModuloObraId } from './types/obras.ts';
 import { supabase } from './lib/supabase.ts';
 import { 
   BarChart3, 
@@ -53,7 +53,7 @@ import { HeatmapLayer } from './components/HeatmapLayer.tsx';
 import { HotspotsLayer } from './components/HotspotsLayer.tsx';
 import { HotspotsPanel } from './components/HotspotsPanel.tsx';
 import { unifyCitizenReports, detectHotspots, getHeatmapPoints } from './utils/hotspotDetector.ts';
-import type { HotspotFilterOptions } from './types/hotspots.ts';
+import type { HotspotFilterOptions, HotspotCluster } from './types/hotspots.ts';
 
 const CARTO_KEY = import.meta.env.VITE_CARTO_KEY || 'cb1_2v8k_1_77d3a08b9dfcaeb412cca4b0';
 
@@ -306,8 +306,8 @@ export default function App() {
           fetchContratosPuntualesWithFallback(),
           fetchDiabloDragonWithFallback(),
           fetchEvidenciasObras(baseUrl),
-          fetchDemandaCiudadanaGeneral(baseUrl),
-          fetchPeticionesCiudadanas(baseUrl)
+          fetchDemandaCiudadanaGeneral(baseUrl, (updated) => setDemandasCiudadanas(updated)),
+          fetchPeticionesCiudadanas(baseUrl, (updated) => setPeticionesCiudadanas(updated))
         ]);
 
         if (demandasData && demandasData.length > 0) {
@@ -497,60 +497,82 @@ export default function App() {
     }
   };
 
-  // Statistics: dynamic calculation based on timeline and active year
+  // Statistics: dynamic calculation based on timeline and active year (single linear O(N) pass)
   const stats = useMemo(() => {
-    // 1. All Work Progress up to today (regardless of visibility, for integrity)
-    // We count EVERY record from the CSV here that matches the year filter.
-    const allDoneUpToDate = data.filter(p => p.status === 'EJECUTADO' && p.date <= currentDate && matchesYear(p.date, p.stage));
-    
-    // 2. Filtered Work Progress (respecting stage toggles only, for global header/summary)
-    const filteredDoneUpToDate = allDoneUpToDate.filter(p => {
-       if (p.stage === 1 && !filters.showE1) return false;
-       if (p.stage === 2 && !filters.showE2) return false;
-       if (p.stage === 3 && !filters.showE3) return false;
-       if (p.stage === 101 && !filters.showSP2025) return false;
-       if (p.stage === 102 && !filters.showSP2026) return false;
-       if (p.stage === 103 && !filters.showSP2027) return false;
-       return true;
-    });
+    let m2 = 0;
+    let ml = 0;
+    let baches = 0;
+    let demandaActiva = 0;
+    let ticketsAtendidos = 0;
+    let e1Baches = 0;
+    let e1M2 = 0;
+    let e2Baches = 0;
+    let e2M2 = 0;
+    let e3Baches = 0;
+    let e3M2 = 0;
 
-    // 3. Stage-Specific metrics (Stable - always use allDoneUpToDate)
-    const e1Done = allDoneUpToDate.filter(p => p.stage === 1);
-    const e2Done = allDoneUpToDate.filter(p => p.stage === 2);
-    const e3Done = allDoneUpToDate.filter(p => p.stage === 3);
+    const { showE1, showE2, showE3, showSP2025, showSP2026, showSP2027 } = filters;
+    const len = data.length;
 
-    // 4. Tickets Logic (Independent of project stages)
-    const ticketsTotal = data.filter(p => p.status === 'TICKET_TOTAL' && matchesYear(p.date));
-    
-    // Active (Pending) tickets at current date
-    const activeTicketsAtDate = ticketsTotal.filter(p => {
-      const wasReported = (p.reportDate || p.date) <= currentDate;
-      const isStillPending = !p.resolvedDate || p.resolvedDate > currentDate;
-      return wasReported && isStillPending;
-    });
+    for (let i = 0; i < len; i++) {
+      const p = data[i];
 
-    // Attended tickets at current date
-    const attendedTicketsAtDate = ticketsTotal.filter(p => {
-       const wasReported = (p.reportDate || p.date) <= currentDate;
-       const wasAttended = p.resolvedDate && p.resolvedDate <= currentDate;
-       return wasReported && wasAttended;
-     });
+      if (p.status === 'EJECUTADO') {
+        if (p.date <= currentDate && matchesYear(p.date, p.stage)) {
+          // Stage specific metrics
+          if (p.stage === 1) {
+            e1Baches++;
+            e1M2 += (p.m2 || 0);
+          } else if (p.stage === 2) {
+            e2Baches++;
+            e2M2 += (p.m2 || 0);
+          } else if (p.stage === 3) {
+            e3Baches++;
+            e3M2 += (p.m2 || 0);
+          }
+
+          // Filtered stage checks
+          let visibleStage = true;
+          if (p.stage === 1 && !showE1) visibleStage = false;
+          else if (p.stage === 2 && !showE2) visibleStage = false;
+          else if (p.stage === 3 && !showE3) visibleStage = false;
+          else if (p.stage === 101 && !showSP2025) visibleStage = false;
+          else if (p.stage === 102 && !showSP2026) visibleStage = false;
+          else if (p.stage === 103 && !showSP2027) visibleStage = false;
+
+          if (visibleStage) {
+            baches++;
+            m2 += (p.m2 || 0);
+            ml += (p.largo || 0);
+          }
+        }
+      } else if (p.status === 'TICKET_TOTAL') {
+        if (matchesYear(p.date)) {
+          const reportDate = p.reportDate || p.date;
+          if (reportDate <= currentDate) {
+            if (!p.resolvedDate || p.resolvedDate > currentDate) {
+              demandaActiva++;
+            } else if (p.resolvedDate <= currentDate) {
+              ticketsAtendidos++;
+            }
+          }
+        }
+      }
+    }
 
     return {
-      total: data.length,
-      // Global metrics recalculate with filters (SPATIAL IGNORED FOR RECONTEO INTEGRITY)
-      m2: filteredDoneUpToDate.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
-      ml: filteredDoneUpToDate.reduce((acc, curr) => acc + (curr.largo || 0), 0),
-      baches: filteredDoneUpToDate.length,
-      demandaActiva: activeTicketsAtDate.length,
-      ticketsAtendidos: attendedTicketsAtDate.length,
-      // Stage-specific stats
-      e1Baches: e1Done.length,
-      e1M2: e1Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
-      e2Baches: e2Done.length,
-      e2M2: e2Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0),
-      e3Baches: e3Done.length,
-      e3M2: e3Done.reduce((acc, curr) => acc + (curr.m2 || 0), 0)
+      total: len,
+      m2,
+      ml,
+      baches,
+      demandaActiva,
+      ticketsAtendidos,
+      e1Baches,
+      e1M2,
+      e2Baches,
+      e2M2,
+      e3Baches,
+      e3M2
     };
   }, [data, currentDate, selectedYear, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
 
@@ -681,6 +703,43 @@ export default function App() {
   const heatmapPoints = useMemo(() => {
     return getHeatmapPoints(allCitizenPoints, detectedHotspots);
   }, [allCitizenPoints, detectedHotspots]);
+
+  // Stable callbacks for memoized child components
+  const handleSelectHotspot = useCallback((cluster: HotspotCluster) => {
+    setSelectedHotspotId(cluster.id);
+  }, []);
+
+  const handleToggleDemandaCiudadana = useCallback(() => {
+    setShowDemandaCiudadana(prev => !prev);
+  }, []);
+
+  const handleTogglePeticionesCiudadanas = useCallback(() => {
+    setShowPeticionesCiudadanas(prev => !prev);
+  }, []);
+
+  const handleToggleHeatmap = useCallback(() => {
+    setShowHeatmap(prev => !prev);
+  }, []);
+
+  const handleToggleHotspots = useCallback(() => {
+    setShowHotspots(prev => !prev);
+  }, []);
+
+  const handleOpenHotspotsPanel = useCallback(() => {
+    setShowHotspotsPanel(true);
+  }, []);
+
+  const handleCloseHotspotsPanel = useCallback(() => {
+    setShowHotspotsPanel(false);
+  }, []);
+
+  const handleToggleModulo = useCallback((id: ModuloObraId) => {
+    setFiltrosModulos(prev => toggleModuloFilter(id, prev));
+  }, []);
+
+  const handleSelectObra = useCallback((obra: Obra) => {
+    setSelectedObra(obra);
+  }, []);
 
   const renderHeaderMetrics = () => {
     if (filtrosModulos.moduloActivo === 'pavimentacion') {
@@ -1527,7 +1586,7 @@ export default function App() {
               showConcluidas={filtrosModulos.showConcluidas}
               showEnProceso={filtrosModulos.showEnProceso}
               showProgramadas={filtrosModulos.showProgramadas}
-              onSelectObra={(obra) => setSelectedObra(obra)}
+              onSelectObra={handleSelectObra}
             />
             {/* Capa de Demanda Ciudadana General */}
             <DemandaCiudadanaLayer 
@@ -1551,32 +1610,32 @@ export default function App() {
               hotspots={detectedHotspots} 
               visible={showHotspots} 
               selectedHotspotId={selectedHotspotId}
-              onSelectHotspot={(cluster) => setSelectedHotspotId(cluster.id)}
+              onSelectHotspot={handleSelectHotspot}
             />
 
             <CoordinateSearch data={data} geoData={geoData} setFilters={setFilters} />
             <MapLegend 
               filtros={filtrosModulos} 
-              onToggleModulo={(id) => setFiltrosModulos(prev => toggleModuloFilter(id, prev))}
+              onToggleModulo={handleToggleModulo}
               showDemandaCiudadana={showDemandaCiudadana}
-              onToggleDemandaCiudadana={() => setShowDemandaCiudadana(prev => !prev)}
+              onToggleDemandaCiudadana={handleToggleDemandaCiudadana}
               demandaCount={demandasCiudadanas.length}
               showPeticionesCiudadanas={showPeticionesCiudadanas}
-              onTogglePeticionesCiudadanas={() => setShowPeticionesCiudadanas(prev => !prev)}
+              onTogglePeticionesCiudadanas={handleTogglePeticionesCiudadanas}
               peticionesCount={peticionesCiudadanas.length}
               showHeatmap={showHeatmap}
-              onToggleHeatmap={() => setShowHeatmap(prev => !prev)}
+              onToggleHeatmap={handleToggleHeatmap}
               showHotspots={showHotspots}
-              onToggleHotspots={() => setShowHotspots(prev => !prev)}
+              onToggleHotspots={handleToggleHotspots}
               hotspotsCount={detectedHotspots.length}
-              onOpenHotspotsPanel={() => setShowHotspotsPanel(true)}
+              onOpenHotspotsPanel={handleOpenHotspotsPanel}
             />
           </MapContainer>
 
           {/* Panel Ejecutivo de Concentración y Focos Críticos */}
           <HotspotsPanel
             isOpen={showHotspotsPanel}
-            onClose={() => setShowHotspotsPanel(false)}
+            onClose={handleCloseHotspotsPanel}
             hotspots={detectedHotspots}
             totalPointsCount={allCitizenPoints.length}
             showHeatmap={showHeatmap}
@@ -1586,9 +1645,7 @@ export default function App() {
             filterOptions={hotspotFilterOptions}
             onChangeFilterOptions={setHotspotFilterOptions}
             selectedHotspotId={selectedHotspotId}
-            onSelectHotspot={(cluster) => {
-              setSelectedHotspotId(cluster.id);
-            }}
+            onSelectHotspot={handleSelectHotspot}
           />
 
           {/* Timeline Overlay */}

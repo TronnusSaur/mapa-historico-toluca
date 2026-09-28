@@ -20,7 +20,7 @@ function escapeHtml(text?: string): string {
     .replace(/'/g, '&#039;');
 }
 
-export const HotspotsLayer: React.FC<HotspotsLayerProps> = ({
+export const HotspotsLayer: React.FC<HotspotsLayerProps> = React.memo(({
   hotspots,
   visible,
   selectedHotspotId,
@@ -29,6 +29,9 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = ({
   const map = useMap();
   const layerGroupRef = useRef<L.LayerGroup | null>(null);
   const markersMapRef = useRef<Map<string, L.Marker>>(new Map());
+  const circlesMapRef = useRef<Map<string, L.Circle>>(new Map());
+  const onSelectRef = useRef(onSelectHotspot);
+  onSelectRef.current = onSelectHotspot;
 
   useEffect(() => {
     // If not visible or no hotspots, clean up
@@ -45,9 +48,9 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = ({
 
     const layerGroup = L.layerGroup();
     markersMapRef.current.clear();
+    circlesMapRef.current.clear();
 
     hotspots.forEach((cluster) => {
-      const isSelected = selectedHotspotId === cluster.id;
       const isCritical = cluster.severity === 'critica';
       const isAlta = cluster.severity === 'alta';
 
@@ -68,11 +71,12 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = ({
         radius: cluster.radiusMeters,
         color: mainColor,
         fillColor: mainColor,
-        fillOpacity: isSelected ? 0.22 : 0.1,
-        weight: isSelected ? 2.5 : 1.5,
+        fillOpacity: 0.1,
+        weight: 1.5,
         dashArray: '5 5'
       });
       layerGroup.addLayer(circle);
+      circlesMapRef.current.set(cluster.id, circle);
 
       // 2. Icono con radar y contador
       const size = isCritical ? 44 : isAlta ? 38 : 34;
@@ -252,7 +256,7 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = ({
       marker.bindPopup(popupHtml, { maxWidth: 330 });
 
       marker.on('click', () => {
-        if (onSelectHotspot) onSelectHotspot(cluster);
+        if (onSelectRef.current) onSelectRef.current(cluster);
       });
 
       layerGroup.addLayer(marker);
@@ -267,10 +271,18 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = ({
         map.removeLayer(layerGroupRef.current);
       }
     };
-  }, [map, visible, hotspots, selectedHotspotId, onSelectHotspot]);
+  }, [map, visible, hotspots]);
 
-  // If a hotspot was selected externally, fly to it and open its popup
+  // If a hotspot was selected externally, update circle style, fly to it and open its popup
   useEffect(() => {
+    circlesMapRef.current.forEach((circle, id) => {
+      const isSelected = selectedHotspotId === id;
+      circle.setStyle({
+        fillOpacity: isSelected ? 0.25 : 0.1,
+        weight: isSelected ? 2.5 : 1.5
+      });
+    });
+
     if (!selectedHotspotId || !markersMapRef.current.has(selectedHotspotId)) return;
     const marker = markersMapRef.current.get(selectedHotspotId);
     if (marker) {
@@ -283,4 +295,4 @@ export const HotspotsLayer: React.FC<HotspotsLayerProps> = ({
   }, [selectedHotspotId, map]);
 
   return null;
-};
+});

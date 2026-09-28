@@ -24,7 +24,7 @@ interface HotspotsPanelProps {
   onSelectHotspot: (hotspot: HotspotCluster) => void;
 }
 
-export const HotspotsPanel: React.FC<HotspotsPanelProps> = ({
+export const HotspotsPanel: React.FC<HotspotsPanelProps> = React.memo(({
   isOpen,
   onClose,
   hotspots,
@@ -287,4 +287,4 @@ export const HotspotsPanel: React.FC<HotspotsPanelProps> = ({
       </div>
     </div>
   );
-};
+});

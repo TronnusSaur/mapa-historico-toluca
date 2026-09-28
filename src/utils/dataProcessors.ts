@@ -1206,14 +1206,18 @@ export const vincularEvidenciasAObras = <T extends Obra>(
 };
 
 /**
- * Carga la capa de Demanda Ciudadana General desde Google Sheets con fallback al JSON local
+ * Carga la capa de Demanda Ciudadana General con estrategia Local-First (instantánea <15ms)
+ * y sincronización silenciosa en segundo plano con Google Sheets.
  */
-export const fetchDemandaCiudadanaGeneral = async (baseUrl: string = ''): Promise<DemandaCiudadana[]> => {
+export const fetchDemandaCiudadanaGeneral = async (
+  baseUrl: string = '',
+  onBackgroundUpdate?: (data: DemandaCiudadana[]) => void
+): Promise<DemandaCiudadana[]> => {
   const SPREADSHEET_ID = '1-l-zptyjbWxWqiDQL4N7Xw2AlvtLWvEI0E9vEpAonMc';
   const remoteUrl = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&gid=0`;
   const localUrl = `${baseUrl}data/demanda_ciudadana_general.json`;
 
-  const parseRemotePromise = new Promise<DemandaCiudadana[]>((resolve, reject) => {
+  const syncRemote = () => {
     Papa.parse(remoteUrl, {
       download: true,
       header: true,
@@ -1246,49 +1250,87 @@ export const fetchDemandaCiudadanaGeneral = async (baseUrl: string = ''): Promis
               });
             }
           });
-          if (items.length > 0) resolve(items);
-          else reject(new Error('No records in remote Google Sheet'));
+          if (items.length > 0 && onBackgroundUpdate) {
+            onBackgroundUpdate(items);
+          }
         } catch (e) {
-          reject(e);
+          console.warn("Fallo procesando sincronización remota de Demanda Ciudadana:", e);
         }
       },
-      error: (err) => reject(err)
+      error: (err) => console.warn("Fallo conexión remota a Google Sheets Demanda Ciudadana:", err)
+    });
+  };
+
+  // 1. Intentar cargar respaldo local de inmediato (<15ms)
+  try {
+    const resp = await fetch(localUrl);
+    if (resp.ok) {
+      const localData = await resp.json();
+      // Disparar sincronización silenciosa en segundo plano
+      setTimeout(syncRemote, 1000);
+      return localData as DemandaCiudadana[];
+    }
+  } catch (localErr) {
+    console.warn("Respaldo local no disponible inmediatamente, recurriendo a remoto:", localErr);
+  }
+
+  // 2. Si falló el local, obtener desde remoto
+  return new Promise<DemandaCiudadana[]>((resolve) => {
+    Papa.parse(remoteUrl, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        try {
+          const items: DemandaCiudadana[] = [];
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (results.data as any[]).forEach((row, i) => {
+            const rawLat = parseFloat(row.LATITUD || row.latitud || row.lat || '0');
+            const rawLng = parseFloat(row.LONGITUD || row.longitud || row.lng || '0');
+            let lat = isNaN(rawLat) ? 0 : rawLat;
+            let lng = isNaN(rawLng) ? 0 : rawLng;
+            if (lat < 0 && lng > 0) {
+              const temp = lat;
+              lat = lng;
+              lng = temp;
+            }
+            if (lat !== 0 && lng !== 0) {
+              items.push({
+                id: `demanda-${i + 1}`,
+                ticket: (row.TICKET || row.ticket || `TCK-${i+1}`).toString().trim(),
+                solicitante: (row.SOLICITANTE || row.solicitante || 'Ciudadano').toString().trim(),
+                observaciones: (row.OBSERVACIONES || row.observaciones || '').toString().trim(),
+                calleYNumero: (row.CALLE_Y_NUMERO || row.calle_y_numero || '').toString().trim(),
+                trabajo: (row.TRABAJO || row.trabajo || 'Bacheo').toString().trim(),
+                delegacion: (row.DELEGACION || row.delegacion || 'Toluca').toString().trim(),
+                lat,
+                lng
+              });
+            }
+          });
+          resolve(items);
+        } catch {
+          resolve([]);
+        }
+      },
+      error: () => resolve([])
     });
   });
-
-  const timeoutPromise = new Promise<never>((_, reject) => 
-    setTimeout(() => reject(new Error('Google Sheets Demanda Ciudadana timeout (3.5s)')), 3500)
-  );
-
-  try {
-    const remoteData = await Promise.race([parseRemotePromise, timeoutPromise]);
-    console.log(`Cargadas ${remoteData.length} demandas ciudadanas desde Google Sheets.`);
-    return remoteData;
-  } catch (err) {
-    console.warn("Fallo carga en vivo de Demanda Ciudadana (usando respaldo local):", err);
-    try {
-      const resp = await fetch(localUrl);
-      if (resp.ok) {
-        const localData = await resp.json();
-        console.log(`Cargadas ${localData.length} demandas ciudadanas desde respaldo local.`);
-        return localData as DemandaCiudadana[];
-      }
-    } catch (localErr) {
-      console.error("Fallo tambien el respaldo local de Demanda Ciudadana:", localErr);
-    }
-    return [];
-  }
 };
 
 /**
- * Carga la capa de Peticiones Ciudadanas (Oficios DGOP) desde Google Sheets con fallback al JSON local
+ * Carga la capa de Peticiones Ciudadanas (Oficios DGOP) con estrategia Local-First (instantánea <15ms)
+ * y sincronización silenciosa en segundo plano con Google Sheets.
  */
-export const fetchPeticionesCiudadanas = async (baseUrl: string = ''): Promise<PeticionCiudadana[]> => {
+export const fetchPeticionesCiudadanas = async (
+  baseUrl: string = '',
+  onBackgroundUpdate?: (data: PeticionCiudadana[]) => void
+): Promise<PeticionCiudadana[]> => {
   const SPREADSHEET_ID = '1-l-zptyjbWxWqiDQL4N7Xw2AlvtLWvEI0E9vEpAonMc';
   const remoteUrl = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/gviz/tq?tqx=out:csv&gid=2113321054`;
   const localUrl = `${baseUrl}data/peticiones_ciudadanas.json`;
 
-  const parseRemotePromise = new Promise<PeticionCiudadana[]>((resolve, reject) => {
+  const syncRemote = () => {
     Papa.parse(remoteUrl, {
       download: true,
       header: true,
@@ -1325,38 +1367,76 @@ export const fetchPeticionesCiudadanas = async (baseUrl: string = ''): Promise<P
               }
             }
           });
-          if (items.length > 0) resolve(items);
-          else reject(new Error('No valid records in remote Google Sheet for Peticiones'));
+          if (items.length > 0 && onBackgroundUpdate) {
+            onBackgroundUpdate(items);
+          }
         } catch (e) {
-          reject(e);
+          console.warn("Fallo procesando sincronización remota de Peticiones Ciudadanas:", e);
         }
       },
-      error: (err) => reject(err)
+      error: (err) => console.warn("Fallo conexión remota a Google Sheets Peticiones Ciudadanas:", err)
+    });
+  };
+
+  // 1. Intentar cargar respaldo local de inmediato (<15ms)
+  try {
+    const resp = await fetch(localUrl);
+    if (resp.ok) {
+      const localData = await resp.json();
+      // Disparar sincronización silenciosa en segundo plano
+      setTimeout(syncRemote, 1000);
+      return localData as PeticionCiudadana[];
+    }
+  } catch (localErr) {
+    console.warn("Respaldo local no disponible inmediatamente, recurriendo a remoto:", localErr);
+  }
+
+  // 2. Si falló el local, obtener desde remoto
+  return new Promise<PeticionCiudadana[]>((resolve) => {
+    Papa.parse(remoteUrl, {
+      download: true,
+      header: true,
+      skipEmptyLines: true,
+      complete: (results) => {
+        try {
+          const items: PeticionCiudadana[] = [];
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          (results.data as any[]).forEach((row, i) => {
+            const rawCoord = (row.COORDENADA || row.coordenada || '').toString().trim();
+            if (!rawCoord) return;
+            const m = rawCoord.match(/[-+]?\d*\.\d+|\d+/g);
+            if (m && m.length >= 2) {
+              let lat = parseFloat(m[0]);
+              let lng = parseFloat(m[1]);
+              if (lat < 0 && lng > 0) {
+                const temp = lat;
+                lat = lng;
+                lng = temp;
+              }
+              if (lat > 18.5 && lat < 20.0 && lng > -100.5 && lng < -99.0) {
+                items.push({
+                  id: `peticion-${i + 1}`,
+                  noProg: (row['NO. PROG.'] || row.no_prog || `${i + 1}`).toString().trim(),
+                  fecha: (row.FECHA || row.fecha || '').toString().trim(),
+                  oficio: (row['OT-DGOP'] || row.ot_dgop || row.oficio || `OFICIO-${i + 1}`).toString().trim(),
+                  asunto: (row.ASUNTO || row.asunto || '').toString().trim(),
+                  tipoSolicitud: (row['TIPO DE SOLICITUD'] || row.tipo_de_solicitud || 'BACHEO').toString().trim(),
+                  calle: (row.CALLE || row.calle || '').toString().trim(),
+                  delegacion: (row.DELEGACION || row.delegacion || 'TOLUCA').toString().trim(),
+                  lat,
+                  lng
+                });
+              }
+            }
+          });
+          resolve(items);
+        } catch {
+          resolve([]);
+        }
+      },
+      error: () => resolve([])
     });
   });
-
-  const timeoutPromise = new Promise<never>((_, reject) => 
-    setTimeout(() => reject(new Error('Google Sheets Peticiones timeout (3.5s)')), 3500)
-  );
-
-  try {
-    const remoteData = await Promise.race([parseRemotePromise, timeoutPromise]);
-    console.log(`Cargadas ${remoteData.length} peticiones ciudadanas desde Google Sheets.`);
-    return remoteData;
-  } catch (err) {
-    console.warn("Fallo carga en vivo de Peticiones Ciudadanas (usando respaldo local):", err);
-    try {
-      const resp = await fetch(localUrl);
-      if (resp.ok) {
-        const localData = await resp.json();
-        console.log(`Cargadas ${localData.length} peticiones ciudadanas desde respaldo local.`);
-        return localData as PeticionCiudadana[];
-      }
-    } catch (localErr) {
-      console.error("Fallo tambien el respaldo local de Peticiones Ciudadanas:", localErr);
-    }
-    return [];
-  }
 };
 
 
