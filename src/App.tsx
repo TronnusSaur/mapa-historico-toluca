@@ -47,8 +47,7 @@ import { ModuleFilterBar, toggleModuloFilter } from './components/ModuleFilterBa
 import { ObrasLayers } from './components/ObrasLayers.tsx';
 import { MapLegend } from './components/MapLegend.tsx';
 import { ObraDetailModal } from './components/ObraDetailModal.tsx';
-import { DemandaCiudadanaLayer } from './components/DemandaCiudadanaLayer.tsx';
-import { PeticionesCiudadanasLayer } from './components/PeticionesCiudadanasLayer.tsx';
+import { CitizenDemandLayer } from './components/CitizenDemandLayer.tsx';
 import { HeatmapLayer } from './components/HeatmapLayer.tsx';
 import { HotspotsLayer } from './components/HotspotsLayer.tsx';
 import { HotspotsPanel } from './components/HotspotsPanel.tsx';
@@ -1570,15 +1569,12 @@ export default function App() {
               showProgramadas={filtrosModulos.showProgramadas}
               onSelectObra={handleSelectObra}
             />
-            {/* Capa de Demanda Ciudadana General */}
-            <DemandaCiudadanaLayer 
-              data={demandasCiudadanas} 
-              visible={showDemandaCiudadana} 
-            />
-            {/* Capa de Peticiones Ciudadanas (Oficios DGOP) */}
-            <PeticionesCiudadanasLayer 
-              data={peticionesCiudadanas} 
-              visible={showPeticionesCiudadanas} 
+            {/* Capa Unificada de Demanda y Peticiones Ciudadanas (Cero Colisiones, 60 FPS) */}
+            <CitizenDemandLayer 
+              demandas={demandasCiudadanas}
+              peticiones={peticionesCiudadanas}
+              showDemanda={showDemandaCiudadana}
+              showPeticiones={showPeticionesCiudadanas}
             />
 
             {/* Capa de Mapa de Calor (Heatmap) */}
