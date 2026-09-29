@@ -127,10 +127,14 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = React.memo(({
     return getObraTimelineStatus(obra, currentDate);
   };
 
-  const matchesStatusFilter = (status: EstadoTemporalObra): boolean => {
+  const matchesStatusFilter = (status: EstadoTemporalObra, obra: ObraTramo | ObraPuntual): boolean => {
     if (status === 'CONCLUIDA' && !showConcluidas) return false;
     if (status === 'EN_EJECUCION' && !showEnProceso) return false;
-    if (status === 'POR_INICIAR' && !showProgramadas) return false;
+    if (status === 'POR_INICIAR') {
+      if (!showProgramadas) return false;
+      const obraAnio = obra.anio || (obra.fechaInicio ? obra.fechaInicio.getFullYear() : 2026);
+      if (currentDate.getFullYear() < obraAnio) return false;
+    }
     return true;
   };
 
@@ -180,7 +184,7 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = React.memo(({
 
         // Filtrar por estado temporal
         const status = getTimelineStatus(obra);
-        if (!matchesStatusFilter(status)) return null;
+        if (!matchesStatusFilter(status, obra)) return null;
 
         if (!obra.coords || obra.coords.length === 0) return null;
 
@@ -274,7 +278,7 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = React.memo(({
         if (obra.tipo === 'slurry' && !showSlurry) return null;
 
         const status = getTimelineStatus(obra);
-        if (!matchesStatusFilter(status)) return null;
+        if (!matchesStatusFilter(status, obra)) return null;
 
         if (!obra.lat || !obra.lng || obra.lat === 0 || obra.lng === 0) return null;
 

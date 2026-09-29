@@ -689,37 +689,45 @@ export const calcularMetrosLinealesTramo = (coords: [number, number][]): number 
  * Determina el estado temporal de una obra con respecto a la fecha seleccionada en el mapa
  */
 export const getObraTimelineStatus = (obra: Obra, currentDate: Date): EstadoTemporalObra => {
-  // Si la obra ya tiene la foto de "_terminado", se marca automáticamente como concluida
-  // aunque su periodo de ejecución todavía no acabe
+  const anio = obra.anio || (obra.fechaInicio ? obra.fechaInicio.getFullYear() : 2026);
+  const start = obra.fechaInicio || (anio === 2026 ? new Date(2026, 4, 1) : new Date(anio, 0, 1));
+  const end = obra.fechaFin || new Date(anio, 11, 31);
+
+  // 1. Si la fecha actual en la línea temporal es anterior a la fecha de inicio
+  if (currentDate < start) {
+    return 'POR_INICIAR';
+  }
+
+  // 2. Si ya concluyó su periodo de fin establecido
+  if (currentDate >= end) {
+    return 'CONCLUIDA';
+  }
+
+  // 3. Diablo Dragón: se procesa rigurosamente por su inicio y fin de ejecución
+  if (obra.tipo === 'dragon') {
+    if (currentDate >= end) return 'CONCLUIDA';
+    return 'EN_EJECUCION';
+  }
+
+  // 4. Si la obra cuenta con evidencia fotográfica de terminado y ya inició:
+  // Se marca como concluida si ya pasó su ejecución real o en fechas recientes
   const tieneFotoTerminado = Boolean(
     obra.evidencias?.fotos?.terminado || 
     obra.evidencias?.fotosFallback?.terminado
   );
-  if (tieneFotoTerminado) return 'CONCLUIDA';
+  if (tieneFotoTerminado) {
+    if (!obra.fechaFin || currentDate >= end || currentDate >= new Date(2026, 7, 15)) {
+      return 'CONCLUIDA';
+    }
+    return 'EN_EJECUCION';
+  }
 
-  // Obras de Diablo Dragón concluidas con evidencias de tramo completas
-  if (obra.tipo === 'dragon') {
-    if (obra.evidencias?.fotos?.fotosDragon && obra.evidencias.fotos.fotosDragon.length > 0) return 'CONCLUIDA';
-    if (obra.fechaFin && currentDate >= obra.fechaFin) return 'CONCLUIDA';
+  // 5. Obras históricas de 2025 consultadas en 2026 o posterior
+  if (anio === 2025 && currentDate.getFullYear() >= 2026) {
     return 'CONCLUIDA';
   }
 
-  const anio = obra.anio || 2026;
-
-  // Si ya concluyó su periodo de fin establecido
-  if (obra.fechaFin && currentDate > obra.fechaFin) return 'CONCLUIDA';
-
-  // Si es obra de 2025 (obras históricas) y la fecha de consulta es posterior a 2025
-  if (anio === 2025 && (!obra.fechaInicio || currentDate.getFullYear() >= 2026)) return 'CONCLUIDA';
-
-  // Si no tiene fecha de inicio definida en la base de datos
-  if (!obra.fechaInicio) {
-    return anio === 2025 ? 'CONCLUIDA' : 'EN_EJECUCION';
-  }
-
-  // Si la fecha actual en la línea temporal es anterior a la fecha de inicio
-  if (currentDate < obra.fechaInicio) return 'POR_INICIAR';
-
+  // 6. Durante el periodo de ejecución [start, end]
   return 'EN_EJECUCION';
 };
 
@@ -1192,11 +1200,15 @@ export const vincularEvidenciasAObras = <T extends Obra>(
     }
 
     if (matchedEv) {
+      const fechaInicio = obra.fechaInicio || parseFechaFlexible(matchedEv.fechaInicio);
+      const fechaFin = obra.fechaFin || parseFechaFlexible(matchedEv.fechaFin);
       return {
         ...obra,
         idContrato: matchedEv.idContrato,
         contratista: matchedEv.idEmpresa || obra.contratista,
         montoContratado: matchedEv.montoContratado || obra.montoContratado,
+        fechaInicio,
+        fechaFin,
         evidencias: matchedEv
       };
     }

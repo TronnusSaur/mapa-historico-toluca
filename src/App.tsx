@@ -114,7 +114,7 @@ export default function App() {
     pavEcologico: true,
     showConcluidas: true,
     showEnProceso: true,
-    showProgramadas: true
+    showProgramadas: false
   });
 
   useEffect(() => {
