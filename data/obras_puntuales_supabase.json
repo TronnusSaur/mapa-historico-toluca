@@ -1,0 +1,362 @@
+[
+  {
+    "idMapeo_t": 68,
+    "idContrato": "CREA-068",
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-068/2026",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA\nDE USOS MÚLTIPLES DE LA ESCUELA PRIM.\nPROFR. AGRIPÍN GARCÍA ESTRADA, C.C.T.\n15EPR2287E, SUBDELEGACIÓN ARROYO\nVISTA HERMOSA, MUNICIPIO DE TOLUCA",
+    "Tipo de Obra": "ARCOTECHO",
+    "Inicio de Ejecucion": "8/7/2026",
+    "Termino de Ejecucion": "5/10/2026",
+    "Geolocalización": "19.3377260477984, -99.55072854970352 "
+  },
+  {
+    "idMapeo_t": 70,
+    "idContrato": "SBSL-070",
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-070/2026",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA DE USOS MÚLTIPLES DE LA PRIMARIA EMILIANO ZAPATA, C.C.T. 15EPR0690A, SUBDELEGACIÓN SAN JOSÉ GUADALUPE OTZACATIPAN, MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "ARCOTECHO",
+    "Inicio de Ejecucion": "8/7/2026",
+    "Termino de Ejecucion": "5/10/2026",
+    "Geolocalización": "19.344891872976632, -99.59153384966635"
+  },
+  {
+    "idMapeo_t": 71,
+    "idContrato": "SBSL-071",
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-071/2026",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA DE USOS MÚLTIPLES DE LA ESCUELA PREPARATORIA OFICIAL NO. 139, C.C.T.15EBH0266V, SUBDELEGACIÓN JICALTEPEC AUTOPAN, MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "ARCOTECHO",
+    "Inicio de Ejecucion": "8/7/2026",
+    "Termino de Ejecucion": "5/10/2026",
+    "Geolocalización": "19.36918188482032, -99.646857"
+  },
+  {
+    "idMapeo_t": 72,
+    "idContrato": "FENA-072",
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-072/2026",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA DE USOS MÚLTIPLES DEL PLANTEL 32 TOLUCA III DEL COBAEM, C.C.T. 15ECB0043R DELEGACIÓN SAN CRISTÓBAL HUICHOCHITLÁN, MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "ARCOTECHO",
+    "Inicio de Ejecucion": "9/7/2026",
+    "Termino de Ejecucion": "6/10/2026",
+    "Geolocalización": "19.343794306727574, -99.61926019762812"
+  },
+  {
+    "idMapeo_t": 73,
+    "idContrato": "FENA-073",
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-073/2026",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA DE USOS MÚLTIPLES DEL CBT- NO. 1 EMILIANO ZAPATA, C.C.T. 15ECT0037, DELEGACIÓN CALIXTLAHUACA, MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "ARCOTECHO",
+    "Inicio de Ejecucion": "9/7/2026",
+    "Termino de Ejecucion": "6/10/2026",
+    "Geolocalización": "19.338137993410218, -99.69224129095494"
+  },
+  {
+    "idMapeo_t": 74,
+    "idContrato": "REDNI-074",
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-074/2026",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA DE USOS MÚLTIPLES DE LA SECUNDARIA IGNACIO RAMÍREZ, ES 354-12 C.C.T. 15DES0012X, COLONIA CUAUHTÉMOC, DELEGACION UNIVERSIDAD, MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "ARCOTECHO",
+    "Inicio de Ejecucion": "9/7/2026",
+    "Termino de Ejecucion": "6/10/2026",
+    "Geolocalización": "19.281622866875836, -99.65345178754579"
+  },
+  {
+    "idMapeo_t": 75,
+    "idContrato": "INOVA-075",
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-075/2026",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA DE USOS MÚLTIPLES DEL JARDÍN DE NIÑOS \" ROSA MARÍA QUIROZ CAMACHO\", C.C.T. 15DJN1684H, DELEGACIÓN SAN BUENAVENTURA, MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "ARCOTECHO",
+    "Inicio de Ejecucion": "9/7/2026",
+    "Termino de Ejecucion": "6/10/2026",
+    "Geolocalización": "19.269891063873843, -99.69645708465528"
+  },
+  {
+    "idMapeo_t": 88,
+    "idContrato": "MAMUTEE-088",
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-088/2026",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA DE USOS MÚLTIPLES DE LA PRIMARIA JOSEFA ORTIZ DE DOMÍNGUEZ C.C.T. 15DPR03320, DELEGACIÓN SANTIAGO TLACOTEPEC, MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "ARCOTECHO",
+    "Inicio de Ejecucion": "28/7/2026",
+    "Termino de Ejecucion": "25/10/2026",
+    "Geolocalización": "19.230702002374986, -99.6694586604142"
+  },
+  {
+    "idMapeo_t": 93,
+    "idContrato": "FENA-093",
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-093/2026",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA DE USOS MÚLTIPLES DEL CENTRO DE ESTUDIOS TECNOLÓGICOS INDUSTRIALES Y DE SERVICIOS NO. 64 GRAL. LÁZARO CÁRDENAS DEL RÍO, C.C.T. 15DCT0006D, DELEGACIÓN SAN MATEO OXTOTITLÁN, MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "ARCOTECHO",
+    "Inicio de Ejecucion": "3/8/2026",
+    "Termino de Ejecucion": "31/10/2026",
+    "Geolocalización": "19.297208986122747, -99.69181630200052"
+  },
+  {
+    "idMapeo_t": 96,
+    "idContrato": "MODERNA-096",
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-096/2026",
+    "Nombre de la Obra": "REHABILITACIÓN DEL POZO REAL DE SAN PABLO EN LA SUBDELEGACIÓN SAN DIEGO LINARES AUTOPAN, DELEGACIÓN SAN PABLO AUTOPAN, MUNICIPIO DE TOLUCA, ESTADO DE MÉXICO.",
+    "Tipo de Obra": "POZO ",
+    "Inicio de Ejecucion": "10/8/2026",
+    "Termino de Ejecucion": "20/12/2026",
+    "Geolocalización": "19.389342948610544, -99.64968372883617"
+  },
+  {
+    "idMapeo_t": 100,
+    "idContrato": "EDITUM-100",
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-100/2026",
+    "Nombre de la Obra": "MANTENIMIENTO PREVENTIVO Y CORRECTIVO DEL EDIFICIO \"A\" DE LA DIRECCIÓN DE OBRAS PÚBLICAS DEL MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "SENDERO",
+    "Inicio de Ejecucion": "24/8/2026",
+    "Termino de Ejecucion": "7/10/2026",
+    "Geolocalización": "19.291620077439767, -99.65572484604671"
+  },
+  {
+    "idMapeo_t": 57,
+    "idContrato": "TERRA-057",
+    "No. Contrato": "MT/DGOP/IPDM/LPN-057/2026",
+    "Nombre de la Obra": "REHABILITACIÓN DEL PARQUE LAURA MÉNDEZ DE CUENCA EN LA DELEGACIÓN SAN SEBASTIÁN, MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "SENDERO",
+    "Inicio de Ejecucion": "6/7/2026",
+    "Termino de Ejecucion": "3/10/2026",
+    "Geolocalización": "19.280359052814095, -99.63353005035947"
+  },
+  {
+    "idMapeo_t": 69,
+    "idContrato": "CREA-069",
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-069/2026",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE TECHADO EN EL ÁREA DE USOS MÚLTIPLES DE LA SECUNDARIA TÉCNICA NO. 214 FEDERALIZADA SOR JUAN INÉS DE LA CRUZ, C.C.T. 15DST0219G, SUBDELEGACIÓN SAN MIGUEL TOTOLTEPEC, MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "ARCOTECHO",
+    "Inicio de Ejecucion": "8/7/2026",
+    "Termino de Ejecucion": "5/10/2026",
+    "Geolocalización": "19.328695907833954, -99.57324524680438"
+  },
+  {
+    "idMapeo_t": 22025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/IPDM/LPN-002/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE CAJA DERIVADORA DE CONCRETO ARMADO EN LA CALLE JUAN FERNÁNDEZ ALBARRÁN, ESQUINA BLVRD. AEROPUERTO, LOCALIDAD SAN JOSÉ GUADALUPE OTZACATIPÁN, DELEGACIÓN SAN MATEO OTZACATIPAN, TOLUCA,  ESTADO DE MÉXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "21/7/2025",
+    "Termino de Ejecucion": "20/9/2025",
+    "Geolocalización": "19.342595, -99.584072"
+  },
+  {
+    "idMapeo_t": 282025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-028/2025",
+    "Nombre de la Obra": "REHABILITACIÓN DEL TANQUE DE ZOPILOCALCO 2, EN LA LOCALIDAD TOLUCA DE LERDO, DELEGACIÓN ÁRBOL DE LAS MANITAS, MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "28/7/2026",
+    "Termino de Ejecucion": "28/12/2026",
+    "Geolocalización": "19.299547, -99.654416"
+  },
+  {
+    "idMapeo_t": 332025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-033/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE POZO PROFUNDO DE AGUA ENTUBADA TORRES CHICAS, EN LA DELEGACIÓN DE SAN DIEGO DE LOS PADRES CUEXCONTITLÁN, MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "8/9/2025",
+    "Termino de Ejecucion": "28/11/2025",
+    "Geolocalización": "19.372335, -99.600003"
+  },
+  {
+    "idMapeo_t": 342025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-034/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE POZO PROFUNDO DE AGUA  CARLOS HANK,  EN LA COLONIA CARLOS HANK, MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "8/9/2025",
+    "Termino de Ejecucion": "28/11/2025",
+    "Geolocalización": "19.312563, -99.646906"
+  },
+  {
+    "idMapeo_t": 352025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-035/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE POZO PROFUNDO DE AGUA ENTUBADA LA ESTACIÓN, EN LA COLONIA FERROCARRILES NACIONALES, MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "8/9/2025",
+    "Termino de Ejecucion": "28/11/2025",
+    "Geolocalización": "19.291036, -99.638373"
+  },
+  {
+    "idMapeo_t": 362025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-036/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE POZO PROFUNDO DE AGUA ENTUBADA LA NORMAL, EN LA COLONIA REFORMA Y FERROCARRILES NACIONALES (SAN JUAN BAUTISTA) DELEGACIÓN INDEPENDENCIA, MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "8/9/2025",
+    "Termino de Ejecucion": "28/11/2025",
+    "Geolocalización": "19.297077, -99.641145"
+  },
+  {
+    "idMapeo_t": 372025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-037/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN   DE POZO PROFUNDO DE AGUA ENTUBADA  EN SAN JUAN DE LA CRUZ,  EN LA COLONIA CARLOS HANK,  DELEGACION MAQUINITA, MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "8/9/2025",
+    "Termino de Ejecucion": "28/11/2025",
+    "Geolocalización": "19.315200, -99.647415"
+  },
+  {
+    "idMapeo_t": 382025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-038/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN (REHABILITACIÓN) DE POZO PROFUNDO DE AGUA ENTUBADA EN BARRIO MAGDALENA OTZACATIPAN,  DELEGACIÓN SAN MATEO OTZACATIPAN,  MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "8/9/2025",
+    "Termino de Ejecucion": "28/11/2025",
+    "Geolocalización": "19.336931, -99.612797"
+  },
+  {
+    "idMapeo_t": 392025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-039/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN (REHABILITACIÓN)  DE POZO PROFUNDO DE AGUA ENTUBADA LODO PRIETO III, COLONIA NUEVA OXTOTITLAN,  MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "8/9/2025",
+    "Termino de Ejecucion": "28/11/2025",
+    "Geolocalización": "19.281702, -99.687504"
+  },
+  {
+    "idMapeo_t": 402025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-040/2025",
+    "Nombre de la Obra": "REHABILITACIÓN DEL TANQUE EL CALVARIO EN LA LOCALIDAD TOLUCA DE LERDO, DELEGACIÓN CENTRO HISTÓRICO,  MUNICIPIO DE TOLUCA (VITRIFICACIÓN EL CALVARIO).",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "8/9/2025",
+    "Termino de Ejecucion": "7/10/2025",
+    "Geolocalización": "19.284525, -99.659822"
+  },
+  {
+    "idMapeo_t": 412025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-041/2025",
+    "Nombre de la Obra": "REHABILITACION DEL POZO HEROES 2a SECCIÓN, EN LA DELEGACION SANTA MARIA TOTOLTEPEC, MUNICIPIO DE TOLUCA, MEXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "15/9/2025",
+    "Termino de Ejecucion": "28/11/2025",
+    "Geolocalización": "19.295021, -99.578897"
+  },
+  {
+    "idMapeo_t": 422025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-042/2025",
+    "Nombre de la Obra": "REHABILITACION DEL POZO INFONAVIT LA CRESPA, EN LA SUBDELEGACIÓN CRESPA FLORESTA,  MUNICIPIO DE TOLUCA, MEXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "15/9/2025",
+    "Termino de Ejecucion": "28/11/2025",
+    "Geolocalización": "19.309921, -99.606350"
+  },
+  {
+    "idMapeo_t": 432025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-043/2025",
+    "Nombre de la Obra": "REHABILITACION DEL POZO SAN DIEGO DE LOS PADRES OTZACATIPAN, EN LA SUBDELEGACION SAN DIEGO DE LOS PADRES OTZACATIPAN,  MUNICIPIO DE TOLUCA, MEXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "15/9/2025",
+    "Termino de Ejecucion": "28/11/2025",
+    "Geolocalización": "19.370568, -99.587235"
+  },
+  {
+    "idMapeo_t": 442025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/PROAGUA-FAISMUN/LPN-044/2025",
+    "Nombre de la Obra": "REHABILITACION DEL POZO SAN PEDRO TOTOLTEPE CENTRO EN LA DELEGACIÓN SAN PEDRO TOTOLTEPEC,  MUNICIPIO DE TOLUCA, MEXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "15/9/2025",
+    "Termino de Ejecucion": "28/11/2025",
+    "Geolocalización": "19.312686, -99.572535"
+  },
+  {
+    "idMapeo_t": 452025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/IPDM/LPN-045/2025",
+    "Nombre de la Obra": "REHABILITACIÓN DEL PARQUE CUAUHTÉMOC (ALAMEDA CENTRAL), BARRIO LA MERCED, COL. CENTRO, MUNICIPIO DE TOLUCA, MÉXICO",
+    "Tipo de Obra": "Rescate de Espacios Públicos, Parques y Senderos Seguros",
+    "Inicio de Ejecucion": "22/9/2025",
+    "Termino de Ejecucion": "24/12/2025",
+    "Geolocalización": "19.290122, -99.662737"
+  },
+  {
+    "idMapeo_t": 492025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-049/2025",
+    "Nombre de la Obra": "REHABILITACIÓN DEL TANQUE DE SAN MIGUEL  EN LA LOCALIDAD TOLUCA DE LERDO, DELEGACIÓN BARRIOS TRADICIONALES,  MUNICIPIO DE TOLUCA.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "29/9/2025",
+    "Termino de Ejecucion": "12/11/2025",
+    "Geolocalización": "19.298876, -99.663726"
+  },
+  {
+    "idMapeo_t": 862025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-086/2025",
+    "Nombre de la Obra": "REHABILITACIÓN Y MANTENIMIENTO DE LA PLANTA DE TRATAMIENTO DEL RASTRO MUNICIPAL, EN AV. JOSÉ LÓPEZ PORTILLO, COL. EX HACIENDA LA MAGDALENA, DELEGACIÓN SANTA CRUZ ATZCAPOTZALTONGO, TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Mantenimiento",
+    "Inicio de Ejecucion": "17/10/2025",
+    "Termino de Ejecucion": "31/12/2025",
+    "Geolocalización": "19.316914, -99.630997"
+  },
+  {
+    "idMapeo_t": 1032025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/FEFOM/LPN-103/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE ARCOTECHO DE LA ESCUELA SECUNDARIA \"GUADALUPE VICTORIA\" C.C.T. 15DES03420, DEL. SAN PEDRO TOTOLTEPEC, MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "Inicio de Ejecucion": "29/10/2025",
+    "Termino de Ejecucion": "15/12/2025",
+    "Geolocalización": "19.315856, -99.551780"
+  },
+  {
+    "idMapeo_t": 1042025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/FEFOM/LPN-104/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE ARCOTECHO DE LA ESCUELA SECUNDARIA OFICIAL NO.0022 \"JOSÉ MARÍA MORELOS  Y PAVON\" C.C.T. 15EES0100Q , DEL. CAPULTITLAN,  MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "Inicio de Ejecucion": "29/10/2025",
+    "Termino de Ejecucion": "15/12/2025",
+    "Geolocalización": "19.248134, -99.665560"
+  },
+  {
+    "idMapeo_t": 1052025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/FEFOM/LPN-105/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE ARCOTECHO DE LA ESCUELA SECUNDARIA OFICIAL NO.0800 \"FRANCISCO VILLA\" C.C.T. 15EES1175N , DEL. JICALTEPEC AUTOPAN,  MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "Inicio de Ejecucion": "29/10/2025",
+    "Termino de Ejecucion": "15/12/2025",
+    "Geolocalización": "19.372369, -99.627248"
+  },
+  {
+    "idMapeo_t": 1062025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/FEFOM/LPN-106/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE ARCOTECHO DE LA ESCUELA PRIMARIA \"LUISA ISABEL CAMPOS DE JIMENEZ CANTU\" C.C.T. 15EPRO702P, DEL. SAN PEDRO TOTOLTEPEC,  MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "Inicio de Ejecucion": "29/10/2025",
+    "Termino de Ejecucion": "15/12/2025",
+    "Geolocalización": "19.327816, -99.573165"
+  },
+  {
+    "idMapeo_t": 1072025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/FEFOM/LPN-107/2025",
+    "Nombre de la Obra": "CONSTRUCCIÓN DE ARCOTECHO DEL JARDIN DE NIÑOS \"PROFESOR LUIS CAMARENA GONZALEZ\"  C.C.T. 15EJN2342R, DEL. SAN PABLO AUTOPAN,  MUNICIPIO DE TOLUCA, MÉXICO.",
+    "Tipo de Obra": "Construcción de Techumbres en Escuelas / Arcotechos",
+    "Inicio de Ejecucion": "29/10/2025",
+    "Termino de Ejecucion": "15/12/2025",
+    "Geolocalización": "19.386132, -99.687484"
+  },
+  {
+    "idMapeo_t": 1092025,
+    "idContrato": null,
+    "No. Contrato": "MT/DGOP/FAISMUN/LPN-109/2025",
+    "Nombre de la Obra": "CONSTRUCCION DE RED DE DRENAJE SANITARIO EN LA CALLE GUADALUPE VICTORIA Y VALLE DE BRAVO, JICALTEPEC AUTOPAN, TOLUCA, MEXICO.",
+    "Tipo de Obra": "Pozos y Drenajes",
+    "Inicio de Ejecucion": "29/10/2025",
+    "Termino de Ejecucion": "15/12/2025",
+    "Geolocalización": "19.380753, -99.638061"
+  }
+]
