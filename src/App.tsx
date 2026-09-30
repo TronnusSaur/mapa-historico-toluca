@@ -8,7 +8,6 @@ import {
   parseCSV, 
   groupIntoTramos, 
   isPointInGeoJSON, 
-  parsePavimentaciones, 
   mapSupabaseRowToPothole,
   parseContratosTramos,
   parseContratosPuntuales,
@@ -20,7 +19,7 @@ import {
   fetchDemandaCiudadanaGeneral,
   fetchPeticionesCiudadanas
 } from './utils/dataProcessors.ts';
-import type { PotholeData, Tramo, PavimentacionData } from './utils/dataProcessors.ts';
+import type { PotholeData, Tramo } from './utils/dataProcessors.ts';
 import type { FiltrosModulos, ObraTramo, ObraPuntual, Obra, YearFilter, DemandaCiudadana, PeticionCiudadana, ModuloObraId } from './types/obras.ts';
 import { supabase } from './lib/supabase.ts';
 import { 
@@ -193,34 +192,12 @@ export default function App() {
           }
         };
 
-        const fetchPavimentacionesWithFallback = async (): Promise<PavimentacionData[]> => {
-          const remoteUrl = `https://docs.google.com/spreadsheets/d/1ghxpCxkAQB-y_dh0dEbcMHvnhPI1r42lkbqEN7Q8kDg/gviz/tq?tqx=out:csv&sheet=${encodeURIComponent('DGOP - Pavimentacion')}`;
-          const localUrl = `${baseUrl}DGOP - Pavimentacion.csv`;
-          
-          try {
-            return await Promise.race([
-              parsePavimentaciones(remoteUrl),
-              new Promise<never>((_, reject) => 
-                setTimeout(() => reject(new Error('Google Sheets Timeout (5s)')), 5000)
-              )
-            ]);
-          } catch (err) {
-            console.warn("Fallo la carga remota de pavimentaciones (usando respaldo local):", err);
-            try {
-              return await parsePavimentaciones(localUrl);
-            } catch (localErr) {
-              console.error("Fallo tambien la carga local de pavimentaciones:", localErr);
-              return [];
-            }
-          }
-        };
-
         const CONTRATOS_SPREADSHEET_ID = '1fHaAXj9qtGqgDBIbTh2jxryElklH6NN6bFWrnUZmYdk';
 
         const fetchContratosTramosWithFallback = async (): Promise<ObraTramo[]> => {
-          // 1. Intento primario: Base de datos Supabase Alfa (public.mapeo_t)
+          // 1. Intento primario: Base de datos Supabase Alfa (public.mapeo_t con 2025 y 2026)
           try {
-            const data = await fetchObrasTramosSupabase();
+            const data = await fetchObrasTramosSupabase(baseUrl);
             if (data && data.length > 0) {
               console.log(`Cargadas ${data.length} obras de tramo desde Supabase Alfa.`);
               return data;
@@ -252,9 +229,9 @@ export default function App() {
         };
 
         const fetchContratosPuntualesWithFallback = async (): Promise<ObraPuntual[]> => {
-          // 1. Intento primario: Base de datos Supabase Alfa (public.mapeo_p)
+          // 1. Intento primario: Base de datos Supabase Alfa (public.mapeo_p con 2025 y 2026)
           try {
-            const data = await fetchObrasPuntualesSupabase();
+            const data = await fetchObrasPuntualesSupabase(baseUrl);
             if (data && data.length > 0) {
               console.log(`Cargadas ${data.length} obras puntuales desde Supabase Alfa.`);
               return data;
@@ -298,10 +275,9 @@ export default function App() {
           return [];
         };
 
-        // FASE 1: Carga INMEDIATA y prioritaria de Obras 2026, Pavimentaciones y Límites (<1 segundo)
-        const [, parsedPavimentaciones, contratosTramos, contratosPuntuales, dragonTramos, evidenciasMap, demandasData, peticionesData] = await Promise.all([
+        // FASE 1: Carga INMEDIATA y prioritaria de Obras 2025-2026 desde Supabase Alfa y Límites (<1 segundo)
+        const [, contratosTramos, contratosPuntuales, dragonTramos, evidenciasMap, demandasData, peticionesData] = await Promise.all([
           fetchGeoJSONBoundaries(),
-          fetchPavimentacionesWithFallback(),
           fetchContratosTramosWithFallback(),
           fetchContratosPuntualesWithFallback(),
           fetchDiabloDragonWithFallback(),
@@ -317,34 +293,8 @@ export default function App() {
           setPeticionesCiudadanas(peticionesData);
         }
 
-        // Convert DGOP Pavimentaciones to ObraTramo structure for unified presentation
-        const dgopTramos: ObraTramo[] = (parsedPavimentaciones || []).map(p => {
-          const isSlurry = p.tipoObra.toLowerCase().includes('slurry');
-          const isEco = p.tipoObra.toLowerCase().includes('ecol') || p.tipoObra.toLowerCase().includes('permeable');
-          const isHidr = p.tipoObra.toLowerCase().includes('hidr');
-          const subtipo = isEco ? 'ecologico' : isHidr ? 'hidraulico' : 'asfaltica';
-          
-          return {
-            id: `dgop-p-${p.no}`,
-            contrato: `DGOP-PAV-${p.no.toString().padStart(3, '0')}`,
-            nombre: p.descripcion || `Obra No. ${p.no} - ${p.tipoObra}`,
-            tipo: isSlurry ? 'slurry' : 'pavimentacion',
-            subtipo: isSlurry ? 'Mantenimiento con Slurry' : subtipo,
-            tipoRaw: p.tipoObra,
-            anio: 2025,
-            fechaInicio: new Date(2025, 0, 1),
-            fechaFin: new Date(2025, 11, 31),
-            delegacion: p.delegacion,
-            superficie: p.superficie,
-            metrosLineales: p.metrosLineales,
-            inversion: p.inversion,
-            geometriaTipo: 'tramo',
-            coords: p.coords
-          };
-        });
-
         const combinedTramos = [
-          ...vincularEvidenciasAObras([...(contratosTramos || []), ...dgopTramos], evidenciasMap),
+          ...vincularEvidenciasAObras(contratosTramos || [], evidenciasMap),
           ...(dragonTramos || [])
         ];
         const puntualesConEvidencias = vincularEvidenciasAObras(contratosPuntuales || [], evidenciasMap);

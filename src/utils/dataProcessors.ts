@@ -584,21 +584,38 @@ export const clasificarObra = (
   if (combined.includes('slurry')) {
     return { modulo: 'slurry', subtipo: 'Mantenimiento con Slurry' };
   }
-  if (combined.includes('sendero') || combined.includes('andador') || combined.includes('banqueta')) {
-    return { modulo: 'senderos', subtipo: 'Sendero Seguro' };
+  if (
+    combined.includes('sendero') || 
+    combined.includes('andador') || 
+    combined.includes('banqueta') ||
+    combined.includes('espacio público') ||
+    combined.includes('espacio publico') ||
+    combined.includes('parque')
+  ) {
+    return { modulo: 'senderos', subtipo: 'Sendero Seguro / Espacio Público' };
   }
   if (
     combined.includes('pozo') || 
     combined.includes('drenaje') || 
     combined.includes('colector') || 
     combined.includes('alcantarill') || 
-    combined.includes('sanitario')
+    combined.includes('sanitario') ||
+    combined.includes('canal') ||
+    combined.includes('pluvial') ||
+    combined.includes('tanque') ||
+    combined.includes('tratamiento')
   ) {
-    if (combined.includes('colector')) {
-      return { modulo: 'pozos', subtipo: 'Colector de Aguas Residuales' };
+    if (combined.includes('colector') || combined.includes('canal')) {
+      return { modulo: 'pozos', subtipo: 'Colector de Aguas Residuales / Pluvial' };
     }
     if (combined.includes('drenaje') || combined.includes('sanitario') || combined.includes('alcantarill')) {
       return { modulo: 'pozos', subtipo: 'Red de Drenaje Sanitario' };
+    }
+    if (combined.includes('tratamiento')) {
+      return { modulo: 'pozos', subtipo: 'Planta de Tratamiento / Saneamiento' };
+    }
+    if (combined.includes('tanque')) {
+      return { modulo: 'pozos', subtipo: 'Tanque de Agua Potable' };
     }
     return { modulo: 'pozos', subtipo: 'Pozo de Agua / Absorción' };
   }
@@ -614,6 +631,7 @@ export const clasificarObra = (
   }
   if (
     combined.includes('arcotecho') || 
+    combined.includes('techumbre') || 
     combined.includes('techado') || 
     combined.includes('escuela') || 
     combined.includes('aula') ||
@@ -943,45 +961,73 @@ export const parseContratosPuntuales = (url: string): Promise<ObraPuntual[]> => 
 };
 
 /**
- * Carga directa de Obras de Tramo desde Supabase Alfa (public.mapeo_t)
+ * Carga directa de Obras de Tramo desde Supabase Alfa (public.mapeo_t) con respaldo local
  */
-export const fetchObrasTramosSupabase = async (): Promise<ObraTramo[]> => {
-  const fetchPromise = (async () => {
-    const { data, error } = await supabase
-      .from('mapeo_t')
-      .select('*');
+export const fetchObrasTramosSupabase = async (baseUrl: string = ''): Promise<ObraTramo[]> => {
+  try {
+    const fetchPromise = (async () => {
+      const { data, error } = await supabase
+        .from('mapeo_t')
+        .select('*');
 
-    if (error) throw error;
-    if (!data || data.length === 0) throw new Error('No se encontraron registros en public.mapeo_t');
-    return parseTramosRows(data);
-  })();
+      if (error) throw error;
+      if (!data || data.length === 0) throw new Error('No se encontraron registros en public.mapeo_t');
+      return parseTramosRows(data);
+    })();
 
-  const timeoutPromise = new Promise<never>((_, reject) => 
-    setTimeout(() => reject(new Error('Supabase mapeo_t timeout (3.5s)')), 3500)
-  );
+    const timeoutPromise = new Promise<never>((_, reject) => 
+      setTimeout(() => reject(new Error('Supabase mapeo_t timeout (5s)')), 5000)
+    );
 
-  return await Promise.race([fetchPromise, timeoutPromise]);
+    return await Promise.race([fetchPromise, timeoutPromise]);
+  } catch (err) {
+    console.warn("Aviso: Supabase Alfa no respondió para mapeo_t, intentando respaldo local...", err);
+    try {
+      const res = await fetch(`${baseUrl}data/obras_tramos_supabase.json`);
+      if (res.ok) {
+        const localData = await res.json();
+        return parseTramosRows(localData);
+      }
+    } catch (localErr) {
+      console.error("Fallo tambien el respaldo local de mapeo_t:", localErr);
+    }
+    throw err;
+  }
 };
 
 /**
- * Carga directa de Obras Puntuales desde Supabase Alfa (public.mapeo_p)
+ * Carga directa de Obras Puntuales desde Supabase Alfa (public.mapeo_p) con respaldo local
  */
-export const fetchObrasPuntualesSupabase = async (): Promise<ObraPuntual[]> => {
-  const fetchPromise = (async () => {
-    const { data, error } = await supabase
-      .from('mapeo_p')
-      .select('*');
+export const fetchObrasPuntualesSupabase = async (baseUrl: string = ''): Promise<ObraPuntual[]> => {
+  try {
+    const fetchPromise = (async () => {
+      const { data, error } = await supabase
+        .from('mapeo_p')
+        .select('*');
 
-    if (error) throw error;
-    if (!data || data.length === 0) throw new Error('No se encontraron registros en public.mapeo_p');
-    return parsePuntualesRows(data);
-  })();
+      if (error) throw error;
+      if (!data || data.length === 0) throw new Error('No se encontraron registros en public.mapeo_p');
+      return parsePuntualesRows(data);
+    })();
 
-  const timeoutPromise = new Promise<never>((_, reject) => 
-    setTimeout(() => reject(new Error('Supabase mapeo_p timeout (3.5s)')), 3500)
-  );
+    const timeoutPromise = new Promise<never>((_, reject) => 
+      setTimeout(() => reject(new Error('Supabase mapeo_p timeout (5s)')), 5000)
+    );
 
-  return await Promise.race([fetchPromise, timeoutPromise]);
+    return await Promise.race([fetchPromise, timeoutPromise]);
+  } catch (err) {
+    console.warn("Aviso: Supabase Alfa no respondió para mapeo_p, intentando respaldo local...", err);
+    try {
+      const res = await fetch(`${baseUrl}data/obras_puntuales_supabase.json`);
+      if (res.ok) {
+        const localData = await res.json();
+        return parsePuntualesRows(localData);
+      }
+    } catch (localErr) {
+      console.error("Fallo tambien el respaldo local de mapeo_p:", localErr);
+    }
+    throw err;
+  }
 };
 
 /**
