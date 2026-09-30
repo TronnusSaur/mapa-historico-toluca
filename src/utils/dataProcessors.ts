@@ -1171,16 +1171,25 @@ export const fetchObrasDragonSupabase = async (baseUrl: string = ''): Promise<Ob
 };
 
 /**
- * Carga el catálogo de evidencias fotográficas de obras 2026
+ * Carga el catálogo de evidencias fotográficas de obras (2025 y 2026)
  */
 export const fetchEvidenciasObras = async (baseUrl: string = ''): Promise<Record<string, ObraEvidenciaData>> => {
   try {
-    const url = `${baseUrl}data/evidencias_obras_2026.json`;
-    const res = await fetch(url);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
+    const [res2026, res2025] = await Promise.allSettled([
+      fetch(`${baseUrl}data/evidencias_obras_2026.json`).then(r => r.ok ? r.json() : {}),
+      fetch(`${baseUrl}data/evidencias_obras_2025.json`).then(r => r.ok ? r.json() : {})
+    ]);
+
+    const map2026 = res2026.status === 'fulfilled' ? res2026.value : {};
+    const map2025 = res2025.status === 'fulfilled' ? res2025.value : {};
+
+    const total2026 = Object.keys(map2026).length;
+    const total2025 = Object.keys(map2025).length;
+    console.log(`Evidencias cargadas: ${total2026} entradas 2026, ${total2025} entradas 2025.`);
+
+    return { ...map2026, ...map2025 };
   } catch (err) {
-    console.warn("Aviso: No se pudo cargar el archivo evidencias_obras_2026.json:", err);
+    console.warn("Aviso: No se pudo cargar el catálogo de evidencias fotográficas:", err);
     return {};
   }
 };
@@ -1201,6 +1210,8 @@ export const vincularEvidenciasAObras = <T extends Obra>(
   Object.values(evidenciasMap).forEach(ev => {
     if (ev.idContrato) {
       byId.set(ev.idContrato.toUpperCase().trim(), ev);
+      const cleanId = ev.idContrato.toUpperCase().replace(/[\s\/-]+/g, '-').trim();
+      byNo.set(cleanId, ev);
     }
     if (ev.noContrato) {
       const cleanNo = ev.noContrato.toUpperCase().replace(/[\s\/-]+/g, '-').trim();
@@ -1208,6 +1219,9 @@ export const vincularEvidenciasAObras = <T extends Obra>(
 
       const lpnMatch = ev.noContrato.match(/LPN[-\s/]*(\d+)[-\s/]*(\d{4})/i);
       if (lpnMatch) {
+        const num = parseInt(lpnMatch[1], 10);
+        byLpn.set(`LPN-${num}-${lpnMatch[2]}`, ev);
+        byLpn.set(`LPN-${String(num).padStart(3, '0')}-${lpnMatch[2]}`, ev);
         byLpn.set(`LPN-${lpnMatch[1]}-${lpnMatch[2]}`, ev);
       }
     }
@@ -1227,11 +1241,14 @@ export const vincularEvidenciasAObras = <T extends Obra>(
       matchedEv = byNo.get(cleanC);
     }
 
-    // 3. Por LPN (ej: LPN-050-2026)
+    // 3. Por LPN (ej: LPN-050-2026, LPN-50-2026, LPN-084-2025)
     if (!matchedEv && obra.contrato) {
       const lpnMatch = obra.contrato.match(/LPN[-\s/]*(\d+)[-\s/]*(\d{4})/i);
       if (lpnMatch) {
-        matchedEv = byLpn.get(`LPN-${lpnMatch[1]}-${lpnMatch[2]}`);
+        const num = parseInt(lpnMatch[1], 10);
+        matchedEv = byLpn.get(`LPN-${num}-${lpnMatch[2]}`) ||
+                    byLpn.get(`LPN-${String(num).padStart(3, '0')}-${lpnMatch[2]}`) ||
+                    byLpn.get(`LPN-${lpnMatch[1]}-${lpnMatch[2]}`);
       }
     }
 
