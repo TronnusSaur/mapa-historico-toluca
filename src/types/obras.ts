@@ -111,6 +111,23 @@ export interface FiltrosModulos {
   // Capas de Demanda Ciudadana y Peticiones
   showDemandaCiudadana?: boolean;
   showPeticionesCiudadanas?: boolean;
+  // Capa Plan de Trabajo (Proyectos Ejecutivos)
+  showPlanTrabajo?: boolean;
+}
+
+export interface PlanTrabajoFeature {
+  id: string;
+  nombre: string;
+  delegacion: string;
+  tipoPavimento: string;
+  metrosLineales: number;
+  anchoCalzadaM: number;
+  superficieM2: number;
+  costoUnitarioM2: number;
+  presupuestoEstimadoMxn: number;
+  bachesPreviosCorredor: number;
+  peticionesCiudadanasCorredor: number;
+  coords: [number, number][]; // [[lat, lng], [lat, lng], ...]
 }
 
 export interface DemandaCiudadana {

@@ -17,10 +17,11 @@ import {
   fetchEvidenciasObras,
   vincularEvidenciasAObras,
   fetchDemandaCiudadanaGeneral,
-  fetchPeticionesCiudadanas
+  fetchPeticionesCiudadanas,
+  fetchPlanTrabajo
 } from './utils/dataProcessors.ts';
 import type { PotholeData, Tramo } from './utils/dataProcessors.ts';
-import type { FiltrosModulos, ObraTramo, ObraPuntual, Obra, YearFilter, DemandaCiudadana, PeticionCiudadana, ModuloObraId } from './types/obras.ts';
+import type { FiltrosModulos, ObraTramo, ObraPuntual, Obra, YearFilter, DemandaCiudadana, PeticionCiudadana, ModuloObraId, PlanTrabajoFeature } from './types/obras.ts';
 import { supabase } from './lib/supabase.ts';
 import { 
   BarChart3, 
@@ -36,7 +37,8 @@ import {
   Megaphone,
   Users,
   FileText,
-  Flame
+  Flame,
+  Briefcase
 } from 'lucide-react';
 
 // Marker Cluster component (manual instantiation for better control with 50k points)
@@ -47,6 +49,7 @@ import { ObrasLayers } from './components/ObrasLayers.tsx';
 import { MapLegend } from './components/MapLegend.tsx';
 import { ObraDetailModal } from './components/ObraDetailModal.tsx';
 import { CitizenDemandLayer } from './components/CitizenDemandLayer.tsx';
+import { PlanTrabajoLayer } from './components/PlanTrabajoLayer.tsx';
 import { HeatmapLayer } from './components/HeatmapLayer.tsx';
 import { HotspotsLayer } from './components/HotspotsLayer.tsx';
 import { HotspotsPanel } from './components/HotspotsPanel.tsx';
@@ -88,6 +91,9 @@ export default function App() {
   const [showDemandaCiudadana, setShowDemandaCiudadana] = useState<boolean>(true);
   const [peticionesCiudadanas, setPeticionesCiudadanas] = useState<PeticionCiudadana[]>([]);
   const [showPeticionesCiudadanas, setShowPeticionesCiudadanas] = useState<boolean>(true);
+  const [planTrabajoRoutes, setPlanTrabajoRoutes] = useState<PlanTrabajoFeature[]>([]);
+  const [showPlanTrabajo, setShowPlanTrabajo] = useState<boolean>(true);
+  const [selectedPlanRoute, setSelectedPlanRoute] = useState<PlanTrabajoFeature | null>(null);
   const [showHeatmap, setShowHeatmap] = useState<boolean>(false);
   const [showHotspots, setShowHotspots] = useState<boolean>(false);
   const [showHotspotsPanel, setShowHotspotsPanel] = useState<boolean>(false);
@@ -275,15 +281,16 @@ export default function App() {
           return [];
         };
 
-        // FASE 1: Carga INMEDIATA y prioritaria de Obras 2025-2026 desde Supabase Alfa y Límites (<1 segundo)
-        const [, contratosTramos, contratosPuntuales, dragonTramos, evidenciasMap, demandasData, peticionesData] = await Promise.all([
+        // FASE 1: Carga INMEDIATA y prioritaria de Obras 2025-2026 desde Supabase Alfa, Plan de Trabajo y Límites (<1 segundo)
+        const [, contratosTramos, contratosPuntuales, dragonTramos, evidenciasMap, demandasData, peticionesData, planTrabajoData] = await Promise.all([
           fetchGeoJSONBoundaries(),
           fetchContratosTramosWithFallback(),
           fetchContratosPuntualesWithFallback(),
           fetchDiabloDragonWithFallback(),
           fetchEvidenciasObras(baseUrl),
           fetchDemandaCiudadanaGeneral(baseUrl, (updated) => setDemandasCiudadanas(updated)),
-          fetchPeticionesCiudadanas(baseUrl, (updated) => setPeticionesCiudadanas(updated))
+          fetchPeticionesCiudadanas(baseUrl, (updated) => setPeticionesCiudadanas(updated)),
+          fetchPlanTrabajo(baseUrl)
         ]);
 
         if (demandasData && demandasData.length > 0) {
@@ -291,6 +298,9 @@ export default function App() {
         }
         if (peticionesData && peticionesData.length > 0) {
           setPeticionesCiudadanas(peticionesData);
+        }
+        if (planTrabajoData && planTrabajoData.length > 0) {
+          setPlanTrabajoRoutes(planTrabajoData);
         }
 
         const combinedTramos = [
@@ -1386,6 +1396,75 @@ export default function App() {
                 </button>
               </div>
             </div>
+
+            {/* Capa de Plan de Trabajo (48 Rutas Proyectadas) */}
+            <div className="pt-4 border-t border-slate-200">
+              <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 flex items-center gap-2">
+                <Briefcase size={14} className="text-purple-600" /> Plan de Trabajo
+              </h3>
+              <div className="space-y-2">
+                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-purple-200/80 cursor-pointer hover:bg-purple-50/50 transition-colors group shadow-xs">
+                  <div className="flex items-center gap-3">
+                    <input 
+                      type="checkbox" 
+                      checked={showPlanTrabajo} 
+                      onChange={(e) => setShowPlanTrabajo(e.target.checked)}
+                      className="w-4 h-4 accent-purple-600" 
+                    />
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-purple-700 to-indigo-600 text-white flex items-center justify-center text-[10px] shadow-xs">
+                        <Briefcase size={11} />
+                      </div>
+                      <span className="text-xs font-bold text-slate-700 group-hover:text-purple-800 transition-colors">
+                        Rutas Proyectadas
+                      </span>
+                    </div>
+                  </div>
+                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${showPlanTrabajo ? 'bg-purple-100 text-purple-800' : 'bg-slate-100 text-slate-400'}`}>
+                    {planTrabajoRoutes.length} tramos
+                  </span>
+                </label>
+
+                {showPlanTrabajo && planTrabajoRoutes.length > 0 && (
+                  <div className="p-3 bg-gradient-to-br from-purple-950 via-indigo-950 to-slate-900 rounded-xl text-white space-y-2 shadow-sm animate-in fade-in duration-200 border border-purple-900/50">
+                    <div className="flex items-center justify-between text-[11px] text-purple-200 font-semibold border-b border-purple-800/60 pb-1.5">
+                      <span>Inversión Estimada:</span>
+                      <span className="text-sm font-black text-white">
+                        ${(planTrabajoRoutes.reduce((acc, r) => acc + r.presupuestoEstimadoMxn, 0) / 1000000).toFixed(1)}M MXN
+                      </span>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-center text-[10px] pt-0.5">
+                      <div className="bg-white/10 rounded-lg p-1.5">
+                        <span className="text-purple-300 block text-[9px]">Longitud</span>
+                        <b className="text-xs text-white">
+                          {(planTrabajoRoutes.reduce((acc, r) => acc + r.metrosLineales, 0) / 1000).toFixed(1)} km
+                        </b>
+                      </div>
+                      <div className="bg-white/10 rounded-lg p-1.5">
+                        <span className="text-purple-300 block text-[9px]">Superficie</span>
+                        <b className="text-xs text-white">
+                          {Math.round(planTrabajoRoutes.reduce((acc, r) => acc + r.superficieM2, 0)).toLocaleString('es-MX')} m²
+                        </b>
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-2 gap-2 text-center text-[10px]">
+                      <div className="bg-white/10 rounded-lg p-1.5">
+                        <span className="text-emerald-300 block text-[9px]">Baches en Tramo</span>
+                        <b className="text-xs text-white">
+                          {planTrabajoRoutes.reduce((acc, r) => acc + r.bachesPreviosCorredor, 0).toLocaleString('es-MX')}
+                        </b>
+                      </div>
+                      <div className="bg-white/10 rounded-lg p-1.5">
+                        <span className="text-indigo-300 block text-[9px]">Peticiones DGOP</span>
+                        <b className="text-xs text-white">
+                          {planTrabajoRoutes.reduce((acc, r) => acc + r.peticionesCiudadanasCorredor, 0)}
+                        </b>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
           </div>
 
           <div className="mt-auto p-6 bg-slate-100/50">
@@ -1527,6 +1606,14 @@ export default function App() {
               showPeticiones={showPeticionesCiudadanas}
             />
 
+            {/* Capa de Plan de Trabajo (48 Rutas Proyectadas) */}
+            <PlanTrabajoLayer 
+              routes={planTrabajoRoutes}
+              visible={showPlanTrabajo}
+              selectedRouteId={selectedPlanRoute?.id}
+              onSelectRoute={(route) => setSelectedPlanRoute(route)}
+            />
+
             {/* Capa de Mapa de Calor (Heatmap) */}
             <HeatmapLayer 
               points={heatmapPoints} 
@@ -1551,6 +1638,9 @@ export default function App() {
               showPeticionesCiudadanas={showPeticionesCiudadanas}
               onTogglePeticionesCiudadanas={handleTogglePeticionesCiudadanas}
               peticionesCount={peticionesCiudadanas.length}
+              showPlanTrabajo={showPlanTrabajo}
+              onTogglePlanTrabajo={() => setShowPlanTrabajo(prev => !prev)}
+              planTrabajoCount={planTrabajoRoutes.length}
               showHeatmap={showHeatmap}
               onToggleHeatmap={handleToggleHeatmap}
               showHotspots={showHotspots}

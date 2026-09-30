@@ -3,7 +3,7 @@ import re
 import json
 import urllib.parse
 
-TUNNEL_BASE = 'https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025'
+TUNNEL_BASE = 'https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025'
 
 # 1. Cargar obras 2025 de Supabase
 with open('public/data/obras_tramos_supabase.json', 'r', encoding='utf-8') as f:

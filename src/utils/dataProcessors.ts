@@ -1,6 +1,6 @@
 import Papa from 'papaparse';
 import { supabase } from '../lib/supabase.ts';
-import type { ModuloObraId, SubtipoPavimentacion, Obra, ObraTramo, ObraPuntual, EstadoTemporalObra, ObraEvidenciaData, DemandaCiudadana, PeticionCiudadana } from '../types/obras.ts';
+import type { ModuloObraId, SubtipoPavimentacion, Obra, ObraTramo, ObraPuntual, EstadoTemporalObra, ObraEvidenciaData, DemandaCiudadana, PeticionCiudadana, PlanTrabajoFeature } from '../types/obras.ts';
 
 export interface PotholeData {
   id: string;
@@ -1051,7 +1051,7 @@ export const DIABLO_DRAGON_FOLDERS: Record<string, string> = {
  */
 export const parseDragonRows = (data: any[]): ObraTramo[] => {
   const parsed: ObraTramo[] = [];
-  const baseImgUrl = 'https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO%20DRAGON/';
+  const baseImgUrl = 'https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/';
 
   data.forEach((row, index) => {
     const idDragon = (getVal(row, ['idDragon', 'id_dragon', 'iddragon']) || `DR-${String(index + 1).padStart(2, '0')}`).toString().trim();
@@ -1514,6 +1514,54 @@ export const fetchPeticionesCiudadanas = async (
   });
 };
 
+/**
+ * Carga y procesa el GeoJSON de las 48 rutas proyectadas del Plan de Trabajo
+ */
+export const fetchPlanTrabajo = async (baseUrl: string = ''): Promise<PlanTrabajoFeature[]> => {
+  try {
+    const res = await fetch(`${baseUrl}rutas_nuevas_trazadas_48.geojson`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    const features: PlanTrabajoFeature[] = [];
 
+    (data.features || []).forEach((f: any, idx: number) => {
+      const p = f.properties || {};
+      const rawCoords = f.geometry?.coordinates || [];
 
+      // Invertir [lng, lat] de GeoJSON a [lat, lng] para Leaflet
+      const coords: [number, number][] = [];
+      for (const pt of rawCoords) {
+        if (Array.isArray(pt) && pt.length >= 2) {
+          const lng = Number(pt[0]);
+          const lat = Number(pt[1]);
+          if (!isNaN(lat) && !isNaN(lng)) {
+            coords.push([lat, lng]);
+          }
+        }
+      }
 
+      if (coords.length >= 2) {
+        features.push({
+          id: (p.id || `PLAN-TRAZO-${idx + 1}`).toString(),
+          nombre: (p.nombre || `Tramo Trazado #${idx + 1}`).toString(),
+          delegacion: (p.delegacion || 'TOLUCA').toString().trim(),
+          tipoPavimento: (p.tipo_pavimento || 'asfalto').toString(),
+          metrosLineales: Number(p.metros_lineales) || 0,
+          anchoCalzadaM: Number(p.ancho_calzada_m) || 7,
+          superficieM2: Number(p.superficie_m2) || 0,
+          costoUnitarioM2: Number(p.costo_unitario_m2) || 595,
+          presupuestoEstimadoMxn: Number(p.presupuesto_estimado_mxn) || 0,
+          bachesPreviosCorredor: Number(p.baches_previos_corredor) || 0,
+          peticionesCiudadanasCorredor: Number(p.peticiones_ciudadanas_corredor) || 0,
+          coords
+        });
+      }
+    });
+
+    console.log(`Plan de Trabajo: ${features.length} rutas proyectadas cargadas correctamente.`);
+    return features;
+  } catch (err) {
+    console.error("Error al cargar Plan de Trabajo (rutas_nuevas_trazadas_48.geojson):", err);
+    return [];
+  }
+};

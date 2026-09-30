@@ -13,7 +13,8 @@ import {
   ChevronUp,
   Layers,
   Megaphone,
-  FileText
+  FileText,
+  Briefcase
 } from 'lucide-react';
 
 interface MapLegendProps {
@@ -25,6 +26,9 @@ interface MapLegendProps {
   showPeticionesCiudadanas?: boolean;
   onTogglePeticionesCiudadanas?: () => void;
   peticionesCount?: number;
+  showPlanTrabajo?: boolean;
+  onTogglePlanTrabajo?: () => void;
+  planTrabajoCount?: number;
   showHeatmap?: boolean;
   onToggleHeatmap?: () => void;
   showHotspots?: boolean;
@@ -52,6 +56,9 @@ export const MapLegend: React.FC<MapLegendProps> = React.memo(({
   showPeticionesCiudadanas = true,
   onTogglePeticionesCiudadanas,
   peticionesCount = 601,
+  showPlanTrabajo = true,
+  onTogglePlanTrabajo,
+  planTrabajoCount = 48,
   showHeatmap = false,
   onToggleHeatmap,
   showHotspots = false,
@@ -308,6 +315,38 @@ export const MapLegend: React.FC<MapLegendProps> = React.memo(({
                 <div className="shrink-0 flex items-center gap-1 pl-1.5">
                   {showPeticionesCiudadanas ? (
                     <span className="w-2 h-2 rounded-full bg-indigo-500 shadow-sm" title="Capa visible" />
+                  ) : (
+                    <span className="w-2 h-2 rounded-full bg-slate-300" title="Capa oculta" />
+                  )}
+                </div>
+              </div>
+
+              {/* Capa Plan de Trabajo (Proyectos Ejecutivos) */}
+              <div 
+                onClick={onTogglePlanTrabajo}
+                className={`group flex items-center justify-between p-1.5 rounded-xl transition-all cursor-pointer border mt-1 ${
+                  showPlanTrabajo
+                    ? 'bg-purple-50/70 hover:bg-purple-100/80 border-purple-200/80'
+                    : 'bg-slate-50/30 hover:bg-slate-100/50 border-transparent opacity-40 hover:opacity-75'
+                }`}
+              >
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="relative shrink-0 w-6 h-6 rounded-full bg-gradient-to-tr from-purple-700 to-indigo-600 flex items-center justify-center shadow-sm border-2 border-white ring-1 ring-purple-200/50 transition-transform group-hover:scale-110">
+                    <Briefcase size={11} className="text-white" />
+                  </div>
+                  <div className="min-w-0 flex flex-col">
+                    <span className="text-[11px] font-bold text-slate-800 truncate leading-tight group-hover:text-purple-800 transition-colors">
+                      Plan de Trabajo
+                    </span>
+                    <span className="text-[9px] text-purple-700 font-semibold truncate leading-tight">
+                      {planTrabajoCount} rutas proyectadas
+                    </span>
+                  </div>
+                </div>
+
+                <div className="shrink-0 flex items-center gap-1 pl-1.5">
+                  {showPlanTrabajo ? (
+                    <span className="w-2 h-2 rounded-full bg-purple-600 shadow-sm" title="Capa visible" />
                   ) : (
                     <span className="w-2 h-2 rounded-full bg-slate-300" title="Capa oculta" />
                   )}
