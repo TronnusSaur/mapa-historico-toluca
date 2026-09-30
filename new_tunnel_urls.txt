@@ -1,2 +1,2 @@
-PHOTOS_URL=https://dependent-max-warcraft-portsmouth.trycloudflare.com
-SUPABASE_URL=https://realized-wider-walked-donors.trycloudflare.com
+PHOTOS_URL=https://video-chelsea-prince-unsigned.trycloudflare.com
+SUPABASE_URL=https://books-belkin-pharmacy-print.trycloudflare.com

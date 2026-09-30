@@ -123,6 +123,7 @@ export default function App() {
   });
 
   useEffect(() => {
+    let cancelled = false;
     const loadAll = async () => {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       let loadedBoundaries: any = null;
@@ -320,20 +321,33 @@ export default function App() {
         setDbLoading(true);
 
         (async () => {
+          if (cancelled) return;
           try {
-            // 1. Cargar tickets locales (50,000 registros)
-            const totalTickets = await parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL');
-            const enrichedTickets = totalTickets
-              .filter(p => p !== null && p !== undefined)
-              .map(p => ({
-                ...p,
-                inZona: loadedBoundaries ? isPointInGeoJSON(p.lat, p.lng, loadedBoundaries) : true
-              }));
+            // 1. Cargar tickets locales (50,000 registros) de forma independiente
+            try {
+              const totalTickets = await parseCSV(`${baseUrl}data/6 - TICKETS TOTALES.csv`, 'TICKET_TOTAL');
+              if (!cancelled && totalTickets && totalTickets.length > 0) {
+                const enrichedTickets = totalTickets
+                  .filter(p => p !== null && p !== undefined)
+                  .map(p => ({
+                    ...p,
+                    inZona: loadedBoundaries ? isPointInGeoJSON(p.lat, p.lng, loadedBoundaries) : true
+                  }));
 
-            setData(enrichedTickets);
-            console.log(`Tickets locales cargados en segundo plano: ${enrichedTickets.length}`);
+                setData(prev => {
+                  const existingIds = new Set(prev.map(item => item.id));
+                  const uniqueNew = enrichedTickets.filter(item => !existingIds.has(item.id));
+                  return [...prev, ...uniqueNew];
+                });
+                console.log(`Tickets locales cargados en segundo plano: ${enrichedTickets.length}`);
+              }
+            } catch (ticketErr) {
+              console.warn("Aviso al cargar tickets locales:", ticketErr);
+            }
 
-            // 2. Sincronizar etapas ejecutadas de Supabase
+            if (cancelled) return;
+
+            // 2. Sincronizar etapas ejecutadas de Supabase Alfa
             const stageTasks = [
               { filter: '1', name: 'Etapa 1' },
               { filter: 'sp', name: 'Servicios Públicos' },
@@ -344,7 +358,10 @@ export default function App() {
             let allLoadedBacheos: PotholeData[] = [];
 
             for (const task of stageTasks) {
+              if (cancelled) return;
               const stageBacheos = await fetchStageBacheos(task.filter, task.name);
+              if (cancelled) return;
+
               if (stageBacheos.length > 0) {
                 const enriched = stageBacheos.map(p => ({
                   ...p,
@@ -358,33 +375,41 @@ export default function App() {
                   const uniqueNew = enriched.filter(item => !existingIds.has(item.id));
                   return [...prev, ...uniqueNew];
                 });
+
+                // Precalcular tramos progresivamente para que aparezcan de inmediato en el mapa
+                const ejecutadosEnZona = allLoadedBacheos.filter(p => 
+                  p.status === 'EJECUTADO' && 
+                  p.inZona && 
+                  !(p.stage && p.stage >= 100) &&
+                  !isNaN(p.lat) && p.lat !== 0
+                );
+                const computed = groupIntoTramos(ejecutadosEnZona, 80, 2);
+                if (!cancelled) {
+                  setAllTramos(computed);
+                }
               }
             }
 
-            // Precalcular tramos de bacheo una vez sincronizados
-            const ejecutadosEnZona = allLoadedBacheos.filter(p => 
-               p.status === 'EJECUTADO' && 
-               p.inZona && 
-               !(p.stage && p.stage >= 100) &&
-               !isNaN(p.lat) && p.lat !== 0
-            );
-            const computed = groupIntoTramos(ejecutadosEnZona, 80, 2);
-            setAllTramos(computed);
-            setDbLoading(false);
-            console.log(`Carga de base de datos de bacheo completa. ${allLoadedBacheos.length} baches ejecutados sincronizados.`);
+            if (!cancelled) {
+              setDbLoading(false);
+              console.log(`Carga de base de datos de bacheo completa. ${allLoadedBacheos.length} baches ejecutados sincronizados.`);
+            }
           } catch (bgErr) {
             console.warn("Aviso en sincronización de bacheo en segundo plano:", bgErr);
-            setDbLoading(false);
+            if (!cancelled) setDbLoading(false);
           }
         })();
 
       } catch (err) {
         console.error("Error loading initial data:", err);
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
     loadAll();
-  }, []);  // Helper para filtrar por año seleccionado
+    return () => {
+      cancelled = true;
+    };
+  }, []);  // Helper para filtrar por año seleccionado
   const matchesYear = (d?: Date | null, stage?: number): boolean => {
     if (selectedYear === 'todos') return true;
     const y = parseInt(selectedYear, 10);
