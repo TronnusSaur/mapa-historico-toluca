@@ -1,6 +1,6 @@
 import Papa from 'papaparse';
 import { supabase } from '../lib/supabase.ts';
-import type { ModuloObraId, SubtipoPavimentacion, Obra, ObraTramo, ObraPuntual, EstadoTemporalObra, ObraEvidenciaData, DemandaCiudadana, PeticionCiudadana, PlanTrabajoFeature } from '../types/obras.ts';
+import type { ModuloObraId, SubtipoPavimentacion, Obra, ObraTramo, ObraPuntual, EstadoTemporalObra, ObraEvidenciaData, ObraEvidenciasFotos, DemandaCiudadana, PeticionCiudadana, PlanTrabajoFeature } from '../types/obras.ts';
 
 export interface PotholeData {
   id: string;
@@ -1051,7 +1051,9 @@ export const DIABLO_DRAGON_FOLDERS: Record<string, string> = {
  */
 export const parseDragonRows = (data: any[]): ObraTramo[] => {
   const parsed: ObraTramo[] = [];
-  const baseImgUrl = 'https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/';
+  const photosBase = import.meta.env.VITE_PHOTOS_URL || 'https://imagenes.soranoserver.com';
+  const cleanBase = photosBase.endsWith('/') ? photosBase.slice(0, -1) : photosBase;
+  const baseImgUrl = `${cleanBase}/imagenes/DIABLO%20DRAGON/`;
 
   data.forEach((row, index) => {
     const idDragon = (getVal(row, ['idDragon', 'id_dragon', 'iddragon']) || `DR-${String(index + 1).padStart(2, '0')}`).toString().trim();
@@ -1187,7 +1189,39 @@ export const fetchEvidenciasObras = async (baseUrl: string = ''): Promise<Record
     const total2025 = Object.keys(map2025).length;
     console.log(`Evidencias cargadas: ${total2026} entradas 2026, ${total2025} entradas 2025.`);
 
-    return { ...map2026, ...map2025 };
+    const normalizeUrl = (u: string | null | undefined): string | null => {
+      if (!u) return null;
+      return u.replace(/https:\/\/[a-zA-Z0-9-]+\.trycloudflare\.com/g, 'https://imagenes.soranoserver.com');
+    };
+
+    const normalizeEvidencia = (ev: any): ObraEvidenciaData => {
+      const fotosObj: ObraEvidenciasFotos = {
+        inicio: normalizeUrl(ev?.fotos?.inicio),
+        proceso: Array.isArray(ev?.fotos?.proceso) ? ev.fotos.proceso.map((p: any) => normalizeUrl(p)).filter(Boolean) as string[] : [],
+        terminado: normalizeUrl(ev?.fotos?.terminado),
+        fotosDragon: Array.isArray(ev?.fotos?.fotosDragon) ? ev.fotos.fotosDragon.map((p: any) => normalizeUrl(p)).filter(Boolean) as string[] : undefined
+      };
+
+      const fallbackObj: ObraEvidenciasFotos | undefined = ev?.fotosFallback ? {
+        inicio: normalizeUrl(ev.fotosFallback.inicio),
+        proceso: Array.isArray(ev.fotosFallback.proceso) ? ev.fotosFallback.proceso.map((p: any) => normalizeUrl(p)).filter(Boolean) as string[] : [],
+        terminado: normalizeUrl(ev.fotosFallback.terminado),
+        fotosDragon: Array.isArray(ev.fotosFallback.fotosDragon) ? ev.fotosFallback.fotosDragon.map((p: any) => normalizeUrl(p)).filter(Boolean) as string[] : undefined
+      } : undefined;
+
+      return {
+        ...ev,
+        fotos: fotosObj,
+        fotosFallback: fallbackObj
+      };
+    };
+
+    const combined: Record<string, ObraEvidenciaData> = {};
+    Object.entries({ ...map2026, ...map2025 }).forEach(([k, v]) => {
+      combined[k] = normalizeEvidencia(v);
+    });
+
+    return combined;
   } catch (err) {
     console.warn("Aviso: No se pudo cargar el catálogo de evidencias fotográficas:", err);
     return {};

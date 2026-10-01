@@ -1,2 +1,2 @@
-PHOTOS_URL=https://video-chelsea-prince-unsigned.trycloudflare.com
-SUPABASE_URL=https://books-belkin-pharmacy-print.trycloudflare.com
+PHOTOS_URL=https://imagenes.soranoserver.com
+SUPABASE_URL=https://supabase.soranoserver.com

@@ -57,8 +57,8 @@ $$\text{distancia} \approx \sqrt{(\Delta \text{lat} \cdot 111,320)^2 + (\Delta \
 
 Toda la información se aloja en el servidor dedicado de base de datos **Supabase Alfa** de la Dirección de Obras:
 
-- **Host URL Base**: `https://realized-wider-walked-donors.trycloudflare.com`
-- **PostgREST Endpoint**: `https://realized-wider-walked-donors.trycloudflare.com/rest/v1/`
+- **Host URL Base**: `https://supabase.soranoserver.com`
+- **PostgREST Endpoint**: `https://supabase.soranoserver.com/rest/v1/`
 - **Anon Public API Key**:
   ```text
   eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE
@@ -107,7 +107,7 @@ Toda la información se aloja en el servidor dedicado de base de datos **Supabas
 Las imágenes de evidencia fotográfica se sirven desde un túnel dedicado de almacenamiento Nginx de alta velocidad:
 
 - **Host Base de Fotografías**:  
-  `https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/`
+  `https://imagenes.soranoserver.com/imagenes/`
 
 El sistema gestiona **dos esquemas fotográficos** dependiendo de la naturaleza de la obra:
 
@@ -119,7 +119,7 @@ Para todas las obras licitadas regulares, las fotografías siguen la secuencia t
 
 #### Ruta en el Servidor:
 ```text
-https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/EVIDENCIAS DE OBRAS 2026/<CATEGORIA>/<ID_CONTRATO>/
+https://imagenes.soranoserver.com/imagenes/EVIDENCIAS DE OBRAS 2026/<CATEGORIA>/<ID_CONTRATO>/
 ```
 
 #### Nombres de Archivo Estandarizados:
@@ -147,7 +147,7 @@ La pavimentadora automática "Diablo Dragón" es una recicladora continua de asf
 
 #### Ruta en el Servidor:
 ```text
-https://dependent-max-warcraft-portsmouth.trycloudflare.com/imagenes/DIABLO DRAGON/<CARPETA_VIALIDAD>/<NUMERO>.jpeg
+https://imagenes.soranoserver.com/imagenes/DIABLO DRAGON/<CARPETA_VIALIDAD>/<NUMERO>.jpeg
 ```
 
 Donde `<NUMERO>` es un entero de `1` a `6` (`1.jpeg`, `2.jpeg`, `3.jpeg`, `4.jpeg`, `5.jpeg`, `6.jpeg`).

@@ -2,7 +2,7 @@ import urllib.request
 import base64
 import json
 
-base_url = 'https://realized-wider-walked-donors.trycloudflare.com'
+base_url = 'https://supabase.soranoserver.com'
 auth = base64.b64encode(b'supabase:this_password_is_insecure_and_should_be_updated').decode('ascii')
 headers = {
     'Authorization': f'Basic {auth}',

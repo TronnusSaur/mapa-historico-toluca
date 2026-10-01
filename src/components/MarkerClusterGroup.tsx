@@ -52,9 +52,9 @@ async function fetchPotholeDetails(pData: PotholeData): Promise<PotholeDetails> 
       'fotoBacheTerminado1', 'fotoBacheTerminado2', 'fotoBacheTerminado3'
     ];
 
-    const DEFAULT_PHOTOS_URL = 'https://video-chelsea-prince-unsigned.trycloudflare.com';
+    const DEFAULT_PHOTOS_URL = 'https://imagenes.soranoserver.com';
     let photosUrlBase = import.meta.env.VITE_PHOTOS_URL || DEFAULT_PHOTOS_URL;
-    if (typeof window !== 'undefined' && ((window.location.protocol === 'https:' && photosUrlBase.startsWith('http://192.168.')) || photosUrlBase.includes('dependent-max-warcraft-portsmouth'))) {
+    if (typeof window !== 'undefined' && (photosUrlBase.startsWith('http://192.168.') || photosUrlBase.includes('trycloudflare.com'))) {
       photosUrlBase = DEFAULT_PHOTOS_URL;
     }
     const urls: string[] = [];

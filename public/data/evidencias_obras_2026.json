@@ -11,16 +11,16 @@
     "fechaFin": "20/12/2026",
     "categoria": "COLECTOR",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/FENA-097/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/FENA-097/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/FENA-097/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/FENA-097/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -37,18 +37,18 @@
     "fechaFin": "4/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_proceso.jpg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/PROCESO.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/PROCESO.jpg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/TERMINADO.jpeg"
     }
   },
   "IAP-062": {
@@ -63,16 +63,16 @@
     "fechaFin": "4/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-062/_inicio.jpg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-062/_inicio.jpg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-062/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-062/_proceso.jpg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/INICIO.JPG",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/INICIO.JPG",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/PROCESO.JPG"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/PROCESO.JPG"
       ],
       "terminado": null
     }
@@ -89,18 +89,18 @@
     "fechaFin": "4/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_inicio.jpg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_inicio.jpg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/INICIO.JPG",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/INICIO.JPG",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/TERMINADO.jpeg"
     }
   },
   "TERRA-064": {
@@ -115,18 +115,18 @@
     "fechaFin": "5/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_proceso.jpg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/PROCESO.JPG"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/PROCESO.JPG"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/TERMINADO.jpeg"
     }
   },
   "TERRA-065": {
@@ -141,18 +141,18 @@
     "fechaFin": "5/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_proceso.jpg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/PROCESO.JPG"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/PROCESO.JPG"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/TERMINADO.jpeg"
     }
   },
   "IAP-066": {
@@ -167,18 +167,18 @@
     "fechaFin": "5/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_proceso.jpg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/PROCESO.JPG"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/PROCESO.JPG"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/TERMINADO.jpeg"
     }
   },
   "IAP-067": {
@@ -193,16 +193,16 @@
     "fechaFin": "5/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-067/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-067/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-067/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-067/_proceso.jpg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/PROCESO.JPG"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/PROCESO.JPG"
       ],
       "terminado": null
     }
@@ -219,18 +219,18 @@
     "fechaFin": "25/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_proceso.jpg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/PROCESO.JPG"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/PROCESO.JPG"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/TERMINADO.jpeg"
     }
   },
   "IAP-087": {
@@ -245,16 +245,16 @@
     "fechaFin": "25/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-087/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-087/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-087/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-087/_proceso.jpg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/PROCESO.JPG"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/PROCESO.JPG"
       ],
       "terminado": null
     }
@@ -271,18 +271,18 @@
     "fechaFin": "4/10/2026",
     "categoria": "CONCRETOS HIDRAULICOS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_proceso.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_proceso.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_proceso_2.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO-2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO-2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -299,18 +299,18 @@
     "fechaFin": "3/10/2026",
     "categoria": "CONCRETOS HIDRAULICOS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/TERMINO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/TERMINO.jpeg"
     }
   },
   "MAMUTEE-060": {
@@ -325,18 +325,18 @@
     "fechaFin": "4/10/2026",
     "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/TERMINADO.jpeg"
     }
   },
   "CARASTOL-092": {
@@ -351,16 +351,16 @@
     "fechaFin": "1/10/2026",
     "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/CARASTOL-092/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/CARASTOL-092/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/CARASTOL-092/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/CARASTOL-092/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -377,16 +377,16 @@
     "fechaFin": "1/10/2026",
     "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/EDIT-095/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/EDIT-095/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/EDIT-095/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/EDIT-095/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -403,18 +403,18 @@
     "fechaFin": "24/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/TERMINADO.jpeg"
     }
   },
   "VERDE-050": {
@@ -429,18 +429,18 @@
     "fechaFin": "16/7/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/TERMINADO.jpeg"
     }
   },
   "SINFRA-051": {
@@ -455,20 +455,20 @@
     "fechaFin": "16/7/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_proceso.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_proceso.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_proceso_2.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO-2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO-2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/TERMINADO.jpeg"
     }
   },
   "EDIT-052": {
@@ -483,18 +483,18 @@
     "fechaFin": "16/7/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/TERMINADO.jpeg"
     }
   },
   "ARPLEX-058": {
@@ -509,18 +509,18 @@
     "fechaFin": "4/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_proceso.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_proceso.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_proceso_2.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO-2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO-2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -537,18 +537,18 @@
     "fechaFin": "24/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/TERMINADO.jpeg"
     }
   },
   "CREA-081": {
@@ -565,16 +565,16 @@
     "fotos": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CREA-081/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CREA-081/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CREA-081/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CREA-081/_terminado.jpeg"
     },
     "fotosFallback": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/TERMINADO.jpeg"
     }
   },
   "REDNI-082": {
@@ -589,18 +589,18 @@
     "fechaFin": "24/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/TERMINADO.jpeg"
     }
   },
   "ESCARPIO-083": {
@@ -615,18 +615,18 @@
     "fechaFin": "24/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/TERMINADO.jpeg"
     }
   },
   "MAMUTEE-089": {
@@ -641,18 +641,18 @@
     "fechaFin": "25/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/TERMINADO.jpeg"
     }
   },
   "SINFRA-090": {
@@ -667,18 +667,18 @@
     "fechaFin": "25/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_proceso.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_proceso.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_proceso_2.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO-2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO-2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -695,18 +695,18 @@
     "fechaFin": "30/11/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_proceso.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_proceso.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_proceso_2.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO-2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO-2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -723,18 +723,18 @@
     "fechaFin": "3/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/TERMINADO.jpeg"
     }
   },
   "RASECA-056": {
@@ -749,20 +749,20 @@
     "fechaFin": "3/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_proceso.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_proceso.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_proceso_2.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO-2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO-2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/TERMINADO.jpeg"
     }
   },
   "ICI-077": {
@@ -777,18 +777,18 @@
     "fechaFin": "5/11/2026",
     "categoria": "SENDEROS Y PARQUES",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_proceso.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_proceso.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_proceso_2.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO-2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO-2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -805,16 +805,16 @@
     "fechaFin": "6/10/2026",
     "categoria": "SENDEROS Y PARQUES",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-076/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-076/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-076/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-076/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -831,16 +831,16 @@
     "fechaFin": "30/11/2026",
     "categoria": "SENDEROS Y PARQUES",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/EAPRO-094/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/EAPRO-094/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/EAPRO-094/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/EAPRO-094/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -857,18 +857,18 @@
     "fechaFin": "3/10/2026",
     "categoria": "SENDEROS Y PARQUES",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/TERMINADO.jpeg"
     }
   },
   "VIFUD-049": {
@@ -883,18 +883,18 @@
     "fechaFin": "30/10/2026",
     "categoria": "SEÑALAMIENTO",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/PROCESO%20%282%29.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/PROCESO%20%282%29.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/FINAL.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/FINAL.jpeg"
     }
   },
   "SAQEB-079": {
@@ -909,18 +909,18 @@
     "fechaFin": "24/10/2026",
     "categoria": "SLURRY",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/TERMINADO.jpeg"
     }
   },
   "GZALES-080": {
@@ -935,18 +935,18 @@
     "fechaFin": "24/10/2026",
     "categoria": "SLURRY",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/TERMINADO.jpeg"
     }
   },
   "TOVAR-085": {
@@ -961,18 +961,18 @@
     "fechaFin": "24/10/2026",
     "categoria": "SLURRY",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/FINAL.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/FINAL.jpeg"
     }
   },
   "EAPRO-055": {
@@ -987,18 +987,18 @@
     "fechaFin": "3/10/2026",
     "categoria": "SLURRY",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_proceso.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_terminado.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/TERMINADO.jpeg"
     }
   },
   "CREA-068": {
@@ -1013,16 +1013,16 @@
     "fechaFin": "5/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-068/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-068/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-068/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-068/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -1039,16 +1039,16 @@
     "fechaFin": "5/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-069/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-069/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-069/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-069/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -1065,16 +1065,16 @@
     "fechaFin": "5/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-070/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-070/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-070/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-070/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -1091,16 +1091,16 @@
     "fechaFin": "5/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-071/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-071/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-071/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-071/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/INICIO.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -1117,16 +1117,16 @@
     "fechaFin": "6/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-072/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-072/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-072/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-072/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -1143,16 +1143,16 @@
     "fechaFin": "6/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-073/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-073/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-073/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-073/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -1169,16 +1169,16 @@
     "fechaFin": "6/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/REDNI-074/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/REDNI-074/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/REDNI-074/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/REDNI-074/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -1195,16 +1195,16 @@
     "fechaFin": "6/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/INOVA-075/_inicio.jpg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/INOVA-075/_inicio.jpg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/INOVA-075/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/INOVA-075/_proceso.jpg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-075-2026/INICIAL.jpg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-075-2026/INICIAL.jpg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-075-2026/PROCESO.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-075-2026/PROCESO.jpg"
       ],
       "terminado": null
     }
@@ -1221,16 +1221,16 @@
     "fechaFin": "25/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MAMUTEE-088/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MAMUTEE-088/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MAMUTEE-088/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MAMUTEE-088/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-088-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-088-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-088-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-088-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -1247,16 +1247,16 @@
     "fechaFin": "31/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-093/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-093/_inicio.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-093/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-093/_proceso.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-093-2026/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-093-2026/INICIAL.jpeg",
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-093-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-093-2026/PROCESO.jpeg"
       ],
       "terminado": null
     }
@@ -1270,21 +1270,21 @@
     "fotos": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/6.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/6.jpeg",
+      "terminado": "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/6.jpeg",
       "fotosDragon": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/BENITO%20JUAREZ/6.jpeg"
       ]
     }
   },
@@ -1297,21 +1297,21 @@
     "fotos": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/6.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/6.jpeg",
+      "terminado": "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/6.jpeg",
       "fotosDragon": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/LAGUNA%20SIETE%20COLORES/6.jpeg"
       ]
     }
   },
@@ -1324,21 +1324,21 @@
     "fotos": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/6.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/6.jpeg",
+      "terminado": "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/6.jpeg",
       "fotosDragon": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/FRANCISCO%20MURGIA/6.jpeg"
       ]
     }
   },
@@ -1351,21 +1351,21 @@
     "fotos": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/6.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/6.jpeg",
+      "terminado": "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/6.jpeg",
       "fotosDragon": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/VALENTIN%20GOMEZ%20FARIAS/6.jpeg"
       ]
     }
   },
@@ -1378,21 +1378,21 @@
     "fotos": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/6.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/6.jpeg",
+      "terminado": "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/6.jpeg",
       "fotosDragon": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/DE%20LOS%20PANTEONES/6.jpeg"
       ]
     }
   },
@@ -1405,21 +1405,21 @@
     "fotos": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/6.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/6.jpeg",
+      "terminado": "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/6.jpeg",
       "fotosDragon": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/PASEO%20MATLAZINCAS/6.jpeg"
       ]
     }
   },
@@ -1432,21 +1432,21 @@
     "fotos": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/6.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/6.jpeg",
+      "terminado": "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/6.jpeg",
       "fotosDragon": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/SANTOS%20DEGOLLADO/6.jpeg"
       ]
     }
   },
@@ -1459,21 +1459,21 @@
     "fotos": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/6.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/6.jpeg",
+      "terminado": "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/6.jpeg",
       "fotosDragon": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20DERECHA/6.jpeg"
       ]
     }
   },
@@ -1486,21 +1486,21 @@
     "fotos": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/6.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/6.jpeg",
+      "terminado": "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/6.jpeg",
       "fotosDragon": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/HEROICO%20COLEGIO%20MILITAR%20IZQUIERDA/6.jpeg"
       ]
     }
   },
@@ -1513,21 +1513,21 @@
     "fotos": {
       "inicio": null,
       "proceso": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/6.jpeg"
       ],
-      "terminado": "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/6.jpeg",
+      "terminado": "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/6.jpeg",
       "fotosDragon": [
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/1.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/2.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/3.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/4.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/5.jpeg",
-        "https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/6.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/1.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/6.jpeg"
       ]
     }
   }

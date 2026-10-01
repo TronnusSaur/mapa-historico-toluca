@@ -6,7 +6,7 @@ import base64
 import shutil
 
 # 1. Conectar a Supabase para obtener mapeos y metadata
-base_url = 'https://books-belkin-pharmacy-print.trycloudflare.com'
+base_url = 'https://supabase.soranoserver.com'
 auth = base64.b64encode(b'supabase:this_password_is_insecure_and_should_be_updated').decode('ascii')
 headers = {
     'Authorization': f'Basic {auth}',
@@ -62,7 +62,7 @@ special_matches = {
 }
 
 base_dir = r'C:\Users\USR\Desktop\EVIDENCIAS DE OBRAS 2026'
-tunnel_base = 'https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026'
+tunnel_base = 'https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026'
 
 categories = [c for c in os.listdir(base_dir) if os.path.isdir(os.path.join(base_dir, c))]
 print(f"Categorías encontradas ({len(categories)}): {categories}")

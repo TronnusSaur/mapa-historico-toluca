@@ -28,7 +28,7 @@ print(f"Total mapped files: {len(file_map)}")
 with open(r'public/data/evidencias_obras_2026.json', 'r', encoding='utf-8') as f:
     manifest = json.load(f)
 
-tunnel_base = 'https://video-chelsea-prince-unsigned.trycloudflare.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026'
+tunnel_base = 'https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026'
 
 def make_fallback_url(new_url):
     if not new_url: return None
