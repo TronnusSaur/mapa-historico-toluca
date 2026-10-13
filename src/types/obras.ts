@@ -63,6 +63,7 @@ export interface ObraBase {
   idContrato?: string;
   contratista?: string;
   montoContratado?: string;
+  avance?: string;
   evidencias?: ObraEvidenciaData;
 }
 

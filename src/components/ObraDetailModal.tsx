@@ -230,9 +230,25 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                 </h2>
               </div>
 
-              {/* 2. Badges: Estado y Tipo de Obra */}
+              {/* 2. Badges: Estado, Avance y Tipo de Obra */}
               <div className="flex flex-wrap items-center gap-1.5 my-2.5">
                 {renderStatusBadge()}
+                {(() => {
+                  if (obra.tipo === 'dragon') return null;
+                  const avanceVal = obra.avance || (obra.anio === 2025 || (obra.contrato && obra.contrato.includes('2025')) ? '100%' : null);
+                  if (!avanceVal) return null;
+                  const isComplete = avanceVal === '100%';
+                  return (
+                    <span className={`inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide border shadow-xs ${
+                      isComplete 
+                        ? 'bg-emerald-50 text-emerald-800 border-emerald-200' 
+                        : 'bg-blue-50 text-blue-800 border-blue-200'
+                    }`}>
+                      <span className={`w-1.5 h-1.5 rounded-full ${isComplete ? 'bg-emerald-500' : 'bg-blue-500 animate-pulse'}`} />
+                      Avance {avanceVal}
+                    </span>
+                  );
+                })()}
                 <span className="px-2.5 py-0.5 bg-slate-100 text-slate-600 rounded-full text-[11px] font-semibold uppercase">
                   {obra.tipo.toUpperCase()}{obra.subtipo ? ` · ${obra.subtipo}` : ''}
                 </span>

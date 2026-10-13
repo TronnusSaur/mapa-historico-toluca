@@ -16,6 +16,8 @@ import {
   fetchObrasDragonSupabase,
   fetchEvidenciasObras,
   vincularEvidenciasAObras,
+  fetchAvancesObras2026,
+  vincularAvancesAObras,
   fetchDemandaCiudadanaGeneral,
   fetchPeticionesCiudadanas,
   fetchPlanTrabajo
@@ -283,12 +285,13 @@ export default function App() {
         };
 
         // FASE 1: Carga INMEDIATA y prioritaria de Obras 2025-2026 desde Supabase Alfa, Plan de Trabajo y Límites (<1 segundo)
-        const [, contratosTramos, contratosPuntuales, dragonTramos, evidenciasMap, demandasData, peticionesData, planTrabajoData] = await Promise.all([
+        const [, contratosTramos, contratosPuntuales, dragonTramos, evidenciasMap, avancesMap, demandasData, peticionesData, planTrabajoData] = await Promise.all([
           fetchGeoJSONBoundaries(),
           fetchContratosTramosWithFallback(),
           fetchContratosPuntualesWithFallback(),
           fetchDiabloDragonWithFallback(),
           fetchEvidenciasObras(baseUrl),
+          fetchAvancesObras2026(baseUrl),
           fetchDemandaCiudadanaGeneral(baseUrl, (updated) => setDemandasCiudadanas(updated)),
           fetchPeticionesCiudadanas(baseUrl, (updated) => setPeticionesCiudadanas(updated)),
           fetchPlanTrabajo(baseUrl)
@@ -304,11 +307,14 @@ export default function App() {
           setPlanTrabajoRoutes(planTrabajoData);
         }
 
-        const combinedTramos = [
+        const combinedTramos = vincularAvancesAObras([
           ...vincularEvidenciasAObras(contratosTramos || [], evidenciasMap),
           ...(dragonTramos || [])
-        ];
-        const puntualesConEvidencias = vincularEvidenciasAObras(contratosPuntuales || [], evidenciasMap);
+        ], avancesMap);
+        const puntualesConEvidencias = vincularAvancesAObras(
+          vincularEvidenciasAObras(contratosPuntuales || [], evidenciasMap),
+          avancesMap
+        );
         setObrasTramos(combinedTramos);
         setObrasPuntuales(puntualesConEvidencias);
 

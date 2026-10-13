@@ -1315,6 +1315,113 @@ export const vincularEvidenciasAObras = <T extends Obra>(
 };
 
 /**
+ * Carga el catálogo de avances de obra 2026 desde el archivo CSV
+ */
+export const fetchAvancesObras2026 = async (baseUrl: string = ''): Promise<Map<string, string>> => {
+  const avancesMap = new Map<string, string>();
+  try {
+    const csvUrl = encodeURI(`${baseUrl}OBRAS 2026 ESTATUS -  AVANCE 12_10_26.csv`);
+    const response = await fetch(csvUrl);
+    if (!response.ok) {
+      console.warn("Aviso: No se pudo descargar el archivo CSV de avances de obra 2026:", response.statusText);
+      return avancesMap;
+    }
+    const csvText = await response.text();
+    const results = Papa.parse(csvText, { header: true, skipEmptyLines: true });
+    const rows = results.data as Record<string, any>[];
+
+    rows.forEach(row => {
+      const contrato = (row['NO. DE CONTRATO'] || row['No. Contrato'] || '').toString().trim();
+      let avanceReal = (row['AVANCE REAL '] || row['AVANCE REAL'] || '').toString().trim();
+      if (!avanceReal) return;
+      if (!avanceReal.endsWith('%')) {
+        avanceReal = `${avanceReal}%`;
+      }
+
+      if (contrato) {
+        avancesMap.set(contrato.toUpperCase(), avanceReal);
+        const cleanNo = contrato.toUpperCase().replace(/[\s\/-]+/g, '-').trim();
+        avancesMap.set(cleanNo, avanceReal);
+
+        const lpnMatch = contrato.match(/LPN[-\s/]*(\d+)[-\s/]*(\d{4})/i);
+        if (lpnMatch) {
+          const num = parseInt(lpnMatch[1], 10);
+          avancesMap.set(`LPN-${num}-${lpnMatch[2]}`, avanceReal);
+          avancesMap.set(`LPN-${String(num).padStart(3, '0')}-${lpnMatch[2]}`, avanceReal);
+          avancesMap.set(`LPN-${lpnMatch[1]}-${lpnMatch[2]}`, avanceReal);
+        }
+      }
+    });
+
+    console.log(`Catálogo de avances de obra 2026 cargado exitosamente (${rows.length} registros).`);
+    return avancesMap;
+  } catch (err) {
+    console.warn("Aviso al cargar avances de obra 2026:", err);
+    return avancesMap;
+  }
+};
+
+/**
+ * Vincula cada obra con su porcentaje de avance:
+ * - Para obras de 2025: marca 100% por defecto.
+ * - Para obras de 2026: busca en el mapa de avances de obra 2026.
+ * - Para diablo dragón: se omite por el momento según indicación del usuario.
+ */
+export const vincularAvancesAObras = <T extends Obra>(
+  obras: T[],
+  avancesMap: Map<string, string>
+): T[] => {
+  return obras.map(obra => {
+    // Si es diablo dragón, se deja sin avance por ahora
+    if (obra.tipo === 'dragon') {
+      return obra;
+    }
+
+    const contratoStr = (obra.contrato || obra.evidencias?.noContrato || '').toString().trim();
+    const is2025 = obra.anio === 2025 || contratoStr.includes('2025');
+
+    // Por defecto todas las de 2025 al 100%
+    if (is2025) {
+      return {
+        ...obra,
+        avance: '100%'
+      };
+    }
+
+    // Para obras de 2026, buscar en avancesMap
+    let matchedAvance: string | undefined;
+
+    if (contratoStr) {
+      matchedAvance = avancesMap.get(contratoStr.toUpperCase());
+
+      if (!matchedAvance) {
+        const cleanNo = contratoStr.toUpperCase().replace(/[\s\/-]+/g, '-').trim();
+        matchedAvance = avancesMap.get(cleanNo);
+      }
+
+      if (!matchedAvance) {
+        const lpnMatch = contratoStr.match(/LPN[-\s/]*(\d+)[-\s/]*(\d{4})/i);
+        if (lpnMatch) {
+          const num = parseInt(lpnMatch[1], 10);
+          matchedAvance = avancesMap.get(`LPN-${num}-${lpnMatch[2]}`) ||
+                          avancesMap.get(`LPN-${String(num).padStart(3, '0')}-${lpnMatch[2]}`) ||
+                          avancesMap.get(`LPN-${lpnMatch[1]}-${lpnMatch[2]}`);
+        }
+      }
+    }
+
+    if (matchedAvance) {
+      return {
+        ...obra,
+        avance: matchedAvance
+      };
+    }
+
+    return obra;
+  });
+};
+
+/**
  * Carga la capa de Demanda Ciudadana General con estrategia Local-First (instantánea <15ms)
  * y sincronización silenciosa en segundo plano con Google Sheets.
  */
