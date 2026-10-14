@@ -90,9 +90,13 @@ const createObraPinIcon = (obra: ObraTramo | ObraPuntual, color: string, status:
   const svg = getObraSvg(obra.tipo);
   const isEnProceso = status === 'EN_EJECUCION';
   const isConcluida = status === 'CONCLUIDA';
-  const borderStyle = isConcluida 
-    ? 'border: 2.5px solid #d4af37 !important; box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5), 0 3px 8px rgba(0, 0, 0, 0.35);' 
-    : '';
+  const isPlaneada = obra.esPlaneada;
+  let borderStyle = '';
+  if (isConcluida) {
+    borderStyle = 'border: 2.5px solid #d4af37 !important; box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.5), 0 3px 8px rgba(0, 0, 0, 0.35);';
+  } else if (isPlaneada) {
+    borderStyle = 'border: 2.5px dashed #f59e0b !important; box-shadow: 0 0 0 2px rgba(245, 158, 11, 0.4), 0 3px 8px rgba(0, 0, 0, 0.3);';
+  }
 
   return L.divIcon({
     className: 'obra-pin-marker',
@@ -188,8 +192,9 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = React.memo(({
 
         if (!obra.coords || obra.coords.length === 0) return null;
 
+        const isPlaneada = obra.esPlaneada;
         const color = getTramoColor(obra);
-        const opacity = status === 'POR_INICIAR' ? 0.45 : 0.85;
+        const opacity = isPlaneada ? 0.85 : (status === 'POR_INICIAR' ? 0.45 : 0.85);
 
         const midpoint = obra.coords.length === 1 ? obra.coords[0] : getTramoMidpoint(obra.coords);
 
@@ -204,6 +209,13 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = React.memo(({
           >
             <Tooltip sticky className="premium-tooltip">
               <div className="font-sans">
+                {isPlaneada && (
+                  <div className="mb-1">
+                    <span className="inline-block px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300 font-black text-[9px] uppercase tracking-wide">
+                      Financiamiento GIDEM 2026 · En Planeación
+                    </span>
+                  </div>
+                )}
                 <p className="text-[10px] font-bold text-slate-500 uppercase">{obra.tipo.toUpperCase()} · {obra.subtipo}</p>
                 <p className="text-xs font-black text-slate-800 line-clamp-2">{obra.nombre}</p>
                 <p className="text-[10px] text-slate-500 mt-0.5">{obra.metrosLineales ? `${obra.metrosLineales.toLocaleString()} ML · ` : ''}{obra.delegacion}</p>
@@ -220,7 +232,7 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = React.memo(({
         const isDrenaje = obra.tipo === 'pozos';
         const tramoDashArray = isDrenaje 
           ? '10, 6' 
-          : (status === 'POR_INICIAR' ? '6, 6' : undefined);
+          : (isPlaneada ? '8, 6' : (status === 'POR_INICIAR' ? '6, 6' : undefined));
         const tramoWeight = isDrenaje ? 6 : (status === 'EN_EJECUCION' ? 6 : 5);
         const tramoOpacity = isDrenaje ? 0.95 : opacity;
 
@@ -255,6 +267,13 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = React.memo(({
             >
               <Tooltip sticky className="premium-tooltip">
                 <div className="font-sans">
+                  {isPlaneada && (
+                    <div className="mb-1">
+                      <span className="inline-block px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300 font-black text-[9px] uppercase tracking-wide">
+                        Financiamiento GIDEM 2026 · En Planeación
+                      </span>
+                    </div>
+                  )}
                   <p className="text-[10px] font-bold text-slate-500 uppercase">{obra.tipo.toUpperCase()} · {obra.subtipo}</p>
                   <p className="text-xs font-black text-slate-800 line-clamp-2">{obra.nombre}</p>
                   <p className="text-[10px] text-slate-500 mt-0.5">{obra.metrosLineales ? `${obra.metrosLineales.toLocaleString()} ML · ` : ''}{obra.delegacion}</p>

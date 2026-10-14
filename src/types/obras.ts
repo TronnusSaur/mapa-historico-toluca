@@ -64,6 +64,8 @@ export interface ObraBase {
   contratista?: string;
   montoContratado?: string;
   avance?: string;
+  financiamiento?: string;
+  esPlaneada?: boolean;
   evidencias?: ObraEvidenciaData;
 }
 

@@ -707,6 +707,11 @@ export const calcularMetrosLinealesTramo = (coords: [number, number][]): number 
  * Determina el estado temporal de una obra con respecto a la fecha seleccionada en el mapa
  */
 export const getObraTimelineStatus = (obra: Obra, currentDate: Date): EstadoTemporalObra => {
+  // 0. Si la obra está marcada explícitamente como planeada (ej. cartera GIDEM 2026 sin licitación ni contrato)
+  if (obra.esPlaneada) {
+    return 'POR_INICIAR';
+  }
+
   const anio = obra.anio || (obra.fechaInicio ? obra.fechaInicio.getFullYear() : 2026);
   const start = obra.fechaInicio || (anio === 2026 ? new Date(2026, 4, 1) : new Date(anio, 0, 1));
   const end = obra.fechaFin || new Date(anio, 11, 31);
@@ -1419,6 +1424,92 @@ export const vincularAvancesAObras = <T extends Obra>(
 
     return obra;
   });
+};
+
+/**
+ * Carga las obras planeadas con financiamiento GIDEM 2026 desde el archivo CSV
+ */
+export const fetchObrasGidem = async (baseUrl: string = ''): Promise<ObraTramo[]> => {
+  try {
+    const csvUrl = encodeURI(`${baseUrl}OBRAS GIDEM 2026 - Hoja 2.csv`);
+    const response = await fetch(csvUrl);
+    if (!response.ok) {
+      console.warn("Aviso: No se pudo descargar el archivo CSV de obras GIDEM 2026:", response.statusText);
+      return [];
+    }
+    const csvText = await response.text();
+    const results = Papa.parse(csvText, { header: true, skipEmptyLines: true });
+    const rows = results.data as Record<string, any>[];
+
+    const parsed: ObraTramo[] = [];
+
+    rows.forEach((row, index) => {
+      const nombre = (getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '').toString().trim();
+      const tipoRaw = (getVal(row, ['Tipo de Obra', 'tipo', 'tipo_obra']) || '').toString().trim();
+      if (!nombre) return;
+
+      const pKeys = Object.keys(row)
+        .filter(key => /P\d+/i.test(key))
+        .sort((a, b) => {
+          const matchA = a.match(/P(\d+)/i);
+          const matchB = b.match(/P(\d+)/i);
+          const numA = matchA ? parseInt(matchA[1], 10) : 0;
+          const numB = matchB ? parseInt(matchB[1], 10) : 0;
+          return numA - numB;
+        });
+
+      const coords: [number, number][] = [];
+      pKeys.forEach(key => {
+        const val = row[key];
+        if (val) {
+          const pt = extractCoords(val.toString());
+          if (pt && !isNaN(pt.lat) && !isNaN(pt.lng) && pt.lat !== 0 && pt.lng !== 0) {
+            let lat = pt.lat;
+            let lng = pt.lng;
+            if (lat < 0 && lng > 0) {
+              lat = pt.lng;
+              lng = pt.lat;
+            }
+            coords.push([lat, lng]);
+          }
+        }
+      });
+
+      if (coords.length === 0) return;
+
+      const { modulo, subtipo } = clasificarObra(tipoRaw, nombre);
+      const delegacionCol = getVal(row, ['Delegación', 'delegacion']);
+      const delegacion = delegacionCol ? delegacionCol.toString().trim() : extraerDelegacion(nombre);
+      const metrosLineales = coords.length >= 2 ? calcularMetrosLinealesTramo(coords) : 0;
+
+      const idMapeo = (row.idMapeo_t || index + 1).toString().trim();
+
+      parsed.push({
+        id: `gidem-${idMapeo}`,
+        idContrato: `GIDEM-${String(idMapeo).padStart(2, '0')}`,
+        contrato: 'POR LICITAR',
+        nombre,
+        tipo: modulo,
+        subtipo,
+        tipoRaw,
+        anio: 2026,
+        fechaInicio: null,
+        fechaFin: null,
+        delegacion,
+        metrosLineales,
+        geometriaTipo: 'tramo',
+        coords,
+        financiamiento: 'GIDEM 2026',
+        esPlaneada: true
+      });
+    });
+
+    console.log(`Cargadas ${parsed.length} obras planeadas con financiamiento GIDEM 2026.`);
+    return parsed;
+  } catch (err) {
+    console.warn("Aviso al cargar obras planeadas GIDEM 2026:", err);
+    return [];
+  }
 };
 
 /**

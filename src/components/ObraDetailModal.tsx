@@ -153,6 +153,14 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
   const status = getTimelineStatus();
 
   const renderStatusBadge = () => {
+    if (obra.esPlaneada) {
+      return (
+        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide bg-amber-50 text-amber-900 border border-amber-300 shadow-sm">
+          <Clock size={12} className="text-amber-600" />
+          EN PLANEACIÓN / POR LICITAR
+        </span>
+      );
+    }
     if (status === 'CONCLUIDA') {
       return (
         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide bg-amber-50/90 text-amber-900 border border-[#d4af37] shadow-sm">
@@ -178,7 +186,7 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
   };
 
   const formatDate = (date?: Date | null) => {
-    if (!date) return 'Sin fecha';
+    if (!date) return obra.esPlaneada ? 'Por programar' : 'Sin fecha';
     return date.toLocaleDateString('es-MX', {
       day: '2-digit',
       month: '2-digit',
@@ -222,11 +230,18 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
             <div>
               {/* 1. Número de Contrato (Tipografía afinada) */}
               <div className="mb-2">
-                <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block mb-1">
-                  Número de Contrato
-                </span>
+                <div className="flex items-center justify-between mb-1">
+                  <span className="text-[10px] font-black uppercase tracking-widest text-slate-400 block">
+                    {obra.esPlaneada ? 'Estatus Contractual' : 'Número de Contrato'}
+                  </span>
+                  {obra.financiamiento && (
+                    <span className="px-2 py-0.5 rounded-full bg-amber-100 text-amber-900 border border-amber-300 text-[10px] font-black uppercase tracking-wide shadow-2xs">
+                      {obra.financiamiento}
+                    </span>
+                  )}
+                </div>
                 <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight break-words font-mono">
-                  {obra.contrato || obra.evidencias?.noContrato || 'S/N'}
+                  {obra.esPlaneada ? 'POR LICITAR (SIN CONTRATO)' : (obra.contrato || obra.evidencias?.noContrato || 'S/N')}
                 </h2>
               </div>
 
@@ -234,7 +249,7 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
               <div className="flex flex-wrap items-center gap-1.5 my-2.5">
                 {renderStatusBadge()}
                 {(() => {
-                  if (obra.tipo === 'dragon') return null;
+                  if (obra.tipo === 'dragon' || obra.esPlaneada) return null;
                   const avanceVal = obra.avance || (obra.anio === 2025 || (obra.contrato && obra.contrato.includes('2025')) ? '100%' : null);
                   if (!avanceVal) return null;
                   const isComplete = avanceVal === '100%';
@@ -431,10 +446,13 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                     <ImageIcon size={26} />
                   </div>
                   <h4 className="text-sm font-bold text-slate-200 mb-0.5">
-                    Fotografía en preparación
+                    {obra.esPlaneada ? 'Obra en Etapa de Planeación' : 'Fotografía en preparación'}
                   </h4>
-                  <p className="text-[11px] text-slate-400 max-w-xs leading-snug">
-                    No se ha registrado fotografía para la etapa <b className="text-slate-300 capitalize">{etapaActiva}</b> de esta obra.
+                  <p className="text-[11px] text-slate-400 max-w-sm leading-snug">
+                    {obra.esPlaneada 
+                      ? 'Proyecto estratégico con financiamiento GIDEM 2026. La evidencia fotográfica estará disponible una vez concluido el proceso de licitación y comenzados los trabajos en campo.'
+                      : <>No se ha registrado fotografía para la etapa <b className="text-slate-300 capitalize">{etapaActiva}</b> de esta obra.</>
+                    }
                   </p>
                 </div>
               )}
