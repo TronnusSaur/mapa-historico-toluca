@@ -1,0 +1,860 @@
+{
+  "BACHEO": {
+    "COLONIAS HÉROES DEL 5 DE MAYO 1Y2, DEL SEMINARIO2 DE MARZO": {
+      "path": "BACHEO/COLONIAS%20H%C3%89ROES%20DEL%205%20DE%20MAYO%201Y2%2C%20DEL%20SEMINARIO2%20DE%20MARZO/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN ADOLFO LÓPEZ MATEOS": {
+      "path": "BACHEO/DELEGACI%C3%93N%20ADOLFO%20L%C3%93PEZ%20MATEOS/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN ARBOL DE LAS MANITAS": {
+      "path": "BACHEO/DELEGACI%C3%93N%20ARBOL%20DE%20LAS%20MANITAS/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN BARRIOS TRADICIONALES": {
+      "path": "BACHEO/DELEGACI%C3%93N%20BARRIOS%20TRADICIONALES/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN CACALOMACÁN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20CACALOMAC%C3%81N/",
+      "files": [
+        "caja.jfif",
+        "inicial.jfif",
+        "terminado.jfif"
+      ]
+    },
+    "DELEGACIÓN CALIXTLAHUACA": {
+      "path": "BACHEO/DELEGACI%C3%93N%20CALIXTLAHUACA/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN CAPULTITLÁN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20CAPULTITL%C3%81N/",
+      "files": [
+        "Caja.jpg",
+        "Inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN CENTRO HISTÓRICO": {
+      "path": "BACHEO/DELEGACI%C3%93N%20CENTRO%20HIST%C3%93RICO/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN CERRILLO VISTA HERMOSA": {
+      "path": "BACHEO/DELEGACI%C3%93N%20CERRILLO%20VISTA%20HERMOSA/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN CIUDAD UNIVERSITARIA": {
+      "path": "BACHEO/DELEGACI%C3%93N%20CIUDAD%20UNIVERSITARIA/",
+      "files": [
+        "caja.jfif",
+        "inicial.jfif",
+        "terminado.jfif"
+      ]
+    },
+    "DELEGACIÓN COLÓN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20COL%C3%93N/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN DEL PARQUE": {
+      "path": "BACHEO/DELEGACI%C3%93N%20DEL%20PARQUE/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN INDEPENDENCIA": {
+      "path": "BACHEO/DELEGACI%C3%93N%20INDEPENDENCIA/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN MAQUINITA": {
+      "path": "BACHEO/DELEGACI%C3%93N%20MAQUINITA/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN MODERNA DE LA CRUZ": {
+      "path": "BACHEO/DELEGACI%C3%93N%20MODERNA%20DE%20LA%20CRUZ/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN MORELOS": {
+      "path": "BACHEO/DELEGACI%C3%93N%20MORELOS/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN NUEVA OXTOTITLÁN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20NUEVA%20OXTOTITL%C3%81N/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN OCHO CEDROS": {
+      "path": "BACHEO/DELEGACI%C3%93N%20OCHO%20CEDROS/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN SAN ANTONIO BUENAVISTA": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20ANTONIO%20BUENAVISTA/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN SAN BUENAVENTURA": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20BUENAVENTURA/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SAN CAYETANO MORELOS": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20CAYETANO%20MORELOS/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN SAN CRISTÓBAL HUICHOCHITLÁN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20CRIST%C3%93BAL%20HUICHOCHITL%C3%81N/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SAN DIEGO LINARES AUTOPAN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20DIEGO%20LINARES%20AUTOPAN/",
+      "files": [
+        "caja.png",
+        "inicial.png",
+        "terminado.png"
+      ]
+    },
+    "DELEGACIÓN SAN FELIPE TLALMIMILOLPAN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20FELIPE%20TLALMIMILOLPAN/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SAN LORENZO TEPALTITLÁN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20LORENZO%20TEPALTITL%C3%81N/",
+      "files": [
+        "caja.jpg",
+        "inicial.png",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SAN MARCOS YACHIHUACALTEPEC": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20MARCOS%20YACHIHUACALTEPEC/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SAN MARTÍN TOLTEPEC": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20MART%C3%8DN%20TOLTEPEC/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN SAN MATEO OTZACATIPAN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20MATEO%20OTZACATIPAN/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SAN MATEO OXTOTITLÁN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20MATEO%20OXTOTITL%C3%81N/",
+      "files": [
+        "caja.png",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SAN PABLO AUTOPAN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20PABLO%20AUTOPAN/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN SAN PEDRO TOTOLTEPEC": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20PEDRO%20TOTOLTEPEC/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SAN SEBASTÍAN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20SEBAST%C3%8DAN/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SAN ÁNDRES CUEXCONTITLÁN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAN%20%C3%81NDRES%20CUEXCONTITL%C3%81N/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SANTA ANA TLAPALTITLÁN": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SANTA%20ANA%20TLAPALTITL%C3%81N/",
+      "files": [
+        "caja.jfif",
+        "inicial.jfif",
+        "terminado.jfif"
+      ]
+    },
+    "DELEGACIÓN SANTA CRUZ ATZACAPOZALTONGO": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SANTA%20CRUZ%20ATZACAPOZALTONGO/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SANTA MARÍA DE LAS ROSAS": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SANTA%20MAR%C3%8DA%20DE%20LAS%20ROSAS/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN SANTA MARÍA TOTOLTEPEC": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SANTA%20MAR%C3%8DA%20TOTOLTEPEC/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN SANTIAGO MILTEPEC": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SANTIAGO%20MILTEPEC/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SANTIAGO TLACOTEPEC": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SANTIAGO%20TLACOTEPEC/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SANTIAGO TLAXOMULCO": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SANTIAGO%20TLAXOMULCO/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN SAUCES": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SAUCES/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SEMINARIO 2 DE MARZO": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SEMINARIO%202%20DE%20MARZO/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN SEMINARIO CONCILIAR": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SEMINARIO%20CONCILIAR/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    },
+    "DELEGACIÓN SEMINARIO LAS TORRES": {
+      "path": "BACHEO/DELEGACI%C3%93N%20SEMINARIO%20LAS%20TORRES/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "DELEGACIÓN SÁNCHEZ": {
+      "path": "BACHEO/DELEGACI%C3%93N%20S%C3%81NCHEZ/",
+      "files": [
+        "caja.jfif",
+        "inicial.jfif",
+        "terminado.jfif"
+      ]
+    },
+    "DELEGACIÓN UNIVERSIDAD": {
+      "path": "BACHEO/DELEGACI%C3%93N%20UNIVERSIDAD/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "LOCALIDAD DE SANTA CRUZ ATZCAPOTZALTONGO NORTE": {
+      "path": "BACHEO/LOCALIDAD%20DE%20SANTA%20CRUZ%20ATZCAPOTZALTONGO%20NORTE/",
+      "files": [
+        "caja.jpg",
+        "inicial.jpg",
+        "terminado.jpg"
+      ]
+    },
+    "SUBDELEGACIÓN SAN NICOLÁS TOLENTINO": {
+      "path": "BACHEO/SUBDELEGACI%C3%93N%20SAN%20NICOL%C3%81S%20TOLENTINO/",
+      "files": [
+        "caja.jpeg",
+        "inicial.jpeg",
+        "terminado.jpeg"
+      ]
+    }
+  },
+  "COLECTOR": {
+    "MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026": {
+      "path": "COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    }
+  },
+  "CONCRETOS ECOLOGICOS": {
+    "MT-DGOP-FAISMUN-LPN-061-2026": {
+      "path": "CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO.jpg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-062-2026": {
+      "path": "CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/",
+      "files": [
+        "INICIO.JPG",
+        "PROCESO.JPG"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-063-2026": {
+      "path": "CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/",
+      "files": [
+        "INICIO.JPG",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-064-2026": {
+      "path": "CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO.JPG",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-065-2026": {
+      "path": "CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO.JPG",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-066-2026": {
+      "path": "CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO.JPG"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-067-2026": {
+      "path": "CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO.JPG"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-086-2026": {
+      "path": "CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO.JPG",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-087-2026": {
+      "path": "CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO.JPG"
+      ]
+    }
+  },
+  "CONCRETOS HIDRAULICOS": {
+    "MT-DGOP-FAISMUN-LPN-059-2026": {
+      "path": "CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO-2.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FEFOM-LPN-105-2026": {
+      "path": "CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "INICIO2.jpeg",
+        "INICIO3.jpeg"
+      ]
+    },
+    "MT-DGOP-FEFOM-LPN-107-2026": {
+      "path": "CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "INICIO2.jpeg",
+        "INICIO3.jpeg"
+      ]
+    },
+    "MT-DGOP-IPDM-LPN-053-2026": {
+      "path": "CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO.jpeg",
+        "TERMINO.jpeg"
+      ]
+    }
+  },
+  "CONSTRUCCIÓN DE CARPETA ASFALTICA": {
+    "MT-DGOP-FAISMUN-LPN-060-2026": {
+      "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-092-2026": {
+      "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-095-2026": {
+      "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-104-2026": {
+      "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "INICIO2.jpeg",
+        "INICIO3.jpeg"
+      ]
+    },
+    "MT-DGOP-FEFOM-LPN-106-2026": {
+      "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "INICIO2.jpeg",
+        "INICIO3.jpeg"
+      ]
+    },
+    "MT-DGOP-FEFOM-LPN-110-2026": {
+      "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-110-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "INICIO2.jpeg",
+        "INICIO3.jpeg"
+      ]
+    },
+    "MT-DGOP-FEFOM-LPN-111-2026": {
+      "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-111-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "INICIO2.jpeg",
+        "INICIO3.jpeg"
+      ]
+    },
+    "MT-DGOP-FEFOM-LPN-112-2026": {
+      "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "INICIO2.jpeg",
+        "INICIO3.jpeg"
+      ]
+    },
+    "MT-DGOP-FEFOM-LPN-114-2026": {
+      "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "INICIO2.png",
+        "INICIO3.png"
+      ]
+    },
+    "MT-DGOP-FEFOM-LPN-116-2026": {
+      "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "INICIO2.jpeg",
+        "INICIO3.jpeg"
+      ]
+    }
+  },
+  "LINEAS DE DRENAJE": {
+    "RED DE DRENAJE EN LAS CALLES MIGUEL HIDALGO Y PLAN DE AYALA": {
+      "path": "LINEAS%20DE%20DRENAJE/RED%20DE%20DRENAJE%20EN%20LAS%20CALLES%20MIGUEL%20HIDALGO%20Y%20PLAN%20DE%20AYALA/",
+      "files": []
+    }
+  },
+  "REHABILITACIÓN DE CARPETAS": {
+    "MT -DGOP-FAISMUN-LPN-084-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-050-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-051-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO-2.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-052-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-058-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO-2.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-078-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-081-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/",
+      "files": [
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-082-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-083-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-089-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-090-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO-2.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-091-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO-2.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-IPDM-LPN-054-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-IPDM-LPN-056-2026": {
+      "path": "REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO-2.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    }
+  },
+  "REHABILITACIÓN DE POZO": {
+    "INICIO.jpeg": {
+      "path": "REHABILITACI%C3%93N%20DE%20POZO/INICIO.jpeg",
+      "files": []
+    },
+    "PROCESO.jpeg": {
+      "path": "REHABILITACI%C3%93N%20DE%20POZO/PROCESO.jpeg",
+      "files": []
+    }
+  },
+  "SENDEROS Y PARQUES": {
+    "MT-DGOP-AVGFDyFCI-LPN-077-2026": {
+      "path": "SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO-2.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-076-2026": {
+      "path": "SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-094-2026": {
+      "path": "SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-IPDM-LPN-057-2026": {
+      "path": "SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    }
+  },
+  "SEÑALAMIENTO": {
+    "SEÑALAMIENTO HORIZONTAL Y VERTICAL EN DIVERSAS CALLES": {
+      "path": "SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/",
+      "files": [
+        "FINAL.jpeg",
+        "INICIAL.jpeg",
+        "PROCESO (2).jpeg"
+      ]
+    }
+  },
+  "SLURRY": {
+    "MT-DGOP-FAISMUN-LPN-079-2026": {
+      "path": "SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-080-2026": {
+      "path": "SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-085-2026": {
+      "path": "SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/",
+      "files": [
+        "FINAL.jpeg",
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-IPDM-LPN-055-2026": {
+      "path": "SLURRY/MT-DGOP-IPDM-LPN-055-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO.jpeg",
+        "TERMINADO.jpeg"
+      ]
+    }
+  },
+  "TECHADO": {
+    "MT-DGOP-FAISMUN-LPN-068-2026": {
+      "path": "TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-069-2026": {
+      "path": "TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-070-2026": {
+      "path": "TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-071-2026": {
+      "path": "TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/",
+      "files": [
+        "INICIO.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-072-2026": {
+      "path": "TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-073-2026": {
+      "path": "TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-074-2026": {
+      "path": "TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-075-2026": {
+      "path": "TECHADO/MT-DGOP-FAISMUN-LPN-075-2026/",
+      "files": [
+        "INICIAL.jpg",
+        "PROCESO.jpg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-088-2026": {
+      "path": "TECHADO/MT-DGOP-FAISMUN-LPN-088-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    },
+    "MT-DGOP-FAISMUN-LPN-093-2026": {
+      "path": "TECHADO/MT-DGOP-FAISMUN-LPN-093-2026/",
+      "files": [
+        "INICIAL.jpeg",
+        "PROCESO.jpeg"
+      ]
+    }
+  }
+}

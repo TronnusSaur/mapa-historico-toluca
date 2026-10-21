@@ -1,0 +1,436 @@
+[
+  {
+    "idMapeo_t": 104,
+    "idContrato": "MT/DGOP/FAISMUN/LPN-104/2026",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-104/2026",
+    "tipo": "CONSTRUCCIÓN DE ASFALTO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA EN LA CALLE LAGUNA DE 7 COLORES ENTRE CALLE LAGO CARATASCA Y LAGUNA DE LOS GIGANTES, DELEGACIÓN NUEVA OXTOTITLÁN, MUNICIPIO DE TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "10/11/2026",
+    "num_puntos": 2,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.287485, -99.682605"
+      ],
+      [
+        "Geolocalización P2",
+        "19.287450, -99.683090"
+      ]
+    ],
+    "evidencias": [
+      {
+        "category": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+        "folder": "MT-DGOP-FAISMUN-LPN-104-2026",
+        "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/",
+        "files": [
+          "INICIO.jpeg",
+          "INICIO2.jpeg",
+          "INICIO3.jpeg"
+        ]
+      }
+    ]
+  },
+  {
+    "idMapeo_t": 105,
+    "idContrato": "MT/DGOP/FEFOM/LPN-105/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-105/2026",
+    "tipo": "CONCRETO HIDRÁULICO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON CONCRETO HIDRÁULICO DE LA CALLE ALBERTO EINSTEIN, DESDE PASEO VICENTE LOMBARDO TOLEDANO HASTA CADENAMIENTO 0+069, DELEGACIÓN SANTA ANA TLAPALTITLÁN, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "25/11/2026",
+    "num_puntos": 2,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.305823, -99.604793"
+      ],
+      [
+        "Geolocalización P2",
+        "19.305328, -99.605056"
+      ]
+    ],
+    "evidencias": [
+      {
+        "category": "CONCRETOS HIDRAULICOS",
+        "folder": "MT-DGOP-FEFOM-LPN-105-2026",
+        "path": "CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/",
+        "files": [
+          "INICIO.jpeg",
+          "INICIO2.jpeg",
+          "INICIO3.jpeg"
+        ]
+      }
+    ]
+  },
+  {
+    "idMapeo_t": 106,
+    "idContrato": "MT/DGOP/FEFOM/LPN-106/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-106/2026",
+    "tipo": "RECONSTRUCCIÓN DE ASFALTO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "RECONSTRUCCIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE REVOLUCIÓN, EN EL TRAMO COMPRENDIDO DE PASEO VICENTE LOMBARDO TOLEDANO HASTA CALLE PRIVADA TLATELOC, DEL CADENAMIENTO 0+000 AL 0+160, DELEGACIÓN SAN PEDRO TOTOLTEPEC, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "10/12/2026",
+    "num_puntos": 5,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.309044, -99.585906"
+      ],
+      [
+        "Geolocalización P2",
+        "19.309359, -99.584709"
+      ],
+      [
+        "Geolocalización P3",
+        "19.309383, -99.583946"
+      ],
+      [
+        "Geolocalización P4",
+        "19.309323, -99.583728"
+      ],
+      [
+        "Geolocalización P5",
+        "19.309282, -99.582877"
+      ]
+    ],
+    "evidencias": [
+      {
+        "category": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+        "folder": "MT-DGOP-FEFOM-LPN-106-2026",
+        "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/",
+        "files": [
+          "INICIO.jpeg",
+          "INICIO2.jpeg",
+          "INICIO3.jpeg"
+        ]
+      }
+    ]
+  },
+  {
+    "idMapeo_t": 107,
+    "idContrato": "MT/DGOP/FEFOM/LPN-107/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-107/2026",
+    "tipo": "CONCRETO HIDRÁULICO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "RECONSTRUCCIÓN DE PAVIMENTACIÓN CON CONCRETO HIDRÁULICO DE LA CALLE INSURGENTES, EN EL TRAMO COMPRENDIDO DE CALLE 16 DE SEPTIEMBRE HASTA CALLE VICENTE GUERRERO, DEL CADENAMIENTO 0+000 AL 0+231, DELEGACIÓN TECAXIC, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "10/11/2026",
+    "num_puntos": 5,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.325494, -99.715084"
+      ],
+      [
+        "Geolocalización P2",
+        "19.324198, -99.715002"
+      ],
+      [
+        "Geolocalización P3",
+        "19.324020, -99.714961"
+      ],
+      [
+        "Geolocalización P4",
+        "19.323544, -99.715001"
+      ],
+      [
+        "Geolocalización P5",
+        "19.323335, -99.714839"
+      ]
+    ],
+    "evidencias": [
+      {
+        "category": "CONCRETOS HIDRAULICOS",
+        "folder": "MT-DGOP-FEFOM-LPN-107-2026",
+        "path": "CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/",
+        "files": [
+          "INICIO.jpeg",
+          "INICIO2.jpeg",
+          "INICIO3.jpeg"
+        ]
+      }
+    ]
+  },
+  {
+    "idMapeo_t": 108,
+    "idContrato": "MT/DGOP/FEFOM/LPN-108/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-108/2026",
+    "tipo": "REHABILITACION DE ASFALTO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE ADOLFO LÓPEZ MATEOS, EN EL TRAMO COMPRENDIDO DE CALLE ACTA DE INDEPENDENCIA HASTA CALLE NICOLÁS BRAVO, DEL CADENAMIENTO 0+000 AL 0+100, DELEGACIÓN CALIXTLAHUACA, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "10/11/2026",
+    "num_puntos": 2,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.334326, -99.685769"
+      ],
+      [
+        "Geolocalización P2",
+        "19.334410, -99.684812"
+      ]
+    ],
+    "evidencias": []
+  },
+  {
+    "idMapeo_t": 109,
+    "idContrato": "MT/DGOP/FEFOM/LPN-109/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-109/2026",
+    "tipo": "REHABILITACION DE ASFALTO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE ANTONIO ALBARRÁN, EN EL TRAMO COMPRENDIDO DE CALLE GENERAL ABELARDO RODRÍGUEZ HASTA CALLE LA VESANA, DEL CADENAMIENTO 0+000 AL 0+717, DELEGACIÓN CAPULTITLÁN, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "10/12/2026",
+    "num_puntos": 2,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.260389, -99.649715"
+      ],
+      [
+        "Geolocalización P2",
+        "19.253766, -99.650202"
+      ]
+    ],
+    "evidencias": []
+  },
+  {
+    "idMapeo_t": 110,
+    "idContrato": "MT/DGOP/FEFOM/LPN-110/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-110/2026",
+    "tipo": "REHABILITACION DE ASFALTO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE CEBORUCO, EN EL TRAMO COMPRENDIDO DE CALLE ANTONIO ALBARRÁN HASTA AVENIDA PROFESOR HERIBERTO ENRÍQUEZ, DEL CADENAMIENTO 0+000 AL 0+607, DELEGACIÓN DEL PARQUE, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "10/12/2026",
+    "num_puntos": 2,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.260334, -99.649657"
+      ],
+      [
+        "Geolocalización P2",
+        "19.260267, -99.643878"
+      ]
+    ],
+    "evidencias": [
+      {
+        "category": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+        "folder": "MT-DGOP-FEFOM-LPN-110-2026",
+        "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-110-2026/",
+        "files": [
+          "INICIO.jpeg",
+          "INICIO2.jpeg",
+          "INICIO3.jpeg"
+        ]
+      }
+    ]
+  },
+  {
+    "idMapeo_t": 111,
+    "idContrato": "MT/DGOP/FEFOM/LPN-111/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-111/2026",
+    "tipo": "REHABILITACION DE ASFALTO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE MEXTLI, EN EL TRAMO COMPRENDIDO DE CALLE ANTONIO ALBARRÁN HASTA AVENIDA PROFESOR HERIBERTO ENRÍQUEZ, DEL CADENAMIENTO 0+000 AL 0+706, DELEGACIÓN SAN FELIPE TLALMIMILOLPAN, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "10/12/2026",
+    "num_puntos": 2,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.258115, -99.649850"
+      ],
+      [
+        "Geolocalización P2",
+        "19.257971, -99.643131"
+      ]
+    ],
+    "evidencias": [
+      {
+        "category": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+        "folder": "MT-DGOP-FEFOM-LPN-111-2026",
+        "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-111-2026/",
+        "files": [
+          "INICIO.jpeg",
+          "INICIO2.jpeg",
+          "INICIO3.jpeg"
+        ]
+      }
+    ]
+  },
+  {
+    "idMapeo_t": 112,
+    "idContrato": "MT/DGOP/FEFOM/LPN-112/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-112/2026",
+    "tipo": "RECONSTRUCCIÓN DE ASFALTO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "RECONSTRUCCIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE LIBERTAD, EN EL TRAMO COMPRENDIDO DE CALLE ACTA DE INDEPENDENCIA HASTA CALLE INSURGENTES, DEL CADENAMIENTO 0+000 AL 0+624, DELEGACIÓN CALIXTLAHUACA, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "10/12/2026",
+    "num_puntos": 2,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.336450, -99.689493"
+      ],
+      [
+        "Geolocalización P2",
+        "19.336964, -99.683654"
+      ]
+    ],
+    "evidencias": [
+      {
+        "category": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+        "folder": "MT-DGOP-FEFOM-LPN-112-2026",
+        "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/",
+        "files": [
+          "INICIO.jpeg",
+          "INICIO2.jpeg",
+          "INICIO3.jpeg"
+        ]
+      }
+    ]
+  },
+  {
+    "idMapeo_t": 113,
+    "idContrato": "MT/DGOP/FEFOM/LPN-113/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-113/2026",
+    "tipo": "RECONSTRUCCIÓN DE ASFALTO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "RECONSTRUCCIÓN DE PAVIMENTACIÓN DE CARPETA ASFÁLTICA DE LA CALLE REFORMA, EN EL TRAMO COMPRENDIDO DE CALLE RIO PAPALOAPAN HASTA CALLE JOSUÉ MIRLO, DEL CADENAMIENTO 0+00 AL 0+979, DELEGACIÓN SANTA CRUZ ATZCAPOTZALTONGO, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "30/12/2026",
+    "num_puntos": 2,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.317117, -99.656298"
+      ],
+      [
+        "Geolocalización P2",
+        "19.308243, -99.656913"
+      ]
+    ],
+    "evidencias": []
+  },
+  {
+    "idMapeo_t": 114,
+    "idContrato": "MT/DGOP/FEFOM/LPN-114/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-114/2026",
+    "tipo": "RECONSTRUCCIÓN DE ASFALTO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "RECONSTRUCCIÓN DE PAVIMENTACIÓN DE CARPETA ASFÁLTICA DE LA CALLE 18 DE MARZO EN EL TRAMO COMPRENDIDO DE CALLE 5 DE MAYO HASTA PASEO TOLTEPEC, DEL CADENAMIENTO0+000 AL 0+140, DELEGACIÓN SAN MARTÍN TOLTEPEC, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "10/11/2026",
+    "num_puntos": 3,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.351014, -99.705483"
+      ],
+      [
+        "Geolocalización P2",
+        "19.351868, -99.705858"
+      ],
+      [
+        "Geolocalización P3",
+        "19.352047, -99.705869"
+      ]
+    ],
+    "evidencias": [
+      {
+        "category": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+        "folder": "MT-DGOP-FEFOM-LPN-114-2026",
+        "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/",
+        "files": [
+          "INICIO.jpeg",
+          "INICIO2.png",
+          "INICIO3.png"
+        ]
+      }
+    ]
+  },
+  {
+    "idMapeo_t": 115,
+    "idContrato": "MT/DGOP/FEFOM/LPN-115/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-115/2026",
+    "tipo": "ANDADOR",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "CONSTRUCCIÓN DE ANDADOR EN PROLONGACIÓN CALLE TIANGUISTENCO, DEL TRAMO COMPRENDIDO DE CALLE GENERAL AGUSTÍN MILLÁN HASTA PASEO MATLAZINCAS, DEL CADENAMIENTO 0+000 AL 0+123, DELEGACIÓN SÁNCHEZ, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "25/11/2026",
+    "num_puntos": 2,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.296760, -99.672309"
+      ],
+      [
+        "Geolocalización P2",
+        "19.297504, -99.672340"
+      ]
+    ],
+    "evidencias": []
+  },
+  {
+    "idMapeo_t": 116,
+    "idContrato": "MT/DGOP/FEFOM/LPN-116/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-116/2026",
+    "tipo": "RECONSTRUCCIÓN DE ASFALTO",
+    "delegacion": null,
+    "colonia": null,
+    "nombre": "RECONSTRUCCIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE INSURGENTES, EN EL TRAMO COMPRENDIDO DE CALLE LIBERTAD HASTA CALLE 20 DE NOVIEMBRE, DEL CADENAMIENTO 0+000 AL 0+540, DELEGACIÓN CALIXTLAHUACA, TOLUCA.",
+    "inicio": "12/10/2026",
+    "fin": "10/12/2026",
+    "num_puntos": 4,
+    "puntos": [
+      [
+        "Geolocalización P1",
+        "19.337012, -99.683657"
+      ],
+      [
+        "Geolocalización P2",
+        "19.333295, -99.683333"
+      ],
+      [
+        "Geolocalización P3",
+        "19.332809, -99.683433"
+      ],
+      [
+        "Geolocalización P4",
+        "19.332025, -99.683469"
+      ]
+    ],
+    "evidencias": [
+      {
+        "category": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+        "folder": "MT-DGOP-FEFOM-LPN-116-2026",
+        "path": "CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/",
+        "files": [
+          "INICIO.jpeg",
+          "INICIO2.jpeg",
+          "INICIO3.jpeg"
+        ]
+      }
+    ]
+  }
+]
