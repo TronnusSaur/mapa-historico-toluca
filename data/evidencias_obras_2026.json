@@ -1530,5 +1530,345 @@
         "https://imagenes.soranoserver.com/imagenes/DIABLO%20DRAGON/JUAN%20ALDAMA/6.jpeg"
       ]
     }
+  },
+  "MT/DGOP/FAISMUN/LPN-104/2026": {
+    "idContrato": "MT/DGOP/FAISMUN/LPN-104/2026",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-104/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA EN LA CALLE LAGUNA DE 7 COLORES ENTRE CALLE LAGO CARATASCA Y LAGUNA DE LOS GIGANTES, DELEGACIÓN NUEVA OXTOTITLÁN, MUNICIPIO DE TOLUCA.",
+    "tipoObra": "CONSTRUCCIÓN DE ASFALTO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "10/11/2026",
+    "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-105/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-105/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-105/2026",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON CONCRETO HIDRÁULICO DE LA CALLE ALBERTO EINSTEIN, DESDE PASEO VICENTE LOMBARDO TOLEDANO HASTA CADENAMIENTO 0+069, DELEGACIÓN SANTA ANA TLAPALTITLÁN, TOLUCA.",
+    "tipoObra": "CONCRETO HIDRÁULICO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "25/11/2026",
+    "categoria": "CONCRETOS HIDRAULICOS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-106/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-106/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-106/2026",
+    "nombreObra": "RECONSTRUCCIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE REVOLUCIÓN, EN EL TRAMO COMPRENDIDO DE PASEO VICENTE LOMBARDO TOLEDANO HASTA CALLE PRIVADA TLATELOC, DEL CADENAMIENTO 0+000 AL 0+160, DELEGACIÓN SAN PEDRO TOTOLTEPEC, TOLUCA.",
+    "tipoObra": "RECONSTRUCCIÓN DE ASFALTO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "10/12/2026",
+    "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-107/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-107/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-107/2026",
+    "nombreObra": "RECONSTRUCCIÓN DE PAVIMENTACIÓN CON CONCRETO HIDRÁULICO DE LA CALLE INSURGENTES, EN EL TRAMO COMPRENDIDO DE CALLE 16 DE SEPTIEMBRE HASTA CALLE VICENTE GUERRERO, DEL CADENAMIENTO 0+000 AL 0+231, DELEGACIÓN TECAXIC, TOLUCA.",
+    "tipoObra": "CONCRETO HIDRÁULICO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "10/11/2026",
+    "categoria": "CONCRETOS HIDRAULICOS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-108/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-108/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-108/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE ADOLFO LÓPEZ MATEOS, EN EL TRAMO COMPRENDIDO DE CALLE ACTA DE INDEPENDENCIA HASTA CALLE NICOLÁS BRAVO, DEL CADENAMIENTO 0+000 AL 0+100, DELEGACIÓN CALIXTLAHUACA, TOLUCA.",
+    "tipoObra": "REHABILITACION DE ASFALTO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "10/11/2026",
+    "categoria": null,
+    "fotos": {
+      "inicio": null,
+      "proceso": [],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": null,
+      "proceso": [],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-109/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-109/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-109/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE ANTONIO ALBARRÁN, EN EL TRAMO COMPRENDIDO DE CALLE GENERAL ABELARDO RODRÍGUEZ HASTA CALLE LA VESANA, DEL CADENAMIENTO 0+000 AL 0+717, DELEGACIÓN CAPULTITLÁN, TOLUCA.",
+    "tipoObra": "REHABILITACION DE ASFALTO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "10/12/2026",
+    "categoria": null,
+    "fotos": {
+      "inicio": null,
+      "proceso": [],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": null,
+      "proceso": [],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-110/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-110/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-110/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE CEBORUCO, EN EL TRAMO COMPRENDIDO DE CALLE ANTONIO ALBARRÁN HASTA AVENIDA PROFESOR HERIBERTO ENRÍQUEZ, DEL CADENAMIENTO 0+000 AL 0+607, DELEGACIÓN DEL PARQUE, TOLUCA.",
+    "tipoObra": "REHABILITACION DE ASFALTO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "10/12/2026",
+    "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-110-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-110-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-110-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-110-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-110-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-110-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-111/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-111/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-111/2026",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE MEXTLI, EN EL TRAMO COMPRENDIDO DE CALLE ANTONIO ALBARRÁN HASTA AVENIDA PROFESOR HERIBERTO ENRÍQUEZ, DEL CADENAMIENTO 0+000 AL 0+706, DELEGACIÓN SAN FELIPE TLALMIMILOLPAN, TOLUCA.",
+    "tipoObra": "REHABILITACION DE ASFALTO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "10/12/2026",
+    "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-111-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-111-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-111-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-111-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-111-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-111-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-112/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-112/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-112/2026",
+    "nombreObra": "RECONSTRUCCIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE LIBERTAD, EN EL TRAMO COMPRENDIDO DE CALLE ACTA DE INDEPENDENCIA HASTA CALLE INSURGENTES, DEL CADENAMIENTO 0+000 AL 0+624, DELEGACIÓN CALIXTLAHUACA, TOLUCA.",
+    "tipoObra": "RECONSTRUCCIÓN DE ASFALTO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "10/12/2026",
+    "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-113/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-113/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-113/2026",
+    "nombreObra": "RECONSTRUCCIÓN DE PAVIMENTACIÓN DE CARPETA ASFÁLTICA DE LA CALLE REFORMA, EN EL TRAMO COMPRENDIDO DE CALLE RIO PAPALOAPAN HASTA CALLE JOSUÉ MIRLO, DEL CADENAMIENTO 0+00 AL 0+979, DELEGACIÓN SANTA CRUZ ATZCAPOTZALTONGO, TOLUCA.",
+    "tipoObra": "RECONSTRUCCIÓN DE ASFALTO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "30/12/2026",
+    "categoria": null,
+    "fotos": {
+      "inicio": null,
+      "proceso": [],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": null,
+      "proceso": [],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-114/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-114/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-114/2026",
+    "nombreObra": "RECONSTRUCCIÓN DE PAVIMENTACIÓN DE CARPETA ASFÁLTICA DE LA CALLE 18 DE MARZO EN EL TRAMO COMPRENDIDO DE CALLE 5 DE MAYO HASTA PASEO TOLTEPEC, DEL CADENAMIENTO0+000 AL 0+140, DELEGACIÓN SAN MARTÍN TOLTEPEC, TOLUCA.",
+    "tipoObra": "RECONSTRUCCIÓN DE ASFALTO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "10/11/2026",
+    "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO2.png",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO3.png"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO2.png",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO3.png"
+      ],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-115/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-115/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-115/2026",
+    "nombreObra": "CONSTRUCCIÓN DE ANDADOR EN PROLONGACIÓN CALLE TIANGUISTENCO, DEL TRAMO COMPRENDIDO DE CALLE GENERAL AGUSTÍN MILLÁN HASTA PASEO MATLAZINCAS, DEL CADENAMIENTO 0+000 AL 0+123, DELEGACIÓN SÁNCHEZ, TOLUCA.",
+    "tipoObra": "ANDADOR",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "25/11/2026",
+    "categoria": null,
+    "fotos": {
+      "inicio": null,
+      "proceso": [],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": null,
+      "proceso": [],
+      "terminado": null
+    }
+  },
+  "MT/DGOP/FEFOM/LPN-116/2026": {
+    "idContrato": "MT/DGOP/FEFOM/LPN-116/2026",
+    "noContrato": "MT/DGOP/FEFOM/LPN-116/2026",
+    "nombreObra": "RECONSTRUCCIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE INSURGENTES, EN EL TRAMO COMPRENDIDO DE CALLE LIBERTAD HASTA CALLE 20 DE NOVIEMBRE, DEL CADENAMIENTO 0+000 AL 0+540, DELEGACIÓN CALIXTLAHUACA, TOLUCA.",
+    "tipoObra": "RECONSTRUCCIÓN DE ASFALTO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": "12/10/2026",
+    "fechaFin": "10/12/2026",
+    "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO3.jpeg"
+      ],
+      "terminado": null
+    }
   }
 }
