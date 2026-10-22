@@ -41,7 +41,7 @@ import {
   Users,
   FileText,
   Flame,
-  Briefcase
+  Briefcase, Sparkles
 } from 'lucide-react';
 
 // Marker Cluster component (manual instantiation for better control with 50k points)
@@ -57,6 +57,8 @@ import { HeatmapLayer } from './components/HeatmapLayer.tsx';
 import { HotspotsLayer } from './components/HotspotsLayer.tsx';
 import { HotspotsPanel } from './components/HotspotsPanel.tsx';
 import { TramosLayer } from './components/TramosLayer.tsx';
+import { DemoTourMapController, DemoTourHUD } from './components/DemoTourOverlay.tsx';
+import { RUTA_DEMOSTRACION_2026, resolveObraForDemoStep } from './utils/rutaDemostracion2026.ts';
 import { unifyCitizenReports, detectHotspots, getHeatmapPoints } from './utils/hotspotDetector.ts';
 import type { HotspotFilterOptions, HotspotCluster } from './types/hotspots.ts';
 
@@ -101,6 +103,9 @@ export default function App() {
   const [showHotspots, setShowHotspots] = useState<boolean>(false);
   const [showHotspotsPanel, setShowHotspotsPanel] = useState<boolean>(false);
   const [selectedHotspotId, setSelectedHotspotId] = useState<string | null>(null);
+  const [isDemoTourActive, setIsDemoTourActive] = useState<boolean>(false);
+  const [demoStepIndex, setDemoStepIndex] = useState<number>(0);
+  const [demoOnlyWithPhotos, setDemoOnlyWithPhotos] = useState<boolean>(false);
   const [hotspotFilterOptions, setHotspotFilterOptions] = useState<HotspotFilterOptions>({
     radiusMeters: 300,
     minPoints: 3,
@@ -731,6 +736,62 @@ export default function App() {
     setSelectedObra(obra);
   }, []);
 
+  const demoStepsList = useMemo(() => {
+    if (demoOnlyWithPhotos) {
+      return RUTA_DEMOSTRACION_2026.filter(s => s.hasPhotosExpected);
+    }
+    return RUTA_DEMOSTRACION_2026;
+  }, [demoOnlyWithPhotos]);
+
+  const activeDemoStep = useMemo(() => {
+    const idx = Math.min(Math.max(0, demoStepIndex), Math.max(0, demoStepsList.length - 1));
+    return demoStepsList[idx] || RUTA_DEMOSTRACION_2026[0];
+  }, [demoStepsList, demoStepIndex]);
+
+  const activeDemoObra = useMemo(() => {
+    if (!isDemoTourActive || !activeDemoStep) return null;
+    return resolveObraForDemoStep(activeDemoStep, obrasTramos);
+  }, [isDemoTourActive, activeDemoStep, obrasTramos]);
+
+  const handleStartDemoTour = useCallback(() => {
+    setIsPlaying(false);
+    setSelectedYear('2026');
+    setCurrentDate(new Date(2026, 11, 31));
+    setFiltrosModulos(prev => ({
+      ...prev,
+      moduloActivo: 'multiple',
+      showBacheo: false,
+      showPavimentacion: true,
+      showSlurry: true,
+      showDragon: true,
+      showSenderos: true,
+      pavAsfaltica: true,
+      pavHidraulico: true,
+      pavEcologico: true,
+      showConcluidas: true,
+      showEnProceso: true,
+      showProgramadas: true
+    }));
+    setShowDemandaCiudadana(false);
+    setShowPeticionesCiudadanas(false);
+    setShowPlanTrabajo(false);
+    setDemoStepIndex(0);
+    setIsDemoTourActive(true);
+  }, []);
+
+  const handleExitDemoTour = useCallback(() => {
+    setIsDemoTourActive(false);
+  }, []);
+
+  const handleToggleDemoOnlyPhotos = useCallback(() => {
+    setDemoOnlyWithPhotos(prev => !prev);
+    setDemoStepIndex(0);
+  }, []);
+
+  // noop placeholder
+  useMemo(() => {
+  }, []);
+
   const renderHeaderMetrics = () => {
     if (filtrosModulos.moduloActivo === 'pavimentacion') {
       const pavs = filteredObrasTramos.filter(o => o.tipo === 'pavimentacion');
@@ -1076,6 +1137,60 @@ export default function App() {
         {/* Sidebar Táctico */}
         <aside className="w-80 bg-slate-50 border-r border-slate-200 flex flex-col z-40 shadow-inner overflow-y-auto custom-scrollbar">
           <div className="p-6 space-y-6 flex-1">
+            {/* 0. Botón de Ruta de Demostración Guiada (Informe PDF 2026) */}
+            <div className="pb-4 border-b border-slate-200">
+              {!isDemoTourActive ? (
+                <button
+                  onClick={handleStartDemoTour}
+                  className="w-full p-3.5 rounded-2xl bg-gradient-to-r from-toluca-burgundy via-[#631127] to-slate-900 hover:from-[#5e1026] hover:to-toluca-burgundy text-white shadow-lg border border-toluca-gold/40 transition-all hover:scale-[1.01] flex items-center justify-between group cursor-pointer"
+                >
+                  <div className="flex items-center gap-3 text-left">
+                    <div className="w-9 h-9 rounded-xl bg-toluca-gold/20 border border-toluca-gold/60 flex items-center justify-center text-toluca-gold shrink-0 group-hover:scale-110 transition-transform">
+                      <Sparkles size={18} />
+                    </div>
+                    <div>
+                      <span className="text-[9px] font-black uppercase tracking-widest text-toluca-gold block">
+                        Recorrido Guiado · PDF 2026
+                      </span>
+                      <span className="text-xs font-black text-white block mt-0.5">
+                        Ruta de Demostración
+                      </span>
+                    </div>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <span className="px-2 py-0.5 rounded-full bg-white/15 text-[10px] font-black text-amber-200 block">
+                      68 Obras
+                    </span>
+                    <span className="text-[9px] text-white/70 font-bold block mt-0.5">
+                      Iniciar →
+                    </span>
+                  </div>
+                </button>
+              ) : (
+                <button
+                  onClick={handleExitDemoTour}
+                  className="w-full p-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 shadow-lg border-2 border-toluca-burgundy transition-all flex items-center justify-between cursor-pointer"
+                >
+                  <div className="flex items-center gap-2.5 text-left">
+                    <div className="w-8 h-8 rounded-xl bg-slate-950/15 flex items-center justify-center text-slate-950 shrink-0">
+                      <Play size={16} fill="currentColor" />
+                    </div>
+                    <div>
+                      <span className="text-[9px] font-black uppercase tracking-wider text-slate-900 block">
+                        Modo Demostración Activo
+                      </span>
+                      <span className="text-xs font-black text-slate-950 block">
+                        Obra {demoStepIndex + 1} de {demoStepsList.length}
+                      </span>
+                    </div>
+                  </div>
+                  <span className="px-2.5 py-1 rounded-lg bg-slate-950 text-white text-[10px] font-black uppercase">
+                    Salir (ESC)
+                  </span>
+                </button>
+              )}
+            </div>
+
             {/* 1. Selector de Módulos de Obra y Subtipos */}
             <ModuleFilterBar
               filtros={filtrosModulos}
@@ -1693,6 +1808,13 @@ export default function App() {
               hotspotsCount={detectedHotspots.length}
               onOpenHotspotsPanel={handleOpenHotspotsPanel}
             />
+            {/* Controlador de Cámara y Resaltado en Mapa de la Ruta de Demostración */}
+            <DemoTourMapController
+              isActive={isDemoTourActive}
+              activeStep={activeDemoStep}
+              activeObra={activeDemoObra}
+              onOpenModal={handleSelectObra}
+            />
           </MapContainer>
 
           {/* Panel Ejecutivo de Concentración y Focos Críticos */}
@@ -1711,7 +1833,21 @@ export default function App() {
             onSelectHotspot={handleSelectHotspot}
           />
 
+          {/* Panel Flotante de Ruta de Demostración Guiada (Informe PDF 2026) */}
+          <DemoTourHUD
+            isActive={isDemoTourActive}
+            stepIndex={demoStepIndex}
+            onlyWithPhotos={demoOnlyWithPhotos}
+            onToggleOnlyWithPhotos={handleToggleDemoOnlyPhotos}
+            onChangeStepIndex={setDemoStepIndex}
+            onExit={handleExitDemoTour}
+            obrasTramos={obrasTramos}
+            onOpenFullModal={handleSelectObra}
+            isModalOpen={Boolean(selectedObra)}
+          />
+
           {/* Timeline Overlay */}
+          {!isDemoTourActive && (
           <div className="absolute bottom-8 left-8 right-8 z-[1000] pointer-events-none">
             <div className="premium-glass p-5 rounded-3xl shadow-2xl border border-white/50 max-w-5xl mx-auto flex items-center gap-5 pointer-events-auto backdrop-blur-md">
               <button 
@@ -1796,6 +1932,7 @@ export default function App() {
 
             </div>
           </div>
+          )}
         </main>
       </div>
 
