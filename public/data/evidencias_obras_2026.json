@@ -11,16 +11,40 @@
     "fechaFin": "20/12/2026",
     "categoria": "COLECTOR",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/FENA-097/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/FENA-097/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO6.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO7.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO8.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO9.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO10.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO11.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO12.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO13.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO14.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO6.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO7.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO8.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO9.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO10.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO11.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO12.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO13.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/COLECTOR/MT-DGOP-PROAGUA-FAISMUN-LPN-097-2026/PROCESO14.jpeg"
       ],
       "terminado": null
     }
@@ -37,11 +61,11 @@
     "fechaFin": "4/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/PROCESO.jpg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-061/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-061-2026/INICIO.jpeg",
@@ -63,18 +87,18 @@
     "fechaFin": "4/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-062/_inicio.jpg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/INICIO.JPG",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-062/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/PROCESO.JPG"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/INICIO.JPG",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/PROCESO.JPG"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-062-2026/TERMINADO.jpeg"
     }
   },
   "IAP-063": {
@@ -89,11 +113,11 @@
     "fechaFin": "4/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_inicio.jpg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/INICIO.JPG",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-063/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-063-2026/INICIO.JPG",
@@ -115,11 +139,11 @@
     "fechaFin": "5/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/PROCESO.JPG"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-064/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-064-2026/INICIO.jpeg",
@@ -141,11 +165,11 @@
     "fechaFin": "5/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/PROCESO.JPG"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-065/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-065-2026/INICIO.jpeg",
@@ -167,11 +191,11 @@
     "fechaFin": "5/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/PROCESO.JPG"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-066/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-066-2026/INICIO.jpeg",
@@ -193,18 +217,18 @@
     "fechaFin": "5/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-067/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-067/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/PROCESO.JPG"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/INICIO.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/PROCESO.JPG"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-067-2026/TERMINADO.jpeg"
     }
   },
   "TERRA-086": {
@@ -219,11 +243,11 @@
     "fechaFin": "25/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/PROCESO.JPG"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/TERRA-086/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-086-2026/INICIO.jpeg",
@@ -245,18 +269,18 @@
     "fechaFin": "25/10/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-087/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/IAP-087/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/PROCESO.JPG"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/INICIO.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/PROCESO.JPG"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-087-2026/TERMINADO.jpeg"
     }
   },
   "AZTLAN-059": {
@@ -271,20 +295,20 @@
     "fechaFin": "4/10/2026",
     "categoria": "CONCRETOS HIDRAULICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_proceso.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/AZTLAN-059/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO-2.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO-2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/PROCESO-2.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FAISMUN-LPN-059-2026/TERMINADO.jpeg"
     }
   },
   "FENA-053": {
@@ -299,11 +323,11 @@
     "fechaFin": "3/10/2026",
     "categoria": "CONCRETOS HIDRAULICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/FENA-053/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/TERMINO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-IPDM-LPN-053-2026/INICIO.jpeg",
@@ -325,11 +349,11 @@
     "fechaFin": "4/10/2026",
     "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MAMUTEE-060/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-060-2026/INICIAL.jpeg",
@@ -351,18 +375,18 @@
     "fechaFin": "1/10/2026",
     "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/CARASTOL-092/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/CARASTOL-092/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/INICIAL.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-092-2026/TERMINADO.jpeg"
     }
   },
   "EDIT-095": {
@@ -377,18 +401,18 @@
     "fechaFin": "1/10/2026",
     "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/EDIT-095/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/EDIT-095/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/INICIAL.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-095-2026/TERMINADO.jpeg"
     }
   },
   "JDJ-084": {
@@ -403,15 +427,17 @@
     "fechaFin": "24/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/JDJ-084/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT%20-DGOP-FAISMUN-LPN-084-2026/TERMINADO.jpeg"
@@ -429,15 +455,17 @@
     "fechaFin": "16/7/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/VERDE-050/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-050-2026/TERMINADO.jpeg"
@@ -455,18 +483,20 @@
     "fechaFin": "16/7/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_proceso.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO-2.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-051/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO-2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/PROCESO-2.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-051-2026/TERMINADO.jpeg"
     }
@@ -483,15 +513,17 @@
     "fechaFin": "16/7/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/EDIT-052/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-052-2026/TERMINADO.jpeg"
@@ -509,20 +541,22 @@
     "fechaFin": "4/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_proceso.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ARPLEX-058/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO-2.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO-2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/PROCESO-2.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-058-2026/TERMINADO.jpeg"
     }
   },
   "CARASTOL-078": {
@@ -537,15 +571,17 @@
     "fechaFin": "24/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CARASTOL-078/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-078-2026/TERMINADO.jpeg"
@@ -563,16 +599,20 @@
     "fechaFin": "24/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": null,
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CREA-081/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/PROCESO3.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/CREA-081/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
-      "inicio": null,
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/PROCESO3.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-081-2026/TERMINADO.jpeg"
     }
@@ -589,15 +629,17 @@
     "fechaFin": "24/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/REDNI-082/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-082-2026/TERMINADO.jpeg"
@@ -615,15 +657,17 @@
     "fechaFin": "24/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-083/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-083-2026/TERMINADO.jpeg"
@@ -641,15 +685,17 @@
     "fechaFin": "25/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MAMUTEE-089/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-089-2026/TERMINADO.jpeg"
@@ -667,20 +713,40 @@
     "fechaFin": "25/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_proceso.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/SINFRA-090/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO-2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO6.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO7.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO8.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO9.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO10.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO-2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO6.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO7.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO8.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO9.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/PROCESO10.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-090-2026/TERMINADO.jpeg"
     }
   },
   "ESCARPIO-091": {
@@ -695,20 +761,34 @@
     "fechaFin": "30/11/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_proceso.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/ESCARPIO-091/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO-2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO6.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO7.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO8.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO9.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO-2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO6.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO7.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO8.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/PROCESO9.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-FAISMUN-LPN-091-2026/TERMINADO.jpeg"
     }
   },
   "FENA-054": {
@@ -723,15 +803,17 @@
     "fechaFin": "3/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/FENA-054/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-054-2026/TERMINADO.jpeg"
@@ -749,18 +831,20 @@
     "fechaFin": "3/10/2026",
     "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_proceso.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO-2.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/RASECA-056/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO-2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/PROCESO-2.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/MT-DGOP-IPDM-LPN-056-2026/TERMINADO.jpeg"
     }
@@ -777,18 +861,20 @@
     "fechaFin": "5/11/2026",
     "categoria": "SENDEROS Y PARQUES",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_proceso.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-077/_proceso_2.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO-2.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO-2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFDyFCI-LPN-077-2026/PROCESO-2.jpeg"
       ],
       "terminado": null
     }
@@ -805,15 +891,17 @@
     "fechaFin": "6/10/2026",
     "categoria": "SENDEROS Y PARQUES",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-076/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-076/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/TERMINADO.jpeg"
@@ -831,15 +919,17 @@
     "fechaFin": "30/11/2026",
     "categoria": "SENDEROS Y PARQUES",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/EAPRO-094/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/EAPRO-094/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/PROCESO.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-094-2026/PROCESO.jpeg"
       ],
       "terminado": null
@@ -857,11 +947,11 @@
     "fechaFin": "3/10/2026",
     "categoria": "SENDEROS Y PARQUES",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/TERRA-057/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-057-2026/INICIO.jpeg",
@@ -883,19 +973,18 @@
     "fechaFin": "30/10/2026",
     "categoria": "SEÑALAMIENTO",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/%20MT-DGOP-IPDM-LPN-049-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/%20MT-DGOP-IPDM-LPN-049-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/VIFUD-049/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/%20MT-DGOP-IPDM-LPN-049-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/INICIAL.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/%20MT-DGOP-IPDM-LPN-049-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/PROCESO.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/PROCESO%20%282%29.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/%20MT-DGOP-IPDM-LPN-049-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/TERMINADO.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/%20MT-DGOP-IPDM-LPN-049-2026/TERMINADO.jpeg"
     }
   },
   "SAQEB-079": {
@@ -910,15 +999,17 @@
     "fechaFin": "24/10/2026",
     "categoria": "SLURRY",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/SAQEB-079/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-079-2026/TERMINADO.jpeg"
@@ -936,15 +1027,17 @@
     "fechaFin": "24/10/2026",
     "categoria": "SLURRY",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/GZALES-080/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-080-2026/TERMINADO.jpeg"
@@ -962,15 +1055,17 @@
     "fechaFin": "24/10/2026",
     "categoria": "SLURRY",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/INICIO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/TOVAR-085/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/FINAL.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/INICIO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-FAISMUN-LPN-085-2026/FINAL.jpeg"
@@ -988,11 +1083,11 @@
     "fechaFin": "3/10/2026",
     "categoria": "SLURRY",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/PROCESO.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/EAPRO-055/_terminado.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SLURRY/MT-DGOP-IPDM-LPN-055-2026/INICIO.jpeg",
@@ -1014,18 +1109,18 @@
     "fechaFin": "5/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-068/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-068/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/INICIAL.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-068-2026/TERMINADO.jpeg"
     }
   },
   "CREA-069": {
@@ -1040,18 +1135,18 @@
     "fechaFin": "5/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-069/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/CREA-069/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/INICIAL.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-069-2026/TERMINADO.jpeg"
     }
   },
   "SBSL-070": {
@@ -1066,18 +1161,18 @@
     "fechaFin": "5/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-070/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-070/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/INICIAL.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-070-2026/TERMINADO.jpeg"
     }
   },
   "SBSL-071": {
@@ -1092,18 +1187,18 @@
     "fechaFin": "5/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-071/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/SBSL-071/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/INICIO.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-071-2026/TERMINADO.jpeg"
     }
   },
   "FENA-072": {
@@ -1118,18 +1213,18 @@
     "fechaFin": "6/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-072/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-072/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/INICIAL.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-072-2026/TERMINADO.jpeg"
     }
   },
   "FENA-073": {
@@ -1144,18 +1239,18 @@
     "fechaFin": "6/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-073/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-073/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/INICIAL.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-073-2026/TERMINADO.jpeg"
     }
   },
   "REDNI-074": {
@@ -1170,9 +1265,9 @@
     "fechaFin": "6/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/REDNI-074/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/REDNI-074/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/PROCESO.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/TERMINADO.jpeg"
     },
@@ -1196,9 +1291,9 @@
     "fechaFin": "6/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/INOVA-075/_inicio.jpg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-075-2026/INICIAL.jpg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/INOVA-075/_proceso.jpg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-075-2026/PROCESO.jpg"
       ],
       "terminado": null
     },
@@ -1222,9 +1317,9 @@
     "fechaFin": "25/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MAMUTEE-088/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-088-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MAMUTEE-088/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-088-2026/PROCESO.jpeg"
       ],
       "terminado": null
     },
@@ -1248,9 +1343,9 @@
     "fechaFin": "31/10/2026",
     "categoria": "TECHADO",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-093/_inicio.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-093-2026/INICIAL.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/FENA-093/_proceso.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-093-2026/PROCESO.jpeg"
       ],
       "terminado": null
     },
@@ -1547,7 +1642,9 @@
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO3.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/PROCESO2.jpeg"
       ],
       "terminado": null
     },
@@ -1555,7 +1652,9 @@
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO3.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/INICIO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FAISMUN-LPN-104-2026/PROCESO2.jpeg"
       ],
       "terminado": null
     }
@@ -1572,20 +1671,22 @@
     "fechaFin": "25/11/2026",
     "categoria": "CONCRETOS HIDRAULICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-105-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO3.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-105-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-105-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-105-2026/PROCESO3.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-105-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-105-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-105-2026/INICIO3.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-105-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-105-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-105-2026/PROCESO3.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-105-2026/TERMINADO.jpeg"
     }
   },
   "MT/DGOP/FEFOM/LPN-106/2026": {
@@ -1603,17 +1704,19 @@
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO3.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO3.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/INICIO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-106-2026/TERMINADO.jpeg"
     }
   },
   "MT/DGOP/FEFOM/LPN-107/2026": {
@@ -1628,18 +1731,18 @@
     "fechaFin": "10/11/2026",
     "categoria": "CONCRETOS HIDRAULICOS",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-107-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO3.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-107-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-107-2026/PROCESO2.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-107-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/MT-DGOP-FEFOM-LPN-107-2026/INICIO3.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-107-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FEFOM-LPN-107-2026/PROCESO2.jpeg"
       ],
       "terminado": null
     }
@@ -1654,15 +1757,23 @@
     "montoContratado": null,
     "fechaInicio": "12/10/2026",
     "fechaFin": "10/11/2026",
-    "categoria": null,
+    "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": null,
-      "proceso": [],
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/%20MT-DGOP-FEFOM-LPN-108-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/%20MT-DGOP-FEFOM-LPN-108-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/%20MT-DGOP-FEFOM-LPN-108-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/%20MT-DGOP-FEFOM-LPN-108-2026/PROCESO3.jpeg"
+      ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": null,
-      "proceso": [],
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/%20MT-DGOP-FEFOM-LPN-108-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/%20MT-DGOP-FEFOM-LPN-108-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/%20MT-DGOP-FEFOM-LPN-108-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/%20MT-DGOP-FEFOM-LPN-108-2026/PROCESO3.jpeg"
+      ],
       "terminado": null
     }
   },
@@ -1676,14 +1787,14 @@
     "montoContratado": null,
     "fechaInicio": "12/10/2026",
     "fechaFin": "10/12/2026",
-    "categoria": null,
+    "categoria": "REHABILITACIÓN DE CARPETAS",
     "fotos": {
-      "inicio": null,
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/%20MT-DGOP-FEFOM-LPN-109-2026/INICIO.jpeg",
       "proceso": [],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": null,
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20CARPETAS/%20MT-DGOP-FEFOM-LPN-109-2026/INICIO.jpeg",
       "proceso": [],
       "terminado": null
     }
@@ -1756,18 +1867,18 @@
     "fechaFin": "10/12/2026",
     "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-112-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO3.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-112-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-112-2026/PROCESO2.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-112-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-112-2026/INICIO3.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-112-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-112-2026/PROCESO2.jpeg"
       ],
       "terminado": null
     }
@@ -1782,15 +1893,21 @@
     "montoContratado": null,
     "fechaInicio": "12/10/2026",
     "fechaFin": "30/12/2026",
-    "categoria": null,
+    "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
     "fotos": {
-      "inicio": null,
-      "proceso": [],
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-113-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-113-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-113-2026/PROCESO.jpeg"
+      ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": null,
-      "proceso": [],
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-113-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-113-2026/INICIO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-113-2026/PROCESO.jpeg"
+      ],
       "terminado": null
     }
   },
@@ -1806,18 +1923,18 @@
     "fechaFin": "10/11/2026",
     "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-114-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO2.png",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO3.png"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-114-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-114-2026/PROCESO2.jpeg"
       ],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-114-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO2.png",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-114-2026/INICIO3.png"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-114-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-114-2026/PROCESO2.jpeg"
       ],
       "terminado": null
     }
@@ -1832,14 +1949,14 @@
     "montoContratado": null,
     "fechaInicio": "12/10/2026",
     "fechaFin": "25/11/2026",
-    "categoria": null,
+    "categoria": "SENDEROS Y PARQUES",
     "fotos": {
-      "inicio": null,
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/%20MT-DGOP-FEFOM-LPN-115-2026/INICIO.jpeg",
       "proceso": [],
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": null,
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/%20MT-DGOP-FEFOM-LPN-115-2026/INICIO.jpeg",
       "proceso": [],
       "terminado": null
     }
@@ -1856,7 +1973,7 @@
     "fechaFin": "10/12/2026",
     "categoria": "CONSTRUCCIÓN DE CARPETA ASFALTICA",
     "fotos": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-116-2026/INICIO.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO2.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO3.jpeg"
@@ -1864,10 +1981,265 @@
       "terminado": null
     },
     "fotosFallback": {
-      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO.jpeg",
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-116-2026/INICIO.jpeg",
       "proceso": [
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO2.jpeg",
-        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/MT-DGOP-FEFOM-LPN-116-2026/INICIO3.jpeg"
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONSTRUCCI%C3%93N%20DE%20CARPETA%20ASFALTICA/%20MT-DGOP-FEFOM-LPN-116-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT-DGOP-FAISMUN-LPN-098-2026": {
+    "idContrato": "MT-DGOP-FAISMUN-LPN-098-2026",
+    "noContrato": "MT/DGOP/MT-DGOP-FAISMUN-LPN-098-2026",
+    "nombreObra": "MT-DGOP-FAISMUN-LPN-098-2026",
+    "tipoObra": "CONCRETOS ECOLOGICOS",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": null,
+    "fechaFin": null,
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/INICIO.JPG",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%282%29.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%283%29.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%284%29.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%285%29.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%286%29.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%288%29.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/INICIO.JPG",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%282%29.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%283%29.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%284%29.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%285%29.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%286%29.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/ZEMPOALA%2057%20%288%29.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20ECOLOGICOS/%20MT-DGOP-FAISMUN-LPN-098-2026/TERMINADO.jpeg"
+    }
+  },
+  "MT-DGOP-FAISMUN-LPN-099-2026": {
+    "idContrato": "MT-DGOP-FAISMUN-LPN-099-2026",
+    "noContrato": "MT/DGOP/MT-DGOP-FAISMUN-LPN-099-2026",
+    "nombreObra": "MT-DGOP-FAISMUN-LPN-099-2026",
+    "tipoObra": "CONCRETOS HIDRAULICOS",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": null,
+    "fechaFin": null,
+    "categoria": "CONCRETOS HIDRAULICOS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FAISMUN-LPN-099-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FAISMUN-LPN-099-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FAISMUN-LPN-099-2026/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FAISMUN-LPN-099-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FAISMUN-LPN-099-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/CONCRETOS%20HIDRAULICOS/%20MT-DGOP-FAISMUN-LPN-099-2026/TERMINADO.jpeg"
+    }
+  },
+  "MT-DGOP-FAISMUN-LPN-100-2026": {
+    "idContrato": "MT-DGOP-FAISMUN-LPN-100-2026",
+    "noContrato": "MT/DGOP/MT-DGOP-FAISMUN-LPN-100-2026",
+    "nombreObra": "MT-DGOP-FAISMUN-LPN-100-2026",
+    "tipoObra": "EDIFICIO A",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": null,
+    "fechaFin": null,
+    "categoria": "EDIFICIO A",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/EDIFICIO%20A/%20MT-DGOP-FAISMUN-LPN-100-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/EDIFICIO%20A/%20MT-DGOP-FAISMUN-LPN-100-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/EDIFICIO%20A/%20MT-DGOP-FAISMUN-LPN-100-2026/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/EDIFICIO%20A/%20MT-DGOP-FAISMUN-LPN-100-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/EDIFICIO%20A/%20MT-DGOP-FAISMUN-LPN-100-2026/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/EDIFICIO%20A/%20MT-DGOP-FAISMUN-LPN-100-2026/TERMINADO.jpeg"
+    }
+  },
+  "MT-DGOP-PROAGUA-FAISMUN-LPN-101-2026": {
+    "idContrato": "MT-DGOP-PROAGUA-FAISMUN-LPN-101-2026",
+    "noContrato": "MT/DGOP/MT-DGOP-PROAGUA-FAISMUN-LPN-101-2026",
+    "nombreObra": "MT-DGOP-PROAGUA-FAISMUN-LPN-101-2026",
+    "tipoObra": "LINEAS DE DRENAJE",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": null,
+    "fechaFin": null,
+    "categoria": "LINEAS DE DRENAJE",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-101-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-101-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-101-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-101-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026": {
+    "idContrato": "MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026",
+    "noContrato": "MT/DGOP/MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026",
+    "nombreObra": "MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026",
+    "tipoObra": "LINEAS DE DRENAJE",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": null,
+    "fechaFin": null,
+    "categoria": "LINEAS DE DRENAJE",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026/PROCESO3.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/LINEAS%20DE%20DRENAJE/MT-DGOP-PROAGUA-FAISMUN-LPN-102-2026/PROCESO3.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT-DGOP-FAISMUN-LPN-117-2026": {
+    "idContrato": "MT-DGOP-FAISMUN-LPN-117-2026",
+    "noContrato": "MT/DGOP/MT-DGOP-FAISMUN-LPN-117-2026",
+    "nombreObra": "MT-DGOP-FAISMUN-LPN-117-2026",
+    "tipoObra": "MURO DE CONTENCION",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": null,
+    "fechaFin": null,
+    "categoria": "MURO DE CONTENCION",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO6.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO7.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO8.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO6.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO7.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/MURO%20DE%20CONTENCION/%20MT-DGOP-FAISMUN-LPN-117-2026/PROCESO8.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT-DGOP-PROAGUA-FAISMUN-LPN-096-2026": {
+    "idContrato": "MT-DGOP-PROAGUA-FAISMUN-LPN-096-2026",
+    "noContrato": "MT/DGOP/MT-DGOP-PROAGUA-FAISMUN-LPN-096-2026",
+    "nombreObra": "MT-DGOP-PROAGUA-FAISMUN-LPN-096-2026",
+    "tipoObra": "REHABILITACIÓN DE POZO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": null,
+    "fechaFin": null,
+    "categoria": "REHABILITACIÓN DE POZO",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-096-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-096-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-096-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-096-2026/PROCESO.jpeg"
+      ],
+      "terminado": null
+    }
+  },
+  "MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026": {
+    "idContrato": "MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026",
+    "noContrato": "MT/DGOP/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026",
+    "nombreObra": "MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026",
+    "tipoObra": "REHABILITACIÓN DE POZO",
+    "idEmpresa": null,
+    "idDelegacion": null,
+    "montoContratado": null,
+    "fechaInicio": null,
+    "fechaFin": null,
+    "categoria": "REHABILITACIÓN DE POZO",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO6.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO7.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO8.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO9.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO10.jpeg"
+      ],
+      "terminado": null
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO2.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO3.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO4.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO5.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO6.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO7.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO8.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO9.jpeg",
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/REHABILITACI%C3%93N%20DE%20POZO/MT-DGOP-PROAGUA-FAISMUN-LPN-103-2026/PROCESO10.jpeg"
       ],
       "terminado": null
     }
