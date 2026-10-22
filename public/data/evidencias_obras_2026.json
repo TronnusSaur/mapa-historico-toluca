@@ -809,14 +809,14 @@
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/ICI-076/_proceso.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/INICIAL.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SENDEROS%20Y%20PARQUES/MT-DGOP-FAISMUN-LPN-076-2026/TERMINADO.jpeg"
     }
   },
   "EAPRO-094": {
@@ -892,9 +892,10 @@
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/INICIAL.jpeg",
       "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/PROCESO.jpeg",
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/PROCESO%20%282%29.jpeg"
       ],
-      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/FINAL.jpeg"
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/SE%C3%91ALAMIENTO/SE%C3%91ALAMIENTO%20HORIZONTAL%20Y%20VERTICAL%20EN%20DIVERSAS%20CALLES/TERMINADO.jpeg"
     }
   },
   "SAQEB-079": {
@@ -1173,14 +1174,14 @@
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/REDNI-074/_proceso.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/TERMINADO.jpeg"
     },
     "fotosFallback": {
       "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/INICIAL.jpeg",
       "proceso": [
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/PROCESO.jpeg"
       ],
-      "terminado": null
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202026/TECHADO/MT-DGOP-FAISMUN-LPN-074-2026/TERMINADO.jpeg"
     }
   },
   "INOVA-075": {

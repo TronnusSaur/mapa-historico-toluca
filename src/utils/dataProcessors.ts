@@ -1062,8 +1062,12 @@ export const parseDragonRows = (data: any[]): ObraTramo[] => {
 
   data.forEach((row, index) => {
     const idDragon = (getVal(row, ['idDragon', 'id_dragon', 'iddragon']) || `DR-${String(index + 1).padStart(2, '0')}`).toString().trim();
-    const nombre = (getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion']) || `Rehabilitación con Diablo Dragón #${index + 1}`).toString().trim();
+    let nombre = (getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion']) || `Rehabilitación con Diablo Dragón #${index + 1}`).toString().trim();
     const calle = (getVal(row, ['Calle', 'calle']) || '').toString().trim();
+    // Corrección preventiva para DR-03 si la descripción arrastra el nombre erróneo de Benito Juárez
+    if (idDragon === 'DR-03' && /BENITO\s*JU[AÁ]REZ/i.test(nombre)) {
+      nombre = nombre.replace(/BENITO\s*JU[AÁ]REZ/gi, 'FRANCISCO MURGIA');
+    }
     const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
     const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
     
@@ -1444,7 +1448,7 @@ export const fetchObrasGidem = async (baseUrl: string = ''): Promise<ObraTramo[]
     const parsed: ObraTramo[] = [];
 
     rows.forEach((row, index) => {
-      const nombre = (getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '').toString().trim();
+      let nombre = (getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion', 'obra']) || '').toString().trim();
       const tipoRaw = (getVal(row, ['Tipo de Obra', 'tipo', 'tipo_obra']) || '').toString().trim();
       if (!nombre) return;
 
