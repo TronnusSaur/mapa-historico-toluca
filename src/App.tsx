@@ -309,10 +309,21 @@ export default function App() {
           setPlanTrabajoRoutes(planTrabajoData);
         }
 
+        // Deduplicar obras de GIDEM para evitar duplicar las ya formalizadas en contratosTramos (LPN-104 a LPN-116)
+        const tramosExistentesNombres = new Set(
+          (contratosTramos || []).map(t => t.nombre.toLowerCase().replace(/[^a-z0-9]/g, ''))
+        );
+        const gidemNuevosTramos = (gidemTramos || []).filter(gt => {
+          const cleanNombre = gt.nombre.toLowerCase().replace(/[^a-z0-9]/g, '');
+          return !Array.from(tramosExistentesNombres).some(existente => 
+            existente.includes(cleanNombre.slice(0, 35)) || cleanNombre.includes(existente.slice(0, 35))
+          );
+        });
+
         const combinedTramos = vincularAvancesAObras([
           ...vincularEvidenciasAObras(contratosTramos || [], evidenciasMap),
           ...(dragonTramos || []),
-          ...(gidemTramos || [])
+          ...gidemNuevosTramos
         ], avancesMap);
         const puntualesConEvidencias = vincularAvancesAObras(
           vincularEvidenciasAObras(contratosPuntuales || [], evidenciasMap),

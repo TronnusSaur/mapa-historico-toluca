@@ -579,30 +579,76 @@ export const clasificarObra = (
   tipoRaw: string = '', 
   nombreRaw: string = ''
 ): { modulo: ModuloObraId; subtipo: SubtipoPavimentacion | string } => {
-  const combined = `${tipoRaw} ${nombreRaw}`.toLowerCase();
+  const tClean = tipoRaw.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+  const nClean = nombreRaw.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().trim();
+  const combined = `${tClean} ${nClean}`;
 
+  // 1. Mantenimiento especializado con Slurry
   if (combined.includes('slurry')) {
     return { modulo: 'slurry', subtipo: 'Mantenimiento con Slurry' };
   }
+
+  // 2. Diablo Dragón (Reciclado térmico en sitio)
+  if (combined.includes('dragon') || combined.includes('diablo')) {
+    return { modulo: 'dragon', subtipo: 'Reciclado Asfáltico (Diablo Dragón)' };
+  }
+
+  // 3. Bacheo
+  if (combined.includes('bacheo') || combined.includes('bache')) {
+    return { modulo: 'bacheo', subtipo: 'Bacheo' };
+  }
+
+  // 4. Pavimentaciones (Prioridad al Tipo de Obra y acción principal para evitar que calles nombradas
+  // "Calle Parque..." o "Andador..." se desvíen erróneamente al módulo de Senderos)
+  const esTipoPavimentacion = 
+    tClean.includes('paviment') || 
+    tClean.includes('repaviment') || 
+    tClean.includes('asfalto') || 
+    tClean.includes('asfaltica') || 
+    tClean.includes('hidraulico') || 
+    tClean.includes('ecologico') || 
+    tClean.includes('permeable');
+
+  const esAccionPavimentacion = 
+    nClean.startsWith('construccion de pavimentacion') || 
+    nClean.startsWith('rehabilitacion de pavimentacion') || 
+    nClean.startsWith('reconstruccion de pavimentacion') || 
+    nClean.includes('pavimentacion con') || 
+    nClean.includes('carpeta asfaltica') || 
+    nClean.includes('concreto hidraulico') || 
+    nClean.includes('concreto ecologico');
+
+  if (esTipoPavimentacion || esAccionPavimentacion) {
+    if (combined.includes('ecol') || combined.includes('permeable')) {
+      return { modulo: 'pavimentacion', subtipo: 'ecologico' };
+    }
+    if (combined.includes('hidr') || combined.includes('hidraulico')) {
+      return { modulo: 'pavimentacion', subtipo: 'hidraulico' };
+    }
+    return { modulo: 'pavimentacion', subtipo: 'asfaltica' };
+  }
+
+  // 5. Senderos Seguros, Andadores y Recuperación de Espacios Públicos
   if (
     combined.includes('sendero') || 
     combined.includes('andador') || 
-    combined.includes('banqueta') ||
-    combined.includes('espacio público') ||
-    combined.includes('espacio publico') ||
+    combined.includes('banqueta') || 
+    combined.includes('espacio publico') || 
     combined.includes('parque')
   ) {
     return { modulo: 'senderos', subtipo: 'Sendero Seguro / Espacio Público' };
   }
+
+  // 6. Pozos, Drenajes y Redes Hidráulicas
   if (
     combined.includes('pozo') || 
     combined.includes('drenaje') || 
     combined.includes('colector') || 
     combined.includes('alcantarill') || 
-    combined.includes('sanitario') ||
-    combined.includes('canal') ||
-    combined.includes('pluvial') ||
-    combined.includes('tanque') ||
+    combined.includes('sanitario') || 
+    combined.includes('canal') || 
+    combined.includes('pluvial') || 
+    combined.includes('tanque') || 
     combined.includes('tratamiento')
   ) {
     if (combined.includes('colector') || combined.includes('canal')) {
@@ -619,59 +665,53 @@ export const clasificarObra = (
     }
     return { modulo: 'pozos', subtipo: 'Pozo de Agua / Absorción' };
   }
+
+  // 7. Señalamiento y Balizamiento
   if (
-    combined.includes('señal') || 
+    combined.includes('senal') || 
     combined.includes('senalamiento') || 
     combined.includes('balizamiento') || 
     combined.includes('nomenclatura') || 
-    combined.includes('transito') || 
-    combined.includes('tránsito')
+    combined.includes('transito')
   ) {
     return { modulo: 'senalamiento', subtipo: 'Señalamiento y Balizamiento' };
   }
+
+  // 8. Arcotechos e Infraestructura Educativa
   if (
     combined.includes('arcotecho') || 
     combined.includes('techumbre') || 
     combined.includes('techado') || 
     combined.includes('escuela') || 
-    combined.includes('aula') ||
-    combined.includes('cbt') ||
-    combined.includes('secundaria') ||
+    combined.includes('aula') || 
+    combined.includes('cbt') || 
+    combined.includes('secundaria') || 
     combined.includes('primaria')
   ) {
     return { modulo: 'arcotechos', subtipo: 'Arcotecho Escolar' };
   }
+
+  // 9. Equipamiento e Infraestructura Social
   if (
     combined.includes('multideportivo') || 
-    combined.includes('cancha') ||
-    combined.includes('edificacion') ||
-    combined.includes('edificación')
+    combined.includes('cancha') || 
+    combined.includes('edificacion')
   ) {
     return { modulo: 'equipamiento', subtipo: 'Equipamiento e Infraestructura Social' };
   }
-  if (
-    combined.includes('dragon') || 
-    combined.includes('dragón') || 
-    combined.includes('diablo')
-  ) {
-    return { modulo: 'dragon', subtipo: 'Reciclado Asfáltico (Diablo Dragón)' };
-  }
-  if (combined.includes('bacheo') || combined.includes('bache')) {
-    return { modulo: 'bacheo', subtipo: 'Bacheo' };
-  }
+
+  // 10. Fallback: términos viales residuales
   if (
     combined.includes('paviment') || 
     combined.includes('repaviment') || 
     combined.includes('carpeta') || 
     combined.includes('hidraulico') || 
-    combined.includes('hidráulico') || 
-    combined.includes('asfált') || 
     combined.includes('asfalt')
   ) {
     if (combined.includes('ecol') || combined.includes('permeable')) {
       return { modulo: 'pavimentacion', subtipo: 'ecologico' };
     }
-    if (combined.includes('hidr') || combined.includes('hidráulico')) {
+    if (combined.includes('hidr')) {
       return { modulo: 'pavimentacion', subtipo: 'hidraulico' };
     }
     return { modulo: 'pavimentacion', subtipo: 'asfaltica' };
