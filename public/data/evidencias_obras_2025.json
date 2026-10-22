@@ -443,14 +443,18 @@
     "fechaFin": "4/11/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": null,
-      "proceso": [],
-      "terminado": null
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/INICIO.jpg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/PROCESO.jpg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/TERMINADO.jpg"
     },
     "fotosFallback": {
-      "inicio": null,
-      "proceso": [],
-      "terminado": null
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/INICIO.jpg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/PROCESO.jpg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/TERMINADO.jpg"
     }
   },
   "MT/DGOP/FAISMUN/LPN-030/2025": {
@@ -465,14 +469,18 @@
     "fechaFin": "4/11/2026",
     "categoria": "CONCRETOS ECOLOGICOS",
     "fotos": {
-      "inicio": null,
-      "proceso": [],
-      "terminado": null
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/INICIO.jpg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/PROCESO.jpg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/TERMINADO.jpg"
     },
     "fotosFallback": {
-      "inicio": null,
-      "proceso": [],
-      "terminado": null
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/INICIO.jpg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/PROCESO.jpg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20NEVADO/TERMINADO.jpg"
     }
   },
   "MT-DGOP-FAISMUN-LPN-047-2025": {
@@ -3073,6 +3081,300 @@
         "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/TANQUE%20DE%20AGUA_/MT-DGOP-PROAGUA-FAISMUN-LPN-040-2025/_proceso_6.jpeg"
       ],
       "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/TANQUE%20DE%20AGUA_/MT-DGOP-PROAGUA-FAISMUN-LPN-040-2025/_terminado.jpg"
+    }
+  },
+  "MT/DGOP/AVGFYD/LP-001/2025": {
+    "idContrato": "MT/DGOP/AVGFYD/LP-001/2025",
+    "noContrato": "MT/DGOP/AVGFYD/LP-001/2025",
+    "nombreObra": "RECUPERAR EL ESPACIO PÚBLICO CON PERSPECTIVA DE GÉNERO EN LA CALLE INDEPENDENCIA, ENTRE LAS CALLES VICENTE LOMBARDO TOLEDANO Y JUAN ESCUTIA, LA CRESPA- FLORESTA, TOLUCA, ESTADO DE MÉXICO",
+    "tipoObra": "Rescate de Espacios Públicos, Parques y Senderos Seguros",
+    "categoria": "SENDEROS Y PARQUES",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/PROCESO%201.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/TERMINADO%202.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/PROCESO%201.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/TERMINADO%202.jpeg"
+    }
+  },
+  "MT-DGOP-AVGFYD-LP-001-2025": {
+    "idContrato": "MT/DGOP/AVGFYD/LP-001/2025",
+    "noContrato": "MT/DGOP/AVGFYD/LP-001/2025",
+    "nombreObra": "RECUPERAR EL ESPACIO PÚBLICO CON PERSPECTIVA DE GÉNERO EN LA CALLE INDEPENDENCIA, ENTRE LAS CALLES VICENTE LOMBARDO TOLEDANO Y JUAN ESCUTIA, LA CRESPA- FLORESTA, TOLUCA, ESTADO DE MÉXICO",
+    "tipoObra": "Rescate de Espacios Públicos, Parques y Senderos Seguros",
+    "categoria": "SENDEROS Y PARQUES",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/PROCESO%201.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/TERMINADO%202.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/PROCESO%201.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-AVGFYD-LP-001-2025/TERMINADO%202.jpeg"
+    }
+  },
+  "MT/DGOP/IPDM/LPN-003/2025": {
+    "idContrato": "MT/DGOP/IPDM/LPN-003/2025",
+    "noContrato": "MT/DGOP/IPDM/LPN-003/2025",
+    "nombreObra": "ENCOFRADO DE CANAL A CIELO ABIERTO PARA AGUAS PLUVIALES EN CALLE EMILIANO ZAPATA, LOCALIDAD DE SAN JOSÉ GUADALUPE OTZACATIPÁN, DELEGACIÓN SAN MATEO OTZACATIPAN MUNICIPIO DE TOLUCA",
+    "tipoObra": "Pozos y Drenajes",
+    "categoria": "CANAL A CIELO ABIERTO",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/TERMINADO.jpeg"
+    }
+  },
+  "MT-DGOP-IPDM-LPN-003-2025": {
+    "idContrato": "MT/DGOP/IPDM/LPN-003/2025",
+    "noContrato": "MT/DGOP/IPDM/LPN-003/2025",
+    "nombreObra": "ENCOFRADO DE CANAL A CIELO ABIERTO PARA AGUAS PLUVIALES EN CALLE EMILIANO ZAPATA, LOCALIDAD DE SAN JOSÉ GUADALUPE OTZACATIPÁN, DELEGACIÓN SAN MATEO OTZACATIPAN MUNICIPIO DE TOLUCA",
+    "tipoObra": "Pozos y Drenajes",
+    "categoria": "CANAL A CIELO ABIERTO",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CANAL%20A%20CELO%20ABIERTO/MT-DGOP-IPDM-LPN-003-2025/TERMINADO.jpeg"
+    }
+  },
+  "MT/DGOP/IPDM/LPN-045/2025": {
+    "idContrato": "MT/DGOP/IPDM/LPN-045/2025",
+    "noContrato": "MT/DGOP/IPDM/LPN-045/2025",
+    "nombreObra": "REHABILITACIÓN DEL PARQUE CUAUHTÉMOC (ALAMEDA CENTRAL), BARRIO LA MERCED, COL. CENTRO, MUNICIPIO DE TOLUCA, MÉXICO",
+    "tipoObra": "Rescate de Espacios Públicos, Parques y Senderos Seguros",
+    "categoria": "SENDEROS Y PARQUES",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/TERMINADO.jpeg"
+    }
+  },
+  "MT-DGOP-IPDM-LPN-045-2025": {
+    "idContrato": "MT/DGOP/IPDM/LPN-045/2025",
+    "noContrato": "MT/DGOP/IPDM/LPN-045/2025",
+    "nombreObra": "REHABILITACIÓN DEL PARQUE CUAUHTÉMOC (ALAMEDA CENTRAL), BARRIO LA MERCED, COL. CENTRO, MUNICIPIO DE TOLUCA, MÉXICO",
+    "tipoObra": "Rescate de Espacios Públicos, Parques y Senderos Seguros",
+    "categoria": "SENDEROS Y PARQUES",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/SENDEROS%20Y%20PARQUES/MT-DGOP-IPDM-LPN-045-2025/TERMINADO.jpeg"
+    }
+  },
+  "MT/DGOP/IPDM/LPN-004/2025": {
+    "idContrato": "MT/DGOP/IPDM/LPN-004/2025",
+    "noContrato": "MT/DGOP/IPDM/LPN-004/2025",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE INDUSTRIAS QUÍMICAS, ENTRE CALLE ALBERTO EINSTEIN Y CALLE LEONARDO DA VINCI Y ROBERTO BOSCH, ENTRE AV. INDUSTRIA AUTOMOTRIZ Y PRIMERO DE MAYO , SANTA ANA TLAPALTITLÁN, TOLUCA, MÉXICO.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "categoria": "REHABILITACION DE CARPETAS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/TERMINADO.jpeg"
+    }
+  },
+  "MT-DGOP-IPDM-LPN-004-2025": {
+    "idContrato": "MT/DGOP/IPDM/LPN-004/2025",
+    "noContrato": "MT/DGOP/IPDM/LPN-004/2025",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE INDUSTRIAS QUÍMICAS, ENTRE CALLE ALBERTO EINSTEIN Y CALLE LEONARDO DA VINCI Y ROBERTO BOSCH, ENTRE AV. INDUSTRIA AUTOMOTRIZ Y PRIMERO DE MAYO , SANTA ANA TLAPALTITLÁN, TOLUCA, MÉXICO.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "categoria": "REHABILITACION DE CARPETAS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/TERMINADO.jpeg"
+    }
+  },
+  "MT-DGOP-IPDM-IR-004-2025": {
+    "idContrato": "MT/DGOP/IPDM/LPN-004/2025",
+    "noContrato": "MT/DGOP/IPDM/LPN-004/2025",
+    "nombreObra": "REHABILITACIÓN DE PAVIMENTACIÓN CON CARPETA ASFÁLTICA DE LA CALLE INDUSTRIAS QUÍMICAS, ENTRE CALLE ALBERTO EINSTEIN Y CALLE LEONARDO DA VINCI Y ROBERTO BOSCH, ENTRE AV. INDUSTRIA AUTOMOTRIZ Y PRIMERO DE MAYO , SANTA ANA TLAPALTITLÁN, TOLUCA, MÉXICO.",
+    "tipoObra": "Pavimentación y Repavimentación con Carpeta Asfáltica",
+    "categoria": "REHABILITACION DE CARPETAS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-004-2025/TERMINADO.jpeg"
+    }
+  },
+  "MT/DGOP/IPDM/LPN-002/2025": {
+    "idContrato": "MT/DGOP/IPDM/LPN-002/2025",
+    "noContrato": "MT/DGOP/IPDM/LPN-002/2025",
+    "nombreObra": "CONSTRUCCIÓN DE CAJA DERIVADORA DE CONCRETO ARMADO EN LA CALLE JUAN FERNÁNDEZ ALBARRÁN, ESQUINA BLVRD. AEROPUERTO, LOCALIDAD SAN JOSÉ GUADALUPE OTZACATIPÁN, DELEGACIÓN SAN MATEO OTZACATIPAN, TOLUCA, ESTADO DE MÉXICO.",
+    "tipoObra": "Pozos y Drenajes",
+    "categoria": "REHABILITACION DE CARPETAS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/TERMINADO.jpeg"
+    }
+  },
+  "MT-DGOP-IPDM-LPN-002-2025": {
+    "idContrato": "MT/DGOP/IPDM/LPN-002/2025",
+    "noContrato": "MT/DGOP/IPDM/LPN-002/2025",
+    "nombreObra": "CONSTRUCCIÓN DE CAJA DERIVADORA DE CONCRETO ARMADO EN LA CALLE JUAN FERNÁNDEZ ALBARRÁN, ESQUINA BLVRD. AEROPUERTO, LOCALIDAD SAN JOSÉ GUADALUPE OTZACATIPÁN, DELEGACIÓN SAN MATEO OTZACATIPAN, TOLUCA, ESTADO DE MÉXICO.",
+    "tipoObra": "Pozos y Drenajes",
+    "categoria": "REHABILITACION DE CARPETAS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/TERMINADO.jpeg"
+    }
+  },
+  "MT-DGOP-IPDM-IR-002-2025": {
+    "idContrato": "MT/DGOP/IPDM/LPN-002/2025",
+    "noContrato": "MT/DGOP/IPDM/LPN-002/2025",
+    "nombreObra": "CONSTRUCCIÓN DE CAJA DERIVADORA DE CONCRETO ARMADO EN LA CALLE JUAN FERNÁNDEZ ALBARRÁN, ESQUINA BLVRD. AEROPUERTO, LOCALIDAD SAN JOSÉ GUADALUPE OTZACATIPÁN, DELEGACIÓN SAN MATEO OTZACATIPAN, TOLUCA, ESTADO DE MÉXICO.",
+    "tipoObra": "Pozos y Drenajes",
+    "categoria": "REHABILITACION DE CARPETAS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/TERMINADO.jpeg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/INICIO.jpeg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/PROCESO.jpeg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/REHABILITACION%20DE%20CARPETAS/MT-DGOP-IPDM-IR-002-2025/TERMINADO.jpeg"
+    }
+  },
+  "LPN-030-2025-POPOCATEPETL": {
+    "idContrato": "LPN-030-2025-POPOCATEPETL",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-030/2025",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON CONCRETO ECOLÓGICO EN LA CALLE PARQUE POPOCATÉPETL",
+    "tipoObra": "Concreto Ecológico",
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20POPOCATEPETL/INICIO.jpg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20POPOCATEPETL/PROCESO.jpg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20POPOCATEPETL/TERMINADO.jpg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20POPOCATEPETL/INICIO.jpg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20POPOCATEPETL/PROCESO.jpg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20POPOCATEPETL/TERMINADO.jpg"
+    }
+  },
+  "LPN-030-2025-AVES": {
+    "idContrato": "LPN-030-2025-AVES",
+    "noContrato": "MT/DGOP/FAISMUN/LPN-030/2025",
+    "nombreObra": "CONSTRUCCIÓN DE PAVIMENTACIÓN CON CONCRETO ECOLÓGICO EN LA CALLE ISLAS DE LAS AVES",
+    "tipoObra": "Concreto Ecológico",
+    "categoria": "CONCRETOS ECOLOGICOS",
+    "fotos": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20ISLAS%20DE%20LAS%20AVES/INICIO.jpg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20ISLAS%20DE%20LAS%20AVES/PROCESO.jpg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20ISLAS%20DE%20LAS%20AVES/TERMINADO.jpg"
+    },
+    "fotosFallback": {
+      "inicio": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20ISLAS%20DE%20LAS%20AVES/INICIO.jpg",
+      "proceso": [
+        "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20ISLAS%20DE%20LAS%20AVES/PROCESO.jpg"
+      ],
+      "terminado": "https://imagenes.soranoserver.com/imagenes/EVIDENCIAS%20DE%20OBRAS%202025/CONCRETOS%20ECOLOGICOS/MT-DGOP-FAISMUN-LPN-030-2025/CALLE%20ISLAS%20DE%20LAS%20AVES/TERMINADO.jpg"
     }
   }
 }

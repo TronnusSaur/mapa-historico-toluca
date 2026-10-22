@@ -1342,6 +1342,22 @@ export const vincularEvidenciasAObras = <T extends Obra>(
         matchedEv = byId.get('FENA-097');
       } else if (upperNombre.includes('SEÑALAMIENTO') || upperNombre.includes('SENALAMIENTO')) {
         matchedEv = byId.get('VIFUD-049');
+      } else if (upperNombre.includes('PARQUE NEVADO')) {
+        matchedEv = byId.get('MT-DGOP-FAISMUN-LPN-030-2025');
+      } else if (upperNombre.includes('POPOCATÉPETL') || upperNombre.includes('POPOCATEPETL')) {
+        matchedEv = byId.get('LPN-030-2025-POPOCATEPETL');
+      } else if (upperNombre.includes('ISLAS DE LAS AVES')) {
+        matchedEv = byId.get('LPN-030-2025-AVES');
+      } else if (upperNombre.includes('CUAUHTÉMOC') || upperNombre.includes('ALAMEDA')) {
+        matchedEv = byId.get('MT-DGOP-IPDM-LPN-045-2025');
+      } else if (upperNombre.includes('CANAL') || upperNombre.includes('EMILIANO ZAPATA')) {
+        matchedEv = byId.get('MT-DGOP-IPDM-LPN-003-2025');
+      } else if (upperNombre.includes('CAJA DERIVADORA') || upperNombre.includes('JUAN FERNÁNDEZ ALBARRÁN') || upperNombre.includes('JUAN FERNANDEZ')) {
+        matchedEv = byId.get('MT-DGOP-IPDM-LPN-002-2025');
+      } else if (upperNombre.includes('INDUSTRIAS QUÍMICAS') || upperNombre.includes('INDUSTRIAS QUIMICAS')) {
+        matchedEv = byId.get('MT-DGOP-IPDM-LPN-004-2025');
+      } else if (upperNombre.includes('JUAN ESCUTIA') || upperNombre.includes('CRESPA- FLORESTA') || upperNombre.includes('CRESPA FLORESTA')) {
+        matchedEv = byId.get('MT-DGOP-AVGFYD-LP-001-2025');
       }
     }
 
