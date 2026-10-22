@@ -475,10 +475,10 @@ export const DemoTourHUD: React.FC<DemoTourHUDProps> = ({
                   ? 'bg-emerald-500/25 border-emerald-400 text-emerald-200'
                   : 'bg-white/10 border-white/20 text-white/80 hover:bg-white/20'
               }`}
-              title="Alternar entre todas las 68 obras del PDF o solo las 56 obras con evidencia fotográfica"
+              title="Alternar entre todas las 68 obras del PDF o solo las 57 obras con evidencia fotográfica"
             >
               <Filter size={11} />
-              {onlyWithPhotos ? 'Solo con foto (56)' : 'Todas PDF (68)'}
+              {onlyWithPhotos ? 'Solo con foto (57)' : 'Todas PDF (68)'}
             </button>
 
             {/* Selector rápido de obra */}

@@ -157,7 +157,7 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
       return (
         <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-bold tracking-wide bg-amber-50 text-amber-900 border border-amber-300 shadow-sm">
           <Clock size={12} className="text-amber-600" />
-          EN PLANEACIÓN / POR LICITAR
+          {obra.tipo === 'dragon' ? 'OBRA PLANEADA · POR PROGRAMAR' : 'EN PLANEACIÓN / POR LICITAR'}
         </span>
       );
     }
@@ -185,8 +185,12 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
     );
   };
 
-  const formatDate = (date?: Date | null) => {
-    if (!date) return obra.esPlaneada ? 'Por programar' : 'Sin fecha';
+  const formatDate = (date?: Date | null, isEndDate?: boolean) => {
+    if (!date) {
+      if (obra.esPlaneada) return 'Por programar';
+      if (isEndDate && status === 'EN_EJECUCION') return 'En ejecución';
+      return 'Sin fecha';
+    }
     return date.toLocaleDateString('es-MX', {
       day: '2-digit',
       month: '2-digit',
@@ -241,7 +245,9 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                   )}
                 </div>
                 <h2 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight break-words font-mono">
-                  {obra.esPlaneada ? 'POR LICITAR (SIN CONTRATO)' : (obra.contrato || obra.evidencias?.noContrato || 'S/N')}
+                  {obra.esPlaneada
+                    ? (obra.tipo === 'dragon' ? `${obra.contrato || 'DIABLO DRAGÓN'} · PLANEADA` : 'POR LICITAR (SIN CONTRATO)')
+                    : (obra.contrato || obra.evidencias?.noContrato || 'S/N')}
                 </h2>
               </div>
 
@@ -321,7 +327,7 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                   <div className="min-w-0">
                     <span className="text-[9px] text-slate-400 font-bold uppercase block truncate">Término de Obra</span>
                     <span className="text-xs font-semibold text-slate-800 truncate block">
-                      {formatDate(obra.fechaFin)}
+                      {formatDate(obra.fechaFin, true)}
                     </span>
                   </div>
                 </div>
@@ -450,7 +456,9 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                   </h4>
                   <p className="text-[11px] text-slate-400 max-w-sm leading-snug">
                     {obra.esPlaneada 
-                      ? 'Proyecto estratégico con financiamiento GIDEM 2026. La evidencia fotográfica estará disponible una vez concluido el proceso de licitación y comenzados los trabajos en campo.'
+                      ? (obra.tipo === 'dragon'
+                          ? 'Vialidad programada para intervención con el tren de reciclado asfáltico Diablo Dragón. Las fechas de inicio y término, así como la evidencia fotográfica, se registrarán al iniciar trabajos en campo.'
+                          : 'Proyecto estratégico con financiamiento GIDEM 2026. La evidencia fotográfica estará disponible una vez concluido el proceso de licitación y comenzados los trabajos en campo.')
                       : <>No se ha registrado fotografía para la etapa <b className="text-slate-300 capitalize">{etapaActiva}</b> de esta obra.</>
                     }
                   </p>
@@ -458,8 +466,8 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
               )}
             </div>
 
-            {isDragon ? (
-              /* Carrusel Especializado Diablo Dragón: Línea de tiempo y 6 miniaturas */
+            {isDragon && totalDragon > 0 ? (
+              /* Carrusel Especializado Diablo Dragón: Línea de tiempo y miniaturas */
               <div className="bg-slate-50 border border-slate-200/80 rounded-xl p-3 shadow-sm space-y-3 animate-in fade-in duration-150">
                 <div className="flex items-center justify-between px-1">
                   <div className="flex items-center gap-1.5">
@@ -512,8 +520,8 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                   ))}
                 </div>
 
-                {/* Tira interactiva de 6 miniaturas fotográficas */}
-                <div className="grid grid-cols-6 gap-2 pt-0.5">
+                {/* Tira interactiva de miniaturas fotográficas */}
+                <div className={`grid ${totalDragon <= 3 ? 'grid-cols-3' : 'grid-cols-6'} gap-2 pt-0.5`}>
                   {fotosDragon.map((src, idx) => (
                     <button
                       key={idx}
@@ -539,7 +547,7 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                   ))}
                 </div>
               </div>
-            ) : (
+            ) : !isDragon ? (
               /* Para obras regulares: Carrusel de proceso si aplica y las 3 tarjetas inferiores */
               <>
                 {etapaActiva === 'proceso' && totalProceso > 1 && (
@@ -678,7 +686,7 @@ export const ObraDetailModal: React.FC<ObraDetailModalProps> = ({ obra, onClose 
                   </button>
                 </div>
               </>
-            )}
+            ) : null}
 
           </div>
 

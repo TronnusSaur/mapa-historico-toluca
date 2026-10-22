@@ -1088,8 +1088,21 @@ export const DIABLO_DRAGON_FOLDERS: Record<string, string> = {
   'DR-07': 'SANTOS DEGOLLADO',
   'DR-08': 'HEROICO COLEGIO MILITAR DERECHA',
   'DR-09': 'HEROICO COLEGIO MILITAR IZQUIERDA',
-  'DR-10': 'JUAN ALDAMA'
+  'DR-10': 'JUAN ALDAMA',
+  'DR-11': '16 DE SEPTIEMBRE'
 };
+
+/**
+ * Archivos específicos cuando un folio de Diablo Dragón usa nombres distintos a la numeración estándar 1.jpeg..6.jpeg
+ */
+export const DIABLO_DRAGON_CUSTOM_FILES: Record<string, string[]> = {
+  'DR-11': ['INICIO.jpeg', 'INICIO2.jpeg', 'INICIO3.jpeg']
+};
+
+/**
+ * Folios de Diablo Dragón que se encuentran en etapa planeada (sin fechas de inicio/término ni fotos aún)
+ */
+export const DIABLO_DRAGON_PLANNED_IDS = new Set(['DR-12', 'DR-13', 'DR-14', 'DR-15']);
 
 /**
  * Parser de filas para obras del Diablo Dragón
@@ -1104,15 +1117,17 @@ export const parseDragonRows = (data: any[]): ObraTramo[] => {
     const idDragon = (getVal(row, ['idDragon', 'id_dragon', 'iddragon']) || `DR-${String(index + 1).padStart(2, '0')}`).toString().trim();
     let nombre = (getVal(row, ['Nombre de la Obra', 'nombre', 'descripcion']) || `Rehabilitación con Diablo Dragón #${index + 1}`).toString().trim();
     const calle = (getVal(row, ['Calle', 'calle']) || '').toString().trim();
-    // Corrección preventiva para DR-03 si la descripción arrastra el nombre erróneo de Benito Juárez
-    if (idDragon === 'DR-03' && /BENITO\s*JU[AÁ]REZ/i.test(nombre)) {
-      nombre = nombre.replace(/BENITO\s*JU[AÁ]REZ/gi, 'FRANCISCO MURGIA');
+    // Corrección preventiva si la descripción en BD arrastra por error "BENITO JUAREZ" en otro folio (ej. DR-03 o DR-14)
+    if (idDragon !== 'DR-01' && /BENITO\s*JU[AÁ]REZ/i.test(nombre) && calle) {
+      nombre = nombre.replace(/(?:LA\s+CALLE\s+)?BENITO\s*JU[AÁ]REZ/gi, calle);
     }
     const inicioRaw = getVal(row, ['Inicio de Ejecucion', 'inicio_de_ejecucion', 'inicio']);
     const terminoRaw = getVal(row, ['Termino de Ejecucion', 'termino_de_ejecucion', 'termino', 'fin']);
     
     const fechaInicio = parseFechaFlexible(inicioRaw);
     const fechaFin = parseFechaFlexible(terminoRaw);
+    const folioNum = parseInt(idDragon.replace(/\D/g, ''), 10) || (index + 1);
+    const isPlannedDragon = DIABLO_DRAGON_PLANNED_IDS.has(idDragon) || (folioNum >= 12 && !fechaInicio && !fechaFin);
 
     // Coordenadas dinámicas P1 a P17
     const pKeys = Object.keys(row)
@@ -1145,10 +1160,37 @@ export const parseDragonRows = (data: any[]): ObraTramo[] => {
     const metrosLineales = coords.length >= 2 ? calcularMetrosLinealesTramo(coords) : 0;
     const delegacion = extraerDelegacion(nombre) || 'TOLUCA';
 
+    if (isPlannedDragon) {
+      parsed.push({
+        id: `dragon-${idDragon}`,
+        contrato: `DRAGÓN-${idDragon}`,
+        idContrato: idDragon,
+        nombre,
+        tipo: 'dragon',
+        subtipo: 'Reciclado Asfáltico (Diablo Dragón)',
+        tipoRaw: 'DIABLO DRAGON',
+        anio: 2026,
+        fechaInicio: null,
+        fechaFin: null,
+        delegacion,
+        metrosLineales,
+        esPlaneada: true,
+        geometriaTipo: 'tramo',
+        coords
+      });
+      return;
+    }
+
     const folderName = DIABLO_DRAGON_FOLDERS[idDragon] || calle;
-    const fotosUrls = Array.from({ length: 6 }, (_, i) => 
-      `${baseImgUrl}${encodeURIComponent(folderName)}/${i + 1}.jpeg`
-    );
+    const customFiles = DIABLO_DRAGON_CUSTOM_FILES[idDragon];
+    const fotosUrls = customFiles
+      ? customFiles.map(file => `${baseImgUrl}${encodeURIComponent(folderName)}/${file}`)
+      : Array.from({ length: 6 }, (_, i) => `${baseImgUrl}${encodeURIComponent(folderName)}/${i + 1}.jpeg`);
+
+    // Para DR-01..DR-10 que ya concluyeron (incluso DR-07 sin fecha en BD), mantener respaldo de fechas;
+    // para DR-11 en ejecución (tiene fechaInicio pero no fechaFin), respetar fechaFin = null.
+    const resolvedInicio = fechaInicio || new Date(2026, 4, 1);
+    const resolvedFin = fechaFin || (folioNum <= 10 ? new Date(2026, 8, 30) : null);
 
     parsed.push({
       id: `dragon-${idDragon}`,
@@ -1159,8 +1201,8 @@ export const parseDragonRows = (data: any[]): ObraTramo[] => {
       subtipo: 'Reciclado Asfáltico (Diablo Dragón)',
       tipoRaw: 'DIABLO DRAGON',
       anio: 2026,
-      fechaInicio: fechaInicio || new Date(2026, 4, 1),
-      fechaFin: fechaFin || new Date(2026, 8, 30),
+      fechaInicio: resolvedInicio,
+      fechaFin: resolvedFin,
       delegacion,
       metrosLineales,
       geometriaTipo: 'tramo',
@@ -1174,9 +1216,9 @@ export const parseDragonRows = (data: any[]): ObraTramo[] => {
         fechaFin: terminoRaw ? terminoRaw.toString() : undefined,
         categoria: 'DIABLO DRAGON',
         fotos: {
-          inicio: null,
+          inicio: fotosUrls[0] || null,
           proceso: fotosUrls,
-          terminado: fotosUrls[5],
+          terminado: resolvedFin ? (fotosUrls[fotosUrls.length - 1] || null) : null,
           fotosDragon: fotosUrls
         }
       }

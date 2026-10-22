@@ -2421,19 +2421,51 @@ export const RUTA_DEMOSTRACION_2026: DemoTourStep[] = [
     "metrosLineales": 232.53,
     "superficieM2": 20520.0,
     "estatusPdf": "DIABLO DRAGÓN",
-    "contratoKey": null,
+    "contratoKey": "DR-11",
     "lpnNum": null,
-    "dragonId": null,
+    "dragonId": "DR-11",
     "gidemId": null,
-    "hasPhotosExpected": false,
+    "hasPhotosExpected": true,
     "fallbackCoords": [
       [
-        19.278718,
-        -99.615514
+        19.278599,
+        -99.60795
       ],
       [
-        19.27875,
-        -99.61125
+        19.278737,
+        -99.62032
+      ],
+      [
+        19.278904,
+        -99.620739
+      ],
+      [
+        19.279119,
+        -99.621123
+      ],
+      [
+        19.279197,
+        -99.621705
+      ],
+      [
+        19.279181,
+        -99.627332
+      ],
+      [
+        19.279279,
+        -99.628221
+      ],
+      [
+        19.279223,
+        -99.628761
+      ],
+      [
+        19.279113,
+        -99.628767
+      ],
+      [
+        19.279064,
+        -99.631433
       ]
     ]
   }

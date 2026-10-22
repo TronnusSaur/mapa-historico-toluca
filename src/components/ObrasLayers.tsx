@@ -135,7 +135,7 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = React.memo(({
     if (status === 'CONCLUIDA' && !showConcluidas) return false;
     if (status === 'EN_EJECUCION' && !showEnProceso) return false;
     if (status === 'POR_INICIAR') {
-      if (!showProgramadas) return false;
+      if (!showProgramadas && obra.tipo !== 'dragon') return false;
       const obraAnio = obra.anio || (obra.fechaInicio ? obra.fechaInicio.getFullYear() : 2026);
       if (currentDate.getFullYear() < obraAnio) return false;
     }
@@ -211,8 +211,12 @@ export const ObrasLayers: React.FC<ObrasLayersProps> = React.memo(({
               <div className="font-sans">
                 {isPlaneada && (
                   <div className="mb-1">
-                    <span className="inline-block px-1.5 py-0.5 rounded bg-amber-100 text-amber-900 border border-amber-300 font-black text-[9px] uppercase tracking-wide">
-                      Financiamiento GIDEM 2026 · En Planeación
+                    <span className={`inline-block px-1.5 py-0.5 rounded font-black text-[9px] uppercase tracking-wide border ${
+                      obra.tipo === 'dragon'
+                        ? 'bg-red-100 text-red-900 border-red-300'
+                        : 'bg-amber-100 text-amber-900 border-amber-300'
+                    }`}>
+                      {obra.tipo === 'dragon' ? 'Diablo Dragón 2026 · Obra Planeada' : 'Financiamiento GIDEM 2026 · En Planeación'}
                     </span>
                   </div>
                 )}
