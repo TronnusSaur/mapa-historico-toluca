@@ -23,8 +23,9 @@ interface PotholeDetails {
  */
 async function fetchPotholeDetails(pData: PotholeData): Promise<PotholeDetails> {
   try {
-    let query = supabase
-      .from('bacheo')
+    const isStage4 = pData.stage === 4;
+    const client = isStage4 ? supabase.schema('bacheo_frentes').from('bacheo') : supabase.from('bacheo');
+    let query = client
       .select('calle, delegacion, colonia, fotoBache1, fotoBache2, fotoBache3, fotoBacheProceso1, fotoBacheProceso2, fotoBacheProceso3, fotoBacheProceso4, fotoBacheProceso5, fotoBacheTerminado1, fotoBacheTerminado2, fotoBacheTerminado3');
 
     if (pData.originalId) {
@@ -40,7 +41,21 @@ async function fetchPotholeDetails(pData: PotholeData): Promise<PotholeDetails> 
       return { calle: '', delegacion: '', colonia: '', photos: [] };
     }
 
-    const { data, error } = await query.maybeSingle();
+    let { data, error } = await query.maybeSingle();
+
+    // Fallback cruzado si no se encontró en el primer intento
+    if ((!data || error) && !isStage4 && pData.originalId) {
+      const fbRes = await supabase
+        .schema('bacheo_frentes')
+        .from('bacheo')
+        .select('calle, delegacion, colonia, fotoBache1, fotoBache2, fotoBache3, fotoBacheProceso1, fotoBacheProceso2, fotoBacheProceso3, fotoBacheProceso4, fotoBacheProceso5, fotoBacheTerminado1, fotoBacheTerminado2, fotoBacheTerminado3')
+        .eq('folio', pData.originalId)
+        .maybeSingle();
+      if (fbRes.data) {
+        data = fbRes.data;
+        error = null;
+      }
+    }
 
     if (error || !data) {
       return { calle: '', delegacion: '', colonia: '', photos: [] };

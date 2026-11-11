@@ -18,13 +18,10 @@ import {
   vincularEvidenciasAObras,
   fetchAvancesObras2026,
   vincularAvancesAObras,
-  fetchObrasGidem,
-  fetchDemandaCiudadanaGeneral,
-  fetchPeticionesCiudadanas,
-  fetchPlanTrabajo
+  fetchObrasGidem
 } from './utils/dataProcessors.ts';
 import type { PotholeData, Tramo } from './utils/dataProcessors.ts';
-import type { FiltrosModulos, ObraTramo, ObraPuntual, Obra, YearFilter, DemandaCiudadana, PeticionCiudadana, ModuloObraId, PlanTrabajoFeature } from './types/obras.ts';
+import type { FiltrosModulos, ObraTramo, ObraPuntual, Obra, YearFilter, ModuloObraId } from './types/obras.ts';
 import { supabase } from './lib/supabase.ts';
 import { 
   BarChart3, 
@@ -36,12 +33,7 @@ import {
   Calendar,
   ChevronRight,
   Info,
-  Loader2,
-  Megaphone,
-  Users,
-  FileText,
-  Flame,
-  Briefcase, Sparkles
+  Loader2
 } from 'lucide-react';
 
 // Marker Cluster component (manual instantiation for better control with 50k points)
@@ -51,16 +43,7 @@ import { ModuleFilterBar, toggleModuloFilter } from './components/ModuleFilterBa
 import { ObrasLayers } from './components/ObrasLayers.tsx';
 import { MapLegend } from './components/MapLegend.tsx';
 import { ObraDetailModal } from './components/ObraDetailModal.tsx';
-import { CitizenDemandLayer } from './components/CitizenDemandLayer.tsx';
-import { PlanTrabajoLayer } from './components/PlanTrabajoLayer.tsx';
-import { HeatmapLayer } from './components/HeatmapLayer.tsx';
-import { HotspotsLayer } from './components/HotspotsLayer.tsx';
-import { HotspotsPanel } from './components/HotspotsPanel.tsx';
 import { TramosLayer } from './components/TramosLayer.tsx';
-import { DemoTourMapController, DemoTourHUD } from './components/DemoTourOverlay.tsx';
-import { RUTA_DEMOSTRACION_2026, resolveObraForDemoStep } from './utils/rutaDemostracion2026.ts';
-import { unifyCitizenReports, detectHotspots, getHeatmapPoints } from './utils/hotspotDetector.ts';
-import type { HotspotFilterOptions, HotspotCluster } from './types/hotspots.ts';
 
 const CARTO_KEY = import.meta.env.VITE_CARTO_KEY || 'cb1_2v8k_1_77d3a08b9dfcaeb412cca4b0';
 
@@ -80,6 +63,7 @@ export default function App() {
     showE1: true,
     showE2: true,
     showE3: true,
+    showE4: true,
     showSP2025: true,
     showSP2026: true,
     showSP2027: false,
@@ -92,25 +76,6 @@ export default function App() {
   const [obrasTramos, setObrasTramos] = useState<ObraTramo[]>([]);
   const [obrasPuntuales, setObrasPuntuales] = useState<ObraPuntual[]>([]);
   const [selectedObra, setSelectedObra] = useState<Obra | null>(null);
-  const [demandasCiudadanas, setDemandasCiudadanas] = useState<DemandaCiudadana[]>([]);
-  const [showDemandaCiudadana, setShowDemandaCiudadana] = useState<boolean>(true);
-  const [peticionesCiudadanas, setPeticionesCiudadanas] = useState<PeticionCiudadana[]>([]);
-  const [showPeticionesCiudadanas, setShowPeticionesCiudadanas] = useState<boolean>(true);
-  const [planTrabajoRoutes, setPlanTrabajoRoutes] = useState<PlanTrabajoFeature[]>([]);
-  const [showPlanTrabajo, setShowPlanTrabajo] = useState<boolean>(true);
-  const [selectedPlanRoute, setSelectedPlanRoute] = useState<PlanTrabajoFeature | null>(null);
-  const [showHeatmap, setShowHeatmap] = useState<boolean>(false);
-  const [showHotspots, setShowHotspots] = useState<boolean>(false);
-  const [showHotspotsPanel, setShowHotspotsPanel] = useState<boolean>(false);
-  const [selectedHotspotId, setSelectedHotspotId] = useState<string | null>(null);
-  const [isDemoTourActive, setIsDemoTourActive] = useState<boolean>(false);
-  const [demoStepIndex, setDemoStepIndex] = useState<number>(0);
-  const [demoOnlyWithPhotos, setDemoOnlyWithPhotos] = useState<boolean>(false);
-  const [hotspotFilterOptions, setHotspotFilterOptions] = useState<HotspotFilterOptions>({
-    radiusMeters: 300,
-    minPoints: 3,
-    sourceFilter: 'todos'
-  });
   const [filtrosModulos, setFiltrosModulos] = useState<FiltrosModulos>({
     moduloActivo: 'todos',
     showBacheo: true,
@@ -176,14 +141,18 @@ export default function App() {
           }
         };
 
-        const fetchStageBacheos = async (stageFilter: string, stageName: string): Promise<PotholeData[]> => {
+        const fetchStageBacheos = async (stageFilter: string, stageName: string, schemaName: string = 'public'): Promise<PotholeData[]> => {
           try {
-            console.log(`Iniciando descarga de ${stageName}...`);
-            let query = supabase
-              .from('bacheo')
-              .select('Id, idEtapa, fecha, folio, latitude, longitude, m2total, largo');
+            console.log(`Iniciando descarga de ${stageName} (${schemaName})...`);
+            const client = schemaName === 'public'
+              ? supabase.from('bacheo')
+              : supabase.schema(schemaName).from('bacheo');
 
-            if (stageFilter === '1') query = query.eq('idEtapa', 1);
+            let query = client
+              .select('Id, idEtapa, fecha, folio, latitude, longitude, m2total, largo, calle, delegacion, colonia, estatus');
+
+            if (stageFilter === '4') query = query.eq('idEtapa', 4);
+            else if (stageFilter === '1') query = query.eq('idEtapa', 1);
             else if (stageFilter === '2') query = query.eq('idEtapa', 2);
             else if (stageFilter === '3') query = query.eq('idEtapa', 3);
             else if (stageFilter === 'sp') query = query.in('idEtapa', [101, 102, 103]);
@@ -290,29 +259,16 @@ export default function App() {
           return [];
         };
 
-        // FASE 1: Carga INMEDIATA y prioritaria de Obras 2025-2026 desde Supabase Alfa, Plan de Trabajo y Límites (<1 segundo)
-        const [, contratosTramos, contratosPuntuales, dragonTramos, evidenciasMap, avancesMap, gidemTramos, demandasData, peticionesData, planTrabajoData] = await Promise.all([
+        // FASE 1: Carga INMEDIATA y prioritaria de Obras 2025-2026 desde Supabase Alfa y Límites (<1 segundo)
+        const [, contratosTramos, contratosPuntuales, dragonTramos, evidenciasMap, avancesMap, gidemTramos] = await Promise.all([
           fetchGeoJSONBoundaries(),
           fetchContratosTramosWithFallback(),
           fetchContratosPuntualesWithFallback(),
           fetchDiabloDragonWithFallback(),
           fetchEvidenciasObras(baseUrl),
           fetchAvancesObras2026(baseUrl),
-          fetchObrasGidem(baseUrl),
-          fetchDemandaCiudadanaGeneral(baseUrl, (updated) => setDemandasCiudadanas(updated)),
-          fetchPeticionesCiudadanas(baseUrl, (updated) => setPeticionesCiudadanas(updated)),
-          fetchPlanTrabajo(baseUrl)
+          fetchObrasGidem(baseUrl)
         ]);
-
-        if (demandasData && demandasData.length > 0) {
-          setDemandasCiudadanas(demandasData);
-        }
-        if (peticionesData && peticionesData.length > 0) {
-          setPeticionesCiudadanas(peticionesData);
-        }
-        if (planTrabajoData && planTrabajoData.length > 0) {
-          setPlanTrabajoRoutes(planTrabajoData);
-        }
 
         // Deduplicar obras de GIDEM para evitar duplicar las ya formalizadas en contratosTramos (LPN-104 a LPN-116)
         const tramosExistentesNombres = new Set(
@@ -372,19 +328,20 @@ export default function App() {
 
             if (cancelled) return;
 
-            // 2. Sincronizar etapas ejecutadas de Supabase Alfa
-            const stageTasks = [
-              { filter: '1', name: 'Etapa 1' },
-              { filter: 'sp', name: 'Servicios Públicos' },
-              { filter: '3', name: 'Etapa 3' },
-              { filter: '2', name: 'Etapa 2' }
+            // 2. Sincronizar etapas ejecutadas de Supabase Alfa (incluyendo Etapa 4 en bacheo_frentes)
+            const stageTasks: Array<{ filter: string; name: string; schema?: string }> = [
+              { filter: '4', name: 'Etapa 4 (Frentes 2026)', schema: 'bacheo_frentes' },
+              { filter: '3', name: 'Etapa 3', schema: 'public' },
+              { filter: 'sp', name: 'Servicios Públicos', schema: 'public' },
+              { filter: '2', name: 'Etapa 2', schema: 'public' },
+              { filter: '1', name: 'Etapa 1', schema: 'public' }
             ];
 
             let allLoadedBacheos: PotholeData[] = [];
 
             for (const task of stageTasks) {
               if (cancelled) return;
-              const stageBacheos = await fetchStageBacheos(task.filter, task.name);
+              const stageBacheos = await fetchStageBacheos(task.filter, task.name, task.schema || 'public');
               if (cancelled) return;
 
               if (stageBacheos.length > 0) {
@@ -434,13 +391,56 @@ export default function App() {
     return () => {
       cancelled = true;
     };
-  }, []);  // Helper para filtrar por año seleccionado
+  }, []);
+
+  // Sincronización en tiempo real para bacheo_frentes.bacheo (4ta etapa 2026)
+  useEffect(() => {
+    const pollInterval = setInterval(async () => {
+      try {
+        const { data: rows, error } = await supabase
+          .schema('bacheo_frentes')
+          .from('bacheo')
+          .select('Id, idEtapa, fecha, folio, latitude, longitude, m2total, largo, calle, delegacion, colonia, estatus');
+
+        if (!error && rows && rows.length > 0) {
+          const fresh = rows.map(mapSupabaseRowToPothole);
+          setData(prev => {
+            const existingIds = new Set(prev.map(p => p.id));
+            const newItems = fresh.filter(p => !existingIds.has(p.id));
+            if (newItems.length === 0) return prev;
+
+            const enriched = newItems.map(p => ({
+              ...p,
+              inZona: geoData ? isPointInGeoJSON(p.lat, p.lng, geoData) : true
+            }));
+
+            const updated = [...prev, ...enriched];
+            const ejecutados = updated.filter(p => 
+              p.status === 'EJECUTADO' && 
+              p.inZona && 
+              !(p.stage && p.stage >= 100) && 
+              !isNaN(p.lat) && p.lat !== 0
+            );
+            setAllTramos(groupIntoTramos(ejecutados, 80, 2));
+            return updated;
+          });
+        }
+      } catch (err) {
+        console.warn('Aviso en polling de bacheo_frentes:', err);
+      }
+    }, 45000);
+
+    return () => clearInterval(pollInterval);
+  }, [geoData]);
+
+  // Helper para filtrar por año seleccionado
   const matchesYear = (d?: Date | null, stage?: number): boolean => {
     if (selectedYear === 'todos') return true;
     const y = parseInt(selectedYear, 10);
     if (stage === 101) return y === 2025;
     if (stage === 102) return y === 2026;
     if (stage === 103) return y === 2027;
+    if (stage === 4) return y === 2026;
     if (d instanceof Date && !isNaN(d.getTime())) {
       return d.getFullYear() === y;
     }
@@ -520,8 +520,10 @@ export default function App() {
     let e2M2 = 0;
     let e3Baches = 0;
     let e3M2 = 0;
+    let e4Baches = 0;
+    let e4M2 = 0;
 
-    const { showE1, showE2, showE3, showSP2025, showSP2026, showSP2027 } = filters;
+    const { showE1, showE2, showE3, showE4, showSP2025, showSP2026, showSP2027 } = filters;
     const len = data.length;
 
     for (let i = 0; i < len; i++) {
@@ -539,6 +541,9 @@ export default function App() {
           } else if (p.stage === 3) {
             e3Baches++;
             e3M2 += (p.m2 || 0);
+          } else if (p.stage === 4) {
+            e4Baches++;
+            e4M2 += (p.m2 || 0);
           }
 
           // Filtered stage checks
@@ -546,6 +551,7 @@ export default function App() {
           if (p.stage === 1 && !showE1) visibleStage = false;
           else if (p.stage === 2 && !showE2) visibleStage = false;
           else if (p.stage === 3 && !showE3) visibleStage = false;
+          else if (p.stage === 4 && !showE4) visibleStage = false;
           else if (p.stage === 101 && !showSP2025) visibleStage = false;
           else if (p.stage === 102 && !showSP2026) visibleStage = false;
           else if (p.stage === 103 && !showSP2027) visibleStage = false;
@@ -582,9 +588,11 @@ export default function App() {
       e2Baches,
       e2M2,
       e3Baches,
-      e3M2
+      e3M2,
+      e4Baches,
+      e4M2
     };
-  }, [data, currentDate, selectedYear, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
+  }, [data, currentDate, selectedYear, filters.showE1, filters.showE2, filters.showE3, filters.showE4, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
 
   // Map Visualization Data (Optimized: uses pre-calculated p.inZona)
   const visibleData = useMemo(() => {
@@ -602,6 +610,7 @@ export default function App() {
        if (p.stage === 1 && !filters.showE1) return false;
        if (p.stage === 2 && !filters.showE2) return false;
        if (p.stage === 3 && !filters.showE3) return false;
+       if (p.stage === 4 && !filters.showE4) return false;
        if (p.stage === 101 && !filters.showSP2025) return false;
        if (p.stage === 102 && !filters.showSP2026) return false;
        if (p.stage === 103 && !filters.showSP2027) return false;
@@ -617,7 +626,7 @@ export default function App() {
 
        return p.date <= currentDate;
     });
-  }, [data, currentDate, selectedYear, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
+  }, [data, currentDate, selectedYear, filters.showE1, filters.showE2, filters.showE3, filters.showE4, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
 
   // Tramos: filter the pre-computed chains by currentDate, stage, and selectedYear
   const tramos = useMemo(() => {
@@ -626,12 +635,13 @@ export default function App() {
       if (t.stage === 1 && !filters.showE1) return false;
       if (t.stage === 2 && !filters.showE2) return false;
       if (t.stage === 3 && !filters.showE3) return false;
+      if (t.stage === 4 && !filters.showE4) return false;
       if (t.stage === 101 && !filters.showSP2025) return false;
       if (t.stage === 102 && !filters.showSP2026) return false;
       if (t.stage === 103 && !filters.showSP2027) return false;
       return t.date <= currentDate;
     });
-  }, [allTramos, currentDate, selectedYear, filters.showE1, filters.showE2, filters.showE3, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
+  }, [allTramos, currentDate, selectedYear, filters.showE1, filters.showE2, filters.showE3, filters.showE4, filters.showSP2025, filters.showSP2026, filters.showSP2027]);
 
 
   // Throttled cluster data — limits re-clustering to max once per 300ms.
@@ -687,109 +697,12 @@ export default function App() {
     };
   }, [stats.baches, filteredObrasTramos, filteredObrasPuntuales]);
 
-  const allCitizenPoints = useMemo(() => {
-    return unifyCitizenReports(demandasCiudadanas, peticionesCiudadanas);
-  }, [demandasCiudadanas, peticionesCiudadanas]);
-
-  const detectedHotspots = useMemo(() => {
-    return detectHotspots(allCitizenPoints, hotspotFilterOptions);
-  }, [allCitizenPoints, hotspotFilterOptions]);
-
-  const heatmapPoints = useMemo(() => {
-    return getHeatmapPoints(allCitizenPoints, detectedHotspots);
-  }, [allCitizenPoints, detectedHotspots]);
-
-  // Stable callbacks for memoized child components
-  const handleSelectHotspot = useCallback((cluster: HotspotCluster) => {
-    setSelectedHotspotId(cluster.id);
-  }, []);
-
-  const handleToggleDemandaCiudadana = useCallback(() => {
-    setShowDemandaCiudadana(prev => !prev);
-  }, []);
-
-  const handleTogglePeticionesCiudadanas = useCallback(() => {
-    setShowPeticionesCiudadanas(prev => !prev);
-  }, []);
-
-  const handleToggleHeatmap = useCallback(() => {
-    setShowHeatmap(prev => !prev);
-  }, []);
-
-  const handleToggleHotspots = useCallback(() => {
-    setShowHotspots(prev => !prev);
-  }, []);
-
-  const handleOpenHotspotsPanel = useCallback(() => {
-    setShowHotspotsPanel(true);
-  }, []);
-
-  const handleCloseHotspotsPanel = useCallback(() => {
-    setShowHotspotsPanel(false);
-  }, []);
-
   const handleToggleModulo = useCallback((id: ModuloObraId) => {
     setFiltrosModulos(prev => toggleModuloFilter(id, prev));
   }, []);
 
   const handleSelectObra = useCallback((obra: Obra) => {
     setSelectedObra(obra);
-  }, []);
-
-  const demoStepsList = useMemo(() => {
-    if (demoOnlyWithPhotos) {
-      return RUTA_DEMOSTRACION_2026.filter(s => s.hasPhotosExpected);
-    }
-    return RUTA_DEMOSTRACION_2026;
-  }, [demoOnlyWithPhotos]);
-
-  const activeDemoStep = useMemo(() => {
-    const idx = Math.min(Math.max(0, demoStepIndex), Math.max(0, demoStepsList.length - 1));
-    return demoStepsList[idx] || RUTA_DEMOSTRACION_2026[0];
-  }, [demoStepsList, demoStepIndex]);
-
-  const activeDemoObra = useMemo(() => {
-    if (!isDemoTourActive || !activeDemoStep) return null;
-    return resolveObraForDemoStep(activeDemoStep, obrasTramos);
-  }, [isDemoTourActive, activeDemoStep, obrasTramos]);
-
-  const handleStartDemoTour = useCallback(() => {
-    setIsPlaying(false);
-    setSelectedYear('2026');
-    setCurrentDate(new Date(2026, 11, 31));
-    setFiltrosModulos(prev => ({
-      ...prev,
-      moduloActivo: 'multiple',
-      showBacheo: false,
-      showPavimentacion: true,
-      showSlurry: true,
-      showDragon: true,
-      showSenderos: true,
-      pavAsfaltica: true,
-      pavHidraulico: true,
-      pavEcologico: true,
-      showConcluidas: true,
-      showEnProceso: true,
-      showProgramadas: true
-    }));
-    setShowDemandaCiudadana(false);
-    setShowPeticionesCiudadanas(false);
-    setShowPlanTrabajo(false);
-    setDemoStepIndex(0);
-    setIsDemoTourActive(true);
-  }, []);
-
-  const handleExitDemoTour = useCallback(() => {
-    setIsDemoTourActive(false);
-  }, []);
-
-  const handleToggleDemoOnlyPhotos = useCallback(() => {
-    setDemoOnlyWithPhotos(prev => !prev);
-    setDemoStepIndex(0);
-  }, []);
-
-  // noop placeholder
-  useMemo(() => {
   }, []);
 
   const renderHeaderMetrics = () => {
@@ -1095,27 +1008,6 @@ export default function App() {
           </div>
 
           <div className="flex items-center gap-3">
-            {/* Botón de Concentración Espacial y Hotspots */}
-            <button
-              onClick={() => {
-                setShowHotspotsPanel(prev => !prev);
-                if (!showHotspots && !showHeatmap) {
-                  setShowHotspots(true);
-                }
-              }}
-              className={`px-3.5 py-1.5 rounded-full border transition-all flex items-center gap-2 cursor-pointer ${
-                showHotspotsPanel || showHeatmap || showHotspots
-                  ? 'bg-amber-500/25 border-amber-400 text-amber-200 shadow-md ring-2 ring-amber-400/20'
-                  : 'bg-white/10 border-white/20 text-white/90 hover:bg-white/20'
-              }`}
-              title="Abrir análisis de concentración de demanda y focos críticos"
-            >
-              <Flame className="w-3.5 h-3.5 text-amber-400 animate-pulse" />
-              <span className="text-[11px] font-black tracking-wider uppercase">
-                Concentración ({detectedHotspots.length} Focos)
-              </span>
-            </button>
-
             <div className="bg-white/5 px-4 py-2 rounded-full border border-white/10 flex items-center gap-2">
               {dbLoading ? (
                 <>
@@ -1137,60 +1029,6 @@ export default function App() {
         {/* Sidebar Táctico */}
         <aside className="w-80 bg-slate-50 border-r border-slate-200 flex flex-col z-40 shadow-inner overflow-y-auto custom-scrollbar">
           <div className="p-6 space-y-6 flex-1">
-            {/* 0. Botón de Ruta de Demostración Guiada (Informe PDF 2026) */}
-            <div className="pb-4 border-b border-slate-200">
-              {!isDemoTourActive ? (
-                <button
-                  onClick={handleStartDemoTour}
-                  className="w-full p-3.5 rounded-2xl bg-gradient-to-r from-toluca-burgundy via-[#631127] to-slate-900 hover:from-[#5e1026] hover:to-toluca-burgundy text-white shadow-lg border border-toluca-gold/40 transition-all hover:scale-[1.01] flex items-center justify-between group cursor-pointer"
-                >
-                  <div className="flex items-center gap-3 text-left">
-                    <div className="w-9 h-9 rounded-xl bg-toluca-gold/20 border border-toluca-gold/60 flex items-center justify-center text-toluca-gold shrink-0 group-hover:scale-110 transition-transform">
-                      <Sparkles size={18} />
-                    </div>
-                    <div>
-                      <span className="text-[9px] font-black uppercase tracking-widest text-toluca-gold block">
-                        Recorrido Guiado · PDF 2026
-                      </span>
-                      <span className="text-xs font-black text-white block mt-0.5">
-                        Ruta de Demostración
-                      </span>
-                    </div>
-                  </div>
-                  <div className="text-right shrink-0">
-                    <span className="px-2 py-0.5 rounded-full bg-white/15 text-[10px] font-black text-amber-200 block">
-                      68 Obras
-                    </span>
-                    <span className="text-[9px] text-white/70 font-bold block mt-0.5">
-                      Iniciar →
-                    </span>
-                  </div>
-                </button>
-              ) : (
-                <button
-                  onClick={handleExitDemoTour}
-                  className="w-full p-3.5 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 shadow-lg border-2 border-toluca-burgundy transition-all flex items-center justify-between cursor-pointer"
-                >
-                  <div className="flex items-center gap-2.5 text-left">
-                    <div className="w-8 h-8 rounded-xl bg-slate-950/15 flex items-center justify-center text-slate-950 shrink-0">
-                      <Play size={16} fill="currentColor" />
-                    </div>
-                    <div>
-                      <span className="text-[9px] font-black uppercase tracking-wider text-slate-900 block">
-                        Modo Demostración Activo
-                      </span>
-                      <span className="text-xs font-black text-slate-950 block">
-                        Obra {demoStepIndex + 1} de {demoStepsList.length}
-                      </span>
-                    </div>
-                  </div>
-                  <span className="px-2.5 py-1 rounded-lg bg-slate-950 text-white text-[10px] font-black uppercase">
-                    Salir (ESC)
-                  </span>
-                </button>
-              )}
-            </div>
-
             {/* 1. Selector de Módulos de Obra y Subtipos */}
             <ModuleFilterBar
               filtros={filtrosModulos}
@@ -1201,11 +1039,40 @@ export default function App() {
             {/* 2. Secciones Específicas de Bacheo (solo visibles si el módulo Bacheo está activo) */}
             {filtrosModulos.moduloActivo === 'bacheo' && (
               <>
-                {/* --- ETAPA 3 (ACTUAL) --- */}
+                {/* --- ETAPA 4 (ACTUAL - TIEMPO REAL) --- */}
                 <div>
-                  <h3 className="text-xs font-black text-toluca-burgundy tracking-widest uppercase mb-4 flex items-center justify-between">
-                    <span className="flex items-center gap-2"><BarChart3 size={14} /> Etapa 3 (Actual)</span>
-                    <span className="bg-toluca-burgundy/10 text-[10px] px-2 py-0.5 rounded text-toluca-burgundy">EN PROCESO</span>
+                  <h3 className="text-xs font-black text-teal-800 tracking-widest uppercase mb-4 flex items-center justify-between">
+                    <span className="flex items-center gap-2"><BarChart3 size={14} className="text-teal-600" /> Etapa 4 (Actual)</span>
+                    <span className="bg-teal-50 border border-teal-200 text-[10px] font-black px-2 py-0.5 rounded text-teal-700 flex items-center gap-1 shadow-xs">
+                      <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" />
+                      EN PROCESO
+                    </span>
+                  </h3>
+                  <div className="space-y-3">
+                     <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+                       <div className="flex justify-between items-end mb-1">
+                          <span className="text-[10px] font-bold text-slate-500 uppercase">Superficie (m²)</span>
+                          <span className="text-xs font-black text-slate-800">{stats.e4M2.toLocaleString('es-MX', { minimumFractionDigits: 1, maximumFractionDigits: 1 })} m²</span>
+                       </div>
+                       <p className="text-[9px] text-slate-400 mt-1 font-bold uppercase text-right">Segundo Semestre 2026</p>
+                     </div>
+                     <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
+                       <div className="flex justify-between items-end mb-1">
+                          <span className="text-[10px] font-bold text-slate-500 uppercase">Baches Realizados</span>
+                          <span className="text-xs font-black text-slate-800">{stats.e4Baches.toLocaleString('es-MX')} Baches</span>
+                       </div>
+                       <p className="text-[9px] text-teal-600 mt-1 font-bold uppercase text-right flex items-center justify-end gap-1">
+                         <span className="w-1.5 h-1.5 rounded-full bg-teal-500 animate-pulse" /> Tiempo Real (Frentes)
+                       </p>
+                     </div>
+                  </div>
+                </div>
+
+                {/* --- ETAPA 3 (HISTÓRICA) --- */}
+                <div>
+                  <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-4 flex items-center justify-between">
+                    <span className="flex items-center gap-2"><History size={14} /> Etapa 3</span>
+                    <span className="text-[10px] opacity-70">FINALIZADA</span>
                   </h3>
                   <div className="space-y-3">
                      <div className="bg-white p-3 rounded-xl shadow-sm border border-slate-100">
@@ -1309,24 +1176,30 @@ export default function App() {
                    <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 mt-4 flex items-center gap-2">
                       <Filter size={14} /> DGOP (Obras Públicas)
                    </h3>
-                   <div className="grid grid-cols-3 gap-2 mb-4">
+                   <div className="grid grid-cols-4 gap-1.5 mb-4">
                       <button 
                         onClick={() => setFilters(f => ({ ...f, showE1: !f.showE1 }))}
-                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE1 ? 'bg-toluca-gold border-toluca-gold text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE1 ? 'bg-toluca-gold border-toluca-gold text-white shadow-xs' : 'bg-white border-slate-200 text-slate-400'}`}
                       >
                         ETAPA 1
                       </button>
                       <button 
                         onClick={() => setFilters(f => ({ ...f, showE2: !f.showE2 }))}
-                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE2 ? 'bg-toluca-burgundy border-toluca-burgundy text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE2 ? 'bg-toluca-burgundy border-toluca-burgundy text-white shadow-xs' : 'bg-white border-slate-200 text-slate-400'}`}
                       >
                         ETAPA 2
                       </button>
                       <button 
                         onClick={() => setFilters(f => ({ ...f, showE3: !f.showE3 }))}
-                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE3 ? 'bg-emerald-600 border-emerald-600 text-white' : 'bg-white border-slate-200 text-slate-400'}`}
+                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE3 ? 'bg-emerald-600 border-emerald-600 text-white shadow-xs' : 'bg-white border-slate-200 text-slate-400'}`}
                       >
                         ETAPA 3
+                      </button>
+                      <button 
+                        onClick={() => setFilters(f => ({ ...f, showE4: !f.showE4 }))}
+                        className={`p-2 rounded-lg border text-[10px] font-bold transition-all ${filters.showE4 ? 'bg-teal-600 border-teal-600 text-white shadow-xs' : 'bg-white border-slate-200 text-slate-400'}`}
+                      >
+                        ETAPA 4
                       </button>
                    </div>
 
@@ -1447,182 +1320,6 @@ export default function App() {
                   />
                   <span className="text-xs font-bold text-slate-700">Límites Delegacionales (48 Zonas)</span>
                 </label>
-              </div>
-            </div>
-
-            {/* Capas de Demanda y Peticiones Ciudadanas */}
-            <div className="pt-4 border-t border-slate-200">
-              <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 flex items-center gap-2">
-                <Users size={14} /> Demanda y Peticiones
-              </h3>
-              <div className="space-y-2">
-                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors group">
-                  <div className="flex items-center gap-3">
-                    <input 
-                      type="checkbox" 
-                      checked={showDemandaCiudadana} 
-                      onChange={(e) => setShowDemandaCiudadana(e.target.checked)}
-                      className="w-4 h-4 accent-amber-600" 
-                    />
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-amber-600 to-orange-500 text-white flex items-center justify-center text-[10px] shadow-xs">
-                        <Megaphone size={11} />
-                      </div>
-                      <span className="text-xs font-bold text-slate-700 group-hover:text-amber-800 transition-colors">
-                        Demanda Ciudadana General
-                      </span>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-800">
-                    {demandasCiudadanas.length}
-                  </span>
-                </label>
-
-                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors group">
-                  <div className="flex items-center gap-3">
-                    <input 
-                      type="checkbox" 
-                      checked={showPeticionesCiudadanas} 
-                      onChange={(e) => setShowPeticionesCiudadanas(e.target.checked)}
-                      className="w-4 h-4 accent-indigo-600" 
-                    />
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-indigo-600 to-indigo-500 text-white flex items-center justify-center text-[10px] shadow-xs">
-                        <FileText size={11} />
-                      </div>
-                      <span className="text-xs font-bold text-slate-700 group-hover:text-indigo-800 transition-colors">
-                        Peticiones Ciudadanas
-                      </span>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-100 text-indigo-800">
-                    {peticionesCiudadanas.length}
-                  </span>
-                </label>
-
-                {/* Switch Mapa de Calor */}
-                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors group">
-                  <div className="flex items-center gap-3">
-                    <input 
-                      type="checkbox" 
-                      checked={showHeatmap} 
-                      onChange={(e) => setShowHeatmap(e.target.checked)}
-                      className="w-4 h-4 accent-red-600" 
-                    />
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-red-600 via-amber-500 to-blue-500 text-white flex items-center justify-center text-[10px] shadow-xs">
-                        <Flame size={11} className="animate-pulse" />
-                      </div>
-                      <span className="text-xs font-bold text-slate-700 group-hover:text-red-700 transition-colors">
-                        Mapa de Calor (Densidad)
-                      </span>
-                    </div>
-                  </div>
-                  <span className={`text-[9px] font-black px-2 py-0.5 rounded-full ${showHeatmap ? 'bg-red-100 text-red-700' : 'bg-slate-100 text-slate-400'}`}>
-                    {showHeatmap ? 'ACTIVO' : 'OFF'}
-                  </span>
-                </label>
-
-                {/* Switch Focos de Concentración */}
-                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-slate-200 cursor-pointer hover:bg-slate-50 transition-colors group">
-                  <div className="flex items-center gap-3">
-                    <input 
-                      type="checkbox" 
-                      checked={showHotspots} 
-                      onChange={(e) => setShowHotspots(e.target.checked)}
-                      className="w-4 h-4 accent-rose-600" 
-                    />
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-red-600 to-rose-700 text-white flex items-center justify-center text-[10px] shadow-xs">
-                        <span className="text-[10px] leading-none">🔥</span>
-                      </div>
-                      <span className="text-xs font-bold text-slate-700 group-hover:text-rose-700 transition-colors">
-                        Focos de Concentración
-                      </span>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-rose-100 text-rose-800">
-                    {detectedHotspots.length} zonas
-                  </span>
-                </label>
-
-                {/* Botón para abrir panel ejecutivo de concentración */}
-                <button
-                  onClick={() => setShowHotspotsPanel(true)}
-                  className="w-full mt-2 py-2 px-3 bg-gradient-to-r from-toluca-burgundy to-red-900 hover:from-red-900 hover:to-toluca-burgundy text-white rounded-xl text-xs font-black tracking-wide flex items-center justify-center gap-2 shadow-xs transition-all hover:shadow-sm"
-                >
-                  <Flame size={13} className="text-amber-300" />
-                  <span>Ranking de Zonas Críticas</span>
-                </button>
-              </div>
-            </div>
-
-            {/* Capa de Plan de Trabajo (48 Rutas Proyectadas) */}
-            <div className="pt-4 border-t border-slate-200">
-              <h3 className="text-xs font-black text-slate-400 tracking-widest uppercase mb-3 flex items-center gap-2">
-                <Briefcase size={14} className="text-purple-600" /> Plan de Trabajo
-              </h3>
-              <div className="space-y-2">
-                <label className="flex items-center justify-between p-3 bg-white rounded-lg border border-purple-200/80 cursor-pointer hover:bg-purple-50/50 transition-colors group shadow-xs">
-                  <div className="flex items-center gap-3">
-                    <input 
-                      type="checkbox" 
-                      checked={showPlanTrabajo} 
-                      onChange={(e) => setShowPlanTrabajo(e.target.checked)}
-                      className="w-4 h-4 accent-purple-600" 
-                    />
-                    <div className="flex items-center gap-2">
-                      <div className="w-5 h-5 rounded-md bg-gradient-to-tr from-purple-700 to-indigo-600 text-white flex items-center justify-center text-[10px] shadow-xs">
-                        <Briefcase size={11} />
-                      </div>
-                      <span className="text-xs font-bold text-slate-700 group-hover:text-purple-800 transition-colors">
-                        Rutas Proyectadas
-                      </span>
-                    </div>
-                  </div>
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${showPlanTrabajo ? 'bg-purple-100 text-purple-800' : 'bg-slate-100 text-slate-400'}`}>
-                    {planTrabajoRoutes.length} tramos
-                  </span>
-                </label>
-
-                {showPlanTrabajo && planTrabajoRoutes.length > 0 && (
-                  <div className="p-3 bg-gradient-to-br from-purple-950 via-indigo-950 to-slate-900 rounded-xl text-white space-y-2 shadow-sm animate-in fade-in duration-200 border border-purple-900/50">
-                    <div className="flex items-center justify-between text-[11px] text-purple-200 font-semibold border-b border-purple-800/60 pb-1.5">
-                      <span>Inversión Estimada:</span>
-                      <span className="text-sm font-black text-white">
-                        ${(planTrabajoRoutes.reduce((acc, r) => acc + r.presupuestoEstimadoMxn, 0) / 1000000).toFixed(1)}M MXN
-                      </span>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 text-center text-[10px] pt-0.5">
-                      <div className="bg-white/10 rounded-lg p-1.5">
-                        <span className="text-purple-300 block text-[9px]">Longitud</span>
-                        <b className="text-xs text-white">
-                          {(planTrabajoRoutes.reduce((acc, r) => acc + r.metrosLineales, 0) / 1000).toFixed(1)} km
-                        </b>
-                      </div>
-                      <div className="bg-white/10 rounded-lg p-1.5">
-                        <span className="text-purple-300 block text-[9px]">Superficie</span>
-                        <b className="text-xs text-white">
-                          {Math.round(planTrabajoRoutes.reduce((acc, r) => acc + r.superficieM2, 0)).toLocaleString('es-MX')} m²
-                        </b>
-                      </div>
-                    </div>
-                    <div className="grid grid-cols-2 gap-2 text-center text-[10px]">
-                      <div className="bg-white/10 rounded-lg p-1.5">
-                        <span className="text-emerald-300 block text-[9px]">Baches en Tramo</span>
-                        <b className="text-xs text-white">
-                          {planTrabajoRoutes.reduce((acc, r) => acc + r.bachesPreviosCorredor, 0).toLocaleString('es-MX')}
-                        </b>
-                      </div>
-                      <div className="bg-white/10 rounded-lg p-1.5">
-                        <span className="text-indigo-300 block text-[9px]">Peticiones DGOP</span>
-                        <b className="text-xs text-white">
-                          {planTrabajoRoutes.reduce((acc, r) => acc + r.peticionesCiudadanasCorredor, 0)}
-                        </b>
-                      </div>
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
           </div>
@@ -1758,96 +1455,15 @@ export default function App() {
               showProgramadas={filtrosModulos.showProgramadas}
               onSelectObra={handleSelectObra}
             />
-            {/* Capa Unificada de Demanda y Peticiones Ciudadanas (Cero Colisiones, 60 FPS) */}
-            <CitizenDemandLayer 
-              demandas={demandasCiudadanas}
-              peticiones={peticionesCiudadanas}
-              showDemanda={showDemandaCiudadana}
-              showPeticiones={showPeticionesCiudadanas}
-            />
-
-            {/* Capa de Plan de Trabajo (48 Rutas Proyectadas) */}
-            <PlanTrabajoLayer 
-              routes={planTrabajoRoutes}
-              visible={showPlanTrabajo}
-              selectedRouteId={selectedPlanRoute?.id}
-              onSelectRoute={(route) => setSelectedPlanRoute(route)}
-            />
-
-            {/* Capa de Mapa de Calor (Heatmap) */}
-            <HeatmapLayer 
-              points={heatmapPoints} 
-              visible={showHeatmap} 
-            />
-
-            {/* Capa de Focos Críticos de Concentración Espacial */}
-            <HotspotsLayer 
-              hotspots={detectedHotspots} 
-              visible={showHotspots} 
-              selectedHotspotId={selectedHotspotId}
-              onSelectHotspot={handleSelectHotspot}
-            />
 
             <CoordinateSearch data={data} geoData={geoData} setFilters={setFilters} />
             <MapLegend 
               filtros={filtrosModulos} 
               onToggleModulo={handleToggleModulo}
-              showDemandaCiudadana={showDemandaCiudadana}
-              onToggleDemandaCiudadana={handleToggleDemandaCiudadana}
-              demandaCount={demandasCiudadanas.length}
-              showPeticionesCiudadanas={showPeticionesCiudadanas}
-              onTogglePeticionesCiudadanas={handleTogglePeticionesCiudadanas}
-              peticionesCount={peticionesCiudadanas.length}
-              showPlanTrabajo={showPlanTrabajo}
-              onTogglePlanTrabajo={() => setShowPlanTrabajo(prev => !prev)}
-              planTrabajoCount={planTrabajoRoutes.length}
-              showHeatmap={showHeatmap}
-              onToggleHeatmap={handleToggleHeatmap}
-              showHotspots={showHotspots}
-              onToggleHotspots={handleToggleHotspots}
-              hotspotsCount={detectedHotspots.length}
-              onOpenHotspotsPanel={handleOpenHotspotsPanel}
-            />
-            {/* Controlador de Cámara y Resaltado en Mapa de la Ruta de Demostración */}
-            <DemoTourMapController
-              isActive={isDemoTourActive}
-              activeStep={activeDemoStep}
-              activeObra={activeDemoObra}
-              onOpenModal={handleSelectObra}
             />
           </MapContainer>
 
-          {/* Panel Ejecutivo de Concentración y Focos Críticos */}
-          <HotspotsPanel
-            isOpen={showHotspotsPanel}
-            onClose={handleCloseHotspotsPanel}
-            hotspots={detectedHotspots}
-            totalPointsCount={allCitizenPoints.length}
-            showHeatmap={showHeatmap}
-            onToggleHeatmap={setShowHeatmap}
-            showHotspots={showHotspots}
-            onToggleHotspots={setShowHotspots}
-            filterOptions={hotspotFilterOptions}
-            onChangeFilterOptions={setHotspotFilterOptions}
-            selectedHotspotId={selectedHotspotId}
-            onSelectHotspot={handleSelectHotspot}
-          />
-
-          {/* Panel Flotante de Ruta de Demostración Guiada (Informe PDF 2026) */}
-          <DemoTourHUD
-            isActive={isDemoTourActive}
-            stepIndex={demoStepIndex}
-            onlyWithPhotos={demoOnlyWithPhotos}
-            onToggleOnlyWithPhotos={handleToggleDemoOnlyPhotos}
-            onChangeStepIndex={setDemoStepIndex}
-            onExit={handleExitDemoTour}
-            obrasTramos={obrasTramos}
-            onOpenFullModal={handleSelectObra}
-            isModalOpen={Boolean(selectedObra)}
-          />
-
           {/* Timeline Overlay */}
-          {!isDemoTourActive && (
           <div className="absolute bottom-8 left-8 right-8 z-[1000] pointer-events-none">
             <div className="premium-glass p-5 rounded-3xl shadow-2xl border border-white/50 max-w-5xl mx-auto flex items-center gap-5 pointer-events-auto backdrop-blur-md">
               <button 
@@ -1932,7 +1548,6 @@ export default function App() {
 
             </div>
           </div>
-          )}
         </main>
       </div>
 

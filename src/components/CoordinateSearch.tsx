@@ -11,6 +11,7 @@ interface FilterState {
   showE1: boolean;
   showE2: boolean;
   showE3: boolean;
+  showE4: boolean;
   showSP2025: boolean;
   showSP2026: boolean;
   showSP2027: boolean;

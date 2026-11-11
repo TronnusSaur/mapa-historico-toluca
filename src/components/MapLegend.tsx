@@ -11,30 +11,12 @@ import {
   AlertTriangle,
   ChevronDown,
   ChevronUp,
-  Layers,
-  Megaphone,
-  FileText,
-  Briefcase
+  Layers
 } from 'lucide-react';
 
 interface MapLegendProps {
   filtros: FiltrosModulos;
   onToggleModulo?: (id: ModuloObraId) => void;
-  showDemandaCiudadana?: boolean;
-  onToggleDemandaCiudadana?: () => void;
-  demandaCount?: number;
-  showPeticionesCiudadanas?: boolean;
-  onTogglePeticionesCiudadanas?: () => void;
-  peticionesCount?: number;
-  showPlanTrabajo?: boolean;
-  onTogglePlanTrabajo?: () => void;
-  planTrabajoCount?: number;
-  showHeatmap?: boolean;
-  onToggleHeatmap?: () => void;
-  showHotspots?: boolean;
-  onToggleHotspots?: () => void;
-  hotspotsCount?: number;
-  onOpenHotspotsPanel?: () => void;
 }
 
 interface SimbologiaItem {
@@ -49,22 +31,7 @@ interface SimbologiaItem {
 
 export const MapLegend: React.FC<MapLegendProps> = React.memo(({ 
   filtros, 
-  onToggleModulo,
-  showDemandaCiudadana = true,
-  onToggleDemandaCiudadana,
-  demandaCount = 288,
-  showPeticionesCiudadanas = true,
-  onTogglePeticionesCiudadanas,
-  peticionesCount = 601,
-  showPlanTrabajo = true,
-  onTogglePlanTrabajo,
-  planTrabajoCount = 48,
-  showHeatmap = false,
-  onToggleHeatmap,
-  showHotspots = false,
-  onToggleHotspots,
-  hotspotsCount = 0,
-  onOpenHotspotsPanel
+  onToggleModulo
 }) => {
   const [isExpanded, setIsExpanded] = useState(true);
   const cardRef = useRef<HTMLDivElement>(null);
@@ -252,182 +219,6 @@ export const MapLegend: React.FC<MapLegendProps> = React.memo(({
                 </div>
               </div>
             ))}
-
-            {/* Capa de Demanda Ciudadana */}
-            <div className="pt-2 mt-1 border-t border-slate-100 px-1">
-              <span className="text-[9px] font-bold tracking-widest text-slate-400 uppercase block mb-1">
-                Participación y Demanda
-              </span>
-              <div 
-                onClick={onToggleDemandaCiudadana}
-                className={`group flex items-center justify-between p-1.5 rounded-xl transition-all cursor-pointer border ${
-                  showDemandaCiudadana
-                    ? 'bg-amber-50/70 hover:bg-amber-100/80 border-amber-200/80'
-                    : 'bg-slate-50/30 hover:bg-slate-100/50 border-transparent opacity-40 hover:opacity-75'
-                }`}
-              >
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="relative shrink-0 w-6 h-6 rounded-full bg-gradient-to-tr from-amber-600 to-orange-500 flex items-center justify-center shadow-sm border-2 border-white ring-1 ring-amber-200/50 transition-transform group-hover:scale-110">
-                    <Megaphone size={11} className="text-white" />
-                  </div>
-                  <div className="min-w-0 flex flex-col">
-                    <span className="text-[11px] font-bold text-slate-800 truncate leading-tight group-hover:text-amber-800 transition-colors">
-                      Demanda Ciudadana
-                    </span>
-                    <span className="text-[9px] text-amber-700 font-semibold truncate leading-tight">
-                      {demandaCount} reportes
-                    </span>
-                  </div>
-                </div>
-
-                <div className="shrink-0 flex items-center gap-1 pl-1.5">
-                  {showDemandaCiudadana ? (
-                    <span className="w-2 h-2 rounded-full bg-amber-500 shadow-sm" title="Capa visible" />
-                  ) : (
-                    <span className="w-2 h-2 rounded-full bg-slate-300" title="Capa oculta" />
-                  )}
-                </div>
-              </div>
-
-              {/* Peticiones Ciudadanas (Oficios DGOP) */}
-              <div 
-                onClick={onTogglePeticionesCiudadanas}
-                className={`group flex items-center justify-between p-1.5 rounded-xl transition-all cursor-pointer border mt-1 ${
-                  showPeticionesCiudadanas
-                    ? 'bg-indigo-50/70 hover:bg-indigo-100/80 border-indigo-200/80'
-                    : 'bg-slate-50/30 hover:bg-slate-100/50 border-transparent opacity-40 hover:opacity-75'
-                }`}
-              >
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="relative shrink-0 w-6 h-6 rounded-full bg-gradient-to-tr from-indigo-600 to-indigo-500 flex items-center justify-center shadow-sm border-2 border-white ring-1 ring-indigo-200/50 transition-transform group-hover:scale-110">
-                    <FileText size={11} className="text-white" />
-                  </div>
-                  <div className="min-w-0 flex flex-col">
-                    <span className="text-[11px] font-bold text-slate-800 truncate leading-tight group-hover:text-indigo-800 transition-colors">
-                      Peticiones Ciudadanas
-                    </span>
-                    <span className="text-[9px] text-indigo-700 font-semibold truncate leading-tight">
-                      {peticionesCount} oficios DGOP
-                    </span>
-                  </div>
-                </div>
-
-                <div className="shrink-0 flex items-center gap-1 pl-1.5">
-                  {showPeticionesCiudadanas ? (
-                    <span className="w-2 h-2 rounded-full bg-indigo-500 shadow-sm" title="Capa visible" />
-                  ) : (
-                    <span className="w-2 h-2 rounded-full bg-slate-300" title="Capa oculta" />
-                  )}
-                </div>
-              </div>
-
-              {/* Capa Plan de Trabajo (Proyectos Ejecutivos) */}
-              <div 
-                onClick={onTogglePlanTrabajo}
-                className={`group flex items-center justify-between p-1.5 rounded-xl transition-all cursor-pointer border mt-1 ${
-                  showPlanTrabajo
-                    ? 'bg-purple-50/70 hover:bg-purple-100/80 border-purple-200/80'
-                    : 'bg-slate-50/30 hover:bg-slate-100/50 border-transparent opacity-40 hover:opacity-75'
-                }`}
-              >
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="relative shrink-0 w-6 h-6 rounded-full bg-gradient-to-tr from-purple-700 to-indigo-600 flex items-center justify-center shadow-sm border-2 border-white ring-1 ring-purple-200/50 transition-transform group-hover:scale-110">
-                    <Briefcase size={11} className="text-white" />
-                  </div>
-                  <div className="min-w-0 flex flex-col">
-                    <span className="text-[11px] font-bold text-slate-800 truncate leading-tight group-hover:text-purple-800 transition-colors">
-                      Plan de Trabajo
-                    </span>
-                    <span className="text-[9px] text-purple-700 font-semibold truncate leading-tight">
-                      {planTrabajoCount} rutas proyectadas
-                    </span>
-                  </div>
-                </div>
-
-                <div className="shrink-0 flex items-center gap-1 pl-1.5">
-                  {showPlanTrabajo ? (
-                    <span className="w-2 h-2 rounded-full bg-purple-600 shadow-sm" title="Capa visible" />
-                  ) : (
-                    <span className="w-2 h-2 rounded-full bg-slate-300" title="Capa oculta" />
-                  )}
-                </div>
-              </div>
-
-              {/* Modo Mapa de Calor */}
-              <div 
-                onClick={onToggleHeatmap}
-                className={`group flex items-center justify-between p-1.5 rounded-xl transition-all cursor-pointer border mt-1 ${
-                  showHeatmap
-                    ? 'bg-red-50/70 hover:bg-red-100/80 border-red-200/80'
-                    : 'bg-slate-50/30 hover:bg-slate-100/50 border-transparent opacity-40 hover:opacity-75'
-                }`}
-              >
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="relative shrink-0 w-6 h-6 rounded-full bg-gradient-to-tr from-red-600 via-amber-500 to-blue-500 flex items-center justify-center shadow-sm border-2 border-white ring-1 ring-red-200/50 transition-transform group-hover:scale-110">
-                    <Flame size={11} className="text-white animate-pulse" />
-                  </div>
-                  <div className="min-w-0 flex flex-col">
-                    <span className="text-[11px] font-bold text-slate-800 truncate leading-tight group-hover:text-red-800 transition-colors">
-                      Mapa de Calor (Densidad)
-                    </span>
-                    <span className="text-[9px] text-red-700 font-semibold truncate leading-tight">
-                      Gradiente térmico espacial
-                    </span>
-                  </div>
-                </div>
-
-                <div className="shrink-0 flex items-center gap-1 pl-1.5">
-                  {showHeatmap ? (
-                    <span className="w-2 h-2 rounded-full bg-red-600 shadow-sm" title="Capa visible" />
-                  ) : (
-                    <span className="w-2 h-2 rounded-full bg-slate-300" title="Capa oculta" />
-                  )}
-                </div>
-              </div>
-
-              {/* Focos de Concentración (Hotspots) */}
-              <div 
-                onClick={onToggleHotspots}
-                className={`group flex items-center justify-between p-1.5 rounded-xl transition-all cursor-pointer border mt-1 ${
-                  showHotspots
-                    ? 'bg-rose-50/80 hover:bg-rose-100/90 border-rose-300'
-                    : 'bg-slate-50/30 hover:bg-slate-100/50 border-transparent opacity-40 hover:opacity-75'
-                }`}
-              >
-                <div className="flex items-center gap-2.5 min-w-0">
-                  <div className="relative shrink-0 w-6 h-6 rounded-full bg-gradient-to-tr from-red-600 to-rose-700 flex items-center justify-center shadow-sm border-2 border-white ring-1 ring-rose-200/50 transition-transform group-hover:scale-110">
-                    <span className="text-[10px] leading-none">🔥</span>
-                  </div>
-                  <div className="min-w-0 flex flex-col">
-                    <span className="text-[11px] font-bold text-slate-800 truncate leading-tight group-hover:text-rose-800 transition-colors">
-                      Focos de Concentración
-                    </span>
-                    <span className="text-[9px] text-rose-700 font-semibold truncate leading-tight">
-                      {hotspotsCount} zonas críticas detectadas
-                    </span>
-                  </div>
-                </div>
-
-                <div className="shrink-0 flex items-center gap-1 pl-1.5">
-                  {showHotspots ? (
-                    <span className="w-2 h-2 rounded-full bg-rose-600 shadow-sm" title="Capa visible" />
-                  ) : (
-                    <span className="w-2 h-2 rounded-full bg-slate-300" title="Capa oculta" />
-                  )}
-                </div>
-              </div>
-
-              {/* Botón Abrir Panel de Análisis */}
-              {onOpenHotspotsPanel && (
-                <button
-                  onClick={onOpenHotspotsPanel}
-                  className="w-full mt-2 py-1.5 px-2 bg-gradient-to-r from-toluca-burgundy to-red-800 hover:from-red-900 hover:to-toluca-burgundy text-white rounded-lg text-[10px] font-black tracking-wide flex items-center justify-center gap-1.5 shadow-xs transition-all hover:shadow-sm"
-                >
-                  <Flame size={12} className="text-amber-300" />
-                  <span>Ver Ranking de Zonas Críticas</span>
-                </button>
-              )}
-            </div>
 
             {/* Convención de Estados y Trazos */}
             <div className="pt-2.5 mt-2 border-t border-slate-100 space-y-1.5 px-1">
